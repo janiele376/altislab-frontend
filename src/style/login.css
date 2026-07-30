@@ -1,0 +1,142 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+#cabecario-topo{
+    background-color: #DBC2B0;
+    color: #55463C;
+    width: 100%;
+}
+#cabecario-topo .container-titulo{
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    align-items: center;
+}
+#cabecario-topo .titulo{
+    font-size: 30px;
+}
+#cabecario-topo .img-titulo{
+    padding-bottom: 10px;
+}
+#corpo{
+    background-image: url(../imgs/background-corpo.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    gap: 45%;
+    align-items: center;
+    width: 100%;
+    height: 80vh;
+}
+.container-frase{
+    padding-left: 60px;
+    padding-top: 200px;
+}
+.container-frase .frase .linha1{
+    color: white;
+    font-size: 30px;
+}
+.container-frase .frase .linha2{
+    color: white;
+    font-size: 50px;
+}
+.container-frase .frase .linha3{
+    color: #DFA782;
+    font-size: 50px;
+}
+.container-frase .frase .linha4 {
+    color: white;
+}
+.container-form{
+    background-color: #DBC2B0;
+    color: #55463C;
+    border-radius: 30px;
+    width: 300px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+.container-form .titulo-form{
+    padding-bottom: 15px;
+}
+.container-form .titulo-form img{
+    padding-left: 50px;
+    padding-bottom: 10px;
+}
+.container-form .info p{
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.container-form .info input{
+    padding-right: 20px;
+    padding-left: 35px;
+    border-radius: 10px;
+    border-color: darkgrey;
+}
+.container-form .container-form-imgs{
+    padding-right: 30px;
+    display: flex;
+}
+.container-form .container-form-imgs .imgs-form{
+    display: flex;
+    flex-direction: column;
+    gap: 27px;
+    padding-top: 33px;
+    padding-right: 3px;
+}
+.container-form .esqueci-senha{
+    padding-bottom: 30px;
+    padding-left: 100px;
+    padding-top: 3px;
+}
+.container-form .esqueci-senha a{
+    color: #55463C;
+}
+.container-form .esqueci-senha a:hover{
+    color: #9a7b66;
+}
+.container-form .botoes{
+    display: block;
+    align-items: center;
+    flex-direction: column;
+}
+.container-form .botoes button{
+    width: 200px;
+    height: 30px;
+    border-radius: 10px;
+    border: 2px solid #55463C;
+    font-weight: bold;
+}
+.container-form .botoes .btn-entrar{
+    background-color: #55463C;
+    color: white;
+}
+.container-form .botoes .btn-cadastrar{
+    background-color: #DBC2B0;
+    color: #55463C;
+}
+.rodape .container-info{
+    background-color: #DBC2B0;
+    color: #55463C;
+    display: flex;
+    align-items: center;
+    gap: 100px;
+    padding-left: 50px;
+    padding: 30px;
+}
+.rodape .container-info .container-contate-nos{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.rodape .container-info .container-contate-nos .imgs-contate-nos{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding-top: 17px;
+}
+
