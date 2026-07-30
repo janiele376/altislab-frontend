@@ -1,0 +1,126 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+#cabecario-topo{
+    background-color: #DBC2B0;
+    color: #55463C;
+    width: 100%;
+}
+#cabecario-topo .container-titulo{
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    align-items: center;
+}
+#cabecario-topo .titulo{
+    font-size: 30px;
+}
+#cabecario-topo .img-titulo{
+    padding-bottom: 10px;
+}
+#corpo{
+    background-image: url(../imgs/background-corpo.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    gap: 45%;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+.container-frase{
+    padding-left: 60px;
+    padding-top: 200px;
+}
+.container-frase .frase .linha1{
+    color: white;
+    font-size: 30px;
+}
+.container-frase .frase .linha2{
+    color: white;
+    font-size: 50px;
+}
+.container-frase .frase .linha3{
+    color: #DFA782;
+    font-size: 50px;
+}
+.container-frase .frase .linha4 {
+    color: white;
+}
+.container-form{
+    background-color: #DBC2B0;
+    color: #55463C;
+    border-radius: 30px;
+    width: 300px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin-top: -70px;
+}
+.container-form .titulo-form{
+    text-align: center;
+    padding-bottom: 20px;
+    padding-right: 40px;
+}
+.container-form .titulo-form img{
+    padding-left: 0px;
+    padding-bottom: 5px;
+}
+.container-form .container-titulo-img-form{
+    display: flex;
+    padding-right: 40px;
+}
+.container-form .container-titulo-img-form .img-form{
+    padding-right: 35px;
+    padding-left: 25px;
+    padding-top: 17px;
+}
+.container-form .info p{
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.container-form .info input{
+    padding-right: 20px;
+    padding-left: 35px;
+    border-radius: 10px;
+    border-color: darkgrey;
+    text-align: left !important;
+    padding-left: 12px;
+}
+.container-form .container-form-imgs{
+    padding-right: 20px;
+    display: flex;
+}
+.container-form .container-form-imgs .imgs-form{
+    display: flex;
+    flex-direction: column;
+    gap: 27px;
+    padding-top: 33px;
+    padding-right: 3px;
+}
+.container-form .botoes{
+    padding-top: 20px;
+    display: block;
+    align-items: center;
+    flex-direction: column;
+}
+.container-form .botoes button{
+    width: 200px;
+    height: 30px;
+    border-radius: 10px;
+    border: 2px solid #55463C;
+    font-weight: bold;
+}
+.container-form .botoes .btn-enviar{
+    background-color: #55463C;
+    color: white;
+}
+.container-form .botoes .btn-cancelar{
+    background-color: #DBC2B0;
+    color: #55463C;
+}
