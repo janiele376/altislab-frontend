@@ -113,6 +113,14 @@
     border: 2px solid #55463C;
     font-weight: bold;
 }
+.container-form .botoes button:hover{
+    width: 200px;
+    height: 30px;
+    border-radius: 10px;
+    border: 2px solid #55463C;
+    background-color: #9a7b66;
+    font-weight: bold;
+}
 .container-form .botoes .btn-entrar{
     background-color: #55463C;
     color: white;
