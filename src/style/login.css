@@ -310,9 +310,7 @@
     box-sizing: border-box;
     display: flex;
 }
-.rodape .container-info .sobre-nos .text-mobile{
-    display: block;
-}
+
 .rodape .container-info .sobre-nos .text-computer{
     display: none;
 }
