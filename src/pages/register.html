@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Esqueci Senha</title>
-    <link rel="stylesheet" href="../style/esqueci-senha.css"></head>
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="../style/register.css"></head>
 </head>
-    <body>
+<body>
     <header id="cabecario-topo">
         <div class="container-titulo">
             <img class="img-titulo" alt="logo" src="../imgs/livro-figura.svg">
-            <h2 class="titulo">Biblioteca Esqueci Senha</h2>
+            <h2 class="titulo">Biblioteca Cadastro</h2>
         </div>
     </header>
 
@@ -34,37 +34,53 @@
                 </div>
                 <div class="titulo-form">
                     <img src="../imgs/livro-figura.svg">
-                    <h2>Recuperar Senha</h2>
+                    <h2>Cadastre-se</h2>
                 </div>
             </div>
             <diV class="container-form-imgs">
                 <div class="imgs-form">
+                    <img src="../imgs/user.svg" alt="user">
+                    <img src="../imgs/calendario.svg" alt="date">
                     <img src="../imgs/mail.svg" alt="email">
                     <img src="../imgs/cpf.svg" alt="cpf">
+                    <img src="../imgs/telefone.svg" alt="telefone">
+                    <img src="../imgs/local.svg" alt="local">
                     <img src="../imgs/key.svg" alt="senha">
-                    <img src="../imgs/key.svg" alt="confirmar-senha">
+                    <img src="../imgs/key.svg" alt="senha">
                 </div>
 
                 <div class="info">
+                    <p>Nome Completo:</p>
+                    <input placeholder="Maria da Silva" name="nome-completo">
+
+                    <p>Data de Nascimento:</p>
+                    <input placeholder="DD/MM/AAAA" type="calendar" name="data-nascimento">
+
                     <p>E-mail:</p>
-                    <input placeholder="email@gmail.com" type="email">
+                    <input placeholder="email@gmail.com" type="email" name="email">
 
                     <p>CPF:</p>
-                    <input placeholder="000.000.000-00" type="tel">
-                
-                    <p>Nova Senha:</p>
-                    <input placeholder="Nova Senha" type="password">
+                    <input placeholder="000.000.000-00" type="tel" name="cpf">
 
-                    <p>Confirmar Nova Senha:</p>
-                    <input placeholder="Confirmar Nova Senha" type="password">
+                    <p>Telefone:</p>
+                    <input placeholder="00 0 0000-0000" type="tel" name="telefone">
+
+                    <p>Localização:</p>
+                    <input placeholder="Logradouro, Nº - Bairro" type="text" name="localizacao">
+                
+                    <p>Senha:</p>
+                    <input placeholder="Senha" type="password" name="senha">
+
+                    <p>Confirmar Senha:</p>
+                    <input placeholder="Confirmar Senha" type="password" name="confirmar-senha">
                 </div>
             </diV>
 
             <div class="botoes">
-                <button class="btn-enviar">Enviar</button>
+                <button class="btn-cadastrar" name="btn-cadastro">Cadastrar</button>
                 <p class="monitor-normal">----------------ou-----------------</p>
                 <p class="monitor-maior">------------------ou----------------</p>
-                <button class="btn-cancelar">Cancelar</button>
+                <button class="btn-cancelar" name="btn-cancelar">Cancelar</button>
             </div>
 
         </article>
