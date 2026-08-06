@@ -4,22 +4,22 @@
     box-sizing: border-box;
     overflow: hidden;
 }
-#cabecario-topo{
+#header{
     background-color: #DBC2B0;
     color: #55463C;
     width: 100%;
 }
-#cabecario-topo .container-titulo{
+#header .container-title{
     display: flex;
     gap: 1.25rem;
     padding: 1.25rem;
     align-items: center;
     box-sizing: border-box;
 }
-#cabecario-topo .titulo{
+#header .title{
     font-size: 1.875rem;
 }
-#cabecario-topo .img-titulo{
+#header .img-title{
     padding-bottom: 0.625rem;
     box-sizing: border-box;
 }
@@ -47,24 +47,24 @@
     margin-top: -7rem;
     box-sizing: border-box;
 }
-.container-profile .titulo-form{
+.container-profile .title-form{
     text-align: center;
     padding-bottom: 0.5rem;
     padding-right: 2.5rem;
     box-sizing: border-box;
 }
-.container-profile .titulo-form img{
+.container-profile .title-form img{
     padding-left: 0rem;
     padding-bottom: 0.3125rem;
     box-sizing: border-box;
 }
-.container-profile .container-titulo-img-form{
+.container-profile .container-title-img-form{
     display: flex;
     padding-right: 5rem;
     box-sizing: border-box;
     gap: 2rem;
 }
-.container-profile .container-titulo-img-form .img-form{
+.container-profile .container-title-img-form .img-form{
     padding-right: 2.2rem;
     padding-left: 1.9rem;
     padding-top: 1.0625rem;
