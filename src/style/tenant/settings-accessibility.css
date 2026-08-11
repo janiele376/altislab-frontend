@@ -1,0 +1,149 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+#header{
+    background-color: #DBC2B0;
+    color: #55463C;
+    width: 100%;
+}
+#header .container-title{
+    display: flex;
+    gap: 1.25rem;
+    padding: 1.25rem;
+    align-items: center;
+    box-sizing: border-box;
+}
+#header .title{
+    font-size: 1.875rem;
+}
+#header .img-book{
+    padding-bottom: 0.625rem;
+    box-sizing: border-box;
+}
+#body{
+    background-color: #E9E4DE;
+    display: flex;
+    gap: 45%;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    padding-top: 10rem;
+    flex-direction: column;
+}
+.container-accessibility{
+    background-color: #DBC2B0;
+    color: #55463C;
+    border-radius: 1.875rem;
+    width: 25rem;
+    height: 23rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.25rem;
+    margin-top: 1rem;
+    box-sizing: border-box;
+}
+.container-accessibility .title-form{
+    text-align: center;
+    padding-bottom: 0.5rem;
+    padding-right: 2.5rem;
+    box-sizing: border-box;
+}
+.container-accessibility .title-form img{
+    padding-bottom: 0.3125rem;
+    box-sizing: border-box;
+}
+.container-accessibility .container-title-img-form{
+    display: flex;
+    padding-right: 5rem;
+    box-sizing: border-box;
+    gap: 2rem;
+}
+.container-accessibility .container-title-img-form .img-form{
+    padding-right: 2.2rem;
+    padding-left: 1.9rem;
+    padding-top: 1.0625rem;
+    box-sizing: border-box;
+}
+.container-accessibility .container-btns .btn-profile{
+    background-color: #DBC2B0;
+    color: #55463C;
+    border: 0.125rem solid #55463C;
+    border-top-left-radius: 5rem;
+    border-bottom-left-radius: 5rem;
+    width: 10rem;
+    height: 2rem;
+}
+.container-accessibility .container-btns .btn-profile:hover{
+    background-color: #9a7b66;
+    color: #55463C;
+    border: 0.125rem solid #55463C;
+    border-top-left-radius: 5rem;
+    border-bottom-left-radius: 5rem;
+    width: 10rem;
+    height: 2rem;
+}
+.container-accessibility .container-btns .btn-accessibility{
+    background-color: #55463C;
+    color: white;
+    border: 0.125rem solid #55463C;
+    border-top-right-radius: 5rem;
+    border-bottom-right-radius: 5rem;
+    width: 10rem;
+    height: 2rem;
+}
+.container-accessibility .line{
+    width: 20rem;
+    height: 0.095rem;
+    border-color: #55463C;
+    background-color: #55463C;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}
+.container-accessibility .container-btns-info{
+    display: flex;
+    gap: 2rem;
+}
+.container-accessibility .container-btns-info .info p{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.container-accessibility .container-btns-info .btns button{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.container-accessibility .container-btns-info .btns .btn-light{
+    width: 5rem;
+    background-color: #55463C;
+    color: white;
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+    border: solid #55463C;
+}
+.container-accessibility .container-btns-info .btns .btn-dark{
+    width: 5rem;    
+    background-color: #DBC2B0;
+    color: #55463C;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    border: solid #55463C;
+}
+.container-accessibility .container-btns-info .btns .btn-dark:hover{
+    width: 5rem;    
+    background-color: #9a7b66;
+    color: #55463C;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    border: solid #55463C;
+}
+.container-accessibility .container-btns-info .btns .select-language{
+    width: 10.2rem;
+    background-color: #DBC2B0;
+    color: #55463C;
+    border: solid #55463C;
+    border-radius: 2rem;
+}
