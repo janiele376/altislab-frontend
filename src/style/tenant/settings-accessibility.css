@@ -39,12 +39,12 @@
     color: #55463C;
     border-radius: 1.875rem;
     width: 25rem;
-    height: 35rem;
+    height: 23rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 1.25rem;
-    margin-top: -7rem;
+    margin-top: 1rem;
     box-sizing: border-box;
 }
 .container-accessibility .title-form{
@@ -101,6 +101,49 @@
     height: 0.095rem;
     border-color: #55463C;
     background-color: #55463C;
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}
+.container-accessibility .container-btns-info{
+    display: flex;
+    gap: 2rem;
+}
+.container-accessibility .container-btns-info .info p{
     margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.container-accessibility .container-btns-info .btns button{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.container-accessibility .container-btns-info .btns .btn-light{
+    width: 5rem;
+    background-color: #55463C;
+    color: white;
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+    border: solid #55463C;
+}
+.container-accessibility .container-btns-info .btns .btn-dark{
+    width: 5rem;    
+    background-color: #DBC2B0;
+    color: #55463C;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    border: solid #55463C;
+}
+.container-accessibility .container-btns-info .btns .btn-dark:hover{
+    width: 5rem;    
+    background-color: #9a7b66;
+    color: #55463C;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    border: solid #55463C;
+}
+.container-accessibility .container-btns-info .btns .select-language{
+    width: 10.2rem;
+    background-color: #DBC2B0;
+    color: #55463C;
+    border: solid #55463C;
+    border-radius: 2rem;
 }
