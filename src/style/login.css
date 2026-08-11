@@ -153,18 +153,18 @@
     padding: 1.875rem;
     box-sizing: border-box;
 }
-.footer .container-info .sobre-nos .text-mobile{
+.footer .container-info .about-us .text-mobile{
     display: none;
 }
-.footer .container-info .sobre-nos .text-computer{
+.footer .container-info .about-us .text-computer{
     display: block;
 }
-.footer .container-info .container-contate-nos{
+.footer .container-info .container-contact-us{
     display: flex;
     gap: 0.625rem;
     align-items: center;
 }
-.footer .container-info .container-contate-nos .imgs-contate-nos{
+.footer .container-info .container-contact-us .imgs-contact-us{
     display: flex;
     flex-direction: column;
     gap: 0.125rem;
@@ -179,27 +179,27 @@
     box-sizing: border-box;
     overflow-x: hidden;
 }
-#cabecario-topo{
+#header{
     background-color: #DBC2B0;
     color: #55463C;
     max-width: 100%;
     height: 20%;
 }
-#cabecario-topo .container-title{
+#header .container-title{
     display: flex;
     gap: 1.25rem;
     padding: 1.25rem;
     align-items: center;
     box-sizing: border-box;
 }
-#cabecario-topo .title{
+#header .title{
     font-size: 1.875rem;
 }
-#cabecario-topo .img-title{
+#header .img-book{
     padding-bottom: 0.625rem;
     box-sizing: border-box;
 }
-#corpo{
+#body{
     background-image: url(../imgs/background-corpo.svg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -209,7 +209,7 @@
     flex-direction: column;
     padding-top: 10rem;
 }
-.container-frase{
+.container-phrase{
     padding-left: 3.75rem;
     padding-top: 12.5rem;
     box-sizing: border-box;
@@ -258,16 +258,16 @@
     padding-right: 0.1875rem;
     box-sizing: border-box;
 }
-.container-form .esqueci-senha{
+.container-form .forgout-password{
     padding-bottom: 1.875rem;
     padding-left: 6.25rem;
     padding-top: 0.1875rem;
     box-sizing: border-box;
 }
-.container-form .esqueci-senha a{
+.container-form .forgout-password a{
     color: #55463C;
 }
-.container-form .esqueci-senha a:hover{
+.container-form .forgout-password a:hover{
     color: #9a7b66;
 }
 .container-form .btns{
@@ -291,15 +291,15 @@
     font-weight: bold;
     padding: 2rem;
 }
-.container-form .btns .btn-entrar{
+.container-form .btns .btn-login{
     background-color: #55463C;
     color: white;
 }
-.container-form .btns .btn-cadastrar{
+.container-form .btns .btn-register{
     background-color: #DBC2B0;
     color: #55463C;
 }
-.container-form .btns .monitor-maior{
+.container-form .btns .monitor-larger{
     display: none;
 }
 .footer .container-info{
@@ -311,24 +311,24 @@
     display: flex;
 }
 
-.footer .container-info .sobre-nos .text-computer{
+.footer .container-info .about-us .text-computer{
     display: none;
 }
-.footer .container-info .container-contate-nos{
+.footer .container-info .container-contact-us{
     padding-bottom: 3.5rem;
     width: 100%;
     max-width: 100%;
 }
-.footer .container-info .container-contate-nos .contate-nos{
+.footer .container-info .container-contact-us .contact-us{
     width: 100%;
     max-width: 100%;
 }
-.footer .container-info .nossos-locais{
+.footer .container-info .our-locations{
     padding-bottom: 1.4rem;
     width: 100%;
     max-width: 100%;
 }
-.footer .container-info .container-contate-nos .imgs-contate-nos{
+.footer .container-info .container-contact-us .imgs-contact-us{
     display: none;
 }
 }
@@ -349,7 +349,7 @@
     font-weight: bold;
     background-color: #9a7b66;
 }
-.container-form .btns .monitor-maior{
+.container-form .btns .monitor-larger{
     display: block;
 }
 .container-form .btns .monitor-normal{
