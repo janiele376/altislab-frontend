@@ -86,6 +86,9 @@
     padding-top: 1.0625rem;
     box-sizing: border-box;
 }
+.container-form .container-title-img-form .img-form .img-back-arrow:hover{
+    opacity: 0.5;
+}
 .container-form .info p{
     padding-bottom: 0.3125rem;
     padding-top: 0.3125rem;
@@ -120,31 +123,46 @@
     flex-direction: column;
     box-sizing: border-box;
 }
-.container-form .btns button{
+.container-form .btns .btn-cancel{
     width: 12.5rem;
     height: 1.875rem;
     border-radius: 0.625rem;
     border: 0.125rem solid #55463C;
+    font-weight: bold;
+    background-color: #DBC2B0;
+    color: #55463C;
+}
+.container-form .btns .btn-cancel:hover{
+    width: 12.5rem;
+    height: 1.875rem;
+    border-radius: 0.625rem;
+    border: 0.125rem solid #55463C;
+    font-weight: bold;
+    background-color: #DBC2B0;
+    color: #55463C;
+    opacity: 0.5;
+}
+.container-form .btns .btn-register{
+    width: 12.5rem;
+    height: 1.875rem;
+    border-radius: 0.625rem;
+    border: 0.125rem solid #55463C;
+    background-color: #55463C;
+    color: white;
     font-weight: bold;
 }
-.container-form .btns button:hover{
+.container-form .btns .btn-register:hover{
     width: 12.5rem;
     height: 1.875rem;
     border-radius: 0.625rem;
     border: 0.125rem solid #55463C;
+    background-color: #55463C;
+    color: white;
     font-weight: bold;
-    background-color: #9a7b66;
+    opacity: 0.5;
 }
 .container-form .btns .monitor-larger{
     display: none;
-}
-.container-form .btns .btn-register{
-    background-color: #55463C;
-    color: white;
-}
-.container-form .btns .btn-cancel{
-    background-color: #DBC2B0;
-    color: #55463C;
 }
 /*responsivade do celular*/
 @media (max-width: 767px) {
