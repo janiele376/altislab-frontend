@@ -3,26 +3,26 @@
     padding: 0%;
     box-sizing: border-box;
 }
-#cabecario-topo{
+#header{
     background-color: #DBC2B0;
     color: #55463C;
     width: 100%;
 }
-#cabecario-topo .container-titulo{
+#header .container-title{
     display: flex;
     gap: 1.25rem;
     padding: 1.25rem;
     align-items: center;
     box-sizing: border-box;
 }
-#cabecario-topo .titulo{
+#header .title{
     font-size: 1.875rem;
 }
-#cabecario-topo .img-titulo{
+#header .img-book{
     padding-bottom: 0.625rem;
     box-sizing: border-box;
 }
-#corpo{
+#body{
     background-image: url(../imgs/background-corpo.svg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -33,24 +33,24 @@
     min-height: 80svh;
     height: auto;
 }
-.container-frase{
+.container-phrase{
     padding-left: 3.75rem;
     padding-top: 12.5rem;
     box-sizing: border-box;
 }
-.container-frase .frase .linha1{
+.container-phrase .phrase .line1{
     color: white;
     font-size: 1.875rem;
 }
-.container-frase .frase .linha2{
+.container-phrase .phrase .line2{
     color: white;
     font-size: 3.125rem;
 }
-.container-frase .frase .linha3{
+.container-phrase .phrase .line3{
     color: #DFA782;
     font-size: 3.125rem;
 }
-.container-frase .frase .linha4 {
+.container-phrase .phrase .line4 {
     color: white;
 }
 .container-form{
@@ -65,11 +65,11 @@
     padding: 1.25rem;
     box-sizing: border-box;
 }
-.container-form .titulo-form{
+.container-form .title-form{
     padding-bottom: 0.9375rem;
     box-sizing: border-box;
 }
-.container-form .titulo-form img{
+.container-form .title-form img{
     padding-left: 3.125rem;
     padding-bottom: 0.625rem;
     box-sizing: border-box;
@@ -100,31 +100,31 @@
     padding-right: 0.1875rem;
     box-sizing: border-box;
 }
-.container-form .esqueci-senha{
+.container-form .forgout-password{
     padding-bottom: 1.875rem;
     padding-left: 6.25rem;
     padding-top: 0.1875rem;
     box-sizing: border-box;
 }
-.container-form .esqueci-senha a{
+.container-form .forgout-password a{
     color: #55463C;
 }
-.container-form .esqueci-senha a:hover{
+.container-form .forgout-password a:hover{
     color: #9a7b66;
 }
-.container-form .botoes{
+.container-form .btns{
     display: block;
     align-items: center;
     flex-direction: column;
 }
-.container-form .botoes button{
+.container-form .btns button{
     width: 12.5rem;
     height: 1.875rem;
     border-radius: 0.625rem;
     border: 2px solid #55463C;
     font-weight: bold;
 }
-.container-form .botoes button:hover{
+.container-form .btns button:hover{
     width: 12.5rem;
     height: 1.875rem;
     border-radius: 0.625rem;
@@ -132,18 +132,18 @@
     background-color: #9a7b66;
     font-weight: bold;
 }
-.container-form .botoes .btn-entrar{
+.container-form .btns .btn-login{
     background-color: #55463C;
     color: white;
 }
-.container-form .botoes .btn-cadastrar{
+.container-form .btns .btn-register{
     background-color: #DBC2B0;
     color: #55463C;
 }
-.container-form .botoes .monitor-maior{
+.container-form .btns .monitor-larger{
     display: none;
 }
-.rodape .container-info{
+.footer .container-info{
     background-color: #DBC2B0;
     color: #55463C;
     display: flex;
@@ -153,18 +153,18 @@
     padding: 1.875rem;
     box-sizing: border-box;
 }
-.rodape .container-info .sobre-nos .text-mobile{
+.footer .container-info .sobre-nos .text-mobile{
     display: none;
 }
-.rodape .container-info .sobre-nos .text-computer{
+.footer .container-info .sobre-nos .text-computer{
     display: block;
 }
-.rodape .container-info .container-contate-nos{
+.footer .container-info .container-contate-nos{
     display: flex;
     gap: 0.625rem;
     align-items: center;
 }
-.rodape .container-info .container-contate-nos .imgs-contate-nos{
+.footer .container-info .container-contate-nos .imgs-contate-nos{
     display: flex;
     flex-direction: column;
     gap: 0.125rem;
@@ -185,17 +185,17 @@
     max-width: 100%;
     height: 20%;
 }
-#cabecario-topo .container-titulo{
+#cabecario-topo .container-title{
     display: flex;
     gap: 1.25rem;
     padding: 1.25rem;
     align-items: center;
     box-sizing: border-box;
 }
-#cabecario-topo .titulo{
+#cabecario-topo .title{
     font-size: 1.875rem;
 }
-#cabecario-topo .img-titulo{
+#cabecario-topo .img-title{
     padding-bottom: 0.625rem;
     box-sizing: border-box;
 }
@@ -223,11 +223,11 @@
     height: 25rem;
     box-sizing: border-box;
 }
-.container-form .titulo-form{
+.container-form .title-form{
     padding-bottom: 0.9375rem;
     box-sizing: border-box;
 }
-.container-form .titulo-form img{
+.container-form .title-form img{
     padding-left: 3.125rem;
     padding-bottom: 0.625rem;
     box-sizing: border-box;
@@ -270,19 +270,19 @@
 .container-form .esqueci-senha a:hover{
     color: #9a7b66;
 }
-.container-form .botoes{
+.container-form .btns{
     display: block;
     align-items: center;
     flex-direction: column;
 }
-.container-form .botoes button{
+.container-form .btns button{
     width: 12.5rem;
     height: 1.875rem;
     border-radius: 0.625rem;
     border: 0.125rem solid #55463C;
     font-weight: bold;
 }
-.container-form .botoes button:hover{
+.container-form .btns button:hover{
     width: 12.5rem;
     height: 1.875rem;
     border-radius: 0.625rem;
@@ -291,18 +291,18 @@
     font-weight: bold;
     padding: 2rem;
 }
-.container-form .botoes .btn-entrar{
+.container-form .btns .btn-entrar{
     background-color: #55463C;
     color: white;
 }
-.container-form .botoes .btn-cadastrar{
+.container-form .btns .btn-cadastrar{
     background-color: #DBC2B0;
     color: #55463C;
 }
-.container-form .botoes .monitor-maior{
+.container-form .btns .monitor-maior{
     display: none;
 }
-.rodape .container-info{
+.footer .container-info{
     background-color: #DBC2B0;
     color: #55463C;
     align-items:self-start;
@@ -311,37 +311,37 @@
     display: flex;
 }
 
-.rodape .container-info .sobre-nos .text-computer{
+.footer .container-info .sobre-nos .text-computer{
     display: none;
 }
-.rodape .container-info .container-contate-nos{
+.footer .container-info .container-contate-nos{
     padding-bottom: 3.5rem;
     width: 100%;
     max-width: 100%;
 }
-.rodape .container-info .container-contate-nos .contate-nos{
+.footer .container-info .container-contate-nos .contate-nos{
     width: 100%;
     max-width: 100%;
 }
-.rodape .container-info .nossos-locais{
+.footer .container-info .nossos-locais{
     padding-bottom: 1.4rem;
     width: 100%;
     max-width: 100%;
 }
-.rodape .container-info .container-contate-nos .imgs-contate-nos{
+.footer .container-info .container-contate-nos .imgs-contate-nos{
     display: none;
 }
 }
 /*responsividade em monitores maiores*/
 @media (min-width: 1920px) {
-.container-form .botoes button{
+.container-form .btns button{
     width: 14rem;
     height: 1.875rem;
     border-radius: 0.625rem;
     border: 0.125rem solid #55463C;
     font-weight: bold;
 }
-.container-form .botoes button:hover{
+.container-form .btns button:hover{
     width: 14rem;
     height: 1.875rem;
     border-radius: 0.625rem;
@@ -349,10 +349,10 @@
     font-weight: bold;
     background-color: #9a7b66;
 }
-.container-form .botoes .monitor-maior{
+.container-form .btns .monitor-maior{
     display: block;
 }
-.container-form .botoes .monitor-normal{
+.container-form .btns .monitor-normal{
     display: none;
 }
 }
