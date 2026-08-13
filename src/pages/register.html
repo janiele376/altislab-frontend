@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="../style/register.css"></head>
+</head>
+<body>
+    <header id="header">
+        <div class="container-title">
+            <img class="img-book" alt="logo" src="../imgs/book.svg">
+            <h2 class="title">Biblioteca Cadastro</h2>
+        </div>
+    </header>
+
+    <section id="body">
+
+        <article class="container-phrase">
+            <div class="phrase">
+                <h3 class="line1">Bem Vindo(a)</h2>
+                <h1 class="line2">A Leitura Abre</h1>
+                <h1 class="line3">Novos Mundos</h1>
+                <h4 class="line4">Acesse sua conta e assista a sua experiência</h3>
+            </div>
+        </article>
+
+        <article class="container-form">
+            <div class="container-title-img-form">
+                <div class="img-form">
+                    <a href="../pages/login.html">
+                        <img src="../imgs/back-arrow.svg">
+                    </a>
+                </div>
+                <div class="title-form">
+                    <img src="../imgs/book.svg">
+                    <h2>Cadastre-se</h2>
+                </div>
+            </div>
+            <diV class="container-form-imgs">
+                <div class="imgs-form">
+                    <img src="../imgs/user.svg" alt="user">
+                    <img src="../imgs/calendar.svg" alt="date">
+                    <img src="../imgs/mail.svg" alt="email">
+                    <img src="../imgs/cpf.svg" alt="cpf">
+                    <img src="../imgs/telephone.svg" alt="telefone">
+                    <img src="../imgs/location.svg" alt="local">
+                    <img src="../imgs/key.svg" alt="senha">
+                    <img src="../imgs/key.svg" alt="senha">
+                </div>
+
+                <div class="info">
+                    <p>Nome Completo:</p>
+                    <input placeholder="Maria da Silva" name="nome-completo">
+
+                    <p>Data de Nascimento:</p>
+                    <input placeholder="DD/MM/AAAA" type="date" name="data-nascimento">
+
+                    <p>E-mail:</p>
+                    <input placeholder="email@gmail.com" type="email" name="email">
+
+                    <p>CPF:</p>
+                    <input placeholder="000.000.000-00" type="tel" name="cpf">
+
+                    <p>Telefone:</p>
+                    <input placeholder="00 0 0000-0000" type="tel" name="telefone">
+
+                    <p>Localização:</p>
+                    <input placeholder="Logradouro, Nº - Bairro" type="text" name="localizacao">
+                
+                    <p>Senha:</p>
+                    <input placeholder="Senha" type="password" name="senha">
+
+                    <p>Confirmar Senha:</p>
+                    <input placeholder="Confirmar Senha" type="password" name="confirmar-senha">
+                </div>
+            </diV>
+
+            <div class="btns">
+                <button class="btn-register" name="btn-register">Cadastrar</button>
+                <p class="monitor-normal">----------------ou-----------------</p>
+                <p class="monitor-larger">------------------ou----------------</p>
+                <button class="btn-cancel" name="btn-cancel">Cancelar</button>
+            </div>
+
+        </article>
+
+    </section>
+</body>
+</html>
