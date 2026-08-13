@@ -58,6 +58,47 @@
     width: 100%;
     min-height: 100vh;
     height: auto;
-    padding-top: 10rem;
     flex-direction: column;
+}
+.container-menu{
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    box-sizing: border-box;
+    background-color: #927A6A;
+    color: white;
+    width: 10rem;
+    min-height: 100vh;
+    height: auto;
+    padding-bottom: 70rem;
+    position: fixed;
+    right: 90%;
+}
+.container-menu button{
+    background-color: #927A6A;
+    color: white;
+    border: 0.0625rem solid #55463C;
+    width: 10rem;
+    height: 3rem;
+    font-size: 1.125rem;
+}
+.container-menu button a{
+    text-decoration: none;
+    color: white;
+}
+.container-menu .btn-dashboard{
+    background-color: #55463C;
+    color: white;
+    border: 0.0625rem solid #55463C;
+    width: 10rem;
+    height: 3rem;
+    font-size: 1.125rem;
+}
+.container-menu button:hover{
+    background-color: #55463C;
+    color: white;
+    border: 0.0625rem solid #55463C;
+    width: 10rem;
+    height: 3rem;
+    font-size: 1.125rem;
 }
