@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../style/admin/rentals/list-rentals.css">
+    <title>Aluguéis</title>
+</head>
+<body>
+    <header id="header">
+        <div class="container-title">
+            <img class="img-book" alt="logo" src="../../../imgs/book.svg">
+            <h2 class="title">Biblioteca Dashboard</h2>
+            <div class="container-dashboard-header">
+                <div class="imgs">
+                    <img src="../../../imgs/user-img-ex.jpg" class="img-user">
+                    <a href="../settings.html"><img src="../../../imgs/adjustments.svg" class="img-adjustments"></a>  
+                </div>
+
+                <div class="text">   
+                    <p>User</p>  <p>Ajustes</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="body">
+        <article class="container-menu">
+            <button class="btn-publishers"><a href="../admin/publishers/list-publishers.html">Editoras</a></button>
+            <button class="btn-books"><a href="../admin/books/list-books.html">Livros</a></button>
+            <button class="btn-users"><a href="../admin/users/list-users.html">Usuários</a></button>
+            <button class="btn-rentals">Aluguéis</button>
+            <button class="btn-dashboard"><a href="../dashboard-admin.html">Dashboard</a></button>
+        </article>
+
+        <article class="container-rentals">
+
+            <div class="container-create-rental">
+                <h2>Criar Aluguel:</h2>
+                <button class="btn-create-rental"><a href="../rentals/create-rental.html"></a>+ Novo Aluguel</a></button>    
+            </div>
+
+            <div class="container-list">
+
+                <input type="text" placeholder="Pesquisar Aluguel" class="input-search">
+                <hr>
+
+                <div class="container-table-info">
+                    <h3>ID</h3>
+                    <h3>Nome do Usuário</h3>
+                    <h3>Livro</h3>
+                    <h3>Data Início</h3>
+                    <h3>Data Fim</h3>
+                    <h3>Status</h3>
+                    <h3>Ações</h3>
+                </div>
+
+                <hr>
+
+                <div class="container-table">
+                    <p>1</p>
+                    <p>João Silva</p>
+                    <p>O Senhor dos Anéis</p>
+                    <p>01/01/2024</p>
+                    <p>15/01/2024</p>
+                    <p>Ativo</p>
+                    <div class="container-btns">
+                        <button class="btn-edit">Editar</button>
+                        <button class="btn-delete">Excluir</button>
+                    </div>
+                    <hr>
+                </div>
+            
+
+            <div class="btn-next-page"> 
+                <button class="btn-prev">Anterior</button>
+                <p>1 de 5</p>
+                <button class="btn-next">Próximo</button>
+            </div>
+            </div>
+        </article>
+    </section>
+</body>
+</html>
