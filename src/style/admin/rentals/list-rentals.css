@@ -147,12 +147,126 @@
     height: 80%;
     margin-top: 0.8rem;
 }
-.container-rentals .container-list input{
+.line-search{
+    margin-top: 1rem;
+}
+hr{
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+}
+.container-rentals .container-list .container-search{
    width: 90%;
    height: 2rem;
    position: relative;
    left: 5%;
-   top: 1rem;
-   bottom: 1rem;
+   top: 0.5rem;
+   bottom: 0.5rem;
    border-radius: 4rem;
+   display: flex;
+   background-color: #E4E4E4;
+   color: #818181;
+   gap: 0.5rem;
+}
+.container-rentals .container-list .container-search img{
+   width: 1.8rem;
+   height: 1.8rem;
+}
+.container-rentals .container-list .container-search p{
+    font-size: 1.5rem;
+}
+.container-rentals .container-list .container-search input{
+    width: 34.5rem;
+    background-color: #E4E4E4;
+    border: none;
+    padding-left: 0.5rem;
+    border-radius: 4rem;
+}
+.container-table-info{
+    display: flex;
+    gap: 1.8rem;
+    margin-left: 1rem;
+    height: 1.8rem;
+}
+.container-table-info .action{
+    margin-left: 1rem;
+}
+.container-table{
+    display: flex;
+    gap: 1.8rem;
+    background-color: #E9E4DE;
+    height: 2rem;
+    width: 50rem;
+    text-align: center;
+    align-items: center;
+}
+.container-table .id-p{
+    margin-left: 1.5rem;
+}
+.container-table .name-p{
+    margin-left: 0.2rem;
+}
+.container-table .status-p{
+    margin-left: 0.1rem;
+}
+.container-table .date-end-p{
+    margin-left: 0.5rem;
+}
+.container-table .status-p{
+    background-color: #CFF7D3;
+    border-radius: 3rem;
+    width: 3rem;
+    text-align: center;
+}
+.container-btns{
+    margin-left: -0.8rem;
+}
+.container-btns .btn-return{
+    border: 0.1rem solid #55463C;
+    border-radius: 5rem;
+    background-color: #55463C;
+    color: white;
+    width: 4rem;
+    height: 1.5rem;
+}
+.container-btns .btn-return:hover{
+    border: 0.1rem solid #55463C;
+    border-radius: 5rem;
+    background-color: #55463C;
+    color: white;
+    width: 4rem;
+    height: 1.5rem;
+    opacity: 0.5;
+}
+.container-btns .btn-delete{
+    border: 0.1rem solid #55463C;
+    border-radius: 5rem;
+    background-color: #E9E4DE;
+    color: #55463C;
+    width: 3rem;
+    height: 1.5rem;
+}
+.container-btns .btn-delete:hover{
+    border: 0.1rem solid #55463C;
+    border-radius: 5rem;
+    background-color: #E9E4DE;
+    color: #55463C;
+    width: 3rem;
+    height: 1.5rem;
+    opacity: 0.5;
+}
+.btn-next-page{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    margin-left: 18.5rem;
+}
+.btn-next-page button{
+    background-color: #927A6A;
+    text-align: center;
+    border: 0.2rem solid #927A6A;
+    border-radius: 0.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    align-items: center;
 }
