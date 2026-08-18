@@ -110,50 +110,35 @@
     color: #55463C;
 }
 .container-form .forgout-password a:hover{
-    opacity: 0.5;
+    color: #9a7b66;
 }
 .container-form .btns{
     display: block;
     align-items: center;
     flex-direction: column;
 }
-.container-form .btns .btn-login{
+.container-form .btns button{
     width: 12.5rem;
     height: 1.875rem;
     border-radius: 0.625rem;
     border: 2px solid #55463C;
     font-weight: bold;
-    background-color: #55463C;
-    color: white;
 }
-.container-form .btns .btn-login:hover{
+.container-form .btns button:hover{
     width: 12.5rem;
     height: 1.875rem;
     border-radius: 0.625rem;
     border: 0.125rem solid #55463C;
-    background-color: #55463C;
-    color:white;
-    opacity: 0.5;
+    background-color: #9a7b66;
     font-weight: bold;
+}
+.container-form .btns .btn-login{
+    background-color: #55463C;
+    color: white;
 }
 .container-form .btns .btn-register{
-    width: 12.5rem;
-    height: 1.875rem;
-    border-radius: 0.625rem;
-    border: 2px solid #55463C;
-    font-weight: bold;
     background-color: #DBC2B0;
     color: #55463C;
-}
-.container-form .btns .btn-register:hover{
-    width: 12.5rem;
-    height: 1.875rem;
-    border-radius: 0.625rem;
-    border: 2px solid #55463C;
-    font-weight: bold;
-    background-color: #DBC2B0;
-    color: #55463C;
-    opacity: 0.5;
 }
 .container-form .btns .monitor-larger{
     display: none;
@@ -283,7 +268,7 @@
     color: #55463C;
 }
 .container-form .forgout-password a:hover{
-    opacity: 0.5;
+    color: #9a7b66;
 }
 .container-form .btns{
     display: block;
