@@ -44,7 +44,7 @@
     flex-direction: column;
     align-items: center;
     padding: 1.25rem;
-    margin-top: -7rem;
+    margin-top: -2.5rem;
     box-sizing: border-box;
 }
 .container-profile .title-form{
@@ -96,14 +96,13 @@
     height: 2rem;
 }
 .container-profile .container-btns .btn-accessibility:hover{
-    background-color: #DBC2B0;
+    background-color: #9a7b66;
     color: #55463C;
     border: 0.125rem solid #55463C;
     border-top-right-radius: 5rem;
     border-bottom-right-radius: 5rem;
     width: 10rem;
     height: 2rem;
-    opacity: 0.5;
 }
 .container-profile .line{
     width: 20rem;
@@ -143,14 +142,13 @@
     margin-left: 10rem;
 }
 .container-profile .edit-info:hover{
-    background-color: #55463C;
+    background-color: #9a7b66;
     color: white;
     border: 0.125rem solid #55463C;
     border-radius: 5rem;
     width: 10rem;
     height: 2rem;
     margin-left: 10rem;
-    opacity: 0.5;
 }
 .container-profile .edit-info .edit-figure{
     padding-right: 0.5rem;

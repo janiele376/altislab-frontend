@@ -44,7 +44,7 @@
     flex-direction: column;
     align-items: center;
     padding: 1.25rem;
-    margin-top: -2rem;
+    margin-top: 1rem;
     box-sizing: border-box;
 }
 .container-accessibility .title-form{
@@ -79,14 +79,13 @@
     height: 2rem;
 }
 .container-accessibility .container-btns .btn-profile:hover{
-    background-color: #DBC2B0;
+    background-color: #9a7b66;
     color: #55463C;
     border: 0.125rem solid #55463C;
     border-top-left-radius: 5rem;
     border-bottom-left-radius: 5rem;
     width: 10rem;
     height: 2rem;
-    opacity: 0.5;
 }
 .container-accessibility .container-btns .btn-accessibility{
     background-color: #55463C;
@@ -135,12 +134,11 @@
 }
 .container-accessibility .container-btns-info .btns .btn-dark:hover{
     width: 5rem;    
-    background-color: #DBC2B0;
+    background-color: #9a7b66;
     color: #55463C;
     border-top-right-radius: 2rem;
     border-bottom-right-radius: 2rem;
     border: solid #55463C;
-    opacity: 0.5;
 }
 .container-accessibility .container-btns-info .btns .select-language{
     width: 10.2rem;
@@ -148,12 +146,4 @@
     color: #55463C;
     border: solid #55463C;
     border-radius: 2rem;
-}
-.container-accessibility .container-btns-info .btns .select-language:hover{
-    width: 10.2rem;
-    background-color: #DBC2B0;
-    color: #55463C;
-    border: solid #55463C;
-    border-radius: 2rem;
-    opacity: 0.5;
 }
