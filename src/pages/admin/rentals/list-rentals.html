@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../style/admin/rentals/list-rentals.css">
+    <script src="../../../js/admin/list-rentals.js" defer></script>
     <title>Aluguéis</title>
 </head>
 <body>
@@ -37,7 +38,7 @@
 
             <div class="container-create-rental">
                 <h2>Criar Aluguel:</h2>
-                <button class="btn-create-rental" onclick="window.location.href='../rentals/create-rental.html'">+ Novo Aluguel</button>    
+                <button class="btn-create-rental" id="open-modal">+ Novo Aluguel</button>    
             </div>
 
             <div class="container-list">
@@ -85,6 +86,48 @@
             </div>
             </div>
         </article>
+
+        <dialog id="modal">
+            <article class="container-create-rentals">
+                <div class="container-title-rental">
+                    <a id="close-modal"><img src="../../../imgs/back-arrow.svg" class="img-rental-form"></a>
+                    <h1 class="title-rental-form">Criar Aluguel</h1>
+                </div>
+                
+                <div class="container-form">
+                    <div class="container-name-user">
+                        <p>Nome do Usuário:</p>
+                        <input class="name-user" type="text">
+                    </div>
+
+                    <div>
+                        <p>CPF do Usuário:</p>
+                        <input class="cpf-user" type="tel">
+                    </div>
+
+                    <div>
+                        <p>Nome do Livro:</p>
+                        <input class="book-name" type="text">
+                    </div>
+
+                    <div>
+                        <p>Código do Livro:</p>
+                        <input class="book-cod" type="tel">
+                    </div>
+
+                    <div>
+                        <p>Data Início do Aluguel:</p>
+                        <input class="date-rental" type="date">
+                    </div>
+                
+                <div class="btns-rentals">
+                    <button class="btn-check"><img src="../../../imgs/check.svg">CONFIRMAR</button>
+                    <button class="btn-cancel"><img src="../../../imgs/cancel.svg">CANCELAR</button>
+                </div>
+
+                </div>
+            </article>
+        </dialog>
     </section>
 </body>
 </html>

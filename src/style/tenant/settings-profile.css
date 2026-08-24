@@ -94,6 +94,7 @@
     border-bottom-right-radius: 5rem;
     width: 10rem;
     height: 2rem;
+    cursor: pointer;
 }
 .container-profile .container-btns .btn-accessibility:hover{
     background-color: #DBC2B0;
@@ -104,6 +105,7 @@
     width: 10rem;
     height: 2rem;
     opacity: 0.5;
+    cursor: pointer;
 }
 .container-profile .line{
     width: 20rem;
@@ -141,6 +143,7 @@
     width: 10rem;
     height: 2rem;
     margin-left: 10rem;
+    cursor: pointer;
 }
 .container-profile .edit-info:hover{
     background-color: #55463C;
@@ -151,6 +154,7 @@
     height: 2rem;
     margin-left: 10rem;
     opacity: 0.5;
+    cursor: pointer;
 }
 .container-profile .edit-info .edit-figure{
     padding-right: 0.5rem;

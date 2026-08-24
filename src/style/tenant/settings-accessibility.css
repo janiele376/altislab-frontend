@@ -77,6 +77,7 @@
     border-bottom-left-radius: 5rem;
     width: 10rem;
     height: 2rem;
+    cursor: pointer;
 }
 .container-accessibility .container-btns .btn-profile:hover{
     background-color: #DBC2B0;
@@ -87,6 +88,7 @@
     width: 10rem;
     height: 2rem;
     opacity: 0.5;
+    cursor: pointer;
 }
 .container-accessibility .container-btns .btn-accessibility{
     background-color: #55463C;
@@ -132,6 +134,7 @@
     border-top-right-radius: 2rem;
     border-bottom-right-radius: 2rem;
     border: solid #55463C;
+    cursor: pointer;
 }
 .container-accessibility .container-btns-info .btns .btn-dark:hover{
     width: 5rem;    
@@ -141,6 +144,7 @@
     border-bottom-right-radius: 2rem;
     border: solid #55463C;
     opacity: 0.5;
+    cursor: pointer;
 }
 .container-accessibility .container-btns-info .btns .select-language{
     width: 10.2rem;
@@ -148,6 +152,7 @@
     color: #55463C;
     border: solid #55463C;
     border-radius: 2rem;
+    cursor: pointer;
 }
 .container-accessibility .container-btns-info .btns .select-language:hover{
     width: 10.2rem;
@@ -156,4 +161,5 @@
     border: solid #55463C;
     border-radius: 2rem;
     opacity: 0.5;
+    cursor: pointer;
 }
