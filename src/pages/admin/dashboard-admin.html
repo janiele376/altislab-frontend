@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../style/admin/dashboard-admin.css"></head>
+    <link rel="stylesheet" href="../../style/admin/dashboard-admin.css">
     <title>Dashboard</title>
 </head>
 <body>
@@ -13,13 +13,13 @@
             <h2 class="title">Biblioteca Dashboard</h2>
             <div class="container-dashboard-header">
                 <div class="imgs">
-                    <img src="../../imgs/user-img-ex.jpg" class="img-user">
-                    <a href="../admin/settings.html"><img src="../../imgs/adjustments.svg" class="img-adjustments"></a>
-                    <a href="../login.html"><img src="../../imgs/logout.svg" class="img-logout"></a>
+                    <img src="../../imgs/user-img-ex.jpg" class="img-user" alt="usuário">
+                    <a href="../admin/settings.html"><img src="../../imgs/adjustments.svg" class="img-adjustments" alt="ajustes"></a>
+                    <a href="../login.html"><img src="../../imgs/logout.svg" class="img-logout" alt="sair"></a>
                 </div>
 
                 <div class="text">   
-                    <p>User</p>  <p>Ajustes</p> <p>Sair</p>
+                    <p>Usuário</p>  <p>Ajustes</p> <p>Sair</p>
                 </div>
             </div>
         </div>
@@ -32,6 +32,123 @@
             <button class="btn-users"><a href="../admin/list-users.html">Usuários</a></button>
             <button class="btn-rentals"><a href="../admin/list-rentals.html">Aluguéis</a></button>
             <button class="btn-dashboard">Dashboard</button>
+        </article>
+
+        <article class="container-dashboard-content">
+            <!-- CARDS DE STATUS DE ALUGUÉIS NO TOPO -->
+            <div class="container-status-cards">
+                <div class="card-status card-green">
+                    <p class="card-title">Quantidade de Aluguéis em Dia:</p>
+                    <h3 class="card-value">275 Aluguéis</h3>
+                </div>
+
+                <div class="card-status card-yellow">
+                    <p class="card-title">Quantidade de Aluguéis Perto de Vencer:</p>
+                    <h3 class="card-value">100 Aluguéis</h3>
+                </div>
+
+                <div class="card-status card-red">
+                    <p class="card-title">Quantidade de Aluguéis em Atraso:</p>
+                    <h3 class="card-value">10 Aluguéis</h3>
+                </div>
+            </div>
+
+            <!-- GRID PRINCIPAL DE INFORMAÇÕES -->
+            <div class="dashboard-grid">
+                <!-- COLUNA ESQUERDA -->
+                <div class="dashboard-col">
+                    <!-- ÚLTIMOS LIVROS ALUGADOS -->
+                    <div class="dashboard-box">
+                        <div class="box-header">Últimos Livros Alugados</div>
+                        <div class="box-content">
+                            <ol class="list-rented-books">
+                                <li>1. O Diário de Anne Frank</li>
+                                <li>2. Harry Potter (J.K. Rowling)</li>
+                                <li>3. O Senhor dos Anéis (J.R.R. Tolkien)</li>
+                                <li>4. Dom Quixote (Miguel de Cervantes)</li>
+                                <li>5. O Pequeno Príncipe (Antoine de Saint-Exupéry)</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!-- QUANTITATIVOS GLOBAIS -->
+                    <div class="dashboard-box">
+                        <div class="box-header">Quantitativos Globais</div>
+                        <div class="box-content">
+                            <div class="table-globals">
+                                <div class="row-global">
+                                    <span>Aluguéis Realizados</span>
+                                    <span>128</span>
+                                </div>
+                                <hr>
+                                <div class="row-global">
+                                    <span>Livros Cadastrados</span>
+                                    <span>324</span>
+                                </div>
+                                <hr>
+                                <div class="row-global">
+                                    <span>Editoras Cadastradas</span>
+                                    <span>28</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COLUNA DIREITA -->
+                <div class="dashboard-col">
+                    <!-- QUANTIDADE DE LIVROS ALUGADOS -->
+                    <div class="dashboard-box">
+                        <div class="box-header">Quantidade de Livros Alugados</div>
+                        <div class="box-content">
+                            <div class="list-quantities">
+                                <div class="item-qty">
+                                    <span>1. O Diário de Anne Frank</span>
+                                    <span>qtd. 300</span>
+                                </div>
+                                <div class="item-qty">
+                                    <span>2. Harry Potter (J.K. Rowling)</span>
+                                    <span>qtd. 250</span>
+                                </div>
+                                <div class="item-qty">
+                                    <span>3. O Senhor dos Anéis (J.R.R. Tolkien)</span>
+                                    <span>qtd. 200</span>
+                                </div>
+                            </div>
+                            <div class="carousel-dots">
+                                <span>&lt;</span>
+                                <div class="dots">
+                                    <i class="dot active"></i>
+                                    <i class="dot"></i>
+                                    <i class="dot"></i>
+                                    <i class="dot"></i>
+                                    <i class="dot"></i>
+                                    <i class="dot"></i>
+                                    <i class="dot"></i>
+                                    <i class="dot"></i>
+                                </div>
+                                <span>&gt;</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LIVRO MAIS ALUGADO -->
+                    <div class="dashboard-box">
+                        <div class="box-header">Livro Mais Alugado</div>
+                        <div class="box-content most-rented-content">
+                            <div class="book-info-text">
+                                <p><strong>Título do Livro:</strong> O Menino do Pijama Listrado</p>
+                                <p><strong>Editora:</strong> Seguinte</p>
+                                <p><strong>Data de Lançamento:</strong> 5 de janeiro de 2006</p>
+                                <p><strong>Quantidade:</strong> 100</p>
+                            </div>
+                            <div class="book-cover">
+                                <img src="../../imgs/book-cover-ex.jpg" alt="Capa do livro" onerror="this.src='../../imgs/book.svg'">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </article>
     </section>
 </body>
