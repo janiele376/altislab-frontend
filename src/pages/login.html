@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="../style/login.css"></head>
+    <link rel="stylesheet" href="../style/login.css">
+    <script src="../js/login.js" defer></script>
 </head>
 <body>
     <header id="header">
@@ -18,20 +19,20 @@
 
         <article class="container-phrase">
             <div class="phrase">
-                <h3 class="line1">Bem Vindo(a)</h2>
+                <h3 class="line1">Bem Vindo(a)</h3>
                 <h1 class="line2">A Leitura Abre</h1>
                 <h1 class="line3">Novos Mundos</h1>
-                <h4 class="line4">Acesse sua conta e assista a sua experiência</h3>
+                <h4 class="line4">Acesse sua conta e assista a sua experiência</h4>
             </div>
         </article>
 
         <article class="container-form">
             <div class="title-form">
-                <img src="../imgs/book.svg">
+                <img src="../imgs/book.svg" alt="logo">
                 <h2>Bem Vindo(a)!</h2>
             </div>
 
-            <diV class="container-form-imgs">
+            <div class="container-form-imgs">
                 <div class="imgs-form">
                     <img src="../imgs/user.svg" alt="email">
                     <img src="../imgs/key.svg" alt="senha">
@@ -39,17 +40,17 @@
 
                 <div class="info">
                     <p>E-mail:</p>
-                    <input placeholder="email@gmail.com" type="email">
+                    <input id="input-email" placeholder="email@gmail.com" type="email" required>
                 
                     <p>Senha:</p>
-                    <input placeholder="senha" type="password">
+                    <input id="input-password" placeholder="senha" type="password" required>
                 </div>
-            </diV>
+            </div>
 
             <div class="forgout-password"><a href="../pages/forgout-password.html">esqueci senha</a></div>
 
             <div class="btns">
-                <button class="btn-login">Entrar</button>
+                <button class="btn-login" id="btn-login">Entrar</button>
                 <p class="monitor-normal">----------------ou-----------------</p>
                 <p class="monitor-larger">------------------ou----------------</p>
                 <button class="btn-register" onclick="window.location.href='../pages/register.html'">Cadastre-se</button>
@@ -90,16 +91,15 @@
                 </div>
             </div>
 
-                <div class="our-locations">
-                    <h4>Nossos Locais</h4>
-                    <ul>
-                        <li>Rua Padre Filho, 263- Centro</li>
-                        <li>Rua IV, 60- Paulista</li>
-                        <li>Rua Norte Europeu, 110 - Vale Central </li>
-                    </ul>
-                </div>
+            <div class="our-locations">
+                <h4>Nossos Locais</h4>
+                <ul>
+                    <li>Rua Padre Filho, 263- Centro</li>
+                    <li>Rua IV, 60- Paulista</li>
+                    <li>Rua Norte Europeu, 110 - Vale Central </li>
+                </ul>
+            </div>
         </div>
     </footer>
 </body>
 </html>
-
