@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../style/admin/list-users.css">
+    <script src="../../js/admin/list-users.js" defer></script>
+    <title>Usuários</title>
+</head>
+<body>
+    <header id="header">
+        <div class="container-title">
+            <img class="img-book" alt="logo" src="../../imgs/book.svg">
+            <h2 class="title">Biblioteca Usuários</h2>
+            <div class="container-dashboard-header">
+                <div class="imgs">
+                    <img src="../../imgs/user-img-ex.jpg" class="img-user">
+                    <a href="../settings.html"><img src="../../imgs/adjustments.svg" class="img-adjustments"></a>  
+                </div>
+
+                <div class="text">   
+                    <p>Usuário</p>  <p>Ajustes</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="body">
+        <article class="container-menu">
+            <button class="btn-publishers"><a href="../admin/list-publishers.html">Editoras</a></button>
+            <button class="btn-books"><a href="../admin/list-books.html">Livros</a></button>
+            <button class="btn-users">Usuários</button>
+            <button class="btn-rentals"><a href="../admin/list-rentals.html">Aluguéis</a></button>
+            <button class="btn-dashboard"><a href="../admin/dashboard-admin.html">Dashboard</a></button>
+        </article>
+
+        <article class="container-rentals">
+
+            <div class="container-list">
+
+                <div class="container-search">
+                    <input type="text" placeholder="pesquisar usuários..." class="input-search">
+                    <p>|</p>
+                    <img src="../../imgs/filters.svg" alt="filtros">
+                    <img src="../../imgs/search.svg" alt="pesquisar">
+                </div>
+                
+                <hr class="line-search">
+
+                <div class="container-table-info">
+                    <h3>Nome do Usuário</h3>
+                    <h3>CPF</h3>
+                    <h3>Data de Nasc.</h3>
+                    <h3>Endereço</h3>
+                    <h3>Status</h3>
+                    <h3 class="action">Ações</h3>
+                </div>
+
+                <hr>
+
+                <div class="container-table">
+                    <p class="name-p">Maria Silva</p>
+                    <p class="cpf-p">999.999.999-99</p>
+                    <p class="date-birth-p">01/05/2026</p>
+                    <p class="address-p">Rua do Jardim, 123</p>
+                    <p class="status-p status-active">ATIVADO</p>
+                    <div class="container-btns">
+                        <button class="btn-activate">ATIVADO</button>
+                        <button class="btn-deactivate" onclick="abrirModalStatus('Maria Silva', '999.999.999-99')">DESATIVADO</button>
+                    </div>
+                </div>
+            
+                <hr>
+
+                <div class="container-table">
+                    <p class="name-p">Maria Silva</p>
+                    <p class="cpf-p">999.999.999-99</p>
+                    <p class="date-birth-p">01/05/2026</p>
+                    <p class="address-p">Rua do Jardim, 123</p>
+                    <p class="status-p status-active">ATIVADO</p>
+                    <div class="container-btns">
+                        <button class="btn-activate">ATIVADO</button>
+                        <button class="btn-deactivate" onclick="abrirModalStatus('Maria Silva', '999.999.999-99')">DESATIVADO</button>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="container-table">
+                    <p class="name-p">Maria Silva</p>
+                    <p class="cpf-p">999.999.999-99</p>
+                    <p class="date-birth-p">01/05/2026</p>
+                    <p class="address-p">Rua do Jardim, 123</p>
+                    <p class="status-p status-active">ATIVADO</p>
+                    <div class="container-btns">
+                        <button class="btn-activate">ATIVADO</button>
+                        <button class="btn-deactivate" onclick="abrirModalStatus('Maria Silva', '999.999.999-99')">DESATIVADO</button>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="container-table">
+                    <p class="name-p">Maria Silva</p>
+                    <p class="cpf-p">999.999.999-99</p>
+                    <p class="date-birth-p">01/05/2026</p>
+                    <p class="address-p">Rua do Jardim, 123</p>
+                    <p class="status-p status-active">ATIVADO</p>
+                    <div class="container-btns">
+                        <button class="btn-activate">ATIVADO</button>
+                        <button class="btn-deactivate" onclick="abrirModalStatus('Maria Silva', '999.999.999-99')">DESATIVADO</button>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="container-table">
+                    <p class="name-p">Maria Silva</p>
+                    <p class="cpf-p">999.999.999-99</p>
+                    <p class="date-birth-p">01/05/2026</p>
+                    <p class="address-p">Rua do Jardim, 123</p>
+                    <p class="status-p status-active">ATIVADO</p>
+                    <div class="container-btns">
+                        <button class="btn-activate">ATIVADO</button>
+                        <button class="btn-deactivate" onclick="abrirModalStatus('Maria Silva', '999.999.999-99')">DESATIVADO</button>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="btn-next-page"> 
+                    <button class="btn-prev"><img src="../../imgs/arrow_next_left.svg" alt="anterior"></button>
+                    <p>1 de 5</p>
+                    <button class="btn-next"><img src="../../imgs/arrow_next_right.svg" alt="próximo"></button>
+                </div>
+            </div>
+        </article>
+
+        <dialog id="modal-status">
+            <div class="container-create-rentals modal-confirmation">
+                <div class="container-title-rental">
+                    <a id="close-modal-status"><img src="../../imgs/back-arrow.svg" class="img-rental-form" alt="Voltar"></a>
+                    <h1 class="title-rental-form">Alterar Status</h1>
+                </div>
+                
+                <div class="container-form">
+                    <div class="confirm-message">
+                        <p>Deseja alterar o status deste usuário?</p>
+                        <span class="warning-text">O usuário perderá o acesso caso seja desativado.</span>
+                    </div>
+
+                    <div class="rental-summary-details">
+                        <p><strong>Usuário:</strong> <span id="status-user-name">Maria Silva</span></p>
+                        <p><strong>CPF:</strong> <span id="status-user-cpf">999.999.999-99</span></p>
+                    </div>
+                
+                    <div class="btns-rentals">
+                        <button class="btn-check btn-danger" id="confirm-status">
+                            <img src="../../imgs/check.svg" alt="Confirmar">CONFIRMAR
+                        </button>
+                        <button class="btn-cancel" id="cancel-status">
+                            <img src="../../imgs/cancel.svg" alt="Cancelar">CANCELAR
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </dialog>
+    </section>
+</body>
+</html>
