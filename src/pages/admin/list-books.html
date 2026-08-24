@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../style/admin/list-books.css">
+    <script src="../../js/admin/list-books.js" defer></script>
+    <title>Livros</title>
+</head>
+<body>
+    <header id="header">
+        <div class="container-title">
+            <img class="img-book" alt="logo" src="../../imgs/book.svg">
+            <h2 class="title">Biblioteca Listar Livros</h2>
+            <div class="container-dashboard-header">
+                <div class="imgs">
+                    <img src="../../imgs/user-img-ex.jpg" class="img-user" alt="usuário">
+                    <a href="../settings.html"><img src="../../imgs/adjustments.svg" class="img-adjustments" alt="ajustes"></a>  
+                </div>
+
+                <div class="text">   
+                    <p>Usuário</p>  <p>Ajustes</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="body">
+        <article class="container-menu">
+            <button class="btn-publishers"><a href="../admin/list-publishers.html">Editoras</a></button>
+            <button class="btn-books">Livros</button>
+            <button class="btn-users"><a href="../admin/list-users.html">Usuários</a></button>
+            <button class="btn-rentals"><a href="../admin/list-rentals.html">Aluguéis</a></button>
+            <button class="btn-dashboard"><a href="../admin/dashboard-admin.html">Dashboard</a></button>
+        </article>
+
+        <article class="container-rentals">
+
+            <div class="container-create-rental">
+                <h2>Criar Livro</h2>
+                <button class="btn-create-rental" id="open-modal-create">+ Novo Livro</button>    
+            </div>
+
+            <div class="container-list">
+
+                <div class="container-search">
+                    <input type="text" placeholder="pesquisar livro..." class="input-search">
+                    <p>|</p>
+                    <img src="../../imgs/filters.svg" alt="filtros">
+                    <img src="../../imgs/search.svg" alt="pesquisar">
+                </div>
+                
+                <hr class="line-search">
+
+                <div class="container-table-info">
+                    <h3>Cód.</h3>
+                    <h3>Nome do Livro</h3>
+                    <h3>Editora</h3>
+                    <h3>Data de Lançamento</h3>
+                    <h3 class="action">Ações</h3>
+                </div>
+
+                <hr>
+
+                <div class="container-table">
+                    <p class="cod-p">1</p>
+                    <p class="book-p">Senhor dos Anéis</p>
+                    <p class="publisher-p">HarperCollins</p>
+                    <p class="date-release-p">01/05/2026</p>
+                    <div class="container-btns">
+                        <button class="btn-edit" onclick="abrirModalEditar('1', 'Senhor dos Anéis', 'HarperCollins', '2026-05-01')">Editar</button>
+                        <button class="btn-delete" onclick="abrirModalExcluir('1', 'Senhor dos Anéis')">Excluir</button>
+                    </div>
+                </div>
+            
+                <hr>
+
+                <div class="container-table">
+                    <p class="cod-p">2</p>
+                    <p class="book-p">Harry Potter</p>
+                    <p class="publisher-p">Rocco</p>
+                    <p class="date-release-p">01/05/2026</p>
+                    <div class="container-btns">
+                        <button class="btn-edit" onclick="abrirModalEditar('2', 'Harry Potter', 'Rocco', '2026-05-01')">Editar</button>
+                        <button class="btn-delete" onclick="abrirModalExcluir('2', 'Harry Potter')">Excluir</button>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="container-table">
+                    <p class="cod-p">3</p>
+                    <p class="book-p">Dom Casmurro</p>
+                    <p class="publisher-p">Companhia das Letras</p>
+                    <p class="date-release-p">01/05/2026</p>
+                    <div class="container-btns">
+                        <button class="btn-edit" onclick="abrirModalEditar('3', 'Dom Casmurro', 'Companhia das Letras', '2026-05-01')">Editar</button>
+                        <button class="btn-delete" onclick="abrirModalExcluir('3', 'Dom Casmurro')">Excluir</button>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="container-table">
+                    <p class="cod-p">4</p>
+                    <p class="book-p">1984</p>
+                    <p class="publisher-p">Companhia Nacional</p>
+                    <p class="date-release-p">01/05/2026</p>
+                    <div class="container-btns">
+                        <button class="btn-edit" onclick="abrirModalEditar('4', '1984', 'Companhia Nacional', '2026-05-01')">Editar</button>
+                        <button class="btn-delete" onclick="abrirModalExcluir('4', '1984')">Excluir</button>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="btn-next-page"> 
+                    <button class="btn-prev"><img src="../../imgs/arrow_next_left.svg" alt="anterior"></button>
+                    <p>1 de 5</p>
+                    <button class="btn-next"><img src="../../imgs/arrow_next_right.svg" alt="próximo"></button>
+                </div>
+            </div>
+        </article>
+
+        <dialog id="modal-create">
+            <div class="container-create-rentals">
+                <div class="container-title-rental">
+                    <a id="close-modal-create"><img src="../../imgs/back-arrow.svg" class="img-rental-form" alt="Voltar"></a>
+                    <h1 class="title-rental-form">Criar Livro</h1>
+                </div>
+                
+                <div class="container-form">
+                    <div>
+                        <p>Nome do Livro:</p>
+                        <input class="book-name" type="text">
+                    </div>
+
+                    <div>
+                        <p>Código do Livro:</p>
+                        <input class="book-cod" type="tel">
+                    </div>
+
+                    <div>
+                        <p>Editora:</p>
+                        <input class="book-publisher" type="text">
+                    </div>
+
+                    <div>
+                        <p>Data de Lançamento:</p>
+                        <input class="book-date" type="date">
+                    </div>
+                
+                    <div class="btns-rentals">
+                        <button class="btn-check"><img src="../../imgs/check.svg" alt="Confirmar">CONFIRMAR</button>
+                        <button class="btn-cancel" id="cancel-create"><img src="../../imgs/cancel.svg" alt="Cancelar">CANCELAR</button>
+                    </div>
+                </div>
+            </div>
+        </dialog>
+
+        <dialog id="modal-delete">
+            <div class="container-create-rentals modal-confirmation">
+                <div class="container-title-rental">
+                    <a id="close-modal-delete"><img src="../../imgs/back-arrow.svg" class="img-rental-form" alt="Voltar"></a>
+                    <h1 class="title-rental-form">Excluir Livro</h1>
+                </div>
+                
+                <div class="container-form">
+                    <div class="confirm-message">
+                        <p>Tem certeza de que deseja excluir este livro?</p>
+                        <span class="warning-text">Esta ação removerá o livro do catálogo.</span>
+                    </div>
+
+                    <div class="rental-summary-details">
+                        <p><strong>Cód.:</strong> <span id="delete-book-cod">1</span></p>
+                        <p><strong>Livro:</strong> <span id="delete-book-name">Senhor dos Anéis</span></p>
+                    </div>
+                
+                    <div class="btns-rentals">
+                        <button class="btn-check btn-danger" id="confirm-delete">
+                            <img src="../../imgs/check.svg" alt="Confirmar">EXCLUIR
+                        </button>
+                        <button class="btn-cancel" id="cancel-delete">
+                            <img src="../../imgs/cancel.svg" alt="Cancelar">CANCELAR
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </dialog>
+    </section>
+</body>
+</html>
