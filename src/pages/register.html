@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
-    <link rel="stylesheet" href="../style/register.css"></head>
+    <link rel="stylesheet" href="../style/register.css">
     <script src="../js/register.js" defer></script>
+    <script src="../js/masks.js" defer></script>
 </head>
 <body>
     <header id="header">
         <div class="container-title">
             <img class="img-book" alt="logo" src="../imgs/book.svg">
             <h2 class="title">Biblioteca Cadastro</h2>
-            <script src="../js/masks.js" defer></script>
         </div>
     </header>
 
@@ -20,10 +20,10 @@
 
         <article class="container-phrase">
             <div class="phrase">
-                <h3 class="line1">Bem Vindo(a)</h2>
+                <h3 class="line1">Bem Vindo(a)</h3>
                 <h1 class="line2">A Leitura Abre</h1>
                 <h1 class="line3">Novos Mundos</h1>
-                <h4 class="line4">Acesse sua conta e assista a sua experiência</h3>
+                <h4 class="line4">Acesse sua conta e assista a sua experiência</h4>
             </div>
         </article>
 
@@ -31,15 +31,16 @@
             <div class="container-title-img-form">
                 <div class="img-form">
                     <a href="../pages/login.html">
-                        <img src="../imgs/back-arrow.svg" class="img-back-arrow">
+                        <img src="../imgs/back-arrow.svg" class="img-back-arrow" alt="Voltar">
                     </a>
                 </div>
                 <div class="title-form">
-                    <img src="../imgs/book.svg">
+                    <img src="../imgs/book.svg" alt="Livro">
                     <h2>Cadastre-se</h2>
                 </div>
             </div>
-            <diV class="container-form-imgs">
+
+            <div class="container-form-imgs">
                 <div class="imgs-form">
                     <img src="../imgs/user.svg" alt="user">
                     <img src="../imgs/calendar.svg" alt="date">
@@ -48,41 +49,47 @@
                     <img src="../imgs/telephone.svg" alt="telefone">
                     <img src="../imgs/location.svg" alt="local">
                     <img src="../imgs/key.svg" alt="senha">
-                    <img src="../imgs/key.svg" alt="senha">
+                    <img src="../imgs/key.svg" alt="confirmar senha">
                 </div>
 
                 <div class="info">
                     <p>Nome Completo:</p>
-                    <input placeholder="Maria da Silva" name="nome-completo">
+                    <input placeholder="Maria da Silva" name="nome-completo" id="input-nome">
 
                     <p>Data de Nascimento:</p>
-                    <input placeholder="DD/MM/AAAA" type="date" name="data-nascimento">
+                    <input placeholder="DD/MM/AAAA" type="date" name="data-nascimento" id="input-data-nasc">
 
                     <p>E-mail:</p>
-                    <input placeholder="email@gmail.com" type="email" name="email">
+                    <input placeholder="email@gmail.com" type="email" name="email" id="input-email">
 
                     <p>CPF:</p>
-                    <input placeholder="000.000.000-00" type="tel" name="cpf">
+                    <input placeholder="000.000.000-00" type="tel" name="cpf" id="input-cpf">
 
                     <p>Telefone:</p>
-                    <input placeholder="00 0 0000-0000" type="tel" name="telefone">
+                    <input placeholder="00 0 0000-0000" type="tel" name="telefone" id="input-telefone">
 
                     <p>Localização:</p>
-                    <input placeholder="Logradouro, Nº - Bairro" type="text" name="localizacao">
+                    <input placeholder="Logradouro, Nº - Bairro" type="text" name="localizacao" id="input-localizacao">
                 
                     <p>Senha:</p>
-                    <input placeholder="Senha" type="password" name="senha">
+                    <div class="container-password-input">
+                        <input placeholder="Senha" type="password" name="senha" id="input-password">
+                        <img class="btn-toggle-password" id="toggle-password" src="../imgs/visibility_off.svg" alt="Mostrar senha">
+                    </div>
 
                     <p>Confirmar Senha:</p>
-                    <input placeholder="Confirmar Senha" type="password" name="confirmar-senha">
+                    <div class="container-password-input">
+                        <input placeholder="Confirmar Senha" type="password" name="confirmar-senha" id="input-confirm-password">
+                        <img class="btn-toggle-password" id="toggle-confirm-password" src="../imgs/visibility_off.svg" alt="Mostrar confirmar senha">
+                    </div>
                 </div>
-            </diV>
+            </div>
 
             <div class="btns">
                 <button class="btn-register" name="btn-register">Cadastrar</button>
                 <p class="monitor-normal">----------------ou-----------------</p>
                 <p class="monitor-larger">------------------ou----------------</p>
-                <button class="btn-cancel" name="btn-cancel">Cancelar</button>
+                <button class="btn-cancel" name="btn-cancel" onclick="window.location.href='../pages/login.html'">Cancelar</button>
             </div>
 
         </article>

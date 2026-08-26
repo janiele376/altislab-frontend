@@ -7,10 +7,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const inputDataNasc = inputs[2];
     const inputCpf = inputs[3];
     const inputEndereco = inputs[4];
-
+  
+    const inputSenhaAntiga = document.getElementById('input-current-password');
+    const inputSenhaNova = document.getElementById('input-new-password');
+    const inputSenhaConfirma = document.getElementById('input-confirm-password');
     const inputSenhaAntiga = inputs[5];
     const inputSenhaNova = inputs[6];
     const inputSenhaConfirma = inputs[7];
+
 
     const btnConfirm = document.querySelector('.btn-confirm');
     const btnCancel = document.querySelector('.btn-cancel');
@@ -20,18 +24,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeModalBtn = document.getElementById('closeModalBtn');
     const supportForm = modal ? modal.querySelector('form') : null;
 
+    function setupPasswordToggle(toggleId, inputEl) {
+        const toggleBtn = document.getElementById(toggleId);
+        toggleBtn?.addEventListener('click', () => {
+            if (!inputEl) return;
+            const isPassword = inputEl.type === 'password';
+            inputEl.type = isPassword ? 'text' : 'password';
+            toggleBtn.src = isPassword ? '../../imgs/visibility.svg' : '../../imgs/visibility_off.svg';
+            toggleBtn.alt = isPassword ? 'Ocultar senha' : 'Mostrar senha';
+        });
+    }
+
+    setupPasswordToggle('toggle-current-password', inputSenhaAntiga);
+    setupPasswordToggle('toggle-new-password', inputSenhaNova);
+    setupPasswordToggle('toggle-confirm-password', inputSenhaConfirma);
+
     openModalBtn?.addEventListener('click', () => modal?.showModal());
     closeModalBtn?.addEventListener('click', () => modal?.close());
 
     supportForm?.addEventListener('submit', (e) => {
         e.preventDefault();
+        const supportEmail = document.getElementById('supportEmail')?.value.trim();
+        const supportMessage = document.getElementById('supportMessage')?.value.trim();
         const supportEmail = document.getElementById('supportEmail').value.trim();
         const supportMessage = document.getElementById('supportMessage').value.trim();
 
         if (supportEmail && supportMessage) {
             alert('Sua mensagem foi enviada ao suporte com sucesso! Em breve entraremos em contato.');
             supportForm.reset();
+            modal?.close();
             modal.close();
+
         }
     });
 
@@ -81,6 +104,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
+            if (senhaNova.length < 6) {
+                alert('A nova senha deve ter no mínimo 6 caracteres!');
+                return;
+            }
+          
             if (usuarioAtual) {
                 usuarioAtual.senha = senhaNova;
             }
