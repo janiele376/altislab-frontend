@@ -18,8 +18,6 @@ Sistema web voltado para a gestão e locação de livros, contendo interfaces es
 
 ## Estrutura do Projeto
 
-## Estrutura do Projeto
-
 ```plaintext
 altislab-frontend/
 ├── README.md
