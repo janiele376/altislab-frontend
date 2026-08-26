@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Configurações</title>
-    <link rel="stylesheet" href="../../style/tenant/editing-information.css"></head>
+    <link rel="stylesheet" href="../../style/tenant/editing-information.css">
     <script src="../../js/tenant/editing-information.js" defer></script>
     <script src="../../js/masks.js" defer></script>
 </head>
-    <body>
+<body>
     <header id="header">
         <div class="container-title-logo">
             <img class="img-book" alt="logo" src="../../imgs/book.svg">
@@ -17,22 +17,21 @@
     </header>
 
     <section id="body">
-
         <article class="container-profile">
             <div class="container-title-img-form">
                 <div class="title-form">
-                    <img src="../../imgs/book.svg">
+                    <img src="../../imgs/book.svg" alt="Ícone Livro">
                     <h2>Configurações</h2>
                 </div>
             </div>
 
             <div class="container-btns">
-                <button class="btn-profile">Perfil</button>
-                <button class="btn-accessibility">Acessibilidade</button>
+                <button type="button" class="btn-profile">Perfil</button>
+                <button type="button" class="btn-accessibility">Acessibilidade</button>
             </div>
 
             <div class="container-img-profile">
-                <img src="../../imgs/user-img-ex.jpg" class="img-user">
+                <img src="../../imgs/user-img-ex.jpg" class="img-user" alt="Foto de perfil">
                 <p class="name-user">Nome Completo</p>
             </div>
 
@@ -40,12 +39,11 @@
 
             <div class="container-imgs-info-profile">
                 <div class="imgs-profile">
-                    <img src="../../imgs/mail.svg">
-                    <img src="../../imgs/telephone.svg">
-                    <img src="../../imgs/calendar.svg">
-                    <img src="../../imgs/cpf.svg">
-                    <img src="../../imgs/location.svg">
-
+                    <img src="../../imgs/mail.svg" alt="Email">
+                    <img src="../../imgs/telephone.svg" alt="Telefone">
+                    <img src="../../imgs/calendar.svg" alt="Data de Nascimento">
+                    <img src="../../imgs/cpf.svg" alt="CPF">
+                    <img src="../../imgs/location.svg" alt="Endereço">
                 </div>
             
                 <div class="info-profile">
@@ -57,24 +55,79 @@
                 </div>
 
                 <div class="inputs-profile">
-                    <input placeholder="email@gmail.com" type="email" >
-                    <input placeholder="00 0 0000-0000" type="tel" >
-                    <input placeholder="DD/MM/YYYY" type="date" >
-                    <input placeholder="000.000.000-00" type="tel">
+                    <input placeholder="email@gmail.com" type="email">
+                    <input placeholder="00 0 0000-0000" type="tel">
+                    <input placeholder="DD/MM/YYYY" type="date" readonly title="Caso queira trocar, contate o suporte.">
+                    <input placeholder="000.000.000-00" type="tel" readonly title="Caso queira trocar, contate o suporte.">
                     <input placeholder="Logradouro, Nº - Bairro" type="text">
                 </div>
             </div>
 
             <hr class="line">
 
-            <div class="container-btns-end">
-                <button class="btn-confirm">Confirmar</button>
-                <p>----ou----</p>
-                <button class="btn-cancel">Cancelar</button>
+            <div class="container-password-section">
+                <div class="container-imgs-info-profile">
+                    <div class="imgs-profile">
+                        <img src="../../imgs/key.svg" alt="Senha Antiga">
+                        <img src="../../imgs/key.svg" alt="Nova Senha">
+                        <img src="../../imgs/key.svg" alt="Confirmar Senha">
+                    </div>
+                
+                    <div class="info-profile">
+                        <p>Senha Antiga: </p>
+                        <p>Nova Senha: </p>
+                        <p>Confirmar Senha: </p>
+                    </div>
+
+                    <div class="inputs-profile">
+                        <div class="container-password-input">
+                            <input type="password" id="input-current-password" placeholder="Digite sua senha atual">
+                            <img class="btn-toggle-password" id="toggle-current-password" src="../../imgs/visibility_off.svg" alt="Mostrar senha atual">
+                        </div>
+
+                        <div class="container-password-input">
+                            <input type="password" id="input-new-password" placeholder="Digite a nova senha">
+                            <img class="btn-toggle-password" id="toggle-new-password" src="../../imgs/visibility_off.svg" alt="Mostrar nova senha">
+                        </div>
+
+                        <div class="container-password-input">
+                            <input type="password" id="input-confirm-password" placeholder="Confirme a nova senha">
+                            <img class="btn-toggle-password" id="toggle-confirm-password" src="../../imgs/visibility_off.svg" alt="Mostrar confirmar nova senha">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="help-password-link">
+                    <a href="javascript:void(0)" id="openModalBtn">Quer ajuda?</a>
+                </div>
             </div>
 
-        </article>
+            <hr class="line">
 
+            <div class="container-btns-end">
+                <button type="submit" class="btn-confirm">Confirmar</button>
+                <p>----ou----</p>
+                <button type="button" class="btn-cancel">Cancelar</button>
+            </div>
+        </article>
     </section>
+
+    <dialog id="supportModal" class="support-modal">
+        <form method="dialog" class="support-form">
+            <h3 class="modal-title">Suporte ao Usuário</h3>
+            <p class="modal-description">Informe seu e-mail e descreva o motivo do contato para nossa equipe ajudar você.</p>
+            
+            <label for="supportEmail" class="modal-label">Seu E-mail:</label>
+            <input type="email" id="supportEmail" class="modal-input" placeholder="email@exemplo.com" required>
+
+            <label for="supportMessage" class="modal-label">Situação / Dúvida:</label>
+            <textarea id="supportMessage" class="modal-textarea" rows="4" placeholder="Descreva sua solicitação..." required></textarea>
+
+            <div class="modal-actions">
+                <button type="submit" class="btn-send-support">Enviar</button>
+                <button type="button" id="closeModalBtn" class="btn-close-modal">Fechar</button>
+            </div>
+        </form>
+    </dialog>
 </body>
 </html>
