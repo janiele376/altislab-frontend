@@ -18,77 +18,74 @@ Sistema web voltado para a gestão e locação de livros, contendo interfaces es
 
 ## Estrutura do Projeto
 
+## Estrutura do Projeto
+
+```plaintext
 altislab-frontend/
 ├── README.md
 ├── index.html
-├──src/
+└── src/
     ├── imgs/
+    │   ├── adjustments.svg
+    │   ├── back-arrow.svg
     │   ├── book.svg
-    │   ├── user.svg
-    │   ├── key.svg
-    │   ├── mail.svg
-    │   ├── telephone.svg
     │   ├── calendar.svg
     │   ├── cpf.svg
+    │   ├── key.svg
     │   ├── location.svg
-    │   ├── adjustments.svg
     │   ├── logout.svg
-    │   └── back-arrow.svg
-    │
+    │   ├── mail.svg
+    │   ├── telephone.svg
+        ├── visibility.svg
+    │   ├── visibility_off.svg
+    │   └── user.svg
     ├── js/
-    │   ├── masks.js
-    │   ├── login.js
-    │   ├── register.js
-    │   ├── forgout-password.js
-    │   │
     │   ├── admin/
     │   │   ├── dashboard-admin.js
-    │   │   ├── list-users.js
-    │   │   ├── list-rentals.js
     │   │   ├── list-books.js
     │   │   ├── list-publishers.js
+    │   │   ├── list-rentals.js
+    │   │   ├── list-users.js
     │   │   └── settings.js
-    │   │
-    │   └── tenant/
-    │       ├── dashboard-tenant.js
-    │       ├── settings-profile.js
-    │       ├── editing-information.js
-    │       └── settings-accessibility.js
-    │
+    │   ├── tenant/
+    │   │   ├── dashboard-tenant.js
+    │   │   ├── editing-information.js
+    │   │   ├── settings-accessibility.js
+    │   │   └── settings-profile.js
+    │   ├── forgout-password.js
+    │   ├── login.js
+    │   ├── masks.js
+    │   └── register.js
     ├── pages/
-    │   ├── login.html
-    │   ├── register.html
-    │   ├── forgout-password.html
-    │   │
     │   ├── admin/
     │   │   ├── dashboard-admin.html
-    │   │   ├── list-publishers.html
     │   │   ├── list-books.html
-    │   │   ├── list-users.html
+    │   │   ├── list-publishers.html
     │   │   ├── list-rentals.html
+    │   │   ├── list-users.html
     │   │   └── settings.html
-    │   │
-    │   └── tenant/
-    │       ├── dashboard-tenant.html
-    │       ├── settings-profile.html
-    │       ├── editing-information.html
-    │       └── settings-accessibility.html
-    │
+    │   ├── tenant/
+    │   │   ├── dashboard-tenant.html
+    │   │   ├── editing-information.html
+    │   │   ├── settings-accessibility.html
+    │   │   └── settings-profile.html
+    │   ├── forgout-password.html
+    │   ├── login.html
+    │   └── register.html
     └── style/
-        ├── login.css
-        ├── register.css
-        ├── forgout-password.css
-        │
         ├── admin/
         │   ├── dashboard-admin.css
-        │   ├── settings.css
-        │   ├── list-users.css
-        │   ├── list-rentals.css
         │   ├── list-books.css
-        │   └── list-publishers.css
-        │
-        └── tenant/
-            ├── dashboard-tenant.css
-            ├── editing-information.css
-            ├── settings-profile.css
-            └── settings-accessibility.css
+        │   ├── list-publishers.css
+        │   ├── list-rentals.css
+        │   ├── list-users.css
+        │   └── settings.css
+        ├── tenant/
+        │   ├── dashboard-tenant.css
+        │   ├── editing-information.css
+        │   ├── settings-accessibility.css
+        │   └── settings-profile.css
+        ├── forgout-password.css
+        ├── login.css
+        └── register.css
+```
