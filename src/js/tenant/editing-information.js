@@ -7,10 +7,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const inputDataNasc = inputs[2];
     const inputCpf = inputs[3];
     const inputEndereco = inputs[4];
-
+  
     const inputSenhaAntiga = document.getElementById('input-current-password');
     const inputSenhaNova = document.getElementById('input-new-password');
     const inputSenhaConfirma = document.getElementById('input-confirm-password');
+    const inputSenhaAntiga = inputs[5];
+    const inputSenhaNova = inputs[6];
+    const inputSenhaConfirma = inputs[7];
+
 
     const btnConfirm = document.querySelector('.btn-confirm');
     const btnCancel = document.querySelector('.btn-cancel');
@@ -42,11 +46,15 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         const supportEmail = document.getElementById('supportEmail')?.value.trim();
         const supportMessage = document.getElementById('supportMessage')?.value.trim();
+        const supportEmail = document.getElementById('supportEmail').value.trim();
+        const supportMessage = document.getElementById('supportMessage').value.trim();
 
         if (supportEmail && supportMessage) {
             alert('Sua mensagem foi enviada ao suporte com sucesso! Em breve entraremos em contato.');
             supportForm.reset();
             modal?.close();
+            modal.close();
+
         }
     });
 
@@ -100,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('A nova senha deve ter no mínimo 6 caracteres!');
                 return;
             }
-
+          
             if (usuarioAtual) {
                 usuarioAtual.senha = senhaNova;
             }

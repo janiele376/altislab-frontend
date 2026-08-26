@@ -16,6 +16,7 @@
     box-sizing: border-box;
 }
 #header .title-config {
+#header .title {
     font-size: 1.875rem;
 }
 #header .img-book {
@@ -69,6 +70,9 @@
     border-radius: 5rem;
     margin-top: 1rem;
     object-fit: cover;
+}
+.container-profile .container-img-profile .name-user {
+    margin-left: 2rem;
 }
 .container-profile .container-btns .btn-profile {
     background-color: #55463C;
@@ -136,6 +140,7 @@
     width: 1.2rem;
     object-fit: cover;
 }
+
 .container-profile .container-imgs-info-profile .inputs-profile {
     margin-left: 1rem;
     width: 12rem;
@@ -235,6 +240,44 @@
     border: 2px solid #55463C;
     border-radius: 1.25rem;
     background-color: #E9E4DE;
+    color: #55463C;
+    padding: 1.5rem;
+    max-width: 24rem;
+    width: 90%;
+    margin: auto;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+.support-modal::backdrop {
+    background-color: rgba(85, 70, 60, 0.4);
+    backdrop-filter: blur(2px);
+}
+.support-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+.modal-title {
+    font-size: 1.2rem;
+    text-align: center;
+}
+.modal-description {
+    font-size: 0.85rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+.modal-label {
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+.modal-input,
+.modal-textarea {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #55463C;
+    border-radius: 0.5rem;
+    background-color: #FFF;
+    color: #55463C;
+    background-color: #DBC2B0;
     color: #55463C;
     padding: 1.5rem;
     max-width: 24rem;
