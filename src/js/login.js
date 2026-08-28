@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
         togglePassword.alt = isPassword ? 'Ocultar senha' : 'Mostrar senha';
     });
 
-    // Ação de Logi
     btnLogin?.addEventListener('click', (e) => {
         e.preventDefault();
 
