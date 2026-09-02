@@ -1,73 +1,70 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
+    function configureToggleSenha(btnId, inputSelector) {
+        const btn = document.getElementById(btnId);
+        const input = document.querySelector(inputSelector);
+
+        btn?.addEventListener('click', function() {
+            const isPassword = input.type === 'password';
+            input.type = isPassword ? 'text' : 'password';
+            btn.src = isPassword ? '../imgs/visibility.svg' : '../imgs/visibility_off.svg';
+            btn.alt = isPassword ? 'Ocultar senha' : 'Mostrar senha';
+        });
+    }
+
+    configureToggleSenha('toggle-password', 'input[name="senha"]');
+    configureToggleSenha('toggle-confirm-password', 'input[name="confirmar-senha"]');
+
+    const form = document.querySelector('form');
     const btnRegister = document.querySelector('button[name="btn-register"]');
     const btnCancel = document.querySelector('button[name="btn-cancel"]');
 
-    const inputNome = document.querySelector('input[name="nome-completo"]');
-    const inputDataNasc = document.querySelector('input[name="data-nascimento"]');
-    const inputEmail = document.querySelector('input[name="email"]');
-    const inputCpf = document.querySelector('input[name="cpf"]');
-    const inputTelefone = document.querySelector('input[name="telefone"]');
-    const inputLocalizacao = document.querySelector('input[name="localizacao"]');
-    const inputSenha = document.querySelector('input[name="senha"]');
-    const inputConfirmarSenha = document.querySelector('input[name="confirmar-senha"]');
-
-    const togglePassword = document.getElementById('toggle-password');
-    const toggleConfirmPassword = document.getElementById('toggle-confirm-password');
-
-    togglePassword?.addEventListener('click', () => {
-        const isPassword = inputSenha.type === 'password';
-        inputSenha.type = isPassword ? 'text' : 'password';
-        togglePassword.src = isPassword ? '../imgs/visibility.svg' : '../imgs/visibility_off.svg';
-        togglePassword.alt = isPassword ? 'Ocultar senha' : 'Mostrar senha';
-    });
-
-    toggleConfirmPassword?.addEventListener('click', () => {
-        const isPassword = inputConfirmarSenha.type === 'password';
-        inputConfirmarSenha.type = isPassword ? 'text' : 'password';
-        toggleConfirmPassword.src = isPassword ? '../imgs/visibility.svg' : '../imgs/visibility_off.svg';
-        toggleConfirmPassword.alt = isPassword ? 'Ocultar senha' : 'Mostrar senha';
-    });
-
-    btnRegister?.addEventListener('click', (e) => {
+    btnRegister?.addEventListener('click', function(e) {
         e.preventDefault();
 
-        const nome = inputNome.value.trim();
-        const dataNasc = inputDataNasc.value;
-        const email = inputEmail.value.trim().toLowerCase();
-        const cpf = inputCpf.value.trim();
-        const telefone = inputTelefone.value.trim();
-        const localizacao = inputLocalizacao.value.trim();
-        const senha = inputSenha.value.trim();
-        const confirmarSenha = inputConfirmarSenha.value.trim();
+        if (!form) return;
 
-        if (!nome || !dataNasc || !email || !cpf || !telefone || !localizacao || !senha || !confirmarSenha) {
+        const formData = new FormData(form);
+        const dados = Object.fromEntries(formData.entries());
+
+        const temCampoVazio = Object.values(dados).some(valor => typeof valor === 'string' && !valor.trim());
+        if (temCampoVazio) {
             alert('Por favor, preencha todos os campos!');
             return;
         }
 
-        if (senha !== confirmarSenha) {
+        if (dados['senha'] !== dados['confirmar-senha']) {
             alert('As senhas não coincidem!');
             return;
         }
 
-        if (senha.length < 6) {
-            alert('A senha deve conter no mínimo 6 caracteres!');
+        if (dados['senha'].length < 8) {
+            alert('A senha deve conter no mínimo 8 caracteres!');
             return;
         }
 
         const novoLocatario = {
-            nome,
-            dataNasc,
-            email,
-            cpf,
-            telefone,
-            localizacao,
-            senha,
+            nome: dados['nome-completo']?.trim(),
+            dataNasc: dados['data-nascimento'],
+            email: dados['email']?.trim().toLowerCase(),
+            cpf: dados['cpf']?.trim(),
+            telefone: dados['telefone']?.trim(),
+            localizacao: dados['localizacao']?.trim(),
+            senha: dados['senha']?.trim(),
             tipo: 'locatario',
             status: 'Ativo'
         };
 
         const usuarios = JSON.parse(localStorage.getItem('usuarios_biblioteca')) || [];
+
+        const usuarioExiste = usuarios.some(
+            usuario => usuario.email === novoLocatario.email || usuario.cpf === novoLocatario.cpf
+        );
+
+        if (usuarioExiste) {
+            alert('Já existe uma conta cadastrada com este E-mail ou CPF!');
+            return;
+        }
+
         usuarios.push(novoLocatario);
         localStorage.setItem('usuarios_biblioteca', JSON.stringify(usuarios));
 
@@ -75,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = './login.html';
     });
 
-    btnCancel?.addEventListener('click', (e) => {
+    btnCancel?.addEventListener('click', function(e) {
         e.preventDefault();
         window.location.href = './login.html';
     });

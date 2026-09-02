@@ -4,21 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../style/admin/list-rentals.css">
+    <link rel="stylesheet" href="../../style/theme.css">
     <script src="../../js/admin/list-rentals.js" defer></script>
-    <title>Aluguéis</title>
+    <script src="../../js/theme.js"></script>
+    <script src="../../js/language.js" defer></script>
+    <title data-i18n="doc_title_rentals">Aluguéis</title>
 </head>
 <body>
     <header id="header">
         <div class="container-title">
             <img class="img-book" alt="logo" src="../../imgs/book.svg">
-            <h2 class="title">Biblioteca Dashboard</h2>
+            <h2 class="title" data-i18n="header_title_rentals">Biblioteca Listar Aluguéis</h2>
             <div class="container-dashboard-header">
                 <div class="imgs">
                     <img src="../../imgs/user-img-ex.jpg" class="img-user" alt="usuário">
                     <a href="../admin/settings.html"><img src="../../imgs/adjustments.svg" class="img-adjustments" alt="ajustes"></a>  
                 </div>
                 <div class="text">   
-                    <p>User</p>  <p>Ajustes</p>
+                    <p data-i18n="nav_user">Usuário</p>  <p data-i18n="nav_settings">Ajustes</p>
                 </div>
             </div>
         </div>
@@ -26,36 +29,36 @@
 
     <section id="body">
         <article class="container-menu">
-            <button class="btn-publishers"><a href="../admin/list-publishers.html">Editoras</a></button>
-            <button class="btn-books"><a href="../admin/list-books.html">Livros</a></button>
-            <button class="btn-users"><a href="../admin/list-users.html">Usuários</a></button>
-            <button class="btn-rentals">Aluguéis</button>
-            <button class="btn-dashboard"><a href="../admin/dashboard-admin.html">Dashboard</a></button>
+            <button class="btn-publishers"><a href="../admin/list-publishers.html" data-i18n="menu_publishers">Editoras</a></button>
+            <button class="btn-books"><a href="../admin/list-books.html" data-i18n="menu_books">Livros</a></button>
+            <button class="btn-users"><a href="../admin/list-users.html" data-i18n="menu_users">Usuários</a></button>
+            <button class="btn-rentals" data-i18n="menu_rentals">Aluguéis</button>
+            <button class="btn-dashboard"><a href="../admin/dashboard-admin.html" data-i18n="menu_dashboard">Dashboard</a></button>
         </article>
 
         <article class="container-rentals">
             <div class="container-create-rental">
-                <h2>Criar Aluguel:</h2>
-                <button class="btn-create-rental" id="open-modal">+ Novo Aluguel</button>    
+                <h2 data-i18n="title_create_rental">Criar Aluguel:</h2>
+                <button class="btn-create-rental" id="open-modal" data-i18n="btn_new_rental">+ Novo Aluguel</button>    
             </div>
 
             <div class="container-list">
                 <div class="container-search">
-                    <input type="text" placeholder="Pesquisar Aluguel..." class="input-search">
+                    <input type="text" placeholder="Pesquisar Aluguel..." class="input-search" data-i18n-placeholder="placeholder_search_rental">
                     <p>|</p>
-                    <img src="../../imgs/filters.svg" alt="filters">
-                    <img src="../../imgs/search.svg" alt="search">
+                    <img src="../../imgs/filters.svg" alt="filtros">
+                    <img src="../../imgs/search.svg" alt="pesquisar">
                 </div>
                 
                 <hr class="line-search">
 
                 <div class="container-table-info">
-                    <h3>Nome do Usuário</h3>
-                    <h3>Livro</h3>
-                    <h3>Data Início</h3>
-                    <h3>Data Fim</h3>
-                    <h3>Status</h3>
-                    <h3 class="action">Ações</h3>
+                    <h3 data-i18n="col_user_name">Nome do Usuário</h3>
+                    <h3 data-i18n="col_book">Livro</h3>
+                    <h3 data-i18n="col_start_date">Data Início</h3>
+                    <h3 data-i18n="col_end_date">Data Fim</h3>
+                    <h3 data-i18n="col_status">Status</h3>
+                    <h3 class="action" data-i18n="col_actions">Ações</h3>
                 </div>
 
                 <hr>
@@ -65,10 +68,10 @@
                     <p class="book-p">O Senhor dos Anéis</p>
                     <p class="date-start-p">01/01/2024</p>
                     <p class="date-end-p">15/01/2024</p>
-                    <p class="status-p">Ativo</p>
+                    <p class="status-p" data-i18n="status_active">Ativo</p>
                     <div class="container-btns">
-                        <button class="btn-return" id="open-modal-return">Devolver</button>
-                        <button class="btn-delete" id="open-modal-delete">Excluir</button>
+                        <button class="btn-return" id="open-modal-return" data-i18n="btn_return">Devolver</button>
+                        <button class="btn-delete" id="open-modal-delete" data-i18n="btn_delete">Excluir</button>
                     </div>
                 </div>
             
@@ -76,7 +79,7 @@
 
                 <div class="btn-next-page"> 
                     <button class="btn-prev"><img src="../../imgs/arrow_next_left.svg" alt="anterior"></button>
-                    <p>1 de 5</p>
+                    <p><span data-i18n="page_prefix">1 de</span> 5</p>
                     <button class="btn-next"><img src="../../imgs/arrow_next_right.svg" alt="próximo"></button>
                 </div>
             </div>
@@ -86,30 +89,30 @@
             <div class="container-create-rentals">
                 <div class="container-title-rental">
                     <a id="close-modal"><img src="../../imgs/back-arrow.svg" class="img-rental-form" alt="Voltar"></a>
-                    <h1 class="title-rental-form">Criar Aluguel</h1>
+                    <h1 class="title-rental-form" data-i18n="modal_create_rental_title">Criar Aluguel</h1>
                 </div>
                 
                 <div class="container-form">
                     <div class="container-name-user">
-                        <p>Nome do Usuário:</p>
+                        <p data-i18n="label_form_user_name">Nome do Usuário:</p>
                         <input class="name-user" type="text">
                     </div>
                     <div>
-                        <p>CPF do Usuário:</p>
+                        <p data-i18n="label_form_user_cpf">CPF do Usuário:</p>
                         <input class="cpf-user" type="tel">
                     </div>
                     <div>
-                        <p>Nome do Livro:</p>
+                        <p data-i18n="label_form_book_name">Nome do Livro:</p>
                         <input class="book-name" type="text">
                     </div>
                     <div>
-                        <p>Código do Livro:</p>
+                        <p data-i18n="label_form_book_cod">Código do Livro:</p>
                         <input class="book-cod" type="tel">
                     </div>
                 
                     <div class="btns-rentals">
-                        <button class="btn-check"><img src="../../imgs/check.svg" alt="Confirmar">CONFIRMAR</button>
-                        <button class="btn-cancel"><img src="../../imgs/cancel.svg" alt="Cancelar">CANCELAR</button>
+                        <button class="btn-check"><img src="../../imgs/check.svg" alt="Confirmar"><span data-i18n="btn_confirm">CONFIRMAR</span></button>
+                        <button class="btn-cancel"><img src="../../imgs/cancel.svg" alt="Cancelar"><span data-i18n="btn_cancel">CANCELAR</span></button>
                     </div>
                 </div>
             </div>
@@ -119,26 +122,26 @@
             <div class="container-create-rentals modal-confirmation">
                 <div class="container-title-rental">
                     <a id="close-modal-delete"><img src="../../imgs/back-arrow.svg" class="img-rental-form" alt="Voltar"></a>
-                    <h1 class="title-rental-form">Excluir Aluguel</h1>
+                    <h1 class="title-rental-form" data-i18n="modal_delete_rental_title">Excluir Aluguel</h1>
                 </div>
                 
                 <div class="container-form">
                     <div class="confirm-message">
-                        <p>Tem certeza de que deseja excluir este registro de aluguel?</p>
-                        <span class="warning-text">Esta ação não poderá ser desfeita.</span>
+                        <p data-i18n="msg_confirm_delete_rental">Tem certeza de que deseja excluir este registro de aluguel?</p>
+                        <span class="warning-text" data-i18n="msg_warning_delete_irreversible">Esta ação não poderá ser desfeita.</span>
                     </div>
 
                     <div class="rental-summary-details">
-                        <p><strong>Usuário:</strong> <span id="delete-user-name">João Silva</span></p>
-                        <p><strong>Livro:</strong> <span id="delete-book-name">O Senhor dos Anéis</span></p>
+                        <p><strong data-i18n="label_user_summary">Usuário:</strong> <span id="delete-user-name">João Silva</span></p>
+                        <p><strong data-i18n="label_book_summary">Livro:</strong> <span id="delete-book-name">O Senhor dos Anéis</span></p>
                     </div>
                 
                     <div class="btns-rentals">
                         <button class="btn-check btn-danger" id="confirm-delete">
-                            <img src="../../imgs/check.svg" alt="Confirmar">EXCLUIR
+                            <img src="../../imgs/check.svg" alt="Confirmar"><span data-i18n="btn_confirm_delete">EXCLUIR</span>
                         </button>
                         <button class="btn-cancel" id="cancel-delete">
-                            <img src="../../imgs/cancel.svg" alt="Cancelar">CANCELAR
+                            <img src="../../imgs/cancel.svg" alt="Cancelar"><span data-i18n="btn_cancel">CANCELAR</span>
                         </button>
                     </div>
                 </div>
@@ -149,30 +152,30 @@
             <div class="container-create-rentals modal-confirmation">
                 <div class="container-title-rental">
                     <a id="close-modal-return"><img src="../../imgs/back-arrow.svg" class="img-rental-form" alt="Voltar"></a>
-                    <h1 class="title-rental-form">Confirmar Devolução</h1>
+                    <h1 class="title-rental-form" data-i18n="modal_return_rental_title">Confirmar Devolução</h1>
                 </div>
                 
                 <div class="container-form">
                     <div class="confirm-message">
-                        <p>Deseja confirmar a devolução deste livro?</p>
+                        <p data-i18n="msg_confirm_return_rental">Deseja confirmar a devolução deste livro?</p>
                     </div>
 
                     <div class="rental-summary-details">
-                        <p><strong>Usuário:</strong> <span id="return-user-name">João Silva</span></p>
-                        <p><strong>Livro:</strong> <span id="return-book-name">O Senhor dos Anéis</span></p>
+                        <p><strong data-i18n="label_user_summary">Usuário:</strong> <span id="return-user-name">João Silva</span></p>
+                        <p><strong data-i18n="label_book_summary">Livro:</strong> <span id="return-book-name">O Senhor dos Anéis</span></p>
                     </div>
 
                     <div class="container-date-return">
-                        <p>Data de Devolução:</p>
+                        <p data-i18n="label_form_return_date">Data de Devolução:</p>
                         <input class="date-rental" id="return-date" type="date">
                     </div>
                 
                     <div class="btns-rentals">
                         <button class="btn-check" id="confirm-return">
-                            <img src="../../imgs/check.svg" alt="Confirmar">CONFIRMAR
+                            <img src="../../imgs/check.svg" alt="Confirmar"><span data-i18n="btn_confirm">CONFIRMAR</span>
                         </button>
                         <button class="btn-cancel" id="cancel-return">
-                            <img src="../../imgs/cancel.svg" alt="Cancelar">CANCELAR
+                            <img src="../../imgs/cancel.svg" alt="Cancelar"><span data-i18n="btn_cancel">CANCELAR</span>
                         </button>
                     </div>
                 </div>

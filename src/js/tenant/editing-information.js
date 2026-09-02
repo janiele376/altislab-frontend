@@ -1,13 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const nameUserEl = document.querySelector('.name-user');
-    const inputs = document.querySelectorAll('.inputs-profile input');
     
-    const inputEmail = inputs[0];
-    const inputTelefone = inputs[1];
-    const inputDataNasc = inputs[2];
-    const inputCpf = inputs[3];
-    const inputEndereco = inputs[4];
-  
     const inputSenhaAntiga = document.getElementById('input-current-password');
     const inputSenhaNova = document.getElementById('input-new-password');
     const inputSenhaConfirma = document.getElementById('input-confirm-password');
@@ -15,19 +8,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnConfirm = document.querySelector('.btn-confirm');
     const btnCancel = document.querySelector('.btn-cancel');
 
-    const modal = document.getElementById('supportModal');
-    const openModalBtn = document.getElementById('openModalBtn');
-    const closeModalBtn = document.getElementById('closeModalBtn');
-    const supportForm = modal ? modal.querySelector('form') : null;
-
+    // 1. Olhinhos para alternar visualização das senhas
     function setupPasswordToggle(toggleId, inputEl) {
-        const toggleBtn = document.getElementById(toggleId);
-        toggleBtn?.addEventListener('click', () => {
+        const btn = document.getElementById(toggleId);
+        btn?.addEventListener('click', () => {
             if (!inputEl) return;
             const isPassword = inputEl.type === 'password';
             inputEl.type = isPassword ? 'text' : 'password';
-            toggleBtn.src = isPassword ? '../../imgs/visibility.svg' : '../../imgs/visibility_off.svg';
-            toggleBtn.alt = isPassword ? 'Ocultar senha' : 'Mostrar senha';
+            btn.src = isPassword ? '../../imgs/visibility.svg' : '../../imgs/visibility_off.svg';
+            btn.alt = isPassword ? 'Ocultar senha' : 'Mostrar senha';
         });
     }
 
@@ -35,87 +24,76 @@ document.addEventListener('DOMContentLoaded', () => {
     setupPasswordToggle('toggle-new-password', inputSenhaNova);
     setupPasswordToggle('toggle-confirm-password', inputSenhaConfirma);
 
-    openModalBtn?.addEventListener('click', () => modal?.showModal());
-    closeModalBtn?.addEventListener('click', () => modal?.close());
+    // 2. Modal de Suporte
+    const modal = document.getElementById('supportModal');
+    const supportForm = modal?.querySelector('form');
+
+    document.getElementById('openModalBtn')?.addEventListener('click', () => modal?.showModal());
+    document.getElementById('closeModalBtn')?.addEventListener('click', () => modal?.close());
 
     supportForm?.addEventListener('submit', (e) => {
         e.preventDefault();
-        const supportEmail = document.getElementById('supportEmail')?.value.trim();
-        const supportMessage = document.getElementById('supportMessage')?.value.trim();
-
-        if (supportEmail && supportMessage) {
-            alert('Sua mensagem foi enviada ao suporte com sucesso! Em breve entraremos em contato.');
-            supportForm.reset();
-            modal?.close();
-        }
+        alert('Sua mensagem foi enviada ao suporte com sucesso!');
+        supportForm.reset();
+        modal?.close();
     });
 
     const usuarios = JSON.parse(localStorage.getItem('usuarios_biblioteca')) || [];
-    let usuarioAtual = usuarios.length > 0 ? usuarios[usuarios.length - 1] : null;
+    const sessaoAtiva = JSON.parse(localStorage.getItem('usuario_logado'));
+    let usuarioAtual = usuarios.find(u => u.email === sessaoAtiva?.email) || usuarios[usuarios.length - 1];
 
-    if (usuarioAtual) {
-        if (nameUserEl) nameUserEl.textContent = usuarioAtual.nome || 'Maria Silva';
-        inputEmail.value = usuarioAtual.email || '';
-        inputTelefone.value = usuarioAtual.telefone || '';
-        inputDataNasc.value = usuarioAtual.dataNasc || '';
-        inputCpf.value = usuarioAtual.cpf || '';
-        inputEndereco.value = usuarioAtual.localizacao || '';
+    if (usuarioAtual && nameUserEl) {
+        nameUserEl.textContent = usuarioAtual.nome || 'Usuário';
     }
 
     btnConfirm?.addEventListener('click', (e) => {
         e.preventDefault();
 
-        const email = inputEmail.value.trim();
-        const telefone = inputTelefone.value.trim();
-        const dataNasc = inputDataNasc.value;
-        const cpf = inputCpf.value.trim();
-        const localizacao = inputEndereco.value.trim();
-
-        const senhaAntiga = inputSenhaAntiga?.value.trim() || '';
-        const senhaNova = inputSenhaNova?.value.trim() || '';
-        const senhaConfirma = inputSenhaConfirma?.value.trim() || '';
-
-        if (!email || !telefone || !dataNasc || !cpf || !localizacao) {
-            alert('Por favor, preencha todos os campos do perfil!');
+        if (!usuarioAtual) {
+            alert('Nenhum usuário logado encontrado!');
             return;
         }
 
-        if (senhaAntiga || senhaNova || senhaConfirma) {
-            if (!senhaAntiga || !senhaNova || !senhaConfirma) {
+        const getValor = (name) => document.querySelector(`.inputs-profile input[name="${name}"]`)?.value.trim() || '';
+
+        const novoEmail = getValor('email');
+        const novoTelefone = getValor('telefone');
+        const novaDataNasc = getValor('data-nascimento');
+        const novoCpf = getValor('cpf');
+        const novaLocalizacao = getValor('localizacao');
+
+        if (novoEmail) usuarioAtual.email = novoEmail.toLowerCase();
+        if (novoTelefone) usuarioAtual.telefone = novoTelefone;
+        if (novaDataNasc) usuarioAtual.dataNasc = novaDataNasc;
+        if (novoCpf) usuarioAtual.cpf = novoCpf;
+        if (novaLocalizacao) usuarioAtual.localizacao = novaLocalizacao;
+
+        const antiga = inputSenhaAntiga?.value.trim();
+        const nova = inputSenhaNova?.value.trim();
+        const confirma = inputSenhaConfirma?.value.trim();
+
+        if (antiga || nova || confirma) {
+            if (!antiga || !nova || !confirma) {
                 alert('Para alterar sua senha, preencha a senha antiga, a nova senha e a confirmação!');
                 return;
             }
-
-            if (usuarioAtual && usuarioAtual.senha && usuarioAtual.senha !== senhaAntiga) {
+            if (usuarioAtual.senha && usuarioAtual.senha !== antiga) {
                 alert('A senha antiga informada está incorreta!');
                 return;
             }
-
-            if (senhaNova !== senhaConfirma) {
+            if (nova !== confirma) {
                 alert('A nova senha e a confirmação não coincidem!');
                 return;
             }
-
-            if (senhaNova.length < 6) {
-                alert('A nova senha deve ter no mínimo 6 caracteres!');
+            if (nova.length < 8) {
+                alert('A nova senha deve ter no mínimo 8 caracteres!');
                 return;
             }
-          
-            if (usuarioAtual) {
-                usuarioAtual.senha = senhaNova;
-            }
+            usuarioAtual.senha = nova;
         }
 
-        if (usuarioAtual) {
-            usuarioAtual.email = email;
-            usuarioAtual.telefone = telefone;
-            usuarioAtual.dataNasc = dataNasc;
-            usuarioAtual.cpf = cpf;
-            usuarioAtual.localizacao = localizacao;
-
-            usuarios[usuarios.length - 1] = usuarioAtual;
-            localStorage.setItem('usuarios_biblioteca', JSON.stringify(usuarios));
-        }
+        localStorage.setItem('usuarios_biblioteca', JSON.stringify(usuarios));
+        localStorage.setItem('usuario_logado', JSON.stringify(usuarioAtual));
 
         alert('Informações atualizadas com sucesso!');
         window.location.href = './settings-profile.html';

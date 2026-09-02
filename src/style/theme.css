@@ -1,0 +1,60 @@
+:root {
+    --bg-page: #E9E4DE;
+    --bg-card: #DBC2B0;
+    --bg-input: #FFFFFF;
+    --bg-input-readonly: #E5D7CC;
+    --bg-modal-backdrop: rgba(85, 70, 60, 0.4);
+
+    --text-main: #55463C;
+    --text-muted: #7A6A5F;
+    --text-contrast: #FFFFFF;
+
+    --border-color: #55463C;
+    --border-dashed: #7A6A5F;
+
+    --btn-primary-bg: #55463C;
+    --btn-primary-text: #FFFFFF;
+    --btn-primary-border: #55463C;
+
+    --btn-secondary-bg: #DBC2B0;
+    --btn-secondary-text: #55463C;
+    --btn-secondary-border: #55463C;
+
+    --icon-filter: none;
+}
+
+body.dark-mode {
+    --bg-page: #1E1915;
+    --bg-card: #2C241F;
+    --bg-input: #1E1915;
+    --bg-input-readonly: #251F1A;
+    --bg-modal-backdrop: rgba(0, 0, 0, 0.7);
+
+    --text-main: #E9E4DE;
+    --text-muted: #A89587;
+    --text-contrast: #2C241F;
+
+    --border-color: #8A7363;
+    --border-dashed: #8A7363;
+
+    --btn-primary-bg: #DBC2B0;
+    --btn-primary-text: #2C241F;
+    --btn-primary-border: #DBC2B0;
+    --btn-secondary-bg: #3F342D;
+    --btn-secondary-text: #E9E4DE;
+    --btn-secondary-border: #8A7363;
+    --icon-filter: invert(90%) brightness(115%) contrast(85%);
+}
+body,
+header,
+article,
+section,
+input,
+textarea,
+button,
+dialog {
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+body.dark-mode img:not(.img-user) {
+    filter: var(--icon-filter);
+}

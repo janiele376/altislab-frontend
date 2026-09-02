@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Configurações</title>
+    <title data-i18n="doc_title_settings">Configurações</title>
     <link rel="stylesheet" href="../../style/tenant/settings-accessibility.css">
+    <link rel="stylesheet" href="../../style/theme.css">
     <script src="../../js/tenant/settings-accessibility.js" defer></script>
+    <script src="../../js/theme.js"></script>
+    <script src="../../js/language.js" defer></script>
 </head>
-    <body>
+<body>
     <header id="header">
         <div class="container-title">
             <img class="img-book" alt="logo" src="../../imgs/book.svg">
-            <h2 class="title">Biblioteca Configurações</h2>
+            <h2 class="title" data-i18n="header_title_settings">Biblioteca Configurações</h2>
         </div>
     </header>
 
@@ -21,18 +24,18 @@
             <div class="container-title-img-form">
                 <div class="img-form">
                     <a href="../../pages/tenant/dashboard-tenant.html">
-                        <img src="../../imgs/back-arrow.svg">
+                        <img src="../../imgs/back-arrow.svg" alt="Voltar">
                     </a>
                 </div>
                 <div class="title-form">
-                    <img src="../../imgs/book.svg">
-                    <h2>Configurações</h2>
+                    <img src="../../imgs/book.svg" alt="Ícone Livro">
+                    <h2 data-i18n="title_settings">Configurações</h2>
                 </div>
             </div>
 
             <div class="container-btns">
-                <button class="btn-profile" onclick="window.location.href='../tenant/settings-profile.html'">Perfil</button>
-                <button class="btn-accessibility">Acessibilidade</button>
+                <button class="btn-profile" onclick="window.location.href='../tenant/settings-profile.html'" data-i18n="tab_profile">Perfil</button>
+                <button class="btn-accessibility" data-i18n="tab_accessibility">Acessibilidade</button>
             </div>
 
             <hr class="line">
@@ -40,17 +43,18 @@
             <div class="container-btns-info">
             
                 <div class="info">
-                    <p>Cor do Sistema: </p>
-                    <p>Idioma do Sistema: </p>
+                    <p data-i18n="label_system_theme">Cor do Sistema: </p>
+                    <p data-i18n="label_system_language">Idioma do Sistema: </p>
                 </div>
 
                 <div class="btns">
-                    <button class="btn-light">Claro</button> <button class="btn-dark">Escuro</button><br>
-                    <select class="select-language">
-                        <option>Selecione</option>
-                        <option>Português - Brasil</option>
-                        <option>English - EUA</option>
-                        <option>Español - Espanha</option>
+                    <button id="btn-light" class="btn-light" data-i18n="btn_theme_light">Claro</button>
+                    <button id="btn-dark" class="btn-dark" data-i18n="btn_theme_dark">Escuro</button><br>
+                    <select id="select-language" class="select-language">
+                        <option value="" disabled selected data-i18n="opt_select">Selecione</option>
+                        <option value="pt">Português - Brasil</option>
+                        <option value="en">English - EUA</option>
+                        <option value="es">Español - Espanha</option>
                     </select>
                 </div>
             </div>

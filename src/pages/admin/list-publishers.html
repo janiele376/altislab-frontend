@@ -4,21 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../style/admin/list-publishers.css">
+    <link rel="stylesheet" href="../../style/theme.css">
     <script src="../../js/admin/list-publishers.js" defer></script>
-    <title>Editoras</title>
+    <script src="../../js/theme.js"></script>
+    <script src="../../js/language.js" defer></script>
+    <title data-i18n="doc_title_publishers">Editoras</title>
 </head>
 <body>
     <header id="header">
         <div class="container-title">
             <img class="img-book" alt="logo" src="../../imgs/book.svg">
-            <h2 class="title">Biblioteca Listar Editoras</h2>
+            <h2 class="title" data-i18n="header_title_publishers">Biblioteca Listar Editoras</h2>
             <div class="container-dashboard-header">
                 <div class="imgs">
                     <img src="../../imgs/user-img-ex.jpg" class="img-user" alt="usuário">
                     <a href="../admin/settings.html"><img src="../../imgs/adjustments.svg" class="img-adjustments" alt="ajustes"></a>  
                 </div>
                 <div class="text">   
-                    <p>Usuário</p>  <p>Ajustes</p>
+                    <p data-i18n="nav_user">Usuário</p>  <p data-i18n="nav_settings">Ajustes</p>
                 </div>
             </div>
         </div>
@@ -26,22 +29,22 @@
 
     <section id="body">
         <article class="container-menu">
-            <button class="btn-publishers">Editoras</button>
-            <button class="btn-books"><a href="../admin/list-books.html">Livros</a></button>      
-            <button class="btn-users"><a href="../admin/list-users.html">Usuários</a></button>
-            <button class="btn-rentals"><a href="../admin/list-rentals.html">Aluguéis</a></button>
-            <button class="btn-dashboard"><a href="../admin/dashboard-admin.html">Dashboard</a></button>
+            <button class="btn-publishers" data-i18n="menu_publishers">Editoras</button>
+            <button class="btn-books"><a href="../admin/list-books.html" data-i18n="menu_books">Livros</a></button>      
+            <button class="btn-users"><a href="../admin/list-users.html" data-i18n="menu_users">Usuários</a></button>
+            <button class="btn-rentals"><a href="../admin/list-rentals.html" data-i18n="menu_rentals">Aluguéis</a></button>
+            <button class="btn-dashboard"><a href="../admin/dashboard-admin.html" data-i18n="menu_dashboard">Dashboard</a></button>
         </article>
 
         <article class="container-rentals">
             <div class="container-create-rental">
-                <h2>Criar Editora</h2>
-                <button class="btn-create-rental" id="open-modal-create">+ Nova Editora</button>    
+                <h2 data-i18n="title_create_publisher">Criar Editora</h2>
+                <button class="btn-create-rental" id="open-modal-create" data-i18n="btn_new_publisher">+ Nova Editora</button>    
             </div>
 
             <div class="container-list">
                 <div class="container-search">
-                    <input type="text" placeholder="pesquisar editora..." class="input-search">
+                    <input type="text" placeholder="pesquisar editora..." class="input-search" data-i18n-placeholder="placeholder_search_publisher">
                     <p>|</p>
                     <img src="../../imgs/filters.svg" alt="filtros">
                     <img src="../../imgs/search.svg" alt="pesquisar">
@@ -50,11 +53,11 @@
                 <hr class="line-search">
 
                 <div class="container-table-info">
-                    <h3>ID</h3>
-                    <h3>Nome</h3>
-                    <h3>E-mail/Telefone</h3>
-                    <h3>Endereço</h3>
-                    <h3 class="action">Ações</h3>
+                    <h3 data-i18n="col_id">ID</h3>
+                    <h3 data-i18n="col_name">Nome</h3>
+                    <h3 data-i18n="col_contact">E-mail/Telefone</h3>
+                    <h3 data-i18n="col_address">Endereço</h3>
+                    <h3 class="action" data-i18n="col_actions">Ações</h3>
                 </div>
 
                 <hr>
@@ -65,8 +68,8 @@
                     <p class="contact-p">editora@gmail.com | 99 9999-999</p>
                     <p class="address-p">Rua do Jardim, 123</p>
                     <div class="container-btns">
-                        <button class="btn-edit" onclick="abrirModalEditar('1', 'HarperCollins', '12.345.678/0001-90', 'editora@gmail.com', '99999999999', 'Rua do Jardim, 123')">Editar</button>
-                        <button class="btn-delete" onclick="abrirModalExcluir('1', 'HarperCollins')">Excluir</button>
+                        <button class="btn-edit" onclick="abrirModalEditar('1', 'HarperCollins', '12.345.678/0001-90', 'editora@gmail.com', '99999999999', 'Rua do Jardim, 123')" data-i18n="btn_edit">Editar</button>
+                        <button class="btn-delete" onclick="abrirModalExcluir('1', 'HarperCollins')" data-i18n="btn_delete">Excluir</button>
                     </div>
                 </div>
             
@@ -78,8 +81,8 @@
                     <p class="contact-p">editora@gmail.com | 99 9999-999</p>
                     <p class="address-p">Rua do Jardim, 123</p>
                     <div class="container-btns">
-                        <button class="btn-edit" onclick="abrirModalEditar('2', 'Rocco', '98.765.432/0001-10', 'editora@gmail.com', '99999999999', 'Rua do Jardim, 123')">Editar</button>
-                        <button class="btn-delete" onclick="abrirModalExcluir('2', 'Rocco')">Excluir</button>
+                        <button class="btn-edit" onclick="abrirModalEditar('2', 'Rocco', '98.765.432/0001-10', 'editora@gmail.com', '99999999999', 'Rua do Jardim, 123')" data-i18n="btn_edit">Editar</button>
+                        <button class="btn-delete" onclick="abrirModalExcluir('2', 'Rocco')" data-i18n="btn_delete">Excluir</button>
                     </div>
                 </div>
 
@@ -91,8 +94,8 @@
                     <p class="contact-p">editora@gmail.com | 99 9999-999</p>
                     <p class="address-p">Rua do Jardim, 123</p>
                     <div class="container-btns">
-                        <button class="btn-edit" onclick="abrirModalEditar('3', 'Companhia das Letras', '45.678.901/0001-23', 'editora@gmail.com', '99999999999', 'Rua do Jardim, 123')">Editar</button>
-                        <button class="btn-delete" onclick="abrirModalExcluir('3', 'Companhia das Letras')">Excluir</button>
+                        <button class="btn-edit" onclick="abrirModalEditar('3', 'Companhia das Letras', '45.678.901/0001-23', 'editora@gmail.com', '99999999999', 'Rua do Jardim, 123')" data-i18n="btn_edit">Editar</button>
+                        <button class="btn-delete" onclick="abrirModalExcluir('3', 'Companhia das Letras')" data-i18n="btn_delete">Excluir</button>
                     </div>
                 </div>
 
@@ -104,8 +107,8 @@
                     <p class="contact-p">editora@gmail.com | 99 9999-999</p>
                     <p class="address-p">Rua do Jardim, 123</p>
                     <div class="container-btns">
-                        <button class="btn-edit" onclick="abrirModalEditar('4', 'Companhia Nacional', '11.223.344/0001-55', 'editora@gmail.com', '99999999999', 'Rua do Jardim, 123')">Editar</button>
-                        <button class="btn-delete" onclick="abrirModalExcluir('4', 'Companhia Nacional')">Excluir</button>
+                        <button class="btn-edit" onclick="abrirModalEditar('4', 'Companhia Nacional', '11.223.344/0001-55', 'editora@gmail.com', '99999999999', 'Rua do Jardim, 123')" data-i18n="btn_edit">Editar</button>
+                        <button class="btn-delete" onclick="abrirModalExcluir('4', 'Companhia Nacional')" data-i18n="btn_delete">Excluir</button>
                     </div>
                 </div>
 
@@ -113,7 +116,7 @@
 
                 <div class="btn-next-page"> 
                     <button class="btn-prev"><img src="../../imgs/arrow_next_left.svg" alt="anterior"></button>
-                    <p>1 de 5</p>
+                    <p><span data-i18n="page_prefix">1 de</span> 5</p>
                     <button class="btn-next"><img src="../../imgs/arrow_next_right.svg" alt="próximo"></button>
                 </div>
             </div>
@@ -123,34 +126,34 @@
             <div class="container-create-rentals">
                 <div class="container-title-rental">
                     <a id="close-modal-create"><img src="../../imgs/back-arrow.svg" class="img-rental-form" alt="Voltar"></a>
-                    <h1 class="title-rental-form">Criar Editora</h1>
+                    <h1 class="title-rental-form" data-i18n="modal_create_publisher_title">Criar Editora</h1>
                 </div>
                 
                 <div class="container-form">
                     <div>
-                        <p>Nome da Editora:</p>
+                        <p data-i18n="label_form_publisher_name">Nome da Editora:</p>
                         <input class="publisher-name" type="text">
                     </div>
                     <div>
-                        <p>CNPJ da Editora:</p>
+                        <p data-i18n="label_form_publisher_cnpj">CNPJ da Editora:</p>
                         <input class="publisher-cnpj" type="text">
                     </div>
                     <div>
-                        <p>E-mail:</p>
+                        <p data-i18n="label_form_email">E-mail:</p>
                         <input class="publisher-email" type="email">
                     </div>
                     <div>
-                        <p>Telefone:</p>
+                        <p data-i18n="label_form_phone">Telefone:</p>
                         <input class="publisher-phone" type="tel">
                     </div>
                     <div>
-                        <p>Endereço:</p>
+                        <p data-i18n="label_form_address">Endereço:</p>
                         <input class="publisher-address" type="text">
                     </div>
                 
                     <div class="btns-rentals">
-                        <button class="btn-check"><img src="../../imgs/check.svg" alt="Confirmar">CONFIRMAR</button>
-                        <button class="btn-cancel" id="cancel-create"><img src="../../imgs/cancel.svg" alt="Cancelar">CANCELAR</button>
+                        <button class="btn-check"><img src="../../imgs/check.svg" alt="Confirmar"><span data-i18n="btn_confirm">CONFIRMAR</span></button>
+                        <button class="btn-cancel" id="cancel-create"><img src="../../imgs/cancel.svg" alt="Cancelar"><span data-i18n="btn_cancel">CANCELAR</span></button>
                     </div>
                 </div>
             </div>
@@ -160,26 +163,26 @@
             <div class="container-create-rentals modal-confirmation">
                 <div class="container-title-rental">
                     <a id="close-modal-delete"><img src="../../imgs/back-arrow.svg" class="img-rental-form" alt="Voltar"></a>
-                    <h1 class="title-rental-form">Excluir Editora</h1>
+                    <h1 class="title-rental-form" data-i18n="modal_delete_publisher_title">Excluir Editora</h1>
                 </div>
                 
                 <div class="container-form">
                     <div class="confirm-message">
-                        <p>Tem certeza de que deseja excluir esta editora?</p>
-                        <span class="warning-text">Esta ação não poderá ser desfeita.</span>
+                        <p data-i18n="msg_confirm_delete_publisher">Tem certeza de que deseja excluir esta editora?</p>
+                        <span class="warning-text" data-i18n="msg_warning_delete_irreversible">Esta ação não poderá ser desfeita.</span>
                     </div>
 
                     <div class="rental-summary-details">
-                        <p><strong>ID:</strong> <span id="delete-publisher-id">1</span></p>
-                        <p><strong>Editora:</strong> <span id="delete-publisher-name">HarperCollins</span></p>
+                        <p><strong data-i18n="label_id_summary">ID:</strong> <span id="delete-publisher-id">1</span></p>
+                        <p><strong data-i18n="label_publisher_summary">Editora:</strong> <span id="delete-publisher-name">HarperCollins</span></p>
                     </div>
                 
                     <div class="btns-rentals">
                         <button class="btn-check btn-danger" id="confirm-delete">
-                            <img src="../../imgs/check.svg" alt="Confirmar">EXCLUIR
+                            <img src="../../imgs/check.svg" alt="Confirmar"><span data-i18n="btn_confirm_delete">EXCLUIR</span>
                         </button>
                         <button class="btn-cancel" id="cancel-delete">
-                            <img src="../../imgs/cancel.svg" alt="Cancelar">CANCELAR
+                            <img src="../../imgs/cancel.svg" alt="Cancelar"><span data-i18n="btn_cancel">CANCELAR</span>
                         </button>
                     </div>
                 </div>

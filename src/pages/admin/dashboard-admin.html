@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../style/admin/dashboard-admin.css">
-    <title>Dashboard</title>
+    <link rel="stylesheet" href="../../style/theme.css">
+    <script src="../../js/theme.js"></script>
+    <script src="../../js/language.js" defer></script>
+    <title data-i18n="doc_title_dashboard">Dashboard</title>
 </head>
 <body>
     <header id="header">
         <div class="container-title">
             <img class="img-book" alt="logo" src="../../imgs/book.svg">
-            <h2 class="title">Biblioteca Dashboard</h2>
+            <h2 class="title" data-i18n="header_title">Biblioteca Dashboard</h2>
             <div class="container-dashboard-header">
                 <div class="imgs">
                     <img src="../../imgs/user-img-ex.jpg" class="img-user" alt="usuário">
@@ -19,7 +22,7 @@
                 </div>
 
                 <div class="text">   
-                    <p>Usuário</p>  <p>Ajustes</p> <p>Sair</p>
+                    <p data-i18n="nav_user">Usuário</p>  <p data-i18n="nav_settings">Ajustes</p> <p data-i18n="nav_logout">Sair</p>
                 </div>
             </div>
         </div>
@@ -27,35 +30,35 @@
 
     <section id="body">
         <article class="container-menu">
-            <button class="btn-publishers"><a href="../admin/list-publishers.html">Editoras</a></button>
-            <button class="btn-books"><a href="../admin/list-books.html">Livros</a></button>
-            <button class="btn-users"><a href="../admin/list-users.html">Usuários</a></button>
-            <button class="btn-rentals"><a href="../admin/list-rentals.html">Aluguéis</a></button>
-            <button class="btn-dashboard">Dashboard</button>
+            <button class="btn-publishers"><a href="../admin/list-publishers.html" data-i18n="menu_publishers">Editoras</a></button>
+            <button class="btn-books"><a href="../admin/list-books.html" data-i18n="menu_books">Livros</a></button>
+            <button class="btn-users"><a href="../admin/list-users.html" data-i18n="menu_users">Usuários</a></button>
+            <button class="btn-rentals"><a href="../admin/list-rentals.html" data-i18n="menu_rentals">Aluguéis</a></button>
+            <button class="btn-dashboard" data-i18n="menu_dashboard">Dashboard</button>
         </article>
 
         <article class="container-dashboard-content">
             <div class="container-status-cards">
                 <div class="card-status card-green">
-                    <p class="card-title">Quantidade de Aluguéis em Dia:</p>
-                    <h3 class="card-value">275 Aluguéis</h3>
+                    <p class="card-title" data-i18n="card_ontime">Quantidade de Aluguéis em Dia:</p>
+                    <h3 class="card-value" data-i18n="card_ontime_val">275 Aluguéis</h3>
                 </div>
 
                 <div class="card-status card-yellow">
-                    <p class="card-title">Quantidade de Aluguéis Perto de Vencer:</p>
-                    <h3 class="card-value">100 Aluguéis</h3>
+                    <p class="card-title" data-i18n="card_expiring">Quantidade de Aluguéis Perto de Vencer:</p>
+                    <h3 class="card-value" data-i18n="card_expiring_val">100 Aluguéis</h3>
                 </div>
 
                 <div class="card-status card-red">
-                    <p class="card-title">Quantidade de Aluguéis em Atraso:</p>
-                    <h3 class="card-value">10 Aluguéis</h3>
+                    <p class="card-title" data-i18n="card_late">Quantidade de Aluguéis em Atraso:</p>
+                    <h3 class="card-value" data-i18n="card_late_val">10 Aluguéis</h3>
                 </div>
             </div>
 
             <div class="dashboard-grid">
                 <div class="dashboard-col">
                     <div class="dashboard-box">
-                        <div class="box-header">Últimos Livros Alugados</div>
+                        <div class="box-header" data-i18n="box_latest_rentals">Últimos Livros Alugados</div>
                         <div class="box-content">
                             <ol class="list-rented-books">
                                 <li>1. O Diário de Anne Frank</li>
@@ -68,21 +71,21 @@
                     </div>
 
                     <div class="dashboard-box">
-                        <div class="box-header">Quantitativos Globais</div>
+                        <div class="box-header" data-i18n="box_globals">Quantitativos Globais</div>
                         <div class="box-content">
                             <div class="table-globals">
                                 <div class="row-global">
-                                    <span>Aluguéis Realizados</span>
+                                    <span data-i18n="global_rentals">Aluguéis Realizados</span>
                                     <span>128</span>
                                 </div>
                                 <hr>
                                 <div class="row-global">
-                                    <span>Livros Cadastrados</span>
+                                    <span data-i18n="global_books">Livros Cadastrados</span>
                                     <span>324</span>
                                 </div>
                                 <hr>
                                 <div class="row-global">
-                                    <span>Editoras Cadastradas</span>
+                                    <span data-i18n="global_publishers">Editoras Cadastradas</span>
                                     <span>28</span>
                                 </div>
                             </div>
@@ -92,7 +95,7 @@
 
                 <div class="dashboard-col">
                     <div class="dashboard-box">
-                        <div class="box-header">Quantidade de Livros Alugados</div>
+                        <div class="box-header" data-i18n="box_qty_books">Quantidade de Livros Alugados</div>
                         <div class="box-content">
                             <div class="list-quantities">
                                 <div class="item-qty">
@@ -126,13 +129,13 @@
                     </div>
 
                     <div class="dashboard-box">
-                        <div class="box-header">Livro Mais Alugado</div>
+                        <div class="box-header" data-i18n="box_most_rented">Livro Mais Alugado</div>
                         <div class="box-content most-rented-content">
                             <div class="book-info-text">
-                                <p><strong>Título do Livro:</strong> O Menino do Pijama Listrado</p>
-                                <p><strong>Editora:</strong> Seguinte</p>
-                                <p><strong>Data de Lançamento:</strong> 5 de janeiro de 2006</p>
-                                <p><strong>Quantidade:</strong> 100</p>
+                                <p><strong data-i18n="label_book_title">Título do Livro:</strong> O Menino do Pijama Listrado</p>
+                                <p><strong data-i18n="label_publisher">Editora:</strong> Seguinte</p>
+                                <p><strong data-i18n="label_release_date">Data de Lançamento:</strong> 5 de janeiro de 2006</p>
+                                <p><strong data-i18n="label_quantity">Quantidade:</strong> 100</p>
                             </div>
                             <div class="book-cover">
                                 <img src="../../imgs/book-cover-ex.jpg" alt="Capa do livro" onerror="this.src='../../imgs/book.svg'">

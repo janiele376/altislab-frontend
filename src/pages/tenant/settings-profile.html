@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Configurações</title>
-    <link rel="stylesheet" href="../../style/tenant/settings-profile.css"></head>
+    <title data-i18n="doc_title_settings">Configurações</title>
+    <link rel="stylesheet" href="../../style/tenant/settings-profile.css">
+    <link rel="stylesheet" href="../../style/theme.css">
+    <script src="../../js/tenant/settings-profile.js"></script>
+    <script src="../../js/theme.js"></script>
+    <script src="../../js/language.js" defer></script>
 </head>
-    <body>
+<body>
     <header id="header">
         <div class="container-title">
             <img class="img-book" alt="logo" src="../../imgs/book.svg">
-            <h2 class="title">Biblioteca Configurações</h2>
-            <script src="../../js/masks.js" defer></script>
+            <h2 class="title" data-i18n="header_title_settings">Biblioteca Configurações</h2>
         </div>
     </header>
 
@@ -21,49 +24,51 @@
             <div class="container-title-img-form">
                 <div class="img-form">
                     <a href="../../pages/tenant/dashboard-tenant.html">
-                        <img src="../../imgs/back-arrow.svg">
+                        <img src="../../imgs/back-arrow.svg" alt="Voltar">
                     </a>
                 </div>
                 <div class="title-form">
-                    <img src="../../imgs/book.svg">
-                    <h2>Configurações</h2>
+                    <img src="../../imgs/book.svg" alt="Ícone Livro">
+                    <h2 data-i18n="title_settings">Configurações</h2>
                 </div>
             </div>
 
             <div class="container-btns">
-                <button class="btn-profile">Perfil</button>
-                <button class="btn-accessibility" onclick="window.location.href='../tenant/settings-accessibility.html'">Acessibilidade</button>
+                <button class="btn-profile" data-i18n="tab_profile">Perfil</button>
+                <button class="btn-accessibility" onclick="window.location.href='../tenant/settings-accessibility.html'" data-i18n="tab_accessibility">Acessibilidade</button>
             </div>
 
             <div class="container-img-profile">
-                <img src="../../imgs/user-img-ex.jpg" class="img-user">
-                <p class="nome-user">Nome Completo</p>
+                <img src="../../imgs/user-img-ex.jpg" class="img-user" alt="Foto do usuário">
+                <p id="profile-name" class="nome-user" data-i18n="placeholder_full_name">Nome Completo</p>
             </div>
 
             <hr class="line">
 
             <div class="container-imgs-info-profile">
                 <div class="imgs-profile">
-                    <img src="../../imgs/mail.svg">
-                    <img src="../../imgs/telephone.svg">
-                    <img src="../../imgs/calendar.svg">
-                    <img src="../../imgs/cpf.svg">
-                    <img src="../../imgs/location.svg">
-
+                    <img src="../../imgs/mail.svg" alt="Email">
+                    <img src="../../imgs/telephone.svg" alt="Telefone">
+                    <img src="../../imgs/calendar.svg" alt="Data de Nascimento">
+                    <img src="../../imgs/cpf.svg" alt="CPF">
+                    <img src="../../imgs/location.svg" alt="Endereço">
                 </div>
             
                 <div class="info-profile">
-                    <p>E-mail: </p>
-                    <p>Telefone: </p>
-                    <p>Data de Nascimento: </p>
-                    <p>CPF: </p>
-                    <p>Endereço: </p>
+                    <p id="profile-email"><span data-i18n="label_email">E-mail: </span></p>
+                    <p id="profile-phone"><span data-i18n="label_phone">Telefone: </span></p>
+                    <p id="profile-birth"><span data-i18n="label_birth_date">Data de Nascimento: </span></p>
+                    <p id="profile-cpf"><span data-i18n="label_cpf">CPF: </span></p>
+                    <p id="profile-address"><span data-i18n="label_address">Endereço: </span></p>
                 </div>
             </div>
 
             <hr class="line">
 
-            <button class="edit-info" onclick="window.location.href='../tenant/editing-information.html'"><img src="../../imgs/edit-info.svg" class="edit-figure">Editar Informações</button>
+            <button class="edit-info" onclick="window.location.href='../tenant/editing-information.html'">
+                <img src="../../imgs/edit-info.svg" class="edit-figure" alt="Editar">
+                <span data-i18n="btn_edit_info">Editar Informações</span>
+            </button>
         </article>
 
     </section>

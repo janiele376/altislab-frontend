@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../style/admin/list-users.css">
+    <link rel="stylesheet" href="../../style/theme.css">
     <script src="../../js/admin/list-users.js" defer></script>
-    <title>Usuários</title>
+    <script src="../../js/theme.js"></script>
+    <script src="../../js/language.js" defer></script>
+    <title data-i18n="doc_title_users">Usuários</title>
 </head>
 <body>
     <header id="header">
         <div class="container-title">
             <img class="img-book" alt="logo" src="../../imgs/book.svg">
-            <h2 class="title">Biblioteca Usuários</h2>
+            <h2 class="title" data-i18n="header_title_users">Biblioteca Usuários</h2>
             <div class="container-dashboard-header">
                 <div class="imgs">
                     <img src="../../imgs/user-img-ex.jpg" class="img-user">
@@ -19,7 +22,7 @@
                 </div>
 
                 <div class="text">   
-                    <p>Usuário</p>  <p>Ajustes</p>
+                    <p data-i18n="nav_user">Usuário</p>  <p data-i18n="nav_settings">Ajustes</p>
                 </div>
             </div>
         </div>
@@ -27,11 +30,11 @@
 
     <section id="body">
         <article class="container-menu">
-            <button class="btn-publishers"><a href="../admin/list-publishers.html">Editoras</a></button>
-            <button class="btn-books"><a href="../admin/list-books.html">Livros</a></button>
-            <button class="btn-users">Usuários</button>
-            <button class="btn-rentals"><a href="../admin/list-rentals.html">Aluguéis</a></button>
-            <button class="btn-dashboard"><a href="../admin/dashboard-admin.html">Dashboard</a></button>
+            <button class="btn-publishers"><a href="../admin/list-publishers.html" data-i18n="menu_publishers">Editoras</a></button>
+            <button class="btn-books"><a href="../admin/list-books.html" data-i18n="menu_books">Livros</a></button>
+            <button class="btn-users" data-i18n="menu_users">Usuários</button>
+            <button class="btn-rentals"><a href="../admin/list-rentals.html" data-i18n="menu_rentals">Aluguéis</a></button>
+            <button class="btn-dashboard"><a href="../admin/dashboard-admin.html" data-i18n="menu_dashboard">Dashboard</a></button>
         </article>
 
         <article class="container-rentals">
@@ -39,7 +42,7 @@
             <div class="container-list">
 
                 <div class="container-search">
-                    <input type="text" placeholder="pesquisar usuários..." class="input-search">
+                    <input type="text" placeholder="pesquisar usuários..." class="input-search" data-i18n-placeholder="placeholder_search_users">
                     <p>|</p>
                     <img src="../../imgs/filters.svg" alt="filtros">
                     <img src="../../imgs/search.svg" alt="pesquisar">
@@ -48,12 +51,12 @@
                 <hr class="line-search">
 
                 <div class="container-table-info">
-                    <h3>Nome do Usuário</h3>
-                    <h3>CPF</h3>
-                    <h3>Data de Nasc.</h3>
-                    <h3>Endereço</h3>
-                    <h3>Status</h3>
-                    <h3 class="action">Ações</h3>
+                    <h3 data-i18n="col_user_name">Nome do Usuário</h3>
+                    <h3 data-i18n="col_cpf">CPF</h3>
+                    <h3 data-i18n="col_birth_date">Data de Nasc.</h3>
+                    <h3 data-i18n="col_address">Endereço</h3>
+                    <h3 data-i18n="col_status">Status</h3>
+                    <h3 class="action" data-i18n="col_actions">Ações</h3>
                 </div>
 
                 <hr>
@@ -63,10 +66,10 @@
                     <p class="cpf-p">999.999.999-99</p>
                     <p class="date-birth-p">01/05/2026</p>
                     <p class="address-p">Rua do Jardim, 123</p>
-                    <p class="status-p status-active">ATIVADO</p>
+                    <p class="status-p status-active" data-i18n="status_activated">ATIVADO</p>
                     <div class="container-btns">
-                        <button class="btn-activate">ATIVADO</button>
-                        <button class="btn-deactivate" onclick="abrirModalStatus('Maria Silva', '999.999.999-99')">DESATIVADO</button>
+                        <button class="btn-activate" data-i18n="btn_activated">ATIVADO</button>
+                        <button class="btn-deactivate" onclick="abrirModalStatus('Maria Silva', '999.999.999-99')" data-i18n="btn_deactivated">DESATIVADO</button>
                     </div>
                 </div>
             
@@ -77,10 +80,10 @@
                     <p class="cpf-p">999.999.999-99</p>
                     <p class="date-birth-p">01/05/2026</p>
                     <p class="address-p">Rua do Jardim, 123</p>
-                    <p class="status-p status-active">ATIVADO</p>
+                    <p class="status-p status-active" data-i18n="status_activated">ATIVADO</p>
                     <div class="container-btns">
-                        <button class="btn-activate">ATIVADO</button>
-                        <button class="btn-deactivate" onclick="abrirModalStatus('Maria Silva', '999.999.999-99')">DESATIVADO</button>
+                        <button class="btn-activate" data-i18n="btn_activated">ATIVADO</button>
+                        <button class="btn-deactivate" onclick="abrirModalStatus('Maria Silva', '999.999.999-99')" data-i18n="btn_deactivated">DESATIVADO</button>
                     </div>
                 </div>
 
@@ -91,10 +94,10 @@
                     <p class="cpf-p">999.999.999-99</p>
                     <p class="date-birth-p">01/05/2026</p>
                     <p class="address-p">Rua do Jardim, 123</p>
-                    <p class="status-p status-active">ATIVADO</p>
+                    <p class="status-p status-active" data-i18n="status_activated">ATIVADO</p>
                     <div class="container-btns">
-                        <button class="btn-activate">ATIVADO</button>
-                        <button class="btn-deactivate" onclick="abrirModalStatus('Maria Silva', '999.999.999-99')">DESATIVADO</button>
+                        <button class="btn-activate" data-i18n="btn_activated">ATIVADO</button>
+                        <button class="btn-deactivate" onclick="abrirModalStatus('Maria Silva', '999.999.999-99')" data-i18n="btn_deactivated">DESATIVADO</button>
                     </div>
                 </div>
 
@@ -105,10 +108,10 @@
                     <p class="cpf-p">999.999.999-99</p>
                     <p class="date-birth-p">01/05/2026</p>
                     <p class="address-p">Rua do Jardim, 123</p>
-                    <p class="status-p status-active">ATIVADO</p>
+                    <p class="status-p status-active" data-i18n="status_activated">ATIVADO</p>
                     <div class="container-btns">
-                        <button class="btn-activate">ATIVADO</button>
-                        <button class="btn-deactivate" onclick="abrirModalStatus('Maria Silva', '999.999.999-99')">DESATIVADO</button>
+                        <button class="btn-activate" data-i18n="btn_activated">ATIVADO</button>
+                        <button class="btn-deactivate" onclick="abrirModalStatus('Maria Silva', '999.999.999-99')" data-i18n="btn_deactivated">DESATIVADO</button>
                     </div>
                 </div>
 
@@ -119,10 +122,10 @@
                     <p class="cpf-p">999.999.999-99</p>
                     <p class="date-birth-p">01/05/2026</p>
                     <p class="address-p">Rua do Jardim, 123</p>
-                    <p class="status-p status-active">ATIVADO</p>
+                    <p class="status-p status-active" data-i18n="status_activated">ATIVADO</p>
                     <div class="container-btns">
-                        <button class="btn-activate">ATIVADO</button>
-                        <button class="btn-deactivate" onclick="abrirModalStatus('Maria Silva', '999.999.999-99')">DESATIVADO</button>
+                        <button class="btn-activate" data-i18n="btn_activated">ATIVADO</button>
+                        <button class="btn-deactivate" onclick="abrirModalStatus('Maria Silva', '999.999.999-99')" data-i18n="btn_deactivated">DESATIVADO</button>
                     </div>
                 </div>
 
@@ -130,7 +133,7 @@
 
                 <div class="btn-next-page"> 
                     <button class="btn-prev"><img src="../../imgs/arrow_next_left.svg" alt="anterior"></button>
-                    <p>1 de 5</p>
+                    <p><span data-i18n="page_prefix">1 de</span> 5</p>
                     <button class="btn-next"><img src="../../imgs/arrow_next_right.svg" alt="próximo"></button>
                 </div>
             </div>
@@ -140,26 +143,26 @@
             <div class="container-create-rentals modal-confirmation">
                 <div class="container-title-rental">
                     <a id="close-modal-status"><img src="../../imgs/back-arrow.svg" class="img-rental-form" alt="Voltar"></a>
-                    <h1 class="title-rental-form">Alterar Status</h1>
+                    <h1 class="title-rental-form" data-i18n="modal_change_status_title">Alterar Status</h1>
                 </div>
                 
                 <div class="container-form">
                     <div class="confirm-message">
-                        <p>Deseja alterar o status deste usuário?</p>
-                        <span class="warning-text">O usuário perderá o acesso caso seja desativado.</span>
+                        <p data-i18n="msg_confirm_change_status">Deseja alterar o status deste usuário?</p>
+                        <span class="warning-text" data-i18n="msg_warning_change_status">O usuário perderá o acesso caso seja desativado.</span>
                     </div>
 
                     <div class="rental-summary-details">
-                        <p><strong>Usuário:</strong> <span id="status-user-name">Maria Silva</span></p>
-                        <p><strong>CPF:</strong> <span id="status-user-cpf">999.999.999-99</span></p>
+                        <p><strong data-i18n="label_user_summary">Usuário:</strong> <span id="status-user-name">Maria Silva</span></p>
+                        <p><strong data-i18n="col_cpf">CPF:</strong> <span id="status-user-cpf">999.999.999-99</span></p>
                     </div>
                 
                     <div class="btns-rentals">
                         <button class="btn-check btn-danger" id="confirm-status">
-                            <img src="../../imgs/check.svg" alt="Confirmar">CONFIRMAR
+                            <img src="../../imgs/check.svg" alt="Confirmar"><span data-i18n="btn_confirm">CONFIRMAR</span>
                         </button>
                         <button class="btn-cancel" id="cancel-status">
-                            <img src="../../imgs/cancel.svg" alt="Cancelar">CANCELAR
+                            <img src="../../imgs/cancel.svg" alt="Cancelar"><span data-i18n="btn_cancel">CANCELAR</span>
                         </button>
                     </div>
                 </div>

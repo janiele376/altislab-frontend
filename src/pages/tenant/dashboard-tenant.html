@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../style/tenant/dashboard-tenant.css">
-    <title>Dashboard</title>
+    <link rel="stylesheet" href="../../style/theme.css">
+    <script src="../../js/theme.js"></script>
+    <script src="../../js/language.js" defer></script>
+    <title data-i18n="doc_title_dashboard">Dashboard</title>
 </head>
 <body>
     <header id="header">
         <div class="container-title">
             <img class="img-book" alt="logo" src="../../imgs/book.svg">
-            <h2 class="title">Biblioteca Dashboard</h2>
+            <h2 class="title" data-i18n="header_title">Biblioteca Dashboard</h2>
             <div class="container-dashboard-header">
                 <div class="imgs">
                     <img src="../../imgs/user-img-ex.jpg" class="img-user" alt="usuário">
@@ -19,7 +22,7 @@
                 </div>
 
                 <div class="text">   
-                    <p>Usuário</p>  <p>Ajustes</p> <p>Sair</p>
+                    <p data-i18n="nav_user">Usuário</p>  <p data-i18n="nav_settings">Ajustes</p> <p data-i18n="nav_logout">Sair</p>
                 </div>
             </div>
         </div>
@@ -30,7 +33,7 @@
             <div class="dashboard-grid">
                 <div class="dashboard-col">
                     <div class="dashboard-box">
-                        <div class="box-header">Últimos Livros Alugados</div>
+                        <div class="box-header" data-i18n="box_latest_rentals">Últimos Livros Alugados</div>
                         <div class="box-content">
                             <ol class="list-rented-books">
                                 <li>1. O Diário de Anne Frank</li>
@@ -43,26 +46,26 @@
                     </div>
 
                     <div class="dashboard-box">
-                        <div class="box-header">Status dos Aluguéis</div>
+                        <div class="box-header" data-i18n="box_status_rentals">Status dos Aluguéis</div>
                         <div class="box-content">
                             <div class="status-summary-bar">
-                                <span class="badge-header badge-green">EM DIA</span>
-                                <span class="badge-header badge-yellow">PERTO DE VENCER</span>
-                                <span class="badge-header badge-red">ATRASADO</span>
+                                <span class="badge-header badge-green" data-i18n="badge_ontime">EM DIA</span>
+                                <span class="badge-header badge-yellow" data-i18n="badge_warning">PERTO DE VENCER</span>
+                                <span class="badge-header badge-red" data-i18n="badge_late">ATRASADO</span>
                             </div>
 
                             <div class="status-table">
                                 <div class="status-row">
-                                    <span>Livro | Data do início do prazo | Data final do prazo</span>
-                                    <span class="status-tag tag-green">EM DIA</span>
+                                    <span data-i18n="status_row_pattern">Livro | Data do início do prazo | Data final do prazo</span>
+                                    <span class="status-tag tag-green" data-i18n="badge_ontime">EM DIA</span>
                                 </div>
                                 <div class="status-row">
-                                    <span>Livro | Data do início do prazo | Data final do prazo</span>
-                                    <span class="status-tag tag-red">ATRASADO</span>
+                                    <span data-i18n="status_row_pattern">Livro | Data do início do prazo | Data final do prazo</span>
+                                    <span class="status-tag tag-red" data-i18n="badge_late">ATRASADO</span>
                                 </div>
                                 <div class="status-row">
-                                    <span>Livro | Data do início do prazo | Data final do prazo</span>
-                                    <span class="status-tag tag-yellow">PERTO DE VENCER</span>
+                                    <span data-i18n="status_row_pattern">Livro | Data do início do prazo | Data final do prazo</span>
+                                    <span class="status-tag tag-yellow" data-i18n="badge_warning">PERTO DE VENCER</span>
                                 </div>
                             </div>
                         </div>
@@ -71,7 +74,7 @@
 
                 <div class="dashboard-col">
                     <div class="dashboard-box">
-                        <div class="box-header">Quantidade de Livros Para Alugar</div>
+                        <div class="box-header" data-i18n="box_qty_books_rent">Quantidade de Livros Para Alugar</div>
                         <div class="box-content">
                             <div class="list-quantities">
                                 <div class="item-qty">
@@ -91,13 +94,13 @@
                     </div>
 
                     <div class="dashboard-box">
-                        <div class="box-header">Livro Mais Alugado</div>
+                        <div class="box-header" data-i18n="box_most_rented">Livro Mais Alugado</div>
                         <div class="box-content most-rented-content">
                             <div class="book-info-text">
-                                <p><strong>Título do Livro:</strong> O menino do pijama listrado</p>
-                                <p><strong>Editora:</strong> Seguinte</p>
-                                <p><strong>Data de Lançamento:</strong> 5 de janeiro de 2006</p>
-                                <p><strong>Quantidade:</strong> 100</p>
+                                <p><strong data-i18n="label_book_title">Título do Livro:</strong> O menino do pijama listrado</p>
+                                <p><strong data-i18n="label_publisher">Editora:</strong> Seguinte</p>
+                                <p><strong data-i18n="label_release_date">Data de Lançamento:</strong> 5 de janeiro de 2006</p>
+                                <p><strong data-i18n="label_quantity">Quantidade:</strong> 100</p>
                             </div>
                             <div class="book-cover">
                                 <img src="../../imgs/book-cover-ex.jpg" alt="Capa do livro" onerror="this.src='../../imgs/book.svg'">
