@@ -480,3 +480,20 @@ dialog::backdrop {
     border-color: #5E1A1A;
     color: white;
 }
+.container-form div select {
+    width: 15rem;
+    height: 2rem;
+    border-radius: 2rem;
+    border: 0.1rem solid var(--border-color, #55463C);
+    padding: 0 0.8rem;
+    background-color: var(--bg-input, white);
+    color: var(--text-main, #55463C);
+    outline: none;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.container-form div select option {
+    background-color: var(--bg-input, white);
+    color: var(--text-main, #55463C);
+}

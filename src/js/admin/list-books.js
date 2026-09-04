@@ -59,19 +59,46 @@ function getPublishers() {
   return data ? JSON.parse(data) : [];
 }
 
-function setupDatalistPublishers() {
-  let datalist = document.getElementById('datalist-publishers');
-  if (!datalist) {
-    datalist = document.createElement('datalist');
-    datalist.id = 'datalist-publishers';
-    document.body.appendChild(datalist);
-  }
-  inputBookPublisher?.setAttribute('list', 'datalist-publishers');
+// Preenche o campo de editoras (compatível com <select> ou <datalist>)
+function popularEditoras(valorSelecionado = '') {
+  if (!inputBookPublisher) return;
 
   const publishers = getPublishers();
-  datalist.innerHTML = publishers
-    .map((p) => `<option value="${p.nome || p.name || ''}">`)
-    .join('');
+  const tag = inputBookPublisher.tagName.toLowerCase();
+
+  if (tag === 'select') {
+    inputBookPublisher.innerHTML = '<option value="" disabled selected>Selecione uma editora</option>';
+
+    publishers.forEach((p) => {
+      const nome = p.nome || p.name || p.razaoSocial || '';
+      if (!nome) return;
+
+      const option = document.createElement('option');
+      option.value = nome;
+      option.textContent = nome;
+
+      if (nome === valorSelecionado) {
+        option.selected = true;
+      }
+
+      inputBookPublisher.appendChild(option);
+    });
+  } else {
+    // Caso ainda esteja usando <input> com <datalist>
+    let datalist = document.getElementById('datalist-publishers');
+    if (!datalist) {
+      datalist = document.createElement('datalist');
+      datalist.id = 'datalist-publishers';
+      document.body.appendChild(datalist);
+    }
+    inputBookPublisher.setAttribute('list', 'datalist-publishers');
+
+    datalist.innerHTML = publishers
+      .map((p) => `<option value="${p.nome || p.name || p.razaoSocial || ''}">`)
+      .join('');
+
+    inputBookPublisher.value = valorSelecionado;
+  }
 }
 
 function formatDateBR(dateStr) {
@@ -83,7 +110,8 @@ function formatDateBR(dateStr) {
 
 openCreateBtn?.addEventListener('click', () => {
   editandoCod = null;
-  setupDatalistPublishers();
+  popularEditoras();
+
   if (titleModalCreate) titleModalCreate.textContent = 'Criar Livro';
   if (inputBookName) inputBookName.value = '';
   if (inputBookCod) {
@@ -93,6 +121,7 @@ openCreateBtn?.addEventListener('click', () => {
   if (inputBookPublisher) inputBookPublisher.value = '';
   if (inputBookDate) inputBookDate.value = '';
   if (inputBookQuantity) inputBookQuantity.value = '1';
+
   modalCreate.showModal();
 });
 
@@ -102,7 +131,8 @@ openCreateBtn?.addEventListener('click', () => {
 
 function abrirModalEditar(cod, nome, editora, data, quantidade) {
   editandoCod = String(cod);
-  setupDatalistPublishers();
+  popularEditoras(editora);
+
   if (titleModalCreate) titleModalCreate.textContent = 'Editar Livro';
   if (inputBookName) inputBookName.value = nome || '';
   if (inputBookCod) {
@@ -112,6 +142,7 @@ function abrirModalEditar(cod, nome, editora, data, quantidade) {
   if (inputBookPublisher) inputBookPublisher.value = editora || '';
   if (inputBookDate) inputBookDate.value = data || '';
   if (inputBookQuantity) inputBookQuantity.value = quantidade ?? 1;
+
   modalCreate.showModal();
 }
 
@@ -136,8 +167,8 @@ confirmCreateBtn?.addEventListener('click', (e) => {
   const lancamento = inputBookDate?.value;
   const quantidade = Math.max(0, parseInt(inputBookQuantity?.value, 10) || 0);
 
-  if (!titulo || !cod) {
-    alert('Por favor, informe ao menos o Nome e o Código do livro.');
+  if (!titulo || !cod || !editora) {
+    alert('Por favor, informe ao menos o Nome, Código e a Editora do livro.');
     return;
   }
 
