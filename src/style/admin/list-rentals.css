@@ -2,58 +2,78 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  overflow: hidden;
 }
 
 #header {
-  background-color: var(--bg-card, #DBC2B0);
-  color: var(--text-main, #55463C);
-  width: 100%;
+    background-color: var(--bg-card, #DBC2B0);
+    color: var(--text-main, #55463C);
+    width: 100%;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    height: 7rem;
+    padding: 0 2rem;
 }
 
 #header .container-title {
-  display: flex;
-  gap: 1.25rem;
-  padding: 1.25rem;
-  align-items: center;
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+    padding: 0;
 }
 
 #header .title {
-  font-size: 1.875rem;
+    font-size: 1.875rem;
+    line-height: 1.2;
 }
 
 #header .img-book {
-  padding-bottom: 1rem;
+    padding-bottom: 0;
+    width: 2.8rem;
+    height: auto;
 }
 
 #header .container-dashboard-header {
-  margin-left: 65%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.2rem;
+}
+
+#header .container-dashboard-header .imgs {
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+    padding-left: 50rem;
 }
 
 #header .container-dashboard-header .text {
-  display: flex;
-  gap: 1.8rem;
-  margin-left: 1.5rem;
+    display: flex;
+    gap: 1.3rem;
+    font-size: 0.8rem;
 }
 
 #header .container-dashboard-header .imgs .img-user {
-  border-radius: 50%;
-  width: 3rem;
-  height: 3rem;
-  margin-left: 1rem;
-  object-fit: cover;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-left: 0;
+    object-fit: cover;
 }
 
-#header .container-dashboard-header .imgs .img-adjustments {
-  width: 3rem;
-  height: 3rem;
-  margin-left: 1rem;
-  cursor: pointer;
-  transition: opacity 0.2s;
+#header .container-dashboard-header .imgs .img-adjustments,
+#header .container-dashboard-header .imgs .img-logout {
+    width: 2.2rem;
+    height: 2.2rem;
+    margin-left: 0;
+    cursor: pointer;
+    transition: opacity 0.2s;
 }
 
-#header .container-dashboard-header .imgs .img-adjustments:hover {
-  opacity: 0.6;
+#header .container-dashboard-header .imgs .img-adjustments:hover,
+#header .container-dashboard-header .imgs .img-logout:hover {
+    opacity: 0.6;
 }
 
 #body {
@@ -67,16 +87,19 @@
 }
 
 .container-menu {
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
-  background-color: var(--btn-secondary-bg, #927A6A);
-  color: var(--text-main, white);
-  width: 10rem;
-  min-height: 100vh;
-  padding-bottom: 70rem;
-  position: fixed;
-  right: 90%;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    align-items: center;
+    box-sizing: border-box;
+    background-color: var(--btn-secondary-bg, #927A6A);
+    color: var(--text-main, white);
+    width: 10rem;
+    height: calc(100vh - 5.8rem);
+    position: fixed;
+    top: 7rem;
+    left: 0;
+    z-index: 5;
 }
 
 .container-menu button {
