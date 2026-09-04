@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     <script src="../../js/theme.js"></script>
     <script src="../../js/language.js" defer></script>
 </head>
+
 <body>
     <header id="header">
         <div class="container-title-logo">
@@ -21,6 +23,11 @@
     <section id="body">
         <article class="container-profile">
             <div class="container-title-img-form">
+                <div class="img-form">
+                    <a href="../tenant/settings-profile.html">
+                        <img src="../../imgs/back-arrow.svg" class="img-back-arrow" alt="Voltar">
+                    </a>
+                </div>
                 <div class="title-form">
                     <img src="../../imgs/book.svg" alt="Ícone Livro">
                     <h2 data-i18n="title_settings">Configurações</h2>
@@ -29,12 +36,27 @@
 
             <div class="container-btns">
                 <button type="button" class="btn-profile" data-i18n="tab_profile">Perfil</button>
-                <button type="button" class="btn-accessibility" data-i18n="tab_accessibility">Acessibilidade</button>
+                <button type="button" class="btn-accessibility"
+                    onclick="window.location.href='../tenant/settings-accessibility.html'"
+                    data-i18n="tab_accessibility">Acessibilidade</button>
             </div>
 
+            <!-- Foto de Perfil com clique para alterar -->
             <div class="container-img-profile">
-                <img src="../../imgs/user-img-ex.jpg" class="img-user" alt="Foto de perfil">
-                <p class="name-user" data-i18n="placeholder_full_name">Nome Completo</p>
+                <div class="wrapper-avatar-change" id="btn-change-photo" title="Clique para alterar a foto"
+                    style="position: relative; width: 6rem; height: 6rem; border-radius: 50%; overflow: hidden; cursor: pointer; border: 2px solid var(--border-color, #55463C);">
+                    <img src="../../imgs/user.svg" class="img-user" id="edit-profile-img" alt="Foto de perfil"
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="overlay-change-photo"
+                        style="position: absolute; bottom: 0; left: 0; width: 100%; height: 35%; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center;">
+                        <img src="../../imgs/edit-info.svg" alt="Editar foto"
+                            style="width: 1.1rem; height: 1.1rem; filter: invert(1);">
+                    </div>
+                </div>
+                <!-- Input de arquivo invisível -->
+                <input type="file" id="input-edit-photo" accept="image/*" style="display: none;">
+
+                <p class="name-user" id="profile-name">Nome Completo</p>
             </div>
 
             <hr class="line">
@@ -47,7 +69,7 @@
                     <img src="../../imgs/cpf.svg" alt="CPF">
                     <img src="../../imgs/location.svg" alt="Endereço">
                 </div>
-            
+
                 <div class="info-profile">
                     <p data-i18n="label_email">E-mail: </p>
                     <p data-i18n="label_phone">Telefone: </p>
@@ -57,11 +79,14 @@
                 </div>
 
                 <div class="inputs-profile">
-                    <input placeholder="email@gmail.com" type="email" name="email">
-                    <input placeholder="00 0 0000-0000" type="tel" name="telefone">
-                    <input placeholder="DD/MM/YYYY" type="date" name="data-nascimento" readonly title="Caso queira trocar, contate o suporte." data-i18n-title="tooltip_support_change">
-                    <input placeholder="000.000.000-00" type="tel" name="cpf" readonly title="Caso queira trocar, contate o suporte." data-i18n-title="tooltip_support_change">
-                    <input placeholder="Logradouro, Nº - Bairro" type="text" name="localizacao" data-i18n-placeholder="placeholder_address_format">
+                    <input placeholder="email@gmail.com" type="email" name="email" id="input-email">
+                    <input placeholder="00 0 0000-0000" type="tel" name="telefone" id="input-telefone">
+                    <input placeholder="DD/MM/YYYY" type="date" name="data-nascimento" id="input-data-nasc" readonly
+                        title="Caso queira trocar, contate o suporte." data-i18n-title="tooltip_support_change">
+                    <input placeholder="000.000.000-00" type="tel" name="cpf" id="input-cpf" readonly
+                        title="Caso queira trocar, contate o suporte." data-i18n-title="tooltip_support_change">
+                    <input placeholder="Logradouro, Nº - Bairro" type="text" name="localizacao" id="input-localizacao"
+                        data-i18n-placeholder="placeholder_address_format">
                 </div>
             </div>
 
@@ -74,7 +99,7 @@
                         <img src="../../imgs/key.svg" alt="Nova Senha">
                         <img src="../../imgs/key.svg" alt="Confirmar Senha">
                     </div>
-                
+
                     <div class="info-profile">
                         <p data-i18n="label_old_password">Senha Antiga: </p>
                         <p data-i18n="label_new_password">Nova Senha: </p>
@@ -83,18 +108,24 @@
 
                     <div class="inputs-profile">
                         <div class="container-password-input">
-                            <input type="password" id="input-current-password" placeholder="Digite sua senha atual" maxlength="8" data-i18n-placeholder="placeholder_current_pwd">
-                            <img class="btn-toggle-password" id="toggle-current-password" src="../../imgs/visibility_off.svg" alt="Mostrar senha atual">
+                            <input type="password" id="input-current-password" placeholder="Digite sua senha atual"
+                                maxlength="8" data-i18n-placeholder="placeholder_current_pwd">
+                            <img class="btn-toggle-password" id="toggle-current-password"
+                                src="../../imgs/visibility_off.svg" alt="Mostrar senha atual">
                         </div>
 
                         <div class="container-password-input">
-                            <input type="password" id="input-new-password" placeholder="Digite a nova senha" maxlength="8" data-i18n-placeholder="placeholder_new_pwd">
-                            <img class="btn-toggle-password" id="toggle-new-password" src="../../imgs/visibility_off.svg" alt="Mostrar nova senha">
+                            <input type="password" id="input-new-password" placeholder="Digite a nova senha"
+                                maxlength="8" data-i18n-placeholder="placeholder_new_pwd">
+                            <img class="btn-toggle-password" id="toggle-new-password"
+                                src="../../imgs/visibility_off.svg" alt="Mostrar nova senha">
                         </div>
 
                         <div class="container-password-input">
-                            <input type="password" id="input-confirm-password" placeholder="Confirme a nova senha" maxlength="8" data-i18n-placeholder="placeholder_confirm_pwd">
-                            <img class="btn-toggle-password" id="toggle-confirm-password" src="../../imgs/visibility_off.svg" alt="Mostrar confirmar nova senha">
+                            <input type="password" id="input-confirm-password" placeholder="Confirme a nova senha"
+                                maxlength="8" data-i18n-placeholder="placeholder_confirm_pwd">
+                            <img class="btn-toggle-password" id="toggle-confirm-password"
+                                src="../../imgs/visibility_off.svg" alt="Mostrar confirmar nova senha">
                         </div>
                     </div>
                 </div>
@@ -107,9 +138,12 @@
             <hr class="line">
 
             <div class="container-btns-end">
-                <button type="submit" class="btn-confirm" data-i18n="btn_confirm_action">Confirmar</button>
+                <button type="submit" class="btn-confirm" id="btn-save-changes"
+                    data-i18n="btn_confirm_action">Confirmar</button>
                 <p data-i18n="divider_or">----ou----</p>
-                <button type="button" class="btn-cancel" data-i18n="btn_cancel_action">Cancelar</button>
+                <button type="button" class="btn-cancel"
+                    onclick="window.location.href='../tenant/settings-profile.html'"
+                    data-i18n="btn_cancel_action">Cancelar</button>
             </div>
         </article>
     </section>
@@ -117,13 +151,15 @@
     <dialog id="supportModal" class="support-modal">
         <form method="dialog" class="support-form">
             <h3 class="modal-title" data-i18n="modal_support_title">Suporte ao Usuário</h3>
-            <p class="modal-description" data-i18n="modal_support_desc">Informe seu e-mail e descreva o motivo do contato para nossa equipe ajudar você.</p>
-            
+            <p class="modal-description" data-i18n="modal_support_desc">Informe seu e-mail e descreva o motivo do
+                contato para nossa equipe ajudar você.</p>
+
             <label for="supportEmail" class="modal-label" data-i18n="label_support_email">Seu E-mail:</label>
             <input type="email" id="supportEmail" class="modal-input" placeholder="email@exemplo.com" required>
 
             <label for="supportMessage" class="modal-label" data-i18n="label_support_msg">Situação / Dúvida:</label>
-            <textarea id="supportMessage" class="modal-textarea" rows="4" placeholder="Descreva sua solicitação..." required data-i18n-placeholder="placeholder_support_msg"></textarea>
+            <textarea id="supportMessage" class="modal-textarea" rows="4" placeholder="Descreva sua solicitação..."
+                required data-i18n-placeholder="placeholder_support_msg"></textarea>
 
             <div class="modal-actions">
                 <button type="submit" class="btn-send-support" data-i18n="btn_send">Enviar</button>
@@ -132,4 +168,5 @@
         </form>
     </dialog>
 </body>
+
 </html>

@@ -1,26 +1,31 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-#header{
+
+#header {
     background-color: var(--bg-card, #DBC2B0);
     color: var(--text-main, #55463C);
     width: 100%;
 }
-#header .container-title{
+
+#header .container-title {
     display: flex;
     gap: 1.25rem;
     padding: 1.25rem;
     align-items: center;
 }
-#header .title{
+
+#header .title {
     font-size: 1.875rem;
 }
-#header .img-book{
+
+#header .img-book {
     padding-bottom: 0.625rem;
 }
-#body{
+
+#body {
     background-color: var(--bg-page, #E9E4DE);
     display: flex;
     justify-content: center;
@@ -30,7 +35,8 @@
     padding: 2.5rem 1rem;
     flex-direction: column;
 }
-.container-accessibility{
+
+.container-accessibility {
     background-color: var(--bg-card, #DBC2B0);
     color: var(--text-main, #55463C);
     border-radius: 1.875rem;
@@ -42,7 +48,8 @@
     padding: 1.5rem;
     margin-bottom: 2rem;
 }
-.container-accessibility .container-title-img-form{
+
+.container-accessibility .container-title-img-form {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -50,23 +57,28 @@
     width: 100%;
     position: relative;
 }
-.container-accessibility .container-title-img-form .img-form{
+
+.container-accessibility .container-title-img-form .img-form {
     position: absolute;
     left: 0.5rem;
 }
-.container-accessibility .title-form{
+
+.container-accessibility .title-form {
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
-.container-accessibility .title-form img{
+
+.container-accessibility .title-form img {
     height: 1.5rem;
 }
-.container-accessibility .container-btns{
+
+.container-accessibility .container-btns {
     display: flex;
     margin-top: 1rem;
 }
-.container-accessibility .container-btns .btn-profile{
+
+.container-accessibility .container-btns .btn-profile {
     background-color: var(--btn-secondary-bg, #DBC2B0);
     color: var(--btn-secondary-text, #55463C);
     border: 0.125rem solid var(--border-color, #55463C);
@@ -77,10 +89,12 @@
     cursor: pointer;
     transition: opacity 0.2s;
 }
-.container-accessibility .container-btns .btn-profile:hover{
+
+.container-accessibility .container-btns .btn-profile:hover {
     opacity: 0.7;
 }
-.container-accessibility .container-btns .btn-accessibility{
+
+.container-accessibility .container-btns .btn-accessibility {
     background-color: var(--btn-primary-bg, #55463C);
     color: var(--btn-primary-text, #FFFFFF);
     border: 0.125rem solid var(--btn-primary-border, #55463C);
@@ -89,39 +103,46 @@
     width: 10rem;
     height: 2rem;
 }
-.container-accessibility .line{
+
+.container-accessibility .line {
     width: 20rem;
     height: 0.095rem;
     border: none;
     background-color: var(--border-color, #55463C);
     margin: 1.2rem 0;
 }
-.container-accessibility .container-btns-info{
+
+.container-accessibility .container-btns-info {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 20rem;
     gap: 1rem;
 }
-.container-accessibility .container-btns-info .info{
+
+.container-accessibility .container-btns-info .info {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
 }
-.container-accessibility .container-btns-info .info p{
+
+.container-accessibility .container-btns-info .info p {
     font-size: 0.95rem;
     font-weight: 500;
 }
-.container-accessibility .container-btns-info .btns{
+
+.container-accessibility .container-btns-info .btns {
     flex-direction: column;
     margin-top: 0.6rem;
     align-items: flex-end;
 }
-.container-accessibility .btns .theme-toggle-group{
+
+.container-accessibility .btns .theme-toggle-group {
     display: flex;
 }
+
 .container-accessibility .btns .btn-light,
-.container-accessibility .btns .btn-dark{
+.container-accessibility .btns .btn-dark {
     width: 5rem;
     height: 2rem;
     cursor: pointer;
@@ -131,22 +152,26 @@
     color: var(--btn-secondary-text, #55463C);
     transition: all 0.2s ease;
 }
-.container-accessibility .btns .btn-light{
+
+.container-accessibility .btns .btn-light {
     border-top-left-radius: 2rem;
     border-bottom-left-radius: 2rem;
 }
-.container-accessibility .btns .btn-dark{
+
+.container-accessibility .btns .btn-dark {
     border-top-right-radius: 2rem;
     border-bottom-right-radius: 2rem;
 }
+
 .container-accessibility .btns .btn-light.active,
-.container-accessibility .btns .btn-dark.active{
+.container-accessibility .btns .btn-dark.active {
     background-color: var(--btn-primary-bg, #55463C);
     color: var(--btn-primary-text, #FFFFFF);
     border-color: var(--btn-primary-border, #55463C);
     font-weight: bold;
 }
-.container-accessibility .btns .select-language{
+
+.container-accessibility .btns .select-language {
     width: 10.2rem;
     height: 2rem;
     background-color: var(--bg-card, #DBC2B0);
@@ -160,7 +185,8 @@
     transition: opacity 0.2s;
     margin-top: 1rem;
 }
-.container-accessibility .btns .select-language:hover{
+
+.container-accessibility .btns .select-language:hover {
     opacity: 0.8;
     margin-top: 1rem;
 }

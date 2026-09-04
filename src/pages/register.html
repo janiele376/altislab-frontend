@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     <script src="../js/register.js" defer></script>
     <script src="../js/language.js" defer></script>
 </head>
+
 <body>
     <header id="header">
         <div class="container-title">
@@ -71,31 +73,74 @@
                     <input placeholder="00 0 0000-0000" type="tel" name="telefone" id="input-telefone">
 
                     <p data-i18n="label_location">Localização:</p>
-                    <input placeholder="Logradouro, Nº - Bairro" type="text" name="localizacao" id="input-localizacao" data-i18n-placeholder="placeholder_address_format">
-                
+                    <input placeholder="Logradouro, Nº - Bairro" type="text" name="localizacao" id="input-localizacao"
+                        data-i18n-placeholder="placeholder_address_format">
+
                     <p data-i18n="label_password">Senha:</p>
                     <div class="container-password-input">
-                        <input placeholder="Senha" type="password" name="senha" id="input-password" maxlength="8" data-i18n-placeholder="placeholder_password">
-                        <img class="btn-toggle-password" id="toggle-password" src="../imgs/visibility_off.svg" alt="Mostrar senha">
+                        <input placeholder="Senha" type="password" name="senha" id="input-password" maxlength="8"
+                            data-i18n-placeholder="placeholder_password">
+                        <img class="btn-toggle-password" id="toggle-password" src="../imgs/visibility_off.svg"
+                            alt="Mostrar senha">
                     </div>
 
                     <p data-i18n="label_confirm_password">Confirmar Senha:</p>
                     <div class="container-password-input">
-                        <input placeholder="Confirmar Senha" type="password" name="confirmar-senha" id="input-confirm-password" maxlength="8" data-i18n-placeholder="placeholder_confirm_pwd">
-                        <img class="btn-toggle-password" id="toggle-confirm-password" src="../imgs/visibility_off.svg" alt="Mostrar confirmar senha">
+                        <input placeholder="Confirmar Senha" type="password" name="confirmar-senha"
+                            id="input-confirm-password" maxlength="8" data-i18n-placeholder="placeholder_confirm_pwd">
+                        <img class="btn-toggle-password" id="toggle-confirm-password" src="../imgs/visibility_off.svg"
+                            alt="Mostrar confirmar senha">
                     </div>
                 </div>
             </div>
 
             <div class="btns">
-                <button class="btn-register" name="btn-register" data-i18n="btn_submit_register">Cadastrar</button>
+                <button type="submit" class="btn-register" id="btn-register" name="btn-register"
+                    data-i18n="btn_submit_register">Cadastrar</button>
                 <p class="monitor-normal" data-i18n="divider_or_long">----------------ou-----------------</p>
                 <p class="monitor-larger" data-i18n="divider_or_long">------------------ou----------------</p>
-                <button type="button" class="btn-cancel" name="btn-cancel" onclick="window.location.href='../pages/login.html'" data-i18n="btn_cancel_action">Cancelar</button>
+                <button type="button" class="btn-cancel" name="btn-cancel"
+                    onclick="window.location.href='../pages/login.html'" data-i18n="btn_cancel_action">Cancelar</button>
             </div>
 
         </form>
 
+        <dialog id="modal-photo">
+            <div class="container-create-rentals modal-confirmation" style="max-width: 26rem; text-align: center;">
+                <div class="container-title-rental">
+                    <h1 class="title-rental-form" style="font-size: 1.5rem;" data-i18n="modal_photo_title">Foto de
+                        Perfil</h1>
+                </div>
+
+                <div class="container-form"
+                    style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+                    <p data-i18n="modal_photo_prompt">Deseja adicionar uma foto de perfil agora?</p>
+
+                    <div
+                        style="width: 6.5rem; height: 6.5rem; border-radius: 50%; overflow: hidden; border: 2px solid var(--border-color, #55463C);">
+                        <img id="preview-photo" src="../imgs/user.svg" alt="Pré-visualização"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+
+                    <input type="file" id="input-file-photo" accept="image/*" style="display: none;">
+
+                    <button type="button" id="btn-choose-gallery" class="btn-register"
+                        style="width: 14rem; height: 2.2rem; cursor: pointer;" data-i18n="btn_choose_gallery">
+                        Escolher da Galeria
+                    </button>
+
+                    <div class="btns"
+                        style="margin-top: 1rem; width: 100%; display: flex; justify-content: center; gap: 1rem;">
+                        <button type="button" class="btn-register" id="btn-confirm-photo" style="width: 8rem;"
+                            data-i18n="btn_confirm">SALVAR</button>
+                        <button type="button" class="btn-cancel" id="btn-skip-photo" style="width: 8rem;"
+                            data-i18n="btn_skip">PULAR</button>
+                    </div>
+                </div>
+            </div>
+        </dialog>
+
     </section>
 </body>
+
 </html>

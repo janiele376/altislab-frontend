@@ -1,26 +1,31 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-#header{
+
+#header {
     background-color: var(--bg-card, #DBC2B0);
     color: var(--text-main, #55463C);
     width: 100%;
 }
-#header .container-title{
+
+#header .container-title {
     display: flex;
     gap: 1.25rem;
     padding: 1.25rem;
     align-items: center;
 }
-#header .title{
+
+#header .title {
     font-size: 1.875rem;
 }
-#header .img-book{
+
+#header .img-book {
     padding-bottom: 0.625rem;
 }
-#body{
+
+#body {
     background-image: url(../imgs/background-corpo.svg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -31,30 +36,37 @@
     width: 100%;
     min-height: 80svh;
 }
-body.dark-mode #body{
+
+body.dark-mode #body {
     background-blend-mode: multiply;
     background-color: #1a1614;
 }
-.container-phrase{
+
+.container-phrase {
     padding-left: 3.75rem;
     padding-top: 12.5rem;
 }
-.container-phrase .phrase .line1{
+
+.container-phrase .phrase .line1 {
     color: white;
     font-size: 1.875rem;
 }
-.container-phrase .phrase .line2{
+
+.container-phrase .phrase .line2 {
     color: white;
     font-size: 3.125rem;
 }
-.container-phrase .phrase .line3{
+
+.container-phrase .phrase .line3 {
     color: #DFA782;
     font-size: 3.125rem;
 }
-.container-phrase .phrase .line4{
+
+.container-phrase .phrase .line4 {
     color: white;
 }
-.container-form{
+
+.container-form {
     background-color: var(--bg-card, #DBC2B0);
     color: var(--text-main, #55463C);
     border-radius: 1.875rem;
@@ -65,19 +77,23 @@ body.dark-mode #body{
     align-items: center;
     padding: 1.25rem;
 }
-.container-form .title-form{
+
+.container-form .title-form {
     padding-bottom: 0.9375rem;
 }
-.container-form .title-form img{
+
+.container-form .title-form img {
     padding-left: 3.125rem;
     padding-bottom: 0.625rem;
 }
-.container-form .info p{
+
+.container-form .info p {
     padding-bottom: 0.625rem;
     padding-top: 0.625rem;
     color: var(--text-main, #55463C);
 }
-.container-form .info input{
+
+.container-form .info input {
     border-radius: 0.625rem;
     border: 1px solid var(--border-color, darkgrey);
     background-color: var(--bg-input, #FFFFFF);
@@ -89,57 +105,67 @@ body.dark-mode #body{
     padding-right: 2rem;
     outline: none;
 }
-.container-password-input{
+
+.container-password-input {
     position: relative;
     display: flex;
     align-items: center;
     width: 11rem;
 }
-.container-password-input input{
+
+.container-password-input input {
     width: 100% !important;
     padding-right: 2rem !important;
 }
-.container-password-input .btn-toggle-password{
+
+.container-password-input .btn-toggle-password {
     position: absolute;
     right: 0.5rem;
     width: 1.15rem;
     height: 1.15rem;
     cursor: pointer;
     opacity: 0.7;
-    transition: opacity 0.2s ease;
 }
-.container-password-input .btn-toggle-password:hover{
+
+.container-password-input .btn-toggle-password:hover {
     opacity: 1;
 }
-.container-form .container-form-imgs{
+
+.container-form .container-form-imgs {
     padding-right: 1.25rem;
     display: flex;
 }
-.container-form .container-form-imgs .imgs-form{
+
+.container-form .container-form-imgs .imgs-form {
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
     padding-top: 2.3rem;
     padding-right: 0.1875rem;
 }
-.container-form .forgout-password{
+
+.container-form .forgout-password {
     padding-bottom: 1.875rem;
     padding-left: 6.25rem;
     padding-top: 0.1875rem;
 }
-.container-form .forgout-password a{
+
+.container-form .forgout-password a {
     color: var(--text-main, #55463C);
     transition: opacity 0.2s;
 }
-.container-form .forgout-password a:hover{
+
+.container-form .forgout-password a:hover {
     opacity: 0.7;
 }
-.container-form .btns{
+
+.container-form .btns {
     display: block;
     align-items: center;
     flex-direction: column;
 }
-.container-form .btns .btn-login{
+
+.container-form .btns .btn-login {
     width: 12.5rem;
     height: 1.875rem;
     border-radius: 0.625rem;
@@ -148,12 +174,13 @@ body.dark-mode #body{
     background-color: var(--btn-primary-bg, #55463C);
     color: var(--btn-primary-text, white);
     cursor: pointer;
-    transition: opacity 0.2s;
 }
-.container-form .btns .btn-login:hover{
+
+.container-form .btns .btn-login:hover {
     opacity: 0.8;
 }
-.container-form .btns .btn-register{
+
+.container-form .btns .btn-register {
     width: 12.5rem;
     height: 1.875rem;
     border-radius: 0.625rem;
@@ -162,15 +189,17 @@ body.dark-mode #body{
     background-color: var(--btn-secondary-bg, #DBC2B0);
     color: var(--btn-secondary-text, #55463C);
     cursor: pointer;
-    transition: opacity 0.2s;
 }
-.container-form .btns .btn-register:hover{
+
+.container-form .btns .btn-register:hover {
     opacity: 0.7;
 }
-.container-form .btns .monitor-larger{
+
+.container-form .btns .monitor-larger {
     display: none;
 }
-.footer .container-info{
+
+.footer .container-info {
     background-color: var(--bg-card, #DBC2B0);
     color: var(--text-main, #55463C);
     display: flex;
@@ -178,18 +207,22 @@ body.dark-mode #body{
     gap: 6.25rem;
     padding: 1.875rem 1.875rem 1.875rem 3.125rem;
 }
-.footer .container-info .about-us .text-mobile{
+
+.footer .container-info .about-us .text-mobile {
     display: none;
 }
-.footer .container-info .about-us .text-computer{
+
+.footer .container-info .about-us .text-computer {
     display: block;
 }
-.footer .container-info .container-contact-us{
+
+.footer .container-info .container-contact-us {
     display: flex;
     gap: 0.625rem;
     align-items: center;
 }
-.footer .container-info .container-contact-us .imgs-contact-us{
+
+.footer .container-info .container-contact-us .imgs-contact-us {
     display: flex;
     flex-direction: column;
     gap: 0.125rem;

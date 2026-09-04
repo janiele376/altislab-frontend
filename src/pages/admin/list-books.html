@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     <script src="../../js/language.js" defer></script>
     <title data-i18n="doc_title_books">Livros</title>
 </head>
+
 <body>
     <header id="header">
         <div class="container-title">
@@ -17,12 +19,13 @@
             <h2 class="title" data-i18n="header_title_books">Biblioteca Listar Livros</h2>
             <div class="container-dashboard-header">
                 <div class="imgs">
-                    <img src="../../imgs/user-img-ex.jpg" class="img-user" alt="usuário">
-                    <a href="../admin/settings.html"><img src="../../imgs/adjustments.svg" class="img-adjustments" alt="ajustes"></a>  
+                    <img src="../../imgs/user.svg" class="img-user" alt="usuário">
+                    <a href="../admin/settings.html"><img src="../../imgs/adjustments.svg" class="img-adjustments"
+                            alt="ajustes"></a>
                 </div>
-
-                <div class="text">   
-                    <p data-i18n="nav_user">Usuário</p>  <p data-i18n="nav_settings">Ajustes</p>
+                <div class="text">
+                    <p data-i18n="nav_user">Usuário</p>
+                    <p data-i18n="nav_settings">Ajustes</p>
                 </div>
             </div>
         </div>
@@ -30,29 +33,31 @@
 
     <section id="body">
         <article class="container-menu">
-            <button class="btn-publishers"><a href="../admin/list-publishers.html" data-i18n="menu_publishers">Editoras</a></button>
+            <button class="btn-publishers"><a href="../admin/list-publishers.html"
+                    data-i18n="menu_publishers">Editoras</a></button>
             <button class="btn-books" data-i18n="menu_books">Livros</button>
             <button class="btn-users"><a href="../admin/list-users.html" data-i18n="menu_users">Usuários</a></button>
-            <button class="btn-rentals"><a href="../admin/list-rentals.html" data-i18n="menu_rentals">Aluguéis</a></button>
-            <button class="btn-dashboard"><a href="../admin/dashboard-admin.html" data-i18n="menu_dashboard">Dashboard</a></button>
+            <button class="btn-rentals"><a href="../admin/list-rentals.html"
+                    data-i18n="menu_rentals">Aluguéis</a></button>
+            <button class="btn-dashboard"><a href="../admin/dashboard-admin.html"
+                    data-i18n="menu_dashboard">Dashboard</a></button>
         </article>
 
         <article class="container-rentals">
-
             <div class="container-create-rental">
                 <h2 data-i18n="title_create_book">Criar Livro</h2>
-                <button class="btn-create-rental" id="open-modal-create" data-i18n="btn_new_book">+ Novo Livro</button>    
+                <button class="btn-create-rental" id="open-modal-create" data-i18n="btn_new_book">+ Novo Livro</button>
             </div>
 
             <div class="container-list">
-
                 <div class="container-search">
-                    <input type="text" placeholder="pesquisar livro..." class="input-search" data-i18n-placeholder="placeholder_search_book">
+                    <input type="text" placeholder="pesquisar livro..." class="input-search"
+                        data-i18n-placeholder="placeholder_search_book">
                     <p>|</p>
                     <img src="../../imgs/filters.svg" alt="filtros">
                     <img src="../../imgs/search.svg" alt="pesquisar">
                 </div>
-                
+
                 <hr class="line-search">
 
                 <div class="container-table-info">
@@ -60,64 +65,13 @@
                     <h3 data-i18n="col_book_name">Nome do Livro</h3>
                     <h3 data-i18n="col_publisher">Editora</h3>
                     <h3 data-i18n="col_release_date">Data de Lançamento</h3>
+                    <h3 data-i18n="col_quantity">Qtd.</h3>
                     <h3 class="action" data-i18n="col_actions">Ações</h3>
                 </div>
 
-                <hr>
+                <hr class="line-header-divider">
 
-                <div class="container-table">
-                    <p class="cod-p">1</p>
-                    <p class="book-p">Senhor dos Anéis</p>
-                    <p class="publisher-p">HarperCollins</p>
-                    <p class="date-release-p">01/05/2026</p>
-                    <div class="container-btns">
-                        <button class="btn-edit" onclick="abrirModalEditar('1', 'Senhor dos Anéis', 'HarperCollins', '2026-05-01')" data-i18n="btn_edit">Editar</button>
-                        <button class="btn-delete" onclick="abrirModalExcluir('1', 'Senhor dos Anéis')" data-i18n="btn_delete">Excluir</button>
-                    </div>
-                </div>
-            
-                <hr>
-
-                <div class="container-table">
-                    <p class="cod-p">2</p>
-                    <p class="book-p">Harry Potter</p>
-                    <p class="publisher-p">Rocco</p>
-                    <p class="date-release-p">01/05/2026</p>
-                    <div class="container-btns">
-                        <button class="btn-edit" onclick="abrirModalEditar('2', 'Harry Potter', 'Rocco', '2026-05-01')" data-i18n="btn_edit">Editar</button>
-                        <button class="btn-delete" onclick="abrirModalExcluir('2', 'Harry Potter')" data-i18n="btn_delete">Excluir</button>
-                    </div>
-                </div>
-
-                <hr>
-
-                <div class="container-table">
-                    <p class="cod-p">3</p>
-                    <p class="book-p">Dom Casmurro</p>
-                    <p class="publisher-p">Companhia das Letras</p>
-                    <p class="date-release-p">01/05/2026</p>
-                    <div class="container-btns">
-                        <button class="btn-edit" onclick="abrirModalEditar('3', 'Dom Casmurro', 'Companhia das Letras', '2026-05-01')" data-i18n="btn_edit">Editar</button>
-                        <button class="btn-delete" onclick="abrirModalExcluir('3', 'Dom Casmurro')" data-i18n="btn_delete">Excluir</button>
-                    </div>
-                </div>
-
-                <hr>
-
-                <div class="container-table">
-                    <p class="cod-p">4</p>
-                    <p class="book-p">1984</p>
-                    <p class="publisher-p">Companhia Nacional</p>
-                    <p class="date-release-p">01/05/2026</p>
-                    <div class="container-btns">
-                        <button class="btn-edit" onclick="abrirModalEditar('4', '1984', 'Companhia Nacional', '2026-05-01')" data-i18n="btn_edit">Editar</button>
-                        <button class="btn-delete" onclick="abrirModalExcluir('4', '1984')" data-i18n="btn_delete">Excluir</button>
-                    </div>
-                </div>
-
-                <hr>
-
-                <div class="btn-next-page"> 
+                <div class="btn-next-page">
                     <button class="btn-prev"><img src="../../imgs/arrow_next_left.svg" alt="anterior"></button>
                     <p><span data-i18n="page_prefix">1 de</span> 5</p>
                     <button class="btn-next"><img src="../../imgs/arrow_next_right.svg" alt="próximo"></button>
@@ -128,10 +82,12 @@
         <dialog id="modal-create">
             <div class="container-create-rentals">
                 <div class="container-title-rental">
-                    <a id="close-modal-create"><img src="../../imgs/back-arrow.svg" class="img-rental-form" alt="Voltar"></a>
-                    <h1 class="title-rental-form" data-i18n="modal_create_book_title">Criar Livro</h1>
+                    <a id="close-modal-create"><img src="../../imgs/back-arrow.svg" class="img-rental-form"
+                            alt="Voltar"></a>
+                    <h1 class="title-rental-form" id="modal-book-title" data-i18n="modal_create_book_title">Criar Livro
+                    </h1>
                 </div>
-                
+
                 <div class="container-form">
                     <div>
                         <p data-i18n="label_form_book_name">Nome do Livro:</p>
@@ -145,17 +101,25 @@
 
                     <div>
                         <p data-i18n="label_form_publisher">Editora:</p>
-                        <input class="book-publisher" type="text">
+                        <input class="book-publisher" type="text" list="datalist-publishers">
+                        <datalist id="datalist-publishers"></datalist>
                     </div>
 
                     <div>
                         <p data-i18n="label_form_release_date">Data de Lançamento:</p>
                         <input class="book-date" type="date">
                     </div>
-                
+
+                    <div>
+                        <p data-i18n="label_form_quantity">Quantidade de Livros:</p>
+                        <input class="book-quantity" type="number" min="0" value="1">
+                    </div>
+
                     <div class="btns-rentals">
-                        <button class="btn-check"><img src="../../imgs/check.svg" alt="Confirmar"><span data-i18n="btn_confirm">CONFIRMAR</span></button>
-                        <button class="btn-cancel" id="cancel-create"><img src="../../imgs/cancel.svg" alt="Cancelar"><span data-i18n="btn_cancel">CANCELAR</span></button>
+                        <button class="btn-check" id="btn-save-book"><img src="../../imgs/check.svg"
+                                alt="Confirmar"><span data-i18n="btn_confirm">CONFIRMAR</span></button>
+                        <button class="btn-cancel" id="cancel-create"><img src="../../imgs/cancel.svg"
+                                alt="Cancelar"><span data-i18n="btn_cancel">CANCELAR</span></button>
                     </div>
                 </div>
             </div>
@@ -164,24 +128,28 @@
         <dialog id="modal-delete">
             <div class="container-create-rentals modal-confirmation">
                 <div class="container-title-rental">
-                    <a id="close-modal-delete"><img src="../../imgs/back-arrow.svg" class="img-rental-form" alt="Voltar"></a>
+                    <a id="close-modal-delete"><img src="../../imgs/back-arrow.svg" class="img-rental-form"
+                            alt="Voltar"></a>
                     <h1 class="title-rental-form" data-i18n="modal_delete_book_title">Excluir Livro</h1>
                 </div>
-                
+
                 <div class="container-form">
                     <div class="confirm-message">
                         <p data-i18n="msg_confirm_delete_book">Tem certeza de que deseja excluir este livro?</p>
-                        <span class="warning-text" data-i18n="msg_warning_delete_book">Esta ação removerá o livro do catálogo.</span>
+                        <span class="warning-text" data-i18n="msg_warning_delete_book">Esta ação removerá o livro do
+                            catálogo.</span>
                     </div>
 
                     <div class="rental-summary-details">
-                        <p><strong data-i18n="label_cod_summary">Cód.:</strong> <span id="delete-book-cod">1</span></p>
-                        <p><strong data-i18n="label_book_summary">Livro:</strong> <span id="delete-book-name">Senhor dos Anéis</span></p>
+                        <p><strong data-i18n="label_cod_summary">Cód.:</strong> <span id="delete-book-cod"></span></p>
+                        <p><strong data-i18n="label_book_summary">Livro:</strong> <span id="delete-book-name"></span>
+                        </p>
                     </div>
-                
+
                     <div class="btns-rentals">
                         <button class="btn-check btn-danger" id="confirm-delete">
-                            <img src="../../imgs/check.svg" alt="Confirmar"><span data-i18n="btn_confirm_delete">EXCLUIR</span>
+                            <img src="../../imgs/check.svg" alt="Confirmar"><span
+                                data-i18n="btn_confirm_delete">EXCLUIR</span>
                         </button>
                         <button class="btn-cancel" id="cancel-delete">
                             <img src="../../imgs/cancel.svg" alt="Cancelar"><span data-i18n="btn_cancel">CANCELAR</span>
@@ -192,4 +160,5 @@
         </dialog>
     </section>
 </body>
+
 </html>

@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../style/admin/dashboard-admin.css">
     <link rel="stylesheet" href="../../style/theme.css">
+    <script src="../../js/admin/dashboard-admin.js" defer></script>
     <script src="../../js/theme.js"></script>
     <script src="../../js/language.js" defer></script>
     <title data-i18n="doc_title_dashboard">Dashboard</title>
 </head>
+
 <body>
     <header id="header">
         <div class="container-title">
@@ -16,13 +19,16 @@
             <h2 class="title" data-i18n="header_title">Biblioteca Dashboard</h2>
             <div class="container-dashboard-header">
                 <div class="imgs">
-                    <img src="../../imgs/user-img-ex.jpg" class="img-user" alt="usuário">
-                    <a href="../admin/settings.html"><img src="../../imgs/adjustments.svg" class="img-adjustments" alt="ajustes"></a>
+                    <img src="../../imgs/user.svg" class="img-user" alt="usuário">
+                    <a href="../admin/settings.html"><img src="../../imgs/adjustments.svg" class="img-adjustments"
+                            alt="ajustes"></a>
                     <a href="../login.html"><img src="../../imgs/logout.svg" class="img-logout" alt="sair"></a>
                 </div>
 
-                <div class="text">   
-                    <p data-i18n="nav_user">Usuário</p>  <p data-i18n="nav_settings">Ajustes</p> <p data-i18n="nav_logout">Sair</p>
+                <div class="text">
+                    <p data-i18n="nav_user">Usuário</p>
+                    <p data-i18n="nav_settings">Ajustes</p>
+                    <p data-i18n="nav_logout">Sair</p>
                 </div>
             </div>
         </div>
@@ -30,10 +36,12 @@
 
     <section id="body">
         <article class="container-menu">
-            <button class="btn-publishers"><a href="../admin/list-publishers.html" data-i18n="menu_publishers">Editoras</a></button>
+            <button class="btn-publishers"><a href="../admin/list-publishers.html"
+                    data-i18n="menu_publishers">Editoras</a></button>
             <button class="btn-books"><a href="../admin/list-books.html" data-i18n="menu_books">Livros</a></button>
             <button class="btn-users"><a href="../admin/list-users.html" data-i18n="menu_users">Usuários</a></button>
-            <button class="btn-rentals"><a href="../admin/list-rentals.html" data-i18n="menu_rentals">Aluguéis</a></button>
+            <button class="btn-rentals"><a href="../admin/list-rentals.html"
+                    data-i18n="menu_rentals">Aluguéis</a></button>
             <button class="btn-dashboard" data-i18n="menu_dashboard">Dashboard</button>
         </article>
 
@@ -41,17 +49,17 @@
             <div class="container-status-cards">
                 <div class="card-status card-green">
                     <p class="card-title" data-i18n="card_ontime">Quantidade de Aluguéis em Dia:</p>
-                    <h3 class="card-value" data-i18n="card_ontime_val">275 Aluguéis</h3>
+                    <h3 class="card-value" id="card-ontime-val">0 Aluguéis</h3>
                 </div>
 
                 <div class="card-status card-yellow">
                     <p class="card-title" data-i18n="card_expiring">Quantidade de Aluguéis Perto de Vencer:</p>
-                    <h3 class="card-value" data-i18n="card_expiring_val">100 Aluguéis</h3>
+                    <h3 class="card-value" id="card-expiring-val">0 Aluguéis</h3>
                 </div>
 
                 <div class="card-status card-red">
                     <p class="card-title" data-i18n="card_late">Quantidade de Aluguéis em Atraso:</p>
-                    <h3 class="card-value" data-i18n="card_late_val">10 Aluguéis</h3>
+                    <h3 class="card-value" id="card-late-val">0 Aluguéis</h3>
                 </div>
             </div>
 
@@ -60,12 +68,8 @@
                     <div class="dashboard-box">
                         <div class="box-header" data-i18n="box_latest_rentals">Últimos Livros Alugados</div>
                         <div class="box-content">
-                            <ol class="list-rented-books">
-                                <li>1. O Diário de Anne Frank</li>
-                                <li>2. Harry Potter (J.K. Rowling)</li>
-                                <li>3. O Senhor dos Anéis (J.R.R. Tolkien)</li>
-                                <li>4. Dom Quixote (Miguel de Cervantes)</li>
-                                <li>5. O Pequeno Príncipe (Antoine de Saint-Exupéry)</li>
+                            <ol class="list-rented-books" id="latest-rentals-list">
+                                <li>Nenhum aluguel registrado</li>
                             </ol>
                         </div>
                     </div>
@@ -76,17 +80,17 @@
                             <div class="table-globals">
                                 <div class="row-global">
                                     <span data-i18n="global_rentals">Aluguéis Realizados</span>
-                                    <span>128</span>
+                                    <span id="global-rentals-count">0</span>
                                 </div>
                                 <hr>
                                 <div class="row-global">
                                     <span data-i18n="global_books">Livros Cadastrados</span>
-                                    <span>324</span>
+                                    <span id="global-books-count">0</span>
                                 </div>
                                 <hr>
                                 <div class="row-global">
                                     <span data-i18n="global_publishers">Editoras Cadastradas</span>
-                                    <span>28</span>
+                                    <span id="global-publishers-count">0</span>
                                 </div>
                             </div>
                         </div>
@@ -97,29 +101,16 @@
                     <div class="dashboard-box">
                         <div class="box-header" data-i18n="box_qty_books">Quantidade de Livros Alugados</div>
                         <div class="box-content">
-                            <div class="list-quantities">
+                            <div class="list-quantities" id="top-rented-books-list">
                                 <div class="item-qty">
-                                    <span>1. O Diário de Anne Frank</span>
-                                    <span>qtd. 300</span>
-                                </div>
-                                <div class="item-qty">
-                                    <span>2. Harry Potter (J.K. Rowling)</span>
-                                    <span>qtd. 250</span>
-                                </div>
-                                <div class="item-qty">
-                                    <span>3. O Senhor dos Anéis (J.R.R. Tolkien)</span>
-                                    <span>qtd. 200</span>
+                                    <span>Nenhum aluguel computado</span>
+                                    <span>qtd. 0</span>
                                 </div>
                             </div>
                             <div class="carousel-dots">
                                 <span>&lt;</span>
                                 <div class="dots">
                                     <i class="dot active"></i>
-                                    <i class="dot"></i>
-                                    <i class="dot"></i>
-                                    <i class="dot"></i>
-                                    <i class="dot"></i>
-                                    <i class="dot"></i>
                                     <i class="dot"></i>
                                     <i class="dot"></i>
                                 </div>
@@ -130,15 +121,20 @@
 
                     <div class="dashboard-box">
                         <div class="box-header" data-i18n="box_most_rented">Livro Mais Alugado</div>
-                        <div class="box-content most-rented-content">
+                        <div class="box-content most-rented-content" id="most-rented-container">
                             <div class="book-info-text">
-                                <p><strong data-i18n="label_book_title">Título do Livro:</strong> O Menino do Pijama Listrado</p>
-                                <p><strong data-i18n="label_publisher">Editora:</strong> Seguinte</p>
-                                <p><strong data-i18n="label_release_date">Data de Lançamento:</strong> 5 de janeiro de 2006</p>
-                                <p><strong data-i18n="label_quantity">Quantidade:</strong> 100</p>
+                                <p><strong data-i18n="label_book_title">Título do Livro:</strong> <span
+                                        id="most-rented-title">-</span></p>
+                                <p><strong data-i18n="label_publisher">Editora:</strong> <span
+                                        id="most-rented-publisher">-</span></p>
+                                <p><strong data-i18n="label_release_date">Data de Lançamento:</strong> <span
+                                        id="most-rented-release">-</span></p>
+                                <p><strong data-i18n="label_quantity">Quantidade:</strong> <span
+                                        id="most-rented-quantity">0</span></p>
                             </div>
                             <div class="book-cover">
-                                <img src="../../imgs/book-cover-ex.jpg" alt="Capa do livro" onerror="this.src='../../imgs/book.svg'">
+                                <img src="../../imgs/book-cover-ex.jpg" alt="Capa do livro"
+                                    onerror="this.src='../../imgs/book.svg'">
                             </div>
                         </div>
                     </div>
@@ -147,4 +143,5 @@
         </article>
     </section>
 </body>
+
 </html>

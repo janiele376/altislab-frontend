@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     <script src="../../js/language.js" defer></script>
     <title data-i18n="doc_title_users">Usuários</title>
 </head>
+
 <body>
     <header id="header">
         <div class="container-title">
@@ -17,12 +19,13 @@
             <h2 class="title" data-i18n="header_title_users">Biblioteca Usuários</h2>
             <div class="container-dashboard-header">
                 <div class="imgs">
-                    <img src="../../imgs/user-img-ex.jpg" class="img-user">
-                    <a href="../admin/settings.html"><img src="../../imgs/adjustments.svg" class="img-adjustments"></a>  
+                    <img src="../../imgs/user.svg" class="img-user" alt="usuário">
+                    <a href="../admin/settings.html"><img src="../../imgs/adjustments.svg" class="img-adjustments"
+                            alt="ajustes"></a>
                 </div>
-
-                <div class="text">   
-                    <p data-i18n="nav_user">Usuário</p>  <p data-i18n="nav_settings">Ajustes</p>
+                <div class="text">
+                    <p data-i18n="nav_user">Usuário</p>
+                    <p data-i18n="nav_settings">Ajustes</p>
                 </div>
             </div>
         </div>
@@ -30,24 +33,26 @@
 
     <section id="body">
         <article class="container-menu">
-            <button class="btn-publishers"><a href="../admin/list-publishers.html" data-i18n="menu_publishers">Editoras</a></button>
+            <button class="btn-publishers"><a href="../admin/list-publishers.html"
+                    data-i18n="menu_publishers">Editoras</a></button>
             <button class="btn-books"><a href="../admin/list-books.html" data-i18n="menu_books">Livros</a></button>
             <button class="btn-users" data-i18n="menu_users">Usuários</button>
-            <button class="btn-rentals"><a href="../admin/list-rentals.html" data-i18n="menu_rentals">Aluguéis</a></button>
-            <button class="btn-dashboard"><a href="../admin/dashboard-admin.html" data-i18n="menu_dashboard">Dashboard</a></button>
+            <button class="btn-rentals"><a href="../admin/list-rentals.html"
+                    data-i18n="menu_rentals">Aluguéis</a></button>
+            <button class="btn-dashboard"><a href="../admin/dashboard-admin.html"
+                    data-i18n="menu_dashboard">Dashboard</a></button>
         </article>
 
         <article class="container-rentals">
-
             <div class="container-list">
-
                 <div class="container-search">
-                    <input type="text" placeholder="pesquisar usuários..." class="input-search" data-i18n-placeholder="placeholder_search_users">
+                    <input type="text" placeholder="pesquisar usuários..." class="input-search"
+                        data-i18n-placeholder="placeholder_search_users">
                     <p>|</p>
                     <img src="../../imgs/filters.svg" alt="filtros">
                     <img src="../../imgs/search.svg" alt="pesquisar">
                 </div>
-                
+
                 <hr class="line-search">
 
                 <div class="container-table-info">
@@ -59,79 +64,9 @@
                     <h3 class="action" data-i18n="col_actions">Ações</h3>
                 </div>
 
-                <hr>
+                <hr class="line-header-divider">
 
-                <div class="container-table">
-                    <p class="name-p">Maria Silva</p>
-                    <p class="cpf-p">999.999.999-99</p>
-                    <p class="date-birth-p">01/05/2026</p>
-                    <p class="address-p">Rua do Jardim, 123</p>
-                    <p class="status-p status-active" data-i18n="status_activated">ATIVADO</p>
-                    <div class="container-btns">
-                        <button class="btn-activate" data-i18n="btn_activated">ATIVADO</button>
-                        <button class="btn-deactivate" onclick="abrirModalStatus('Maria Silva', '999.999.999-99')" data-i18n="btn_deactivated">DESATIVADO</button>
-                    </div>
-                </div>
-            
-                <hr>
-
-                <div class="container-table">
-                    <p class="name-p">Maria Silva</p>
-                    <p class="cpf-p">999.999.999-99</p>
-                    <p class="date-birth-p">01/05/2026</p>
-                    <p class="address-p">Rua do Jardim, 123</p>
-                    <p class="status-p status-active" data-i18n="status_activated">ATIVADO</p>
-                    <div class="container-btns">
-                        <button class="btn-activate" data-i18n="btn_activated">ATIVADO</button>
-                        <button class="btn-deactivate" onclick="abrirModalStatus('Maria Silva', '999.999.999-99')" data-i18n="btn_deactivated">DESATIVADO</button>
-                    </div>
-                </div>
-
-                <hr>
-
-                <div class="container-table">
-                    <p class="name-p">Maria Silva</p>
-                    <p class="cpf-p">999.999.999-99</p>
-                    <p class="date-birth-p">01/05/2026</p>
-                    <p class="address-p">Rua do Jardim, 123</p>
-                    <p class="status-p status-active" data-i18n="status_activated">ATIVADO</p>
-                    <div class="container-btns">
-                        <button class="btn-activate" data-i18n="btn_activated">ATIVADO</button>
-                        <button class="btn-deactivate" onclick="abrirModalStatus('Maria Silva', '999.999.999-99')" data-i18n="btn_deactivated">DESATIVADO</button>
-                    </div>
-                </div>
-
-                <hr>
-
-                <div class="container-table">
-                    <p class="name-p">Maria Silva</p>
-                    <p class="cpf-p">999.999.999-99</p>
-                    <p class="date-birth-p">01/05/2026</p>
-                    <p class="address-p">Rua do Jardim, 123</p>
-                    <p class="status-p status-active" data-i18n="status_activated">ATIVADO</p>
-                    <div class="container-btns">
-                        <button class="btn-activate" data-i18n="btn_activated">ATIVADO</button>
-                        <button class="btn-deactivate" onclick="abrirModalStatus('Maria Silva', '999.999.999-99')" data-i18n="btn_deactivated">DESATIVADO</button>
-                    </div>
-                </div>
-
-                <hr>
-
-                <div class="container-table">
-                    <p class="name-p">Maria Silva</p>
-                    <p class="cpf-p">999.999.999-99</p>
-                    <p class="date-birth-p">01/05/2026</p>
-                    <p class="address-p">Rua do Jardim, 123</p>
-                    <p class="status-p status-active" data-i18n="status_activated">ATIVADO</p>
-                    <div class="container-btns">
-                        <button class="btn-activate" data-i18n="btn_activated">ATIVADO</button>
-                        <button class="btn-deactivate" onclick="abrirModalStatus('Maria Silva', '999.999.999-99')" data-i18n="btn_deactivated">DESATIVADO</button>
-                    </div>
-                </div>
-
-                <hr>
-
-                <div class="btn-next-page"> 
+                <div class="btn-next-page">
                     <button class="btn-prev"><img src="../../imgs/arrow_next_left.svg" alt="anterior"></button>
                     <p><span data-i18n="page_prefix">1 de</span> 5</p>
                     <button class="btn-next"><img src="../../imgs/arrow_next_right.svg" alt="próximo"></button>
@@ -142,24 +77,28 @@
         <dialog id="modal-status">
             <div class="container-create-rentals modal-confirmation">
                 <div class="container-title-rental">
-                    <a id="close-modal-status"><img src="../../imgs/back-arrow.svg" class="img-rental-form" alt="Voltar"></a>
+                    <a id="close-modal-status"><img src="../../imgs/back-arrow.svg" class="img-rental-form"
+                            alt="Voltar"></a>
                     <h1 class="title-rental-form" data-i18n="modal_change_status_title">Alterar Status</h1>
                 </div>
-                
+
                 <div class="container-form">
                     <div class="confirm-message">
                         <p data-i18n="msg_confirm_change_status">Deseja alterar o status deste usuário?</p>
-                        <span class="warning-text" data-i18n="msg_warning_change_status">O usuário perderá o acesso caso seja desativado.</span>
+                        <span class="warning-text" data-i18n="msg_warning_change_status">O usuário perderá o acesso caso
+                            seja desativado.</span>
                     </div>
 
                     <div class="rental-summary-details">
-                        <p><strong data-i18n="label_user_summary">Usuário:</strong> <span id="status-user-name">Maria Silva</span></p>
-                        <p><strong data-i18n="col_cpf">CPF:</strong> <span id="status-user-cpf">999.999.999-99</span></p>
+                        <p><strong data-i18n="label_user_summary">Usuário:</strong> <span id="status-user-name"></span>
+                        </p>
+                        <p><strong data-i18n="col_cpf">CPF:</strong> <span id="status-user-cpf"></span></p>
                     </div>
-                
+
                     <div class="btns-rentals">
                         <button class="btn-check btn-danger" id="confirm-status">
-                            <img src="../../imgs/check.svg" alt="Confirmar"><span data-i18n="btn_confirm">CONFIRMAR</span>
+                            <img src="../../imgs/check.svg" alt="Confirmar"><span
+                                data-i18n="btn_confirm">CONFIRMAR</span>
                         </button>
                         <button class="btn-cancel" id="cancel-status">
                             <img src="../../imgs/cancel.svg" alt="Cancelar"><span data-i18n="btn_cancel">CANCELAR</span>
@@ -170,4 +109,5 @@
         </dialog>
     </section>
 </body>
+
 </html>

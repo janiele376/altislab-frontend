@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../style/tenant/dashboard-tenant.css">
     <link rel="stylesheet" href="../../style/theme.css">
+    <script src="../../js/tenant/dashboard-tenant.js" defer></script>
     <script src="../../js/theme.js"></script>
     <script src="../../js/language.js" defer></script>
     <title data-i18n="doc_title_dashboard">Dashboard</title>
 </head>
+
 <body>
     <header id="header">
         <div class="container-title">
@@ -16,13 +19,16 @@
             <h2 class="title" data-i18n="header_title">Biblioteca Dashboard</h2>
             <div class="container-dashboard-header">
                 <div class="imgs">
-                    <img src="../../imgs/user-img-ex.jpg" class="img-user" alt="usuário">
-                    <a href="../tenant/settings-profile.html"><img src="../../imgs/adjustments.svg" class="img-adjustments" alt="ajustes"></a>
+                    <img class="img-user" alt="usuário">
+                    <a href="../tenant/settings-profile.html"><img src="../../imgs/adjustments.svg"
+                            class="img-adjustments" alt="ajustes"></a>
                     <a href="../login.html"><img src="../../imgs/logout.svg" class="img-logout" alt="sair"></a>
                 </div>
 
-                <div class="text">   
-                    <p data-i18n="nav_user">Usuário</p>  <p data-i18n="nav_settings">Ajustes</p> <p data-i18n="nav_logout">Sair</p>
+                <div class="text">
+                    <p id="tenant-logged-name">Usuário</p>
+                    <p data-i18n="nav_settings">Ajustes</p>
+                    <p data-i18n="nav_logout">Sair</p>
                 </div>
             </div>
         </div>
@@ -35,12 +41,8 @@
                     <div class="dashboard-box">
                         <div class="box-header" data-i18n="box_latest_rentals">Últimos Livros Alugados</div>
                         <div class="box-content">
-                            <ol class="list-rented-books">
-                                <li>1. O Diário de Anne Frank</li>
-                                <li>2. Harry Potter (J.K. Rowling)</li>
-                                <li>3. O Senhor dos Anéis (J.R.R. Tolkien)</li>
-                                <li>4. Dom Quixote (Miguel de Cervantes)</li>
-                                <li>5. O Pequeno Príncipe (Antoine de Saint-Exupéry)</li>
+                            <ol class="list-rented-books" id="tenant-latest-rentals">
+                                <li>Nenhum aluguel realizado</li>
                             </ol>
                         </div>
                     </div>
@@ -54,18 +56,9 @@
                                 <span class="badge-header badge-red" data-i18n="badge_late">ATRASADO</span>
                             </div>
 
-                            <div class="status-table">
+                            <div class="status-table" id="tenant-status-table">
                                 <div class="status-row">
-                                    <span data-i18n="status_row_pattern">Livro | Data do início do prazo | Data final do prazo</span>
-                                    <span class="status-tag tag-green" data-i18n="badge_ontime">EM DIA</span>
-                                </div>
-                                <div class="status-row">
-                                    <span data-i18n="status_row_pattern">Livro | Data do início do prazo | Data final do prazo</span>
-                                    <span class="status-tag tag-red" data-i18n="badge_late">ATRASADO</span>
-                                </div>
-                                <div class="status-row">
-                                    <span data-i18n="status_row_pattern">Livro | Data do início do prazo | Data final do prazo</span>
-                                    <span class="status-tag tag-yellow" data-i18n="badge_warning">PERTO DE VENCER</span>
+                                    <span>Nenhum aluguel ativo</span>
                                 </div>
                             </div>
                         </div>
@@ -76,18 +69,10 @@
                     <div class="dashboard-box">
                         <div class="box-header" data-i18n="box_qty_books_rent">Quantidade de Livros Para Alugar</div>
                         <div class="box-content">
-                            <div class="list-quantities">
+                            <div class="list-quantities" id="available-books-list">
                                 <div class="item-qty">
-                                    <span>1. O Diário de Anne Frank</span>
-                                    <span>qtd. 300</span>
-                                </div>
-                                <div class="item-qty">
-                                    <span>2. Harry Potter (J.K. Rowling)</span>
-                                    <span>qtd. 250</span>
-                                </div>
-                                <div class="item-qty">
-                                    <span>3. O Senhor dos Anéis (J.R.R. Tolkien)</span>
-                                    <span>qtd. 200</span>
+                                    <span>Nenhum livro disponível</span>
+                                    <span>qtd. 0</span>
                                 </div>
                             </div>
                         </div>
@@ -97,13 +82,18 @@
                         <div class="box-header" data-i18n="box_most_rented">Livro Mais Alugado</div>
                         <div class="box-content most-rented-content">
                             <div class="book-info-text">
-                                <p><strong data-i18n="label_book_title">Título do Livro:</strong> O menino do pijama listrado</p>
-                                <p><strong data-i18n="label_publisher">Editora:</strong> Seguinte</p>
-                                <p><strong data-i18n="label_release_date">Data de Lançamento:</strong> 5 de janeiro de 2006</p>
-                                <p><strong data-i18n="label_quantity">Quantidade:</strong> 100</p>
+                                <p><strong data-i18n="label_book_title">Título do Livro:</strong> <span
+                                        id="most-rented-title">-</span></p>
+                                <p><strong data-i18n="label_publisher">Editora:</strong> <span
+                                        id="most-rented-publisher">-</span></p>
+                                <p><strong data-i18n="label_release_date">Data de Lançamento:</strong> <span
+                                        id="most-rented-release">-</span></p>
+                                <p><strong data-i18n="label_quantity">Quantidade:</strong> <span
+                                        id="most-rented-quantity">0</span></p>
                             </div>
                             <div class="book-cover">
-                                <img src="../../imgs/book-cover-ex.jpg" alt="Capa do livro" onerror="this.src='../../imgs/book.svg'">
+                                <img src="../../imgs/book-cover-ex.jpg" alt="Capa do livro"
+                                    onerror="this.src='../../imgs/book.svg'">
                             </div>
                         </div>
                     </div>
@@ -112,4 +102,5 @@
         </article>
     </section>
 </body>
+
 </html>

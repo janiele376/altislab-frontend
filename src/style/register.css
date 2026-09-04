@@ -1,26 +1,31 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-#header{
+
+#header {
     background-color: var(--bg-card, #DBC2B0);
     color: var(--text-main, #55463C);
     width: 100%;
 }
-#header .container-title{
+
+#header .container-title {
     display: flex;
     gap: 1.25rem;
     padding: 1.25rem;
     align-items: center;
 }
-#header .title{
+
+#header .title {
     font-size: 1.875rem;
 }
-#header .img-book{
+
+#header .img-book {
     padding-bottom: 0.625rem;
 }
-#body{
+
+#body {
     background-image: url(../imgs/background-corpo.svg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -31,30 +36,37 @@
     width: 100%;
     min-height: 100vh;
 }
-body.dark-mode #body{
+
+body.dark-mode #body {
     background-blend-mode: multiply;
     background-color: #1a1614;
 }
-.container-phrase{
+
+.container-phrase {
     padding-left: 3.75rem;
     padding-top: 12.5rem;
 }
-.container-phrase .phrase .line1{
+
+.container-phrase .phrase .line1 {
     color: white;
     font-size: 1.875rem;
 }
-.container-phrase .phrase .line2{
+
+.container-phrase .phrase .line2 {
     color: white;
     font-size: 3.125rem;
 }
-.container-phrase .phrase .line3{
+
+.container-phrase .phrase .line3 {
     color: #DFA782;
     font-size: 3.125rem;
 }
-.container-phrase .phrase .line4{
+
+.container-phrase .phrase .line4 {
     color: white;
 }
-.container-form{
+
+.container-form {
     background-color: var(--bg-card, #DBC2B0);
     color: var(--text-main, #55463C);
     border-radius: 1.875rem;
@@ -66,32 +78,39 @@ body.dark-mode #body{
     margin-top: 2rem;
     padding-bottom: 1.5rem;
 }
-.container-form .title-form{
+
+.container-form .title-form {
     padding-bottom: 0.9375rem;
     padding-right: 3.125rem;
 }
-.container-form .title-form img{
+
+.container-form .title-form img {
     padding-left: 2rem;
     padding-bottom: 0.625rem;
 }
-.container-form .container-title-img-form{
+
+.container-form .container-title-img-form {
     display: flex;
     padding-right: 2.5rem;
 }
-.container-form .container-title-img-form .img-form{
+
+.container-form .container-title-img-form .img-form {
     padding-right: 2.1875rem;
     padding-left: 1.5625rem;
     padding-top: 2rem;
 }
-.container-form .container-title-img-form .img-form .img-back-arrow:hover{
+
+.container-form .container-title-img-form .img-form .img-back-arrow:hover {
     opacity: 0.5;
 }
-.container-form .info p{
+
+.container-form .info p {
     padding-bottom: 0.3125rem;
     padding-top: 0.3125rem;
     color: var(--text-main, #55463C);
 }
-.container-form .info input{
+
+.container-form .info input {
     border-radius: 0.625rem;
     border: 1px solid var(--border-color, darkgrey);
     background-color: var(--bg-input, #FFFFFF);
@@ -103,46 +122,53 @@ body.dark-mode #body{
     padding-right: 2rem;
     outline: none;
 }
-.container-password-input{
+
+.container-password-input {
     position: relative;
     display: flex;
     align-items: center;
     width: 11rem;
 }
-.container-password-input input{
+
+.container-password-input input {
     width: 100% !important;
     padding-right: 2rem !important;
 }
-.container-password-input .btn-toggle-password{
+
+.container-password-input .btn-toggle-password {
     position: absolute;
     right: 0.5rem;
     width: 1.15rem;
     height: 1.15rem;
     cursor: pointer;
     opacity: 0.7;
-    transition: opacity 0.2s ease;
 }
-.container-password-input .btn-toggle-password:hover{
+
+.container-password-input .btn-toggle-password:hover {
     opacity: 1;
 }
-.container-form .container-form-imgs{
+
+.container-form .container-form-imgs {
     padding-right: 1rem;
     display: flex;
 }
-.container-form .container-form-imgs .imgs-form{
+
+.container-form .container-form-imgs .imgs-form {
     display: flex;
     flex-direction: column;
     gap: 1.65rem;
     padding-top: 1.8rem;
     padding-right: 0.2rem;
 }
-.container-form .btns{
+
+.container-form .btns {
     padding-top: 1.25rem;
     display: block;
     align-items: center;
     flex-direction: column;
 }
-.container-form .btns .btn-cancel{
+
+.container-form .btns .btn-cancel {
     width: 12.5rem;
     height: 1.875rem;
     border-radius: 0.625rem;
@@ -153,10 +179,12 @@ body.dark-mode #body{
     cursor: pointer;
     transition: opacity 0.2s;
 }
-.container-form .btns .btn-cancel:hover{
+
+.container-form .btns .btn-cancel:hover {
     opacity: 0.7;
 }
-.container-form .btns .btn-register{
+
+.container-form .btns .btn-register {
     width: 12.5rem;
     height: 1.875rem;
     border-radius: 0.625rem;
@@ -167,9 +195,85 @@ body.dark-mode #body{
     cursor: pointer;
     transition: opacity 0.2s;
 }
-.container-form .btns .btn-register:hover{
+
+.container-form .btns .btn-register:hover {
     opacity: 0.8;
 }
-.container-form .btns .monitor-larger{
+
+.container-form .btns .monitor-larger {
     display: none;
+}
+
+dialog#modal-photo {
+    margin: auto;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 0;
+    overflow: visible;
+}
+
+dialog#modal-photo::backdrop {
+    background-color: var(--bg-modal-backdrop, rgba(0, 0, 0, 0.6));
+}
+
+dialog#modal-photo .container-create-rentals {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--bg-card, #DBC2B0);
+    color: var(--text-main, #55463C);
+    width: 22rem;
+    padding: 1.8rem;
+    border-radius: 2rem;
+    border: 1px solid var(--border-color, #55463C);
+}
+
+dialog#modal-photo .container-title-rental {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+dialog#modal-photo .title-rental-form {
+    font-size: 1.4rem;
+    color: var(--text-main, #55463C);
+}
+
+dialog#modal-photo .container-form {
+    border: 1px solid var(--border-color, #55463C);
+    border-radius: 1rem;
+    width: 100%;
+    min-height: auto;
+    margin-top: 0;
+    padding: 1.2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+dialog#modal-photo .container-form p {
+    font-size: 0.95rem;
+    color: var(--text-main, #55463C);
+    text-align: center;
+}
+
+dialog#modal-photo #preview-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+dialog#modal-photo #btn-choose-gallery {
+    margin-top: 0.2rem;
+}
+
+dialog#modal-photo .btns {
+    padding-top: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    gap: 0.8rem;
 }

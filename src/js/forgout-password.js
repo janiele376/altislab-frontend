@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const inputNovaSenha = document.querySelector('input[name="senha"]') || document.querySelectorAll('.info input')[2];
     const inputConfirmarNovaSenha = document.querySelector('input[name="confirmar-senha"]') || document.querySelectorAll('.info input')[3];
 
-    btnSend?.addEventListener('click', function(e) {
+    btnSend?.addEventListener('click', function (e) {
         e.preventDefault();
 
         const email = inputEmail.value.trim().toLowerCase();
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (usuario) {
             usuario.senha = novaSenha;
             localStorage.setItem('usuarios_biblioteca', JSON.stringify(usuarios));
-            
+
             alert('Senha redefinida com sucesso!');
             window.location.href = './login.html';
             return;
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         alert('Usuário não encontrado com esse E-mail e CPF!');
     });
 
-    btnCancel?.addEventListener('click', function(e) {
+    btnCancel?.addEventListener('click', function (e) {
         e.preventDefault();
         window.location.href = './login.html';
     });
