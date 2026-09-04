@@ -24,7 +24,6 @@ function initTenantDashboard() {
   const rentals = getData(STORAGE_KEY_RENTALS);
   const books = getData(STORAGE_KEY_BOOKS);
 
-  // Validação segura da foto
   const userImgEl = document.querySelector('.container-dashboard-header .img-user');
   if (userImgEl) {
     if (loggedUser && loggedUser.foto && loggedUser.foto.startsWith('data:image')) {
