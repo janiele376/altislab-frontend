@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     btnSkipPhoto?.addEventListener('click', () => {
         if (!novoLocatarioTemp) return;
-        novoLocatarioTemp.foto = '../../imgs/user.svg'; // Caminho corrigido
+        novoLocatarioTemp.foto = '../../imgs/user.svg';
         salvarUsuarioFinal(novoLocatarioTemp);
     });
 

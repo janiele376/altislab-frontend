@@ -6,14 +6,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const imgElemento = document.querySelector('.container-img-profile .img-user');
     if (imgElemento) {
-        // Se for Base64 (foto da galeria), usa direto. Se for qualquer outra coisa ou caminho antigo, força o relativo correto
         if (usuario.foto && usuario.foto.startsWith('data:image')) {
             imgElemento.src = usuario.foto;
         } else {
             imgElemento.src = '../../imgs/user.svg';
         }
 
-        // Fallback garantido caso o SVG falhe
         imgElemento.onerror = function () {
             this.onerror = null;
             this.src = '../../imgs/user.svg';

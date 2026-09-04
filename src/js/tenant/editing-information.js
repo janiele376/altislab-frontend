@@ -48,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (profileImgEl) {
-            // Se for Base64 (foto enviada), renderiza direto; senão, força o SVG relativo correto
             if (usuarioAtual.foto && usuarioAtual.foto.startsWith('data:image')) {
                 profileImgEl.src = usuarioAtual.foto;
             } else {
@@ -134,7 +133,6 @@ document.addEventListener('DOMContentLoaded', () => {
             usuarioAtual.endereco = novaLocalizacao;
         }
 
-        // Sanitiza a foto salva
         if (novaFotoBase64) {
             usuarioAtual.foto = novaFotoBase64;
         } else if (!usuarioAtual.foto || !usuarioAtual.foto.startsWith('data:image')) {

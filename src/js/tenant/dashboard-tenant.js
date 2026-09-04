@@ -33,7 +33,7 @@ function initTenantDashboard() {
       userImgEl.src = '../../imgs/user.svg';
     }
 
-    userImgEl.onerror = function() {
+    userImgEl.onerror = function () {
       this.onerror = null;
       this.src = '../../imgs/user.svg';
     };
