@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
             senha: dados['senha']?.trim(),
             tipo: 'locatario',
             status: 'Ativo',
-            foto: '../../imgs/user.svg' // Caminho corrigido
+            foto: '../../imgs/user.svg'
         };
 
         const usuarios = JSON.parse(localStorage.getItem('@biblioteca:usuarios')) ||
