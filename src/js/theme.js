@@ -1,20 +1,27 @@
 function aplicarTemaGlobal() {
-    const tema = localStorage.getItem('tema');
-    const deveSerEscuro = tema === 'dark';
+    let tema = localStorage.getItem('tema');
 
-    document.documentElement.classList.toggle('dark-mode', deveSerEscuro);
-
-    if (document.body) {
-        document.body.classList.toggle('dark-mode', deveSerEscuro);
+    if (tema == 'dark') {
+        document.documentElement.classList.add('dark-mode');
+        if (document.body) {
+            document.body.classList.add('dark-mode');
+        }
+    } else {
+        document.documentElement.classList.remove('dark-mode');
+        if (document.body) {
+            document.body.classList.remove('dark-mode');
+        }
     }
 }
 
 aplicarTemaGlobal();
 
-document.addEventListener('DOMContentLoaded', aplicarTemaGlobal);
+document.addEventListener('DOMContentLoaded', function () {
+    aplicarTemaGlobal();
+});
 
-window.addEventListener('storage', (event) => {
-    if (event.key === 'tema') {
+window.onstorage = function (event) {
+    if (event.key == 'tema') {
         aplicarTemaGlobal();
     }
-});
+};

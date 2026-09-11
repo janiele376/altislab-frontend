@@ -1,13 +1,14 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const inputEmail = document.getElementById('input-email');
-    const inputPassword = document.getElementById('input-password');
-    const btnLogin = document.getElementById('btn-login');
-    const btnRegister = document.getElementById('btn-register');
-    const togglePassword = document.getElementById('toggle-password');
+let inputEmail = document.getElementById('input-email');
+let inputPassword = document.getElementById('input-password');
+let btnLogin = document.getElementById('btn-login');
+let btnRegister = document.getElementById('btn-register');
+let togglePassword = document.getElementById('toggle-password');
 
-    togglePassword?.addEventListener('click', function (e) {
+if (togglePassword) {
+    togglePassword.onclick = function (e) {
         e.preventDefault();
-        if (inputPassword.type === 'password') {
+
+        if (inputPassword.type == 'password') {
             inputPassword.type = 'text';
             togglePassword.src = '../imgs/visibility.svg';
             togglePassword.alt = 'Ocultar senha';
@@ -16,98 +17,129 @@ document.addEventListener('DOMContentLoaded', function () {
             togglePassword.src = '../imgs/visibility_off.svg';
             togglePassword.alt = 'Mostrar senha';
         }
-    });
+    };
+}
 
-    function getUsuariosCadastrados() {
-        const chaves = ['@biblioteca:usuarios', 'usuarios_biblioteca', 'usuarios'];
-        for (const chave of chaves) {
-            const dados = localStorage.getItem(chave);
-            if (dados) {
-                try {
-                    const parsed = JSON.parse(dados);
-                    if (Array.isArray(parsed) && parsed.length > 0) return parsed;
-                } catch (err) {
-                    console.error('Erro ao ler chave ' + chave, err);
-                }
-            }
+function getUsuariosCadastrados() {
+    let dados = localStorage.getItem('@biblioteca:usuarios');
+
+    if (!dados) {
+        dados = localStorage.getItem('usuarios_biblioteca');
+    }
+    if (!dados) {
+        dados = localStorage.getItem('usuarios');
+    }
+
+    if (dados) {
+        let lista = JSON.parse(dados);
+        return lista;
+    }
+
+    return [];
+}
+
+function atualizarUsuariosNoStorage(usuariosAtualizados) {
+    let textoJson = JSON.stringify(usuariosAtualizados);
+    localStorage.setItem('@biblioteca:usuarios', textoJson);
+    localStorage.setItem('usuarios_biblioteca', textoJson);
+}
+
+function usuarioPossuiAtraso(usuario) {
+    let dadosAlugueis = localStorage.getItem('@biblioteca:alugueis');
+
+    if (!dadosAlugueis) {
+        return false;
+    }
+
+    let alugueis = JSON.parse(dadosAlugueis);
+
+    let dataHoje = new Date();
+    let ano = dataHoje.getFullYear();
+    let mes = String(dataHoje.getMonth() + 1).padStart(2, '0');
+    let dia = String(dataHoje.getDate()).padStart(2, '0');
+    let hojeFormatado = ano + '-' + mes + '-' + dia;
+
+    for (let i = 0; i < alugueis.length; i++) {
+        let aluguel = alugueis[i];
+
+        let ehMesmoCpf = false;
+        if (usuario.cpf && aluguel.cpf && usuario.cpf == aluguel.cpf) {
+            ehMesmoCpf = true;
         }
-        return [];
-    }
 
-    function atualizarUsuariosNoStorage(usuariosAtualizados) {
-        localStorage.setItem('@biblioteca:usuarios', JSON.stringify(usuariosAtualizados));
-        localStorage.setItem('usuarios_biblioteca', JSON.stringify(usuariosAtualizados));
-    }
+        let ehMesmoNome = false;
+        let nomeUser = usuario.nome || usuario.name || '';
+        let nomeAluguel = aluguel.userName || '';
+        if (nomeUser.toLowerCase() == nomeAluguel.toLowerCase()) {
+            ehMesmoNome = true;
+        }
 
-    function usuarioPossuiAtraso(usuario) {
-        const dadosAlugueis = localStorage.getItem('@biblioteca:alugueis');
-        if (!dadosAlugueis) return false;
+        let ehEsteUsuario = ehMesmoCpf || ehMesmoNome;
+        let estaPendente = aluguel.status != 'Inativo';
+        let estaAtrasado = aluguel.endDate && aluguel.endDate < hojeFormatado;
 
-        try {
-            const alugueis = JSON.parse(dadosAlugueis);
-            const cpfLimpo = (usuario.cpf || '').replace(/\D/g, '');
-            const nomeLimpo = (usuario.nome || usuario.name || '').trim().toLowerCase();
-            const hoje = new Date().toISOString().split('T')[0];
-
-            return alugueis.some(r => {
-                const matchCpf = cpfLimpo && (r.cpf || '').replace(/\D/g, '') === cpfLimpo;
-                const matchNome = (r.userName || '').trim().toLowerCase() === nomeLimpo;
-                const ehUsuario = matchCpf || matchNome;
-                const estaPendente = r.status !== 'Inativo';
-                const estaAtrasado = r.endDate && r.endDate < hoje;
-
-                return ehUsuario && estaPendente && estaAtrasado;
-            });
-        } catch (e) {
-            return false;
+        if (ehEsteUsuario && estaPendente && estaAtrasado) {
+            return true;
         }
     }
 
-    btnLogin?.addEventListener('click', function (e) {
+    return false;
+}
+
+if (btnLogin) {
+    btnLogin.onclick = function (e) {
         e.preventDefault();
 
-        const email = inputEmail.value.trim().toLowerCase();
-        const senha = inputPassword.value.trim();
+        let email = inputEmail.value.toLowerCase().trim();
+        let senha = inputPassword.value.trim();
 
-        if (!email || !senha) {
+        if (email == '' || senha == '') {
             alert('Por favor, preencha todos os campos!');
             return;
         }
 
-        if (email === 'admin@admin.com' && senha === '12345678') {
+        if (email == 'admin@admin.com' && senha == '12345678') {
             window.location.href = './admin/dashboard-admin.html';
             return;
         }
 
-        if (email === 'user@user.com' && senha === '12345678') {
+        if (email == 'user@user.com' && senha == '12345678') {
             window.location.href = './tenant/dashboard-tenant.html';
             return;
         }
 
-        const usuarios = getUsuariosCadastrados();
+        let usuarios = getUsuariosCadastrados();
+        let usuarioEncontrado = null;
 
-        const usuarioEncontrado = usuarios.find(
-            usuario => (usuario.email || '').trim().toLowerCase() === email && usuario.senha === senha
-        );
+        for (let i = 0; i < usuarios.length; i++) {
+            let u = usuarios[i];
+            let emailBanco = (u.email || '').toLowerCase().trim();
 
-        if (usuarioEncontrado) {
-            const temAtraso = usuarioPossuiAtraso(usuarioEncontrado);
+            if (emailBanco == email && u.senha == senha) {
+                usuarioEncontrado = u;
+                break;
+            }
+        }
 
-            if (temAtraso) {
+        if (usuarioEncontrado != null) {
+            let temAtraso = usuarioPossuiAtraso(usuarioEncontrado);
+
+            if (temAtraso == true) {
                 usuarioEncontrado.status = 'Inativo';
-                const listaAtualizada = usuarios.map(u =>
-                    (u.cpf === usuarioEncontrado.cpf || u.email === usuarioEncontrado.email)
-                        ? { ...u, status: 'Inativo' }
-                        : u
-                );
-                atualizarUsuariosNoStorage(listaAtualizada);
 
+                for (let i = 0; i < usuarios.length; i++) {
+                    if (usuarios[i].email == usuarioEncontrado.email) {
+                        usuarios[i].status = 'Inativo';
+                    }
+                }
+
+                atualizarUsuariosNoStorage(usuarios);
                 alert('Acesso negado: Este usuário foi inativado por conta do atraso na devolução do livro.');
                 return;
             }
 
-            const statusAtual = usuarioEncontrado.status || 'Ativo';
-            if (statusAtual === 'Inativo' || statusAtual === 'Desativado') {
+            let statusConta = usuarioEncontrado.status || 'Ativo';
+            if (statusConta == 'Inativo' || statusConta == 'Desativado') {
                 alert('Acesso negado: Sua conta está desativada. Entre em contato com a biblioteca.');
                 return;
             }
@@ -118,12 +150,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         alert('E-mail ou senha incorretos!');
-    });
+    };
+}
 
-    function openRegister(e) {
-        e?.preventDefault();
+if (btnRegister) {
+    btnRegister.onclick = function (e) {
+        e.preventDefault();
         window.location.href = './register.html';
-    }
-
-    btnRegister?.addEventListener('click', openRegister);
-});
+    };
+}

@@ -1,98 +1,146 @@
-document.addEventListener('DOMContentLoaded', function () {
-    function configureToggleSenha(btnId, inputSelector) {
-        const btn = document.getElementById(btnId);
-        const input = document.querySelector(inputSelector);
+let inputSenha = document.querySelector('input[name="senha"]');
+let inputConfirmarSenha = document.querySelector('input[name="confirmar-senha"]');
+let btnToggleSenha = document.getElementById('toggle-password');
+let btnToggleConfirmarSenha = document.getElementById('toggle-confirm-password');
 
-        btn?.addEventListener('click', function () {
-            const isPassword = input.type === 'password';
-            input.type = isPassword ? 'text' : 'password';
-            btn.src = isPassword ? '../imgs/visibility.svg' : '../imgs/visibility_off.svg';
-            btn.alt = isPassword ? 'Ocultar senha' : 'Mostrar senha';
-        });
+if (btnToggleSenha) {
+    btnToggleSenha.onclick = function () {
+        if (inputSenha.type == 'password') {
+            inputSenha.type = 'text';
+            btnToggleSenha.src = '../imgs/visibility.svg';
+            btnToggleSenha.alt = 'Ocultar senha';
+        } else {
+            inputSenha.type = 'password';
+            btnToggleSenha.src = '../imgs/visibility_off.svg';
+            btnToggleSenha.alt = 'Mostrar senha';
+        }
+    };
+}
+
+if (btnToggleConfirmarSenha) {
+    btnToggleConfirmarSenha.onclick = function () {
+        if (inputConfirmarSenha.type == 'password') {
+            inputConfirmarSenha.type = 'text';
+            btnToggleConfirmarSenha.src = '../imgs/visibility.svg';
+            btnToggleConfirmarSenha.alt = 'Ocultar senha';
+        } else {
+            inputConfirmarSenha.type = 'password';
+            btnToggleConfirmarSenha.src = '../imgs/visibility_off.svg';
+            btnToggleConfirmarSenha.alt = 'Mostrar senha';
+        }
+    };
+}
+
+let form = document.querySelector('form');
+let btnRegister = document.querySelector('button[name="btn-register"]');
+let btnCancel = document.querySelector('button[name="btn-cancel"]');
+
+let modalPhoto = document.getElementById('modal-photo');
+let previewPhoto = document.getElementById('preview-photo');
+let inputFilePhoto = document.getElementById('input-file-photo');
+let btnChooseGallery = document.getElementById('btn-choose-gallery');
+let btnConfirmPhoto = document.getElementById('btn-confirm-photo');
+let btnSkipPhoto = document.getElementById('btn-skip-photo');
+
+let novoLocatarioTemp = null;
+let fotoBase64 = '../../imgs/user.svg';
+
+function salvarUsuarioFinal(usuario) {
+    let lista1 = JSON.parse(localStorage.getItem('@biblioteca:usuarios'));
+    if (!lista1) {
+        lista1 = [];
     }
+    lista1.push(usuario);
+    localStorage.setItem('@biblioteca:usuarios', JSON.stringify(lista1));
 
-    configureToggleSenha('toggle-password', 'input[name="senha"]');
-    configureToggleSenha('toggle-confirm-password', 'input[name="confirmar-senha"]');
-
-    const form = document.querySelector('form');
-    const btnRegister = document.querySelector('button[name="btn-register"]');
-    const btnCancel = document.querySelector('button[name="btn-cancel"]');
-
-    const modalPhoto = document.getElementById('modal-photo');
-    const previewPhoto = document.getElementById('preview-photo');
-    const inputFilePhoto = document.getElementById('input-file-photo');
-    const btnChooseGallery = document.getElementById('btn-choose-gallery');
-    const btnConfirmPhoto = document.getElementById('btn-confirm-photo');
-    const btnSkipPhoto = document.getElementById('btn-skip-photo');
-
-    let novoLocatarioTemp = null;
-    let fotoBase64 = '../../imgs/user.svg';
-
-    function salvarUsuarioFinal(usuario) {
-        const chaves = ['@biblioteca:usuarios', 'usuarios_biblioteca'];
-
-        chaves.forEach(chave => {
-            const lista = JSON.parse(localStorage.getItem(chave)) || [];
-            lista.push(usuario);
-            localStorage.setItem(chave, JSON.stringify(lista));
-        });
-
-        localStorage.setItem('usuario_logado', JSON.stringify(usuario));
-
-        modalPhoto?.close();
-        alert('Cadastro realizado com sucesso!');
-        window.location.href = './tenant/dashboard-tenant.html';
+    let lista2 = JSON.parse(localStorage.getItem('usuarios_biblioteca'));
+    if (!lista2) {
+        lista2 = [];
     }
+    lista2.push(usuario);
+    localStorage.setItem('usuarios_biblioteca', JSON.stringify(lista2));
 
-    btnRegister?.addEventListener('click', function (e) {
+    localStorage.setItem('usuario_logado', JSON.stringify(usuario));
+
+    if (modalPhoto) {
+        modalPhoto.close();
+    }
+    alert('Cadastro realizado com sucesso!');
+    window.location.href = './tenant/dashboard-tenant.html';
+}
+
+if (btnRegister) {
+    btnRegister.onclick = function (e) {
         e.preventDefault();
 
         if (!form) return;
 
-        const formData = new FormData(form);
-        const dados = Object.fromEntries(formData.entries());
+        let inputNome = document.querySelector('input[name="nome-completo"]');
+        let inputNascimento = document.querySelector('input[name="data-nascimento"]');
+        let inputEmail = document.querySelector('input[name="email"]');
+        let inputCpf = document.querySelector('input[name="cpf"]');
+        let inputTelefone = document.querySelector('input[name="telefone"]');
+        let inputLocalizacao = document.querySelector('input[name="localizacao"]');
 
-        const temCampoVazio = Object.values(dados).some(valor => typeof valor === 'string' && !valor.trim());
-        if (temCampoVazio) {
+        let nome = inputNome ? inputNome.value.trim() : '';
+        let nascimento = inputNascimento ? inputNascimento.value.trim() : '';
+        let email = inputEmail ? inputEmail.value.trim().toLowerCase() : '';
+        let cpf = inputCpf ? inputCpf.value.trim() : '';
+        let telefone = inputTelefone ? inputTelefone.value.trim() : '';
+        let localizacao = inputLocalizacao ? inputLocalizacao.value.trim() : '';
+        let senha = inputSenha ? inputSenha.value.trim() : '';
+        let confirmarSenha = inputConfirmarSenha ? inputConfirmarSenha.value.trim() : '';
+
+        if (nome == '' || nascimento == '' || email == '' || cpf == '' || telefone == '' || localizacao == '' || senha == '' || confirmarSenha == '') {
             alert('Por favor, preencha todos os campos!');
             return;
         }
 
-        if (dados['senha'] !== dados['confirmar-senha']) {
+        if (senha != confirmarSenha) {
             alert('As senhas não coincidem!');
             return;
         }
 
-        if (dados['senha'].length < 8) {
+        if (senha.length < 8) {
             alert('A senha deve conter exatamente 8 dígitos!');
             return;
         }
 
         novoLocatarioTemp = {
-            id: String(Date.now()),
-            nome: dados['nome-completo']?.trim(),
-            nascimento: dados['data-nascimento'],
-            dataNasc: dados['data-nascimento'],
-            email: dados['email']?.trim().toLowerCase(),
-            cpf: dados['cpf']?.trim(),
-            telefone: dados['telefone']?.trim(),
-            endereco: dados['localizacao']?.trim(),
-            localizacao: dados['localizacao']?.trim(),
-            senha: dados['senha']?.trim(),
+            id: String(new Date().getTime()),
+            nome: nome,
+            nascimento: nascimento,
+            dataNasc: nascimento,
+            email: email,
+            cpf: cpf,
+            telefone: telefone,
+            endereco: localizacao,
+            localizacao: localizacao,
+            senha: senha,
             tipo: 'locatario',
             status: 'Ativo',
             foto: '../../imgs/user.svg'
         };
 
-        const usuarios = JSON.parse(localStorage.getItem('@biblioteca:usuarios')) ||
-            JSON.parse(localStorage.getItem('usuarios_biblioteca')) || [];
+        let usuarios = JSON.parse(localStorage.getItem('@biblioteca:usuarios'));
+        if (!usuarios) {
+            usuarios = JSON.parse(localStorage.getItem('usuarios_biblioteca'));
+        }
+        if (!usuarios) {
+            usuarios = [];
+        }
 
-        const cpfLimpo = novoLocatarioTemp.cpf.replace(/\D/g, '');
-        const usuarioExiste = usuarios.some(u => {
-            const uCpfLimpo = (u.cpf || '').replace(/\D/g, '');
-            return (u.email && u.email.toLowerCase() === novoLocatarioTemp.email) ||
-                (uCpfLimpo && uCpfLimpo === cpfLimpo);
-        });
+        let usuarioExiste = false;
+        for (let i = 0; i < usuarios.length; i++) {
+            let u = usuarios[i];
+            let emailCadastrado = (u.email || '').toLowerCase().trim();
+            let cpfCadastrado = u.cpf || '';
+
+            if (emailCadastrado == email || cpfCadastrado == cpf) {
+                usuarioExiste = true;
+                break;
+            }
+        }
 
         if (usuarioExiste) {
             alert('Já existe uma conta cadastrada com este E-mail ou CPF!');
@@ -104,40 +152,52 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             salvarUsuarioFinal(novoLocatarioTemp);
         }
-    });
+    };
+}
 
-    btnChooseGallery?.addEventListener('click', () => {
-        inputFilePhoto?.click();
-    });
+if (btnChooseGallery) {
+    btnChooseGallery.onclick = function () {
+        if (inputFilePhoto) {
+            inputFilePhoto.click();
+        }
+    };
+}
 
-    inputFilePhoto?.addEventListener('change', (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function (evt) {
+if (inputFilePhoto) {
+    inputFilePhoto.onchange = function (e) {
+        let arquivo = e.target.files[0];
+        if (arquivo) {
+            let leitor = new FileReader();
+            leitor.onload = function (evt) {
                 fotoBase64 = evt.target.result;
                 if (previewPhoto) {
                     previewPhoto.src = fotoBase64;
                 }
             };
-            reader.readAsDataURL(file);
+            leitor.readAsDataURL(arquivo);
         }
-    });
+    };
+}
 
-    btnConfirmPhoto?.addEventListener('click', () => {
+if (btnConfirmPhoto) {
+    btnConfirmPhoto.onclick = function () {
         if (!novoLocatarioTemp) return;
         novoLocatarioTemp.foto = fotoBase64;
         salvarUsuarioFinal(novoLocatarioTemp);
-    });
+    };
+}
 
-    btnSkipPhoto?.addEventListener('click', () => {
+if (btnSkipPhoto) {
+    btnSkipPhoto.onclick = function () {
         if (!novoLocatarioTemp) return;
         novoLocatarioTemp.foto = '../../imgs/user.svg';
         salvarUsuarioFinal(novoLocatarioTemp);
-    });
+    };
+}
 
-    btnCancel?.addEventListener('click', function (e) {
+if (btnCancel) {
+    btnCancel.onclick = function (e) {
         e.preventDefault();
         window.location.href = './login.html';
-    });
-});
+    };
+}

@@ -1,43 +1,60 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const btnLight = document.getElementById('btn-light');
-    const btnDark = document.getElementById('btn-dark');
-    const selectLanguage = document.getElementById('select-language');
+let btnLight = document.getElementById('btn-light');
+let btnDark = document.getElementById('btn-dark');
+let selectLanguage = document.getElementById('select-language');
 
-    function aplicarTema(tema) {
-        if (tema === 'dark') {
-            document.body.classList.add('dark-mode');
-            btnDark?.classList.add('active');
-            btnLight?.classList.remove('active');
-        } else {
-            document.body.classList.remove('dark-mode');
-            btnLight?.classList.add('active');
-            btnDark?.classList.remove('active');
+function aplicarTema(tema) {
+    if (tema == 'dark') {
+        document.body.classList.add('dark-mode');
+        if (btnDark) {
+            btnDark.classList.add('active');
+        }
+        if (btnLight) {
+            btnLight.classList.remove('active');
+        }
+    } else {
+        document.body.classList.remove('dark-mode');
+        if (btnLight) {
+            btnLight.classList.add('active');
+        }
+        if (btnDark) {
+            btnDark.classList.remove('active');
         }
     }
+}
 
-    const temaSalvo = localStorage.getItem('tema') || 'light';
-    aplicarTema(temaSalvo);
+let temaSalvo = localStorage.getItem('tema');
+if (!temaSalvo) {
+    temaSalvo = 'light';
+}
+aplicarTema(temaSalvo);
 
-    const idiomaSalvo = localStorage.getItem('idioma_sistema');
-    if (idiomaSalvo && selectLanguage) {
+let idiomaSalvo = localStorage.getItem('idioma_sistema');
+if (idiomaSalvo) {
+    if (selectLanguage) {
         selectLanguage.value = idiomaSalvo;
     }
+}
 
-    btnLight?.addEventListener('click', () => {
+if (btnLight) {
+    btnLight.onclick = function () {
         aplicarTema('light');
         localStorage.setItem('tema', 'light');
-    });
+    };
+}
 
-    btnDark?.addEventListener('click', () => {
+if (btnDark) {
+    btnDark.onclick = function () {
         aplicarTema('dark');
         localStorage.setItem('tema', 'dark');
-    });
+    };
+}
 
-    selectLanguage?.addEventListener('change', (e) => {
-        const idioma = e.target.value;
-        if (idioma !== 'Selecione') {
+if (selectLanguage) {
+    selectLanguage.onchange = function () {
+        let idioma = selectLanguage.value;
+        if (idioma != 'Selecione') {
             localStorage.setItem('idioma_sistema', idioma);
-            alert(`Idioma alterado para: ${idioma}`);
+            alert('Idioma alterado para: ' + idioma);
         }
-    });
-});
+    };
+}
