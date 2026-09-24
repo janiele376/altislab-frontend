@@ -4,77 +4,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="doc_title_settings">Configurações</title>
+
+    <title data-translation="doc_title_settings">Configurações</title>
+
     <link rel="stylesheet" href="../../style/tenant/settings-profile.css">
     <link rel="stylesheet" href="../../style/theme.css">
-    <script src="../../js/tenant/settings-profile.js"></script>
-    <script src="../../js/theme.js"></script>
-    <script src="../../js/language.js" defer></script>
+
+    <script src="../../js/tenant/settings-profile.js" defer></script>
+    <script src="../../js/utils/theme.js" defer></script>
+    <script src="../../js/utils/language.js" defer></script>
 </head>
 
 <body>
+
     <header id="header">
+
         <div class="container-title">
-            <img class="img-book" alt="logo" src="../../imgs/book.svg">
-            <h2 class="title" data-i18n="header_title_settings">Biblioteca Configurações</h2>
+
+            <img class="img-book" src="../../imgs/book.svg" alt="Logo">
+
+            <h2 class="title" data-translation="header_title_settings">
+                Biblioteca Configurações
+            </h2>
+
         </div>
+
     </header>
 
-    <section id="body">
+    <main id="body">
 
-        <article class="container-profile">
+        <section class="container-profile">
+
             <div class="container-title-img-form">
+
                 <div class="img-form">
+
                     <a href="../tenant/dashboard-tenant.html">
                         <img src="../../imgs/back-arrow.svg" alt="Voltar">
                     </a>
+
                 </div>
+
                 <div class="title-form">
+
                     <img src="../../imgs/book.svg" alt="Ícone Livro">
-                    <h2 data-i18n="title_settings">Configurações</h2>
+
+                    <h2 data-translation="title_settings">
+                        Configurações
+                    </h2>
+
                 </div>
+
             </div>
 
             <div class="container-btns">
-                <button class="btn-profile" data-i18n="tab_profile">Perfil</button>
-                <button class="btn-accessibility" onclick="window.location.href='../tenant/settings-accessibility.html'"
-                    data-i18n="tab_accessibility">Acessibilidade</button>
+
+                <button type="button" class="btn-profile active" data-translation="tab_profile">
+                    Perfil
+                </button>
+
+                <a href="../tenant/settings-accessibility.html" class="btn-accessibility"
+                    data-translation="tab_accessibility">
+                    Acessibilidade
+                </a>
+
             </div>
 
             <div class="container-img-profile">
-                <img class="img-user" alt="usuário">
-                <p id="profile-name" class="nome-user" data-i18n="placeholder_full_name">Nome Completo</p>
+
+                <img class="img-user" src="../../imgs/user.svg" alt="Foto de perfil">
+
+                <p id="profile-name" class="nome-user">
+                    Nome Completo
+                </p>
+
             </div>
 
             <hr class="line">
 
-            <div class="container-imgs-info-profile">
-                <div class="imgs-profile">
-                    <img src="../../imgs/mail.svg" alt="Email">
+            <div class="container-profile-information">
+
+                <div class="profile-info">
+
+                    <img src="../../imgs/mail.svg" alt="E-mail">
+
+                    <p id="profile-email">
+                        <span data-translation="label_email">
+                            E-mail:
+                        </span>
+                    </p>
+
+                </div>
+
+                <div class="profile-info">
+
                     <img src="../../imgs/telephone.svg" alt="Telefone">
-                    <img src="../../imgs/calendar.svg" alt="Data de Nascimento">
-                    <img src="../../imgs/cpf.svg" alt="CPF">
-                    <img src="../../imgs/location.svg" alt="Endereço">
+
+                    <p id="profile-phone">
+                        <span data-translation="label_phone">
+                            Telefone:
+                        </span>
+                    </p>
+
                 </div>
 
-                <div class="info-profile">
-                    <p id="profile-email"><span data-i18n="label_email">E-mail: </span></p>
-                    <p id="profile-phone"><span data-i18n="label_phone">Telefone: </span></p>
-                    <p id="profile-birth"><span data-i18n="label_birth_date">Data de Nascimento: </span></p>
-                    <p id="profile-cpf"><span data-i18n="label_cpf">CPF: </span></p>
-                    <p id="profile-address"><span data-i18n="label_address">Endereço: </span></p>
+                <div class="profile-info">
+
+                    <img src="../../imgs/calendar.svg" alt="Data de Nascimento">
+
+                    <p id="profile-birth">
+                        <span data-translation="label_birth_date">
+                            Data de Nascimento:
+                        </span>
+                    </p>
+
                 </div>
+
+                <div class="profile-info">
+
+                    <img src="../../imgs/cpf.svg" alt="CPF">
+
+                    <p id="profile-cpf">
+                        <span data-translation="label_cpf">
+                            CPF:
+                        </span>
+                    </p>
+
+                </div>
+
+                <div class="profile-info">
+
+                    <img src="../../imgs/location.svg" alt="Endereço">
+
+                    <p id="profile-address">
+                        <span data-translation="label_address">
+                            Endereço:
+                        </span>
+                    </p>
+
+                </div>
+
             </div>
 
             <hr class="line">
 
-            <button class="edit-info" onclick="window.location.href='../tenant/editing-information.html'">
-                <img src="../../imgs/edit-info.svg" class="edit-figure" alt="Editar">
-                <span data-i18n="btn_edit_info">Editar Informações</span>
-            </button>
-        </article>
+            <a href="../tenant/editing-information.html" class="edit-info">
 
-    </section>
+                <img src="../../imgs/edit-info.svg" class="edit-figure" alt="Editar">
+
+                <span data-translation="btn_edit_info">
+                    Editar Informações
+                </span>
+
+            </a>
+
+        </section>
+
+    </main>
+
 </body>
 
 </html>

@@ -4,143 +4,355 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="doc_title_register">Cadastro</title>
+
+    <title data-translation="doc_title_register">Cadastro</title>
+
     <link rel="stylesheet" href="../style/register.css">
-    <link rel="stylesheet" href="../../style/theme.css">
-    <script src="../../js/theme.js"></script>
-    <script src="../js/register.js" defer></script>
-    <script src="../js/language.js" defer></script>
+    <link rel="stylesheet" href="../style/theme.css">
+
+    <script src="../js/utils/toggle-password.js" defer></script>
+    <script src="../js/utils/masks.js" defer></script>
+    <script src="../js/auth/register.js" defer></script>
 </head>
 
 <body>
+
     <header id="header">
+
         <div class="container-title">
-            <img class="img-book" alt="logo" src="../imgs/book.svg">
-            <h2 class="title" data-i18n="header_title_register">Biblioteca Cadastro</h2>
+
+            <img
+                class="img-book"
+                src="../imgs/book.svg"
+                alt="Logo"
+            >
+
+            <h2
+                class="title"
+                data-translation="header_title_register"
+            >
+                Biblioteca Cadastro
+            </h2>
+
         </div>
+
     </header>
 
-    <section id="body">
+    <main id="body">
 
         <article class="container-phrase">
+
             <div class="phrase">
-                <h3 class="line1" data-i18n="banner_welcome">Bem Vindo(a)</h3>
-                <h1 class="line2" data-i18n="banner_line2">A Leitura Abre</h1>
-                <h1 class="line3" data-i18n="banner_line3">Novos Mundos</h1>
-                <h4 class="line4" data-i18n="banner_line4">Acesse sua conta e assista a sua experiência</h4>
+
+                <h3
+                    class="line1"
+                    data-translation="banner_welcome"
+                >
+                    Bem Vindo(a)
+                </h3>
+
+                <h1
+                    class="line2"
+                    data-translation="banner_line2"
+                >
+                    A Leitura Abre
+                </h1>
+
+                <h1
+                    class="line3"
+                    data-translation="banner_line3"
+                >
+                    Novos Mundos
+                </h1>
+
+                <h4
+                    class="line4"
+                    data-translation="banner_line4"
+                >
+                    Acesse sua conta e assista a sua experiência
+                </h4>
+
             </div>
+
         </article>
 
         <form class="container-form">
+
             <div class="container-title-img-form">
+
                 <div class="img-form">
+
                     <a href="../pages/index.html">
-                        <img src="../imgs/back-arrow.svg" class="img-back-arrow" alt="Voltar">
+
+                        <img
+                            src="../imgs/back-arrow.svg"
+                            class="img-back-arrow"
+                            alt="Voltar"
+                        >
+
                     </a>
+
                 </div>
+
                 <div class="title-form">
-                    <img src="../imgs/book.svg" alt="Livro">
-                    <h2 data-i18n="title_form_register">Cadastre-se</h2>
+
+                    <img
+                        src="../imgs/book.svg"
+                        alt="Livro"
+                    >
+
+                    <h2 data-translation="title_form_register">
+                        Cadastre-se
+                    </h2>
+
                 </div>
+
             </div>
 
             <div class="container-form-imgs">
+
                 <div class="imgs-form">
-                    <img src="../imgs/user.svg" alt="user">
-                    <img src="../imgs/calendar.svg" alt="date">
-                    <img src="../imgs/mail.svg" alt="email">
-                    <img src="../imgs/cpf.svg" alt="cpf">
-                    <img src="../imgs/telephone.svg" alt="telefone">
-                    <img src="../imgs/location.svg" alt="local">
-                    <img src="../imgs/key.svg" alt="senha">
-                    <img src="../imgs/key.svg" alt="confirmar senha">
+
+                    <img src="../imgs/user.svg" alt="Nome">
+                    <img src="../imgs/calendar.svg" alt="Data de nascimento">
+                    <img src="../imgs/mail.svg" alt="E-mail">
+                    <img src="../imgs/cpf.svg" alt="CPF">
+                    <img src="../imgs/telephone.svg" alt="Telefone">
+                    <img src="../imgs/location.svg" alt="Localização">
+                    <img src="../imgs/key.svg" alt="Senha">
+                    <img src="../imgs/key.svg" alt="Confirmar senha">
+
                 </div>
 
                 <div class="info">
-                    <p data-i18n="label_full_name">Nome Completo:</p>
-                    <input placeholder="Maria da Silva" name="nome-completo" id="input-nome">
 
-                    <p data-i18n="label_birth_date">Data de Nascimento:</p>
-                    <input placeholder="DD/MM/AAAA" type="date" name="data-nascimento" id="input-data-nasc">
+                    <p data-translation="label_full_name">
+                        Nome Completo:
+                    </p>
 
-                    <p data-i18n="label_email">E-mail:</p>
-                    <input placeholder="email@gmail.com" type="email" name="email" id="input-email">
+                    <input
+                        type="text"
+                        id="input-name"
+                        name="nome-completo"
+                        placeholder="Maria da Silva"
+                    >
 
-                    <p data-i18n="label_cpf">CPF:</p>
-                    <input placeholder="000.000.000-00" type="tel" name="cpf" id="input-cpf">
+                    <p data-translation="label_birth_date">
+                        Data de Nascimento:
+                    </p>
 
-                    <p data-i18n="label_phone">Telefone:</p>
-                    <input placeholder="00 0 0000-0000" type="tel" name="telefone" id="input-telefone">
+                    <input
+                        type="date"
+                        id="input-birth"
+                        name="data-nascimento"
+                    >
 
-                    <p data-i18n="label_location">Localização:</p>
-                    <input placeholder="Logradouro, Nº - Bairro" type="text" name="localizacao" id="input-localizacao"
-                        data-i18n-placeholder="placeholder_address_format">
+                    <p data-translation="label_email">
+                        E-mail:
+                    </p>
 
-                    <p data-i18n="label_password">Senha:</p>
+                    <input
+                        type="email"
+                        id="input-email"
+                        name="email"
+                        placeholder="email@gmail.com"
+                    >
+
+                    <p data-translation="label_cpf">
+                        CPF:
+                    </p>
+
+                    <input
+                        type="tel"
+                        id="input-cpf"
+                        name="cpf"
+                        placeholder="000.000.000-00"
+                    >
+
+                    <p data-translation="label_phone">
+                        Telefone:
+                    </p>
+
+                    <input
+                        type="tel"
+                        id="input-phone"
+                        name="telefone"
+                        placeholder="(00) 90000-0000"
+                    >
+
+                    <p data-translation="label_location">
+                        Localização:
+                    </p>
+
+                    <input
+                        type="text"
+                        id="input-local"
+                        name="localizacao"
+                        placeholder="Logradouro, Nº - Bairro"
+                        data-translation-placeholder="placeholder_address_format"
+                    >
+
+                    <p data-translation="label_password">
+                        Senha:
+                    </p>
+
                     <div class="container-password-input">
-                        <input placeholder="Senha" type="password" name="senha" id="input-password" maxlength="8"
-                            data-i18n-placeholder="placeholder_password">
-                        <img class="btn-toggle-password" id="toggle-password" src="../imgs/visibility_off.svg"
-                            alt="Mostrar senha">
+
+                        <input
+                            type="password"
+                            id="input-password"
+                            name="senha"
+                            placeholder="Senha"
+                            maxlength="8"
+                            data-translation-placeholder="placeholder_password"
+                        >
+
+                        <img
+                            class="btn-toggle-password"
+                            id="toggle-password"
+                            src="../imgs/visibility_off.svg"
+                            alt="Mostrar senha"
+                        >
+
                     </div>
 
-                    <p data-i18n="label_confirm_password">Confirmar Senha:</p>
+                    <p data-translation="label_confirm_password">
+                        Confirmar Senha:
+                    </p>
+
                     <div class="container-password-input">
-                        <input placeholder="Confirmar Senha" type="password" name="confirmar-senha"
-                            id="input-confirm-password" maxlength="8" data-i18n-placeholder="placeholder_confirm_pwd">
-                        <img class="btn-toggle-password" id="toggle-confirm-password" src="../imgs/visibility_off.svg"
-                            alt="Mostrar confirmar senha">
+
+                        <input
+                            type="password"
+                            id="input-confirm-password"
+                            name="confirmar-senha"
+                            placeholder="Confirmar Senha"
+                            maxlength="8"
+                            data-translation-placeholder="placeholder_confirm_pwd"
+                        >
+
+                        <img
+                            class="btn-toggle-password"
+                            id="toggle-confirm-password"
+                            src="../imgs/visibility_off.svg"
+                            alt="Mostrar confirmar senha"
+                        >
+
                     </div>
+
                 </div>
+
             </div>
 
             <div class="btns">
-                <button type="submit" class="btn-register" id="btn-register" name="btn-register"
-                    data-i18n="btn_submit_register">Cadastrar</button>
-                <p class="monitor-normal" data-i18n="divider_or_long">----------------ou-----------------</p>
-                <p class="monitor-larger" data-i18n="divider_or_long">------------------ou----------------</p>
-                <button type="button" class="btn-cancel" name="btn-cancel"
-                    onclick="window.location.href='../pages/index.html'" data-i18n="btn_cancel_action">Cancelar</button>
+
+                <button
+                    type="button"
+                    class="btn-register"
+                    id="btn-register"
+                    name="btn-register"
+                    data-translation="btn_submit_register"
+                >
+                    Cadastrar
+                </button>
+
+                <div class="divider">
+
+                    <span></span>
+
+                    <p>ou</p>
+
+                    <span></span>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="btn-cancel"
+                    id="btn-cancel"
+                    name="btn-cancel"
+                    data-translation="btn_cancel_action"
+                >
+                    Cancelar
+                </button>
+
             </div>
 
         </form>
 
         <dialog id="modal-photo">
-            <div class="container-create-rentals modal-confirmation" style="max-width: 26rem; text-align: center;">
-                <div class="container-title-rental">
-                    <h1 class="title-rental-form" style="font-size: 1.5rem;" data-i18n="modal_photo_title">Foto de
-                        Perfil</h1>
+
+            <div class="modal-photo-content">
+
+                <div class="modal-photo-title">
+
+                    <h2 data-translation="modal_photo_title">
+                        Foto de Perfil
+                    </h2>
+
                 </div>
 
-                <div class="container-form"
-                    style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
-                    <p data-i18n="modal_photo_prompt">Deseja adicionar uma foto de perfil agora?</p>
+                <div class="modal-photo-body">
 
-                    <div
-                        style="width: 6.5rem; height: 6.5rem; border-radius: 50%; overflow: hidden; border: 2px solid var(--border-color, #55463C);">
-                        <img id="preview-photo" src="../imgs/user.svg" alt="Pré-visualização"
-                            style="width: 100%; height: 100%; object-fit: cover;">
+                    <p data-translation="modal_photo_prompt">
+                        Deseja adicionar uma foto de perfil agora?
+                    </p>
+
+                    <div class="container-preview-photo">
+
+                        <img
+                            id="preview-photo"
+                            src="../imgs/user.svg"
+                            alt="Pré-visualização"
+                        >
+
                     </div>
 
-                    <input type="file" id="input-file-photo" accept="image/*" style="display: none;">
+                    <input
+                        type="file"
+                        id="input-file-photo"
+                        accept="image/*"
+                    >
 
-                    <button type="button" id="btn-choose-gallery" class="btn-register"
-                        style="width: 14rem; height: 2.2rem; cursor: pointer;" data-i18n="btn_choose_gallery">
+                    <button
+                        type="button"
+                        id="btn-choose-gallery"
+                        class="btn-choose-gallery"
+                        data-translation="btn_choose_gallery"
+                    >
                         Escolher da Galeria
                     </button>
 
-                    <div class="btns"
-                        style="margin-top: 1rem; width: 100%; display: flex; justify-content: center; gap: 1rem;">
-                        <button type="button" class="btn-register" id="btn-confirm-photo" style="width: 8rem;"
-                            data-i18n="btn_confirm">SALVAR</button>
-                        <button type="button" class="btn-cancel" id="btn-skip-photo" style="width: 8rem;"
-                            data-i18n="btn_skip">PULAR</button>
+                    <div class="modal-photo-buttons">
+
+                        <button
+                            type="button"
+                            id="btn-confirm-photo"
+                            class="btn-confirm-photo"
+                            data-translation="btn_confirm"
+                        >
+                            Salvar
+                        </button>
+
+                        <button
+                            type="button"
+                            id="btn-skip-photo"
+                            class="btn-skip-photo"
+                            data-translation="btn_skip"
+                        >
+                            Pular
+                        </button>
+
                     </div>
+
                 </div>
+
             </div>
+
         </dialog>
 
-    </section>
+    </main>
+
 </body>
 
 </html>

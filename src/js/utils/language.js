@@ -140,7 +140,7 @@ const translations = {
         label_birth_date: "Data de Nascimento:",
         label_cpf: "CPF:",
         label_address: "Endereço:",
-        label_old_password: "Senha Antiga:",
+        label_old_password: "Senha Antiga: *",
         label_new_password: "Nova Senha:",
         label_confirm_password: "Confirmar Senha:",
         label_password: "Senha:",
@@ -319,7 +319,7 @@ const translations = {
         label_birth_date: "Birth Date:",
         label_cpf: "CPF / ID:",
         label_address: "Address:",
-        label_old_password: "Old Password:",
+        label_old_password: "Old Password: *",
         label_new_password: "New Password:",
         label_confirm_password: "Confirm Password:",
         label_password: "Password:",
@@ -498,7 +498,7 @@ const translations = {
         label_birth_date: "Fecha de Nacimiento:",
         label_cpf: "DNI / CIF:",
         label_address: "Dirección:",
-        label_old_password: "Contraseña Anterior:",
+        label_old_password: "Contraseña Anterior:*",
         label_new_password: "Nueva Contraseña:",
         label_confirm_password: "Confirmar Contraseña:",
         label_password: "Contraseña:",
@@ -537,44 +537,41 @@ const translations = {
         location_3: "Calle Norte Europeo, 110 - Vale Central"
     }
 };
+const saveLanguage = localStorage.getItem("language")
+const selectLanguage = document.querySelector(".select-language")
 
-function applyLanguage(lang) {
-    if (!translations[lang]) return;
+function changeLanguage(language) {
 
-    localStorage.setItem("app_language", lang);
-    document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang;
+    const elements = document.querySelectorAll("[data-translation]")
 
-    document.querySelectorAll("[data-i18n]").forEach(el => {
-        const key = el.getAttribute("data-i18n");
-        if (translations[lang][key]) {
-            el.textContent = translations[lang][key];
+    elements.forEach(function (element) {
+
+        const chave = element.dataset.translation
+
+        if (language == "en") {
+            element.textContent = translations.en[chave]
         }
-    });
 
-    document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
-        const key = el.getAttribute("data-i18n-placeholder");
-        if (translations[lang][key]) {
-            el.setAttribute("placeholder", translations[lang][key]);
+        if (language == "es") {
+            element.textContent = translations.es[chave]
         }
-    });
 
-    document.querySelectorAll("[data-i18n-title]").forEach(el => {
-        const key = el.getAttribute("data-i18n-title");
-        if (translations[lang][key]) {
-            el.setAttribute("title", translations[lang][key]);
+        if (language == "pt") {
+            element.textContent = translations.pt[chave]
         }
-    });
+    })
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    const savedLang = localStorage.getItem("app_language") || "pt";
-    applyLanguage(savedLang);
+changeLanguage(saveLanguage)
 
-    const langSelect = document.getElementById("select-language");
-    if (langSelect) {
-        langSelect.value = savedLang;
-        langSelect.addEventListener("change", (e) => {
-            applyLanguage(e.target.value);
-        });
-    }
-});
+selectLanguage.value = saveLanguage
+
+selectLanguage.addEventListener("change", function () {
+
+    const language = selectLanguage.value
+
+    localStorage.setItem("language", language)
+
+    changeLanguage(language)
+
+})

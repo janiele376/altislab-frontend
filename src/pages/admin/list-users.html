@@ -1,113 +1,242 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title data-translation="doc_title_users">Usuários</title>
+
     <link rel="stylesheet" href="../../style/admin/list-users.css">
     <link rel="stylesheet" href="../../style/theme.css">
+
     <script src="../../js/admin/list-users.js" defer></script>
-    <script src="../../js/theme.js"></script>
-    <script src="../../js/language.js" defer></script>
-    <title data-i18n="doc_title_users">Usuários</title>
+    <script src="../../js/utils/theme.js" defer></script>
+    <script src="../../js/utils/language.js" defer></script>
 </head>
 
 <body>
+
     <header id="header">
+
         <div class="container-title">
-            <img class="img-book" alt="logo" src="../../imgs/book.svg">
-            <h2 class="title" data-i18n="header_title_users">Biblioteca Usuários</h2>
+
+            <img class="img-book" src="../../imgs/book.svg" alt="Logo">
+
+            <h2 class="title" data-translation="header_title_users">
+                Biblioteca Usuários
+            </h2>
+
             <div class="container-dashboard-header">
+
                 <div class="imgs">
-                    <img src="../../imgs/user.svg" class="img-user" alt="usuário">
-                    <a href="../admin/settings.html"><img src="../../imgs/adjustments.svg" class="img-adjustments"
-                            alt="ajustes"></a>
+
+                    <img src="../../imgs/user.svg" class="img-user" alt="Usuário">
+
+                    <a href="../admin/settings.html">
+                        <img src="../../imgs/adjustments.svg" class="img-adjustments" alt="Ajustes">
+                    </a>
+
                 </div>
+
                 <div class="text">
-                    <p data-i18n="nav_user">Usuário</p>
-                    <p data-i18n="nav_settings">Ajustes</p>
+                    <p data-translation="nav_user">Usuário</p>
+                    <p data-translation="nav_settings">Ajustes</p>
                 </div>
+
             </div>
+
         </div>
+
     </header>
 
-    <section id="body">
-        <article class="container-menu">
-            <button class="btn-publishers"><a href="../admin/list-publishers.html"
-                    data-i18n="menu_publishers">Editoras</a></button>
-            <button class="btn-books"><a href="../admin/list-books.html" data-i18n="menu_books">Livros</a></button>
-            <button class="btn-users" data-i18n="menu_users">Usuários</button>
-            <button class="btn-rentals"><a href="../admin/list-rentals.html"
-                    data-i18n="menu_rentals">Aluguéis</a></button>
-            <button class="btn-dashboard"><a href="../admin/dashboard-admin.html"
-                    data-i18n="menu_dashboard">Dashboard</a></button>
-        </article>
+    <main id="body">
 
-        <article class="container-rentals">
+        <nav class="container-menu">
+
+            <a class="menu-item" href="../admin/dashboard-admin.html" data-translation="menu_dashboard">
+                Dashboard
+            </a>
+
+            <a class="menu-item active" href="../admin/list-users.html" data-translation="menu_users">
+                Usuários
+            </a>
+
+            <a class="menu-item" href="../admin/list-rentals.html" data-translation="menu_rentals">
+                Aluguéis
+            </a>
+
+            <a class="menu-item" href="../admin/list-books.html" data-translation="menu_books">
+                Livros
+            </a>
+
+            <a class="menu-item" href="../admin/list-publishers.html" data-translation="menu_publishers">
+                Editoras
+            </a>
+
+        </nav>
+
+        <section class="container-users">
+
             <div class="container-list">
+
                 <div class="container-search">
-                    <input type="text" placeholder="pesquisar usuários..." class="input-search"
-                        data-i18n-placeholder="placeholder_search_users">
-                    <p>|</p>
-                    <img src="../../imgs/filters.svg" alt="filtros">
-                    <img src="../../imgs/search.svg" alt="pesquisar">
+
+                    <input type="text" id="input-search" class="input-search" placeholder="Pesquisar usuários..."
+                        data-translation-placeholder="placeholder_search_users">
+
+                    <img src="../../imgs/search.svg" alt="Pesquisar" id="btn-search">
+
                 </div>
 
                 <hr class="line-search">
 
                 <div class="container-table-info">
-                    <h3 data-i18n="col_user_name">Nome do Usuário</h3>
-                    <h3 data-i18n="col_cpf">CPF</h3>
-                    <h3 data-i18n="col_birth_date">Data de Nasc.</h3>
-                    <h3 data-i18n="col_address">Endereço</h3>
-                    <h3 data-i18n="col_status">Status</h3>
-                    <h3 class="action" data-i18n="col_actions">Ações</h3>
+
+                    <h3 data-translation="col_user_name">
+                        Nome do Usuário
+                    </h3>
+
+                    <h3 data-translation="col_cpf">
+                        CPF
+                    </h3>
+
+                    <h3 data-translation="col_birth_date">
+                        Data de Nasc.
+                    </h3>
+
+                    <h3 data-translation="col_address">
+                        Endereço
+                    </h3>
+
+                    <h3 class="action" data-translation="col_actions">
+                        Ações
+                    </h3>
+
                 </div>
 
                 <hr class="line-header-divider">
 
+                <div id="users-list"></div>
+
                 <div class="btn-next-page">
-                    <button class="btn-prev"><img src="../../imgs/arrow_next_left.svg" alt="anterior"></button>
-                    <p><span data-i18n="page_prefix">1 de</span> 5</p>
-                    <button class="btn-next"><img src="../../imgs/arrow_next_right.svg" alt="próximo"></button>
+
+                    <button type="button" class="btn-prev" id="btn-prev">
+                        <img src="../../imgs/arrow_next_left.svg" alt="Página anterior">
+                    </button>
+
+                    <p>
+                        <span id="current-page">1</span>
+                        de
+                        <span id="total-pages">1</span>
+                    </p>
+
+                    <button type="button" class="btn-next" id="btn-next">
+                        <img src="../../imgs/arrow_next_right.svg" alt="Próxima página">
+                    </button>
+
                 </div>
+
             </div>
-        </article>
 
-        <dialog id="modal-status">
-            <div class="container-create-rentals modal-confirmation">
-                <div class="container-title-rental">
-                    <a id="close-modal-status"><img src="../../imgs/back-arrow.svg" class="img-rental-form"
-                            alt="Voltar"></a>
-                    <h1 class="title-rental-form" data-i18n="modal_change_status_title">Alterar Status</h1>
+        </section>
+
+        <dialog id="modal-edit-user">
+
+            <div class="container-edit-user">
+
+                <div class="edit-user-header">
+
+                    <button type="button" id="close-edit-user" class="btn-back-modal">
+                        <img src="../../imgs/back-arrow.svg" alt="Voltar">
+                    </button>
+
+                    <h2>Editar Usuário</h2>
+
                 </div>
 
-                <div class="container-form">
-                    <div class="confirm-message">
-                        <p data-i18n="msg_confirm_change_status">Deseja alterar o status deste usuário?</p>
-                        <span class="warning-text" data-i18n="msg_warning_change_status">O usuário perderá o acesso caso
-                            seja desativado.</span>
+                <div class="edit-user-form">
+
+                    <div class="input-group">
+
+                        <label for="edit-name">
+                            Nome Completo:
+                        </label>
+
+                        <input type="text" id="edit-name">
+
                     </div>
 
-                    <div class="rental-summary-details">
-                        <p><strong data-i18n="label_user_summary">Usuário:</strong> <span id="status-user-name"></span>
-                        </p>
-                        <p><strong data-i18n="col_cpf">CPF:</strong> <span id="status-user-cpf"></span></p>
+                    <div class="input-group">
+
+                        <label for="edit-email">
+                            E-mail:
+                        </label>
+
+                        <input type="email" id="edit-email">
+
                     </div>
 
-                    <div class="btns-rentals">
-                        <button class="btn-check btn-danger" id="confirm-status">
-                            <img src="../../imgs/check.svg" alt="Confirmar"><span
-                                data-i18n="btn_confirm">CONFIRMAR</span>
-                        </button>
-                        <button class="btn-cancel" id="cancel-status">
-                            <img src="../../imgs/cancel.svg" alt="Cancelar"><span data-i18n="btn_cancel">CANCELAR</span>
-                        </button>
+                    <div class="input-group">
+
+                        <label for="edit-phone">
+                            Telefone:
+                        </label>
+
+                        <input type="tel" id="edit-phone">
+
                     </div>
+
+                    <div class="input-group">
+
+                        <label for="edit-cpf">
+                            CPF:
+                        </label>
+
+                        <input type="text" id="edit-cpf">
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <label for="edit-birth">
+                            Data de Nascimento:
+                        </label>
+
+                        <input type="date" id="edit-birth">
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <label for="edit-address">
+                            Endereço:
+                        </label>
+
+                        <input type="text" id="edit-address">
+
+                    </div>
+
+                    <div class="edit-user-buttons">
+
+                        <button type="button" class="btn-cancel" id="cancel-edit-user">
+                            CANCELAR
+                        </button>
+
+                        <button type="button" class="btn-save" id="save-edit-user">
+                            SALVAR
+                        </button>
+
+                    </div>
+
                 </div>
+
             </div>
+
         </dialog>
-    </section>
+
+    </main>
+
 </body>
 
 </html>

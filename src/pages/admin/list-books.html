@@ -1,164 +1,275 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title data-translation="doc_title_books">Livros</title>
+
     <link rel="stylesheet" href="../../style/admin/list-books.css">
     <link rel="stylesheet" href="../../style/theme.css">
+
     <script src="../../js/admin/list-books.js" defer></script>
-    <script src="../../js/theme.js"></script>
-    <script src="../../js/language.js" defer></script>
-    <title data-i18n="doc_title_books">Livros</title>
+    <script src="../../js/utils/theme.js" defer></script>
+    <script src="../../js/utils/language.js" defer></script>
 </head>
 
 <body>
+
     <header id="header">
+
         <div class="container-title">
-            <img class="img-book" alt="logo" src="../../imgs/book.svg">
-            <h2 class="title" data-i18n="header_title_books">Biblioteca Listar Livros</h2>
+
+            <img class="img-book" src="../../imgs/book.svg" alt="Logo">
+
+            <h2 class="title" data-translation="header_title_books">
+                Biblioteca Listar Livros
+            </h2>
+
             <div class="container-dashboard-header">
+
                 <div class="imgs">
-                    <img src="../../imgs/user.svg" class="img-user" alt="usuário">
-                    <a href="../admin/settings.html"><img src="../../imgs/adjustments.svg" class="img-adjustments"
-                            alt="ajustes"></a>
+
+                    <img src="../../imgs/user.svg" class="img-user" alt="Usuário">
+
+                    <a href="../admin/settings.html">
+                        <img src="../../imgs/adjustments.svg" class="img-adjustments" alt="Ajustes">
+                    </a>
+
                 </div>
+
                 <div class="text">
-                    <p data-i18n="nav_user">Usuário</p>
-                    <p data-i18n="nav_settings">Ajustes</p>
+
+                    <p data-translation="nav_user">
+                        Usuário
+                    </p>
+
+                    <p data-translation="nav_settings">
+                        Ajustes
+                    </p>
+
                 </div>
+
             </div>
+
         </div>
+
     </header>
 
-    <section id="body">
-        <article class="container-menu">
-            <button class="btn-publishers"><a href="../admin/list-publishers.html"
-                    data-i18n="menu_publishers">Editoras</a></button>
-            <button class="btn-books" data-i18n="menu_books">Livros</button>
-            <button class="btn-users"><a href="../admin/list-users.html" data-i18n="menu_users">Usuários</a></button>
-            <button class="btn-rentals"><a href="../admin/list-rentals.html"
-                    data-i18n="menu_rentals">Aluguéis</a></button>
-            <button class="btn-dashboard"><a href="../admin/dashboard-admin.html"
-                    data-i18n="menu_dashboard">Dashboard</a></button>
-        </article>
+    <main id="body">
 
-        <article class="container-rentals">
-            <div class="container-create-rental">
-                <h2 data-i18n="title_create_book">Criar Livro</h2>
-                <button class="btn-create-rental" id="open-modal-create" data-i18n="btn_new_book">+ Novo Livro</button>
+        <nav class="container-menu">
+
+            <a class="menu-item" href="../admin/dashboard-admin.html" data-translation="menu_dashboard">
+                Dashboard
+            </a>
+
+            <a class="menu-item" href="../admin/list-users.html" data-translation="menu_users">
+                Usuários
+            </a>
+
+            <a class="menu-item" href="../admin/list-rentals.html" data-translation="menu_rentals">
+                Aluguéis
+            </a>
+
+            <a class="menu-item" href="../admin/list-books.html" data-translation="menu_books">
+                Livros
+            </a>
+
+            <a class="menu-item" href="../admin/list-publishers.html" data-translation="menu_publishers">
+                Editoras
+            </a>
+
+        </nav>
+
+        <section class="container-books">
+
+            <div class="container-create-book">
+
+                <h2 data-translation="title_create_book">
+                    Criar Livro
+                </h2>
+
+                <button type="button" class="btn-create-book" id="open-modal-create" data-translation="btn_new_book">
+                    + Novo Livro
+                </button>
+
             </div>
 
             <div class="container-list">
+
                 <div class="container-search">
-                    <input type="text" placeholder="pesquisar livro..." class="input-search"
-                        data-i18n-placeholder="placeholder_search_book">
-                    <p>|</p>
-                    <img src="../../imgs/filters.svg" alt="filtros">
-                    <img src="../../imgs/search.svg" alt="pesquisar">
+
+                    <input type="text" id="input-search" class="input-search" placeholder="Pesquisar livro..."
+                        data-translation-placeholder="placeholder_search_book">
+
+                    <img src="../../imgs/filters.svg" id="btn-filter" alt="Filtros">
+
+                    <img src="../../imgs/search.svg" id="btn-search" alt="Pesquisar">
+
                 </div>
 
                 <hr class="line-search">
 
                 <div class="container-table-info">
-                    <h3 data-i18n="col_code">Cód.</h3>
-                    <h3 data-i18n="col_book_name">Nome do Livro</h3>
-                    <h3 data-i18n="col_publisher">Editora</h3>
-                    <h3 data-i18n="col_release_date">Data de Lançamento</h3>
-                    <h3 data-i18n="col_quantity">Qtd.</h3>
-                    <h3 class="action" data-i18n="col_actions">Ações</h3>
+
+                    <h3 data-translation="col_code">
+                        Cód.
+                    </h3>
+
+                    <h3 data-translation="col_book_name">
+                        Nome do Livro
+                    </h3>
+
+                    <h3 data-translation="col_publisher">
+                        Editora
+                    </h3>
+
+                    <h3 data-translation="col_release_date">
+                        Data de Lançamento
+                    </h3>
+
+                    <h3 data-translation="col_quantity">
+                        Qtd.
+                    </h3>
+
+                    <h3 class="action" data-translation="col_actions">
+                        Ações
+                    </h3>
+
                 </div>
 
                 <hr class="line-header-divider">
 
+                <div id="books-list"></div>
+
                 <div class="btn-next-page">
-                    <button class="btn-prev"><img src="../../imgs/arrow_next_left.svg" alt="anterior"></button>
-                    <p><span data-i18n="page_prefix">1 de</span> 5</p>
-                    <button class="btn-next"><img src="../../imgs/arrow_next_right.svg" alt="próximo"></button>
+
+                    <button type="button" class="btn-prev" id="btn-prev">
+                        <img src="../../imgs/arrow_next_left.svg" alt="Página anterior">
+                    </button>
+
+                    <p>
+                        <span id="current-page">1</span>
+                        de
+                        <span id="total-pages">1</span>
+                    </p>
+
+                    <button type="button" class="btn-next" id="btn-next">
+                        <img src="../../imgs/arrow_next_right.svg" alt="Próxima página">
+                    </button>
+
                 </div>
+
             </div>
-        </article>
+
+        </section>
 
         <dialog id="modal-create">
-            <div class="container-create-rentals">
-                <div class="container-title-rental">
-                    <a id="close-modal-create"><img src="../../imgs/back-arrow.svg" class="img-rental-form"
-                            alt="Voltar"></a>
-                    <h1 class="title-rental-form" id="modal-book-title" data-i18n="modal_create_book_title">Criar Livro
-                    </h1>
+
+            <div class="container-create-books">
+
+                <div class="container-title-book">
+
+                    <button type="button" id="close-modal-create" class="btn-back-modal">
+                        <img src="../../imgs/back-arrow.svg" class="img-book-form" alt="Voltar">
+                    </button>
+
+                    <h2 class="title-book-form" id="modal-book-title" data-translation="modal_create_book_title">
+                        Criar Livro
+                    </h2>
+
                 </div>
 
                 <div class="container-form">
-                    <div>
-                        <p data-i18n="label_form_book_name">Nome do Livro:</p>
-                        <input class="book-name" type="text">
+
+                    <div class="input-group">
+
+                        <label for="book-name" data-translation="label_form_book_name">
+                            Nome do Livro:
+                        </label>
+
+                        <input class="book-name" id="book-name" type="text">
+
                     </div>
 
-                    <div>
-                        <p data-i18n="label_form_book_cod">Código do Livro:</p>
-                        <input class="book-cod" type="tel">
+                    <div class="input-group">
+
+                        <label for="book-cod" data-translation="label_form_book_cod">
+                            Código do Livro:
+                        </label>
+
+                        <input class="book-cod" id="book-cod" type="text">
+
                     </div>
 
-                    <div>
-                        <p data-i18n="label_form_publisher">Editora:</p>
-                        <select class="book-publisher" type="text" list="datalist-publishers"></select>
-                        <datalist id="datalist-publishers"></datalist>
+                    <div class="input-group">
+
+                        <label for="book-publisher" data-translation="label_form_publisher">
+                            Editora:
+                        </label>
+
+                        <select class="book-publisher" id="book-publisher">
+                            <option value="">
+                                Selecione uma editora
+                            </option>
+                        </select>
+
                     </div>
 
-                    <div>
-                        <p data-i18n="label_form_release_date">Data de Lançamento:</p>
-                        <input class="book-date" type="date">
+                    <div class="input-group">
+
+                        <label for="book-date" data-translation="label_form_release_date">
+                            Data de Lançamento:
+                        </label>
+
+                        <input class="book-date" id="book-date" type="date">
+
                     </div>
 
-                    <div>
-                        <p data-i18n="label_form_quantity">Quantidade de Livros:</p>
-                        <input class="book-quantity" type="number" min="0" value="1">
+                    <div class="input-group">
+
+                        <label for="book-quantity" data-translation="label_form_quantity">
+                            Quantidade de Livros:
+                        </label>
+
+                        <input class="book-quantity" id="book-quantity" type="number" min="1" value="1">
+
                     </div>
 
-                    <div class="btns-rentals">
-                        <button class="btn-check" id="btn-save-book"><img src="../../imgs/check.svg"
-                                alt="Confirmar"><span data-i18n="btn_confirm">CONFIRMAR</span></button>
-                        <button class="btn-cancel" id="cancel-create"><img src="../../imgs/cancel.svg"
-                                alt="Cancelar"><span data-i18n="btn_cancel">CANCELAR</span></button>
+                    <div class="btns-books">
+
+                        <button type="button" class="btn-check" id="btn-save-book">
+
+                            <img src="../../imgs/check.svg" alt="Confirmar">
+
+                            <span data-translation="btn_confirm">
+                                Confirmar
+                            </span>
+
+                        </button>
+
+                        <button type="button" class="btn-cancel" id="cancel-create">
+
+                            <img src="../../imgs/cancel.svg" alt="Cancelar">
+
+                            <span data-translation="btn_cancel">
+                                Cancelar
+                            </span>
+
+                        </button>
+
                     </div>
+
                 </div>
+
             </div>
+
         </dialog>
 
-        <dialog id="modal-delete">
-            <div class="container-create-rentals modal-confirmation">
-                <div class="container-title-rental">
-                    <a id="close-modal-delete"><img src="../../imgs/back-arrow.svg" class="img-rental-form"
-                            alt="Voltar"></a>
-                    <h1 class="title-rental-form" data-i18n="modal_delete_book_title">Excluir Livro</h1>
-                </div>
+    </main>
 
-                <div class="container-form">
-                    <div class="confirm-message">
-                        <p data-i18n="msg_confirm_delete_book">Tem certeza de que deseja excluir este livro?</p>
-                        <span class="warning-text" data-i18n="msg_warning_delete_book">Esta ação removerá o livro do
-                            catálogo.</span>
-                    </div>
-
-                    <div class="rental-summary-details">
-                        <p><strong data-i18n="label_cod_summary">Cód.:</strong> <span id="delete-book-cod"></span></p>
-                        <p><strong data-i18n="label_book_summary">Livro:</strong> <span id="delete-book-name"></span>
-                        </p>
-                    </div>
-
-                    <div class="btns-rentals">
-                        <button class="btn-check btn-danger" id="confirm-delete">
-                            <img src="../../imgs/check.svg" alt="Confirmar"><span
-                                data-i18n="btn_confirm_delete">EXCLUIR</span>
-                        </button>
-                        <button class="btn-cancel" id="cancel-delete">
-                            <img src="../../imgs/cancel.svg" alt="Cancelar"><span data-i18n="btn_cancel">CANCELAR</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </dialog>
-    </section>
 </body>
 
 </html>

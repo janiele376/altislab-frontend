@@ -4,116 +4,233 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="doc_title_login">Login</title>
+
+    <title data-translation="doc_title_login">Login</title>
+
     <link rel="stylesheet" href="../style/login.css">
-    <link rel="stylesheet" href="../../style/theme.css">
-    <script src="../js/login.js" defer></script>
-    <script src="../../js/theme.js"></script>
-    <script src="../js/language.js" defer></script>
+    <link rel="stylesheet" href="../style/theme.css">
+
+    <script src="../js/utils/toggle-password.js" defer></script>
+    <script src="../js/auth/login.js" defer></script>
 </head>
 
 <body>
+
     <header id="header">
+
         <div class="container-title">
-            <img class="img-book" alt="logo" src="../imgs/book.svg">
-            <h2 class="title" data-i18n="header_title_login">Biblioteca Login</h2>
+
+            <img class="img-book" src="../imgs/book.svg" alt="Logo">
+
+            <h2 class="title" data-translation="header_title_login">
+                Biblioteca Login
+            </h2>
+
         </div>
+
     </header>
 
-    <section id="body">
+
+    <main id="body">
 
         <article class="container-phrase">
+
             <div class="phrase">
-                <h2 class="line1" data-i18n="banner_welcome">Bem Vindo(a)</h2>
-                <h1 class="line2" data-i18n="banner_line2">A Leitura Abre</h1>
-                <h1 class="line3" data-i18n="banner_line3">Novos Mundos</h1>
-                <h3 class="line4" data-i18n="banner_line4">Acesse sua conta e assista a sua experiência</h3>
+
+                <h2 class="line1" data-translation="banner_welcome">
+                    Bem Vindo(a)
+                </h2>
+
+                <h1 class="line2" data-translation="banner_line2">
+                    A Leitura Abre
+                </h1>
+
+                <h1 class="line3" data-translation="banner_line3">
+                    Novos Mundos
+                </h1>
+
+                <h3 class="line4" data-translation="banner_line4">
+                    Acesse sua conta e assista a sua experiência
+                </h3>
+
             </div>
+
         </article>
+
 
         <article class="container-form">
+
             <div class="title-form">
-                <img src="../imgs/book.svg" alt="logo">
-                <h2 data-i18n="title_form_welcome">Bem Vindo(a)!</h2>
+
+                <img src="../imgs/book.svg" alt="Logo">
+
+                <h2 data-translation="title_form_welcome">
+                    Bem Vindo(a)!
+                </h2>
+
             </div>
+
 
             <div class="container-form-imgs">
+
                 <div class="imgs-form">
-                    <img src="../imgs/user.svg" alt="email">
-                    <img src="../imgs/key.svg" alt="senha">
+
+                    <img src="../imgs/user.svg" alt="E-mail">
+
+                    <img src="../imgs/key.svg" alt="Senha">
+
                 </div>
+
 
                 <div class="info">
-                    <p data-i18n="label_email">E-mail:</p>
-                    <input id="input-email" placeholder="email@gmail.com" type="email" required>
 
-                    <p data-i18n="label_password">Senha:</p>
+                    <p data-translation="label_email">
+                        E-mail:
+                    </p>
+
+                    <input id="input-email" type="email" placeholder="email@gmail.com" required>
+
+
+                    <p data-translation="label_password">
+                        Senha:
+                    </p>
+
                     <div class="container-password-input">
-                        <input id="input-password" placeholder="senha" type="password" maxlength="8" required
-                            data-i18n-placeholder="placeholder_password">
+
+                        <input id="input-password" type="password" placeholder="senha" maxlength="8" required
+                            data-translation-placeholder="placeholder_password">
+
                         <img class="btn-toggle-password" id="toggle-password" src="../imgs/visibility_off.svg"
                             alt="Mostrar senha">
+
                     </div>
+
                 </div>
+
             </div>
+
 
             <div class="forgot-password">
-                <a href="../pages/forgot-password.html" data-i18n="link_forgot_password">esqueci senha</a>
+
+                <a href="../pages/forgot-password.html" data-translation="link_forgot_password">
+                    Esqueci a senha
+                </a>
+
             </div>
 
+
             <div class="btns">
-                <button class="btn-login" id="btn-login" data-i18n="btn_login">Entrar</button>
-                <p class="monitor-normal" data-i18n="divider_or_long">----------------ou-----------------</p>
-                <p class="monitor-larger" data-i18n="divider_or_long">------------------ou----------------</p>
-                <button id="btn-register" class="btn-register" onclick="openRegister()"
-                    data-i18n="btn_register">Cadastre-se</button>
+
+                <button type="button" class="btn-login" id="btn-login" data-translation="btn_login">
+                    Entrar
+                </button>
+
+
+                <div class="divider">
+
+                    <span></span>
+
+                    <p data-translation="divider_or">
+                        ou
+                    </p>
+
+                    <span></span>
+
+                </div>
+
+
+                <button type="button" id="btn-register" class="btn-register" data-translation="btn_register">
+                    Cadastre-se
+                </button>
+
             </div>
 
         </article>
 
-    </section>
+    </main>
+
 
     <footer class="footer">
+
         <div class="container-info">
+
             <div class="about-us">
-                <h4 data-i18n="footer_about_title">Sobre Nós</h4>
-                <p class="text-mobile" data-i18n="footer_about_mobile">
-                    Criando valor e inspiração desde 2023.<br>
+
+                <h4 data-translation="footer_about_title">
+                    Sobre Nós
+                </h4>
+
+                <p class="text-mobile" data-translation="footer_about_mobile">
+                    Criando valor e inspiração desde 2023.
                 </p>
-                <p class="text-computer" data-i18n="footer_about_desktop">
+
+                <p class="text-computer" data-translation="footer_about_desktop">
                     Criando valor e inspiração desde 2023.<br>
-                    Nossa missão é informar você aos seus <br>
+                    Nossa missão é informar você aos seus<br>
                     produtos com praticidade.
                 </p>
+
             </div>
 
+
             <div class="container-contact-us">
+
                 <div class="contact-us">
-                    <h4 data-i18n="footer_contact_title">Contate-Nos</h4>
+
+                    <h4 data-translation="footer_contact_title">
+                        Contate-Nos
+                    </h4>
+
                     <ul>
                         <li>biblioteca@gmail.com</li>
                         <li>99 9999-99999</li>
                         <li>biblioteca23</li>
                     </ul>
+
                 </div>
+
 
                 <div class="imgs-contact-us">
-                    <img src="../imgs/mail.svg" alt="logo-email">
-                    <img src="../imgs/telephone.svg" alt="logo-telefone">
-                    <img src="../imgs/insta.svg" alt="logo-insta">
+
+                    <img src="../imgs/mail.svg" alt="E-mail">
+
+                    <img src="../imgs/telephone.svg" alt="Telefone">
+
+                    <img src="../imgs/insta.svg" alt="Instagram">
+
                 </div>
+
             </div>
 
+
             <div class="our-locations">
-                <h4 data-i18n="footer_locations_title">Nossos Locais</h4>
+
+                <h4 data-translation="footer_locations_title">
+                    Nossos Locais
+                </h4>
+
                 <ul>
-                    <li data-i18n="location_1">Rua Padre Filho, 263- Centro</li>
-                    <li data-i18n="location_2">Rua IV, 60- Paulista</li>
-                    <li data-i18n="location_3">Rua Norte Europeu, 110 - Vale Central </li>
+
+                    <li data-translation="location_1">
+                        Rua Padre Filho, 263 - Centro
+                    </li>
+
+                    <li data-translation="location_2">
+                        Rua IV, 60 - Paulista
+                    </li>
+
+                    <li data-translation="location_3">
+                        Rua Norte Europeu, 110 - Vale Central
+                    </li>
+
                 </ul>
+
             </div>
+
         </div>
+
     </footer>
+
 </body>
 
 </html>

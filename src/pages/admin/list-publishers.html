@@ -1,162 +1,258 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title data-translation="doc_title_publishers">Editoras</title>
+
     <link rel="stylesheet" href="../../style/admin/list-publishers.css">
     <link rel="stylesheet" href="../../style/theme.css">
+
     <script src="../../js/admin/list-publishers.js" defer></script>
-    <script src="../../js/theme.js"></script>
-    <script src="../../js/language.js" defer></script>
-    <title data-i18n="doc_title_publishers">Editoras</title>
+    <script src="../../js/utils/theme.js" defer></script>
+    <script src="../../js/utils/language.js" defer></script>
 </head>
 
 <body>
+
     <header id="header">
+
         <div class="container-title">
-            <img class="img-book" alt="logo" src="../../imgs/book.svg">
-            <h2 class="title" data-i18n="header_title_publishers">Biblioteca Listar Editoras</h2>
+
+            <img class="img-book" src="../../imgs/book.svg" alt="Logo">
+
+            <h2 class="title" data-translation="header_title_publishers">
+                Biblioteca Listar Editoras
+            </h2>
+
             <div class="container-dashboard-header">
+
                 <div class="imgs">
-                    <img src="../../imgs/user.svg" class="img-user" alt="usuário">
-                    <a href="../admin/settings.html"><img src="../../imgs/adjustments.svg" class="img-adjustments"
-                            alt="ajustes"></a>
+
+                    <img src="../../imgs/user.svg" class="img-user" alt="Usuário">
+
+                    <a href="../admin/settings.html">
+                        <img src="../../imgs/adjustments.svg" class="img-adjustments" alt="Ajustes">
+                    </a>
+
                 </div>
+
                 <div class="text">
-                    <p data-i18n="nav_user">Usuário</p>
-                    <p data-i18n="nav_settings">Ajustes</p>
+                    <p data-translation="nav_user">Usuário</p>
+                    <p data-translation="nav_settings">Ajustes</p>
                 </div>
+
             </div>
+
         </div>
+
     </header>
 
-    <section id="body">
-        <article class="container-menu">
-            <button class="btn-publishers" data-i18n="menu_publishers">Editoras</button>
-            <button class="btn-books"><a href="../admin/list-books.html" data-i18n="menu_books">Livros</a></button>
-            <button class="btn-users"><a href="../admin/list-users.html" data-i18n="menu_users">Usuários</a></button>
-            <button class="btn-rentals"><a href="../admin/list-rentals.html"
-                    data-i18n="menu_rentals">Aluguéis</a></button>
-            <button class="btn-dashboard"><a href="../admin/dashboard-admin.html"
-                    data-i18n="menu_dashboard">Dashboard</a></button>
-        </article>
+    <main id="body">
 
-        <article class="container-rentals">
-            <div class="container-create-rental">
-                <h2 data-i18n="title_create_publisher">Criar Editora</h2>
-                <button class="btn-create-rental" id="open-modal-create" data-i18n="btn_new_publisher">+ Nova
-                    Editora</button>
+        <nav class="container-menu">
+
+            <a class="menu-item" href="../admin/dashboard-admin.html" data-translation="menu_dashboard">
+                Dashboard
+            </a>
+
+            <a class="menu-item" href="../admin/list-users.html" data-translation="menu_users">
+                Usuários
+            </a>
+
+            <a class="menu-item" href="../admin/list-rentals.html" data-translation="menu_rentals">
+                Aluguéis
+            </a>
+
+            <a class="menu-item" href="../admin/list-books.html" data-translation="menu_books">
+                Livros
+            </a>
+
+            <a class="menu-item active" href="../admin/list-publishers.html" data-translation="menu_publishers">
+                Editoras
+            </a>
+
+        </nav>
+
+        <section class="container-publishers">
+
+            <div class="container-create-publisher">
+
+                <h2 data-translation="title_create_publisher">
+                    Criar Editora
+                </h2>
+
+                <button type="button" class="btn-create-publisher" id="open-modal-create"
+                    data-translation="btn_new_publisher">
+                    + Nova Editora
+                </button>
+
             </div>
 
             <div class="container-list">
+
                 <div class="container-search">
-                    <input type="text" placeholder="pesquisar editora..." class="input-search"
-                        data-i18n-placeholder="placeholder_search_publisher">
-                    <p>|</p>
-                    <img src="../../imgs/filters.svg" alt="filtros">
-                    <img src="../../imgs/search.svg" alt="pesquisar">
+
+                    <input type="text" id="input-search" class="input-search" placeholder="Pesquisar editora..."
+                        data-translation-placeholder="placeholder_search_publisher">
+
+                    <img src="../../imgs/filters.svg" id="btn-filter" alt="Filtros">
+
+                    <img src="../../imgs/search.svg" id="btn-search" alt="Pesquisar">
+
                 </div>
 
                 <hr class="line-search">
 
                 <div class="container-table-info">
-                    <h3 data-i18n="col_id">ID</h3>
-                    <h3 data-i18n="col_name">Nome</h3>
-                    <h3 data-i18n="col_contact">E-mail/Telefone</h3>
-                    <h3 data-i18n="col_address">Endereço</h3>
-                    <h3 class="action" data-i18n="col_actions">Ações</h3>
+
+                    <h3 data-translation="col_id">
+                        ID
+                    </h3>
+
+                    <h3 data-translation="col_name">
+                        Nome
+                    </h3>
+
+                    <h3 data-translation="col_contact">
+                        E-mail/Telefone
+                    </h3>
+
+                    <h3 data-translation="col_address">
+                        Endereço
+                    </h3>
+
+                    <h3 class="action" data-translation="col_actions">
+                        Ações
+                    </h3>
+
                 </div>
 
                 <hr class="line-header-divider">
 
-                <!-- Linhas renderizadas dinamicamente via JS -->
+                <div id="publishers-list"></div>
 
                 <div class="btn-next-page">
-                    <button class="btn-prev"><img src="../../imgs/arrow_next_left.svg" alt="anterior"></button>
-                    <p><span data-i18n="page_prefix">1 de</span> 5</p>
-                    <button class="btn-next"><img src="../../imgs/arrow_next_right.svg" alt="próximo"></button>
-                </div>
-            </div>
-        </article>
 
-        <!-- Modal Criar / Editar Editora -->
+                    <button type="button" class="btn-prev" id="btn-prev">
+                        <img src="../../imgs/arrow_next_left.svg" alt="Página anterior">
+                    </button>
+
+                    <p>
+                        <span id="current-page">1</span>
+                        de
+                        <span id="total-pages">1</span>
+                    </p>
+
+                    <button type="button" class="btn-next" id="btn-next">
+                        <img src="../../imgs/arrow_next_right.svg" alt="Próxima página">
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
         <dialog id="modal-create">
-            <div class="container-create-rentals">
-                <div class="container-title-rental">
-                    <a id="close-modal-create"><img src="../../imgs/back-arrow.svg" class="img-rental-form"
-                            alt="Voltar"></a>
-                    <h1 class="title-rental-form" id="modal-publisher-title" data-i18n="modal_create_publisher_title">
-                        Criar Editora</h1>
+
+            <div class="container-create-publishers">
+
+                <div class="container-title-publisher">
+
+                    <button type="button" id="close-modal-create" class="btn-back-modal">
+                        <img src="../../imgs/back-arrow.svg" class="img-publisher-form" alt="Voltar">
+                    </button>
+
+                    <h2 class="title-publisher-form" id="modal-publisher-title"
+                        data-translation="modal_create_publisher_title">
+                        Criar Editora
+                    </h2>
+
                 </div>
 
                 <div class="container-form">
-                    <div>
-                        <p data-i18n="label_form_publisher_name">Nome da Editora:</p>
-                        <input class="publisher-name" type="text">
-                    </div>
-                    <div>
-                        <p data-i18n="label_form_publisher_cnpj">CNPJ da Editora:</p>
-                        <input class="publisher-cnpj" type="text">
-                    </div>
-                    <div>
-                        <p data-i18n="label_form_email">E-mail:</p>
-                        <input class="publisher-email" type="email">
-                    </div>
-                    <div>
-                        <p data-i18n="label_form_phone">Telefone:</p>
-                        <input class="publisher-phone" type="tel">
-                    </div>
-                    <div>
-                        <p data-i18n="label_form_address">Endereço:</p>
-                        <input class="publisher-address" type="text">
+
+                    <div class="input-group">
+
+                        <label for="publisher-name" data-translation="label_form_publisher_name">
+                            Nome da Editora:
+                        </label>
+
+                        <input class="publisher-name" id="publisher-name" type="text">
+
                     </div>
 
-                    <div class="btns-rentals">
-                        <button class="btn-check" id="btn-save-publisher"><img src="../../imgs/check.svg"
-                                alt="Confirmar"><span data-i18n="btn_confirm">CONFIRMAR</span></button>
-                        <button class="btn-cancel" id="cancel-create"><img src="../../imgs/cancel.svg"
-                                alt="Cancelar"><span data-i18n="btn_cancel">CANCELAR</span></button>
+                    <div class="input-group">
+
+                        <label for="publisher-cnpj" data-translation="label_form_publisher_cnpj">
+                            CNPJ da Editora:
+                        </label>
+
+                        <input class="publisher-cnpj" id="publisher-cnpj" type="text">
+
                     </div>
+
+                    <div class="input-group">
+
+                        <label for="publisher-email" data-translation="label_form_email">
+                            E-mail:
+                        </label>
+
+                        <input class="publisher-email" id="publisher-email" type="email">
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <label for="publisher-phone" data-translation="label_form_phone">
+                            Telefone:
+                        </label>
+
+                        <input class="publisher-phone" id="publisher-phone" type="tel">
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <label for="publisher-address" data-translation="label_form_address">
+                            Endereço:
+                        </label>
+
+                        <input class="publisher-address" id="publisher-address" type="text">
+
+                    </div>
+
+                    <div class="btns-publishers">
+
+                        <button type="button" class="btn-check" id="btn-save-publisher">
+                            <img src="../../imgs/check.svg" alt="Confirmar">
+
+                            <span data-translation="btn_confirm">
+                                CONFIRMAR
+                            </span>
+                        </button>
+
+                        <button type="button" class="btn-cancel" id="cancel-create">
+                            <img src="../../imgs/cancel.svg" alt="Cancelar">
+
+                            <span data-translation="btn_cancel">
+                                CANCELAR
+                            </span>
+                        </button>
+
+                    </div>
+
                 </div>
+
             </div>
+
         </dialog>
 
-        <!-- Modal Excluir Editora -->
-        <dialog id="modal-delete">
-            <div class="container-create-rentals modal-confirmation">
-                <div class="container-title-rental">
-                    <a id="close-modal-delete"><img src="../../imgs/back-arrow.svg" class="img-rental-form"
-                            alt="Voltar"></a>
-                    <h1 class="title-rental-form" data-i18n="modal_delete_publisher_title">Excluir Editora</h1>
-                </div>
+    </main>
 
-                <div class="container-form">
-                    <div class="confirm-message">
-                        <p data-i18n="msg_confirm_delete_publisher">Tem certeza de que deseja excluir esta editora?</p>
-                        <span class="warning-text" data-i18n="msg_warning_delete_irreversible">Esta ação não poderá ser
-                            desfeita.</span>
-                    </div>
-
-                    <div class="rental-summary-details">
-                        <p><strong data-i18n="label_id_summary">ID:</strong> <span id="delete-publisher-id"></span></p>
-                        <p><strong data-i18n="label_publisher_summary">Editora:</strong> <span
-                                id="delete-publisher-name"></span></p>
-                    </div>
-
-                    <div class="btns-rentals">
-                        <button class="btn-check btn-danger" id="confirm-delete">
-                            <img src="../../imgs/check.svg" alt="Confirmar"><span
-                                data-i18n="btn_confirm_delete">EXCLUIR</span>
-                        </button>
-                        <button class="btn-cancel" id="cancel-delete">
-                            <img src="../../imgs/cancel.svg" alt="Cancelar"><span data-i18n="btn_cancel">CANCELAR</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </dialog>
-    </section>
 </body>
 
 </html>

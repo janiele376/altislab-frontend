@@ -1,673 +1,511 @@
-function setupBackdropClose(dialogElement) {
-    if (!dialogElement) return;
-    dialogElement.onclick = function (e) {
-        let rect = dialogElement.getBoundingClientRect();
-        let clicouDentro = true;
+const rentals = JSON.parse(localStorage.getItem("rentals")) || []
+const usuarios = JSON.parse(localStorage.getItem("usuarios")) || []
+const books = JSON.parse(localStorage.getItem("books")) || []
 
-        if (e.clientY < rect.top || e.clientY > rect.top + rect.height || e.clientX < rect.left || e.clientX > rect.left + rect.width) {
-            clicouDentro = false;
+let rentalsList = document.querySelector("#rentals-list")
+
+let btnOpenModal = document.querySelector("#open-modal")
+let btnCloseModal = document.querySelector("#close-modal")
+let btnSaveRental = document.querySelector("#btn-save-rental")
+let btnCancelCreate = document.querySelector("#cancel-create")
+let modal = document.querySelector("#modal")
+
+let inputUserName = document.querySelector("#name-user")
+let inputUserCpf = document.querySelector("#cpf-user")
+let inputBookName = document.querySelector("#book-name")
+let inputBookCod = document.querySelector("#book-cod")
+
+let inputSearch = document.querySelector("#input-search")
+let btnSearch = document.querySelector("#btn-search")
+
+let btnFilter = document.querySelector("#btn-filter")
+let filterDropdown = document.querySelector("#filter-dropdown")
+let filterStatus = document.querySelector("#filter-status")
+let filterSort = document.querySelector("#filter-sort")
+let btnClearFilter = document.querySelector("#btn-clear-filter")
+let btnApplyFilter = document.querySelector("#btn-apply-filter")
+
+let btnPrev = document.querySelector("#btn-prev")
+let btnNext = document.querySelector("#btn-next")
+let currentPageText = document.querySelector("#current-page")
+let totalPagesText = document.querySelector("#total-pages")
+
+let modalRenew = document.querySelector("#modal-renew")
+let btnCloseRenew = document.querySelector("#close-modal-renew")
+let btnCancelRenew = document.querySelector("#cancel-renew")
+let btnConfirmRenew = document.querySelector("#confirm-renew")
+let renewUserName = document.querySelector("#renew-user-name")
+let renewBookName = document.querySelector("#renew-book-name")
+let renewDate = document.querySelector("#renew-date")
+
+let modalReturn = document.querySelector("#modal-return")
+let btnCloseReturn = document.querySelector("#close-modal-return")
+let btnCancelReturn = document.querySelector("#cancel-return")
+let btnConfirmReturn = document.querySelector("#confirm-return")
+let returnUserName = document.querySelector("#return-user-name")
+let returnBookName = document.querySelector("#return-book-name")
+let returnDate = document.querySelector("#return-date")
+
+let currentPage = 1
+let itemsPerPage = 5
+let selectedRentalId = null
+
+updateRentalStatus()
+showRentals(rentals)
+
+btnOpenModal.addEventListener("click", function () {
+    clearInputs()
+    modal.showModal()
+})
+
+btnCloseModal.addEventListener("click", function () {
+    modal.close()
+})
+
+btnCancelCreate.addEventListener("click", function () {
+    clearInputs()
+})
+
+btnSaveRental.addEventListener("click", function () {
+
+    if (
+        inputUserName.value === "" ||
+        inputUserCpf.value === "" ||
+        inputBookName.value === "" ||
+        inputBookCod.value === ""
+    ) {
+        alert("Preencha todos os campos!")
+        return
+    }
+
+    createRental()
+})
+
+btnSearch.addEventListener("click", function () {
+    currentPage = 1
+    showFilteredRentals()
+})
+
+inputSearch.addEventListener("input", function () {
+    currentPage = 1
+    showFilteredRentals()
+})
+
+btnFilter.addEventListener("click", function () {
+    filterDropdown.classList.toggle("active")
+})
+
+btnApplyFilter.addEventListener("click", function () {
+    currentPage = 1
+    showFilteredRentals()
+    filterDropdown.classList.remove("active")
+})
+
+btnClearFilter.addEventListener("click", function () {
+    filterStatus.value = "todos"
+    filterSort.value = "recentes"
+    currentPage = 1
+    showFilteredRentals()
+})
+
+btnPrev.addEventListener("click", function () {
+
+    if (currentPage > 1) {
+        currentPage--
+        showFilteredRentals()
+    }
+})
+
+btnNext.addEventListener("click", function () {
+
+    const filteredRentals = filterRentals()
+    const totalPages = Math.ceil(filteredRentals.length / itemsPerPage)
+
+    if (currentPage < totalPages) {
+        currentPage++
+        showFilteredRentals()
+    }
+})
+
+btnCloseRenew.addEventListener("click", function () {
+    modalRenew.close()
+})
+
+btnCancelRenew.addEventListener("click", function () {
+    modalRenew.close()
+})
+
+btnConfirmRenew.addEventListener("click", function () {
+
+    if (renewDate.value === "") {
+        alert("Informe a nova data de devolução!")
+        return
+    }
+
+    renewRental()
+})
+
+btnCloseReturn.addEventListener("click", function () {
+    modalReturn.close()
+})
+
+btnCancelReturn.addEventListener("click", function () {
+    modalReturn.close()
+})
+
+btnConfirmReturn.addEventListener("click", function () {
+
+    if (returnDate.value === "") {
+        alert("Informe a data de devolução!")
+        return
+    }
+
+    returnRental()
+})
+
+function createRental() {
+
+    const user = usuarios.find(function (user) {
+        return user.name === inputUserName.value &&
+            user.cpf === inputUserCpf.value
+    })
+
+    if (!user) {
+        alert("Usuário não encontrado!")
+        return
+    }
+
+    const book = books.find(function (book) {
+        return book.name === inputBookName.value &&
+            book.cod === inputBookCod.value
+    })
+
+    if (!book) {
+        alert("Livro não encontrado!")
+        return
+    }
+
+    if (book.quantity <= 0) {
+        alert("Esse livro não está disponível!")
+        return
+    }
+
+    const lateRental = rentals.find(function (rental) {
+        return rental.userId === user.id &&
+            rental.status === "Atrasado"
+    })
+
+    if (lateRental) {
+        alert("Resolva seus livros em atraso para conseguir alugar mais livros!")
+        return
+    }
+
+    let startDate = new Date()
+    let dueDate = new Date()
+
+    dueDate.setDate(dueDate.getDate() + 14)
+
+    const rental = {
+        id: Date.now(),
+        userId: user.id,
+        userName: user.name,
+        userCpf: user.cpf,
+        bookId: book.id,
+        bookName: book.name,
+        bookCod: book.cod,
+        startDate: formatDate(startDate),
+        dueDate: formatDate(dueDate),
+        returnDate: null,
+        status: "Ativo"
+    }
+
+    rentals.push(rental)
+
+    book.quantity = book.quantity - 1
+
+    saveRentals()
+    saveBooks()
+
+    clearInputs()
+
+    modal.close()
+
+    currentPage = 1
+
+    showFilteredRentals()
+}
+
+function showRentals(rentalList) {
+
+    rentalsList.innerHTML = ""
+
+    let totalPages = Math.ceil(rentalList.length / itemsPerPage)
+
+    if (totalPages === 0) {
+        totalPages = 1
+    }
+
+    if (currentPage > totalPages) {
+        currentPage = totalPages
+    }
+
+    let start = (currentPage - 1) * itemsPerPage
+    let end = start + itemsPerPage
+
+    const rentalsPage = rentalList.slice(start, end)
+
+    rentalsPage.forEach(function (rental) {
+
+        let rentalRow = document.createElement("div")
+        rentalRow.classList.add("rental-row")
+
+        let userName = document.createElement("p")
+        userName.textContent = rental.userName
+
+        let bookName = document.createElement("p")
+        bookName.textContent = rental.bookName
+
+        let startDate = document.createElement("p")
+        startDate.textContent = rental.startDate
+
+        let dueDate = document.createElement("p")
+        dueDate.textContent = rental.dueDate
+
+        let status = document.createElement("p")
+        status.textContent = rental.status
+        status.classList.add("rental-status")
+
+        if (rental.status === "Ativo") {
+            status.classList.add("active-status")
         }
 
-        if (clicouDentro == false) {
-            dialogElement.close();
-        }
-    };
-}
-
-function getStoredArray(possibleKeys) {
-    for (let i = 0; i < possibleKeys.length; i++) {
-        let key = possibleKeys[i];
-        let data = localStorage.getItem(key);
-        if (data) {
-            let parsed = JSON.parse(data);
-            return parsed;
-        }
-    }
-    return [];
-}
-
-function getRegisteredUsers() {
-    let keys = ['@biblioteca:usuarios', 'usuarios', 'users'];
-    return getStoredArray(keys);
-}
-
-function getRegisteredBooks() {
-    let keys = ['@biblioteca:livros', 'livros', 'books'];
-    return getStoredArray(keys);
-}
-
-function getRentals() {
-    let keys = ['@biblioteca:alugueis', 'alugueis', 'rentals'];
-    return getStoredArray(keys);
-}
-
-function saveRentals(data) {
-    let textoJson = JSON.stringify(data);
-    localStorage.setItem('@biblioteca:alugueis', textoJson);
-}
-
-function formatDateBR(dateStr) {
-    if (!dateStr) {
-        return '-';
-    }
-    let parts = dateStr.split('-');
-    if (parts.length != 3) {
-        return dateStr;
-    }
-    return parts[2] + '/' + parts[1] + '/' + parts[0];
-}
-
-function isAtrasado(rental) {
-    if (rental.status == 'Inativo') {
-        return false;
-    }
-    if (!rental.endDate) {
-        return false;
-    }
-
-    let dataHoje = new Date();
-    let ano = dataHoje.getFullYear();
-    let mes = String(dataHoje.getMonth() + 1).padStart(2, '0');
-    let dia = String(dataHoje.getDate()).padStart(2, '0');
-    let hoje = ano + '-' + mes + '-' + dia;
-
-    if (rental.endDate < hoje) {
-        return true;
-    }
-    return false;
-}
-
-let containerList = document.querySelector('.container-list');
-let inputSearch = document.querySelector('.input-search');
-let activeTargetId = null;
-
-let filterIcon = document.getElementById('btn-filter');
-let filterDropdown = document.getElementById('filter-dropdown');
-let selectFilterStatus = document.getElementById('filter-status');
-let selectFilterSort = document.getElementById('filter-sort');
-let btnApplyFilter = document.getElementById('btn-apply-filter');
-let btnClearFilter = document.getElementById('btn-clear-filter');
-
-function setupFilterUI() {
-    if (!filterIcon || !filterDropdown) return;
-
-    filterIcon.onclick = function (e) {
-        e.stopPropagation();
-        let displayAtual = filterDropdown.style.display;
-        if (displayAtual == 'none' || displayAtual == '') {
-            filterDropdown.style.display = 'flex';
-        } else {
-            filterDropdown.style.display = 'none';
-        }
-    };
-
-    document.onclick = function (e) {
-        if (filterDropdown && !filterDropdown.contains(e.target) && e.target != filterIcon) {
-            filterDropdown.style.display = 'none';
-        }
-    };
-
-    if (btnApplyFilter) {
-        btnApplyFilter.onclick = function () {
-            filterDropdown.style.display = 'none';
-            let busca = inputSearch ? inputSearch.value : '';
-            renderList(busca);
-        };
-    }
-
-    if (btnClearFilter) {
-        btnClearFilter.onclick = function () {
-            if (selectFilterStatus) {
-                selectFilterStatus.value = 'todos';
-            }
-            if (selectFilterSort) {
-                selectFilterSort.value = 'recentes';
-            }
-            filterDropdown.style.display = 'none';
-            let busca = inputSearch ? inputSearch.value : '';
-            renderList(busca);
-        };
-    }
-}
-
-let modalCreate = document.getElementById('modal');
-let openCreateBtn = document.getElementById('open-modal');
-let closeCreateBtn = document.getElementById('close-modal');
-let cancelCreateBtn = null;
-let confirmCreateBtn = null;
-let titleModalCreate = null;
-let inputUserName = null;
-let inputUserCpf = null;
-let inputBookName = null;
-let inputBookCod = null;
-
-if (modalCreate) {
-    cancelCreateBtn = modalCreate.querySelector('.btn-cancel');
-    confirmCreateBtn = modalCreate.querySelector('.btn-check');
-    titleModalCreate = modalCreate.querySelector('.title-rental-form');
-    inputUserName = modalCreate.querySelector('.name-user');
-    inputUserCpf = modalCreate.querySelector('.cpf-user');
-    inputBookName = modalCreate.querySelector('.book-name');
-    inputBookCod = modalCreate.querySelector('.book-cod');
-}
-
-function setupDataLists() {
-    let userList = document.getElementById('datalist-users');
-    if (!userList) {
-        userList = document.createElement('datalist');
-        userList.id = 'datalist-users';
-        document.body.appendChild(userList);
-        if (inputUserName) {
-            inputUserName.setAttribute('list', 'datalist-users');
-        }
-    }
-
-    let bookList = document.getElementById('datalist-books');
-    if (!bookList) {
-        bookList = document.createElement('datalist');
-        bookList.id = 'datalist-books';
-        document.body.appendChild(bookList);
-        if (inputBookName) {
-            inputBookName.setAttribute('list', 'datalist-books');
-        }
-    }
-
-    let users = getRegisteredUsers();
-    let optionsUsers = '';
-    for (let i = 0; i < users.length; i++) {
-        let u = users[i];
-        let nome = u.nome || u.name || '';
-        if (nome != '') {
-            optionsUsers = optionsUsers + '<option value="' + nome + '">';
-        }
-    }
-    userList.innerHTML = optionsUsers;
-
-    let books = getRegisteredBooks();
-    let optionsBooks = '';
-    for (let i = 0; i < books.length; i++) {
-        let b = books[i];
-        let titulo = b.titulo || b.title || b.livro || b.nome || '';
-        if (titulo != '') {
-            optionsBooks = optionsBooks + '<option value="' + titulo + '">';
-        }
-    }
-    bookList.innerHTML = optionsBooks;
-}
-
-if (inputUserName) {
-    inputUserName.oninput = function () {
-        let users = getRegisteredUsers();
-        let digitado = inputUserName.value.trim().toLowerCase();
-        if (digitado == '') return;
-
-        for (let i = 0; i < users.length; i++) {
-            let u = users[i];
-            let nome = (u.nome || u.name || '').toLowerCase();
-            if (nome == digitado) {
-                let cpf = u.cpf || u.CPF;
-                if (cpf && inputUserCpf) {
-                    inputUserCpf.value = cpf;
-                }
-                break;
-            }
-        }
-    };
-}
-
-if (inputUserCpf) {
-    inputUserCpf.oninput = function () {
-        let users = getRegisteredUsers();
-        let digitado = inputUserCpf.value.split('.').join('').split('-').join('').split(' ').join('');
-        if (digitado == '') return;
-
-        for (let i = 0; i < users.length; i++) {
-            let u = users[i];
-            let cpfLimpo = String(u.cpf || u.CPF || '').split('.').join('').split('-').join('').split(' ').join('');
-            if (cpfLimpo == digitado) {
-                let nome = u.nome || u.name;
-                if (nome && inputUserName) {
-                    inputUserName.value = nome;
-                }
-                break;
-            }
-        }
-    };
-}
-
-if (inputBookName) {
-    inputBookName.oninput = function () {
-        let books = getRegisteredBooks();
-        let digitado = inputBookName.value.trim().toLowerCase();
-        if (digitado == '') return;
-
-        for (let i = 0; i < books.length; i++) {
-            let b = books[i];
-            let titulo = (b.titulo || b.title || b.livro || b.nome || '').toLowerCase();
-            if (titulo == digitado) {
-                let codigo = b.codigo || b.cod || b.id || '';
-                if (codigo != '' && inputBookCod) {
-                    inputBookCod.value = codigo;
-                }
-                break;
-            }
-        }
-    };
-}
-
-if (inputBookCod) {
-    inputBookCod.oninput = function () {
-        let books = getRegisteredBooks();
-        let digitado = inputBookCod.value.trim();
-        if (digitado == '') return;
-
-        for (let i = 0; i < books.length; i++) {
-            let b = books[i];
-            let codigo = String(b.codigo || b.cod || b.id || '').trim();
-            if (codigo == digitado) {
-                let titulo = b.titulo || b.title || b.livro || b.nome || '';
-                if (titulo != '' && inputBookName) {
-                    inputBookName.value = titulo;
-                }
-                break;
-            }
-        }
-    };
-}
-
-function openModalForCreate() {
-    setupDataLists();
-    if (titleModalCreate) {
-        titleModalCreate.textContent = 'Criar Aluguel';
-    }
-    if (inputUserName) inputUserName.value = '';
-    if (inputUserCpf) inputUserCpf.value = '';
-    if (inputBookName) inputBookName.value = '';
-    if (inputBookCod) inputBookCod.value = '';
-    if (modalCreate) modalCreate.showModal();
-}
-
-if (openCreateBtn) {
-    openCreateBtn.onclick = openModalForCreate;
-}
-
-if (closeCreateBtn && modalCreate) {
-    closeCreateBtn.onclick = function () {
-        modalCreate.close();
-    };
-}
-
-if (cancelCreateBtn && modalCreate) {
-    cancelCreateBtn.onclick = function () {
-        modalCreate.close();
-    };
-}
-
-setupBackdropClose(modalCreate);
-
-if (confirmCreateBtn) {
-    confirmCreateBtn.onclick = function (e) {
-        e.preventDefault();
-
-        let userName = inputUserName ? inputUserName.value.trim() : '';
-        let cpf = inputUserCpf ? inputUserCpf.value.trim() : '';
-        let bookName = inputBookName ? inputBookName.value.trim() : '';
-        let bookCod = inputBookCod ? inputBookCod.value.trim() : '';
-
-        if (userName == '' || bookName == '') {
-            alert('Por favor, informe o nome do usuário e o nome do livro.');
-            return;
+        if (rental.status === "Atrasado") {
+            status.classList.add("late-status")
         }
 
-        let rentals = getRentals();
-
-        let dataHoje = new Date();
-        let anoHoje = dataHoje.getFullYear();
-        let mesHoje = String(dataHoje.getMonth() + 1).padStart(2, '0');
-        let diaHoje = String(dataHoje.getDate()).padStart(2, '0');
-        let today = anoHoje + '-' + mesHoje + '-' + diaHoje;
-
-        let dataFim = new Date(dataHoje.getTime() + 14 * 24 * 60 * 60 * 1000);
-        let anoFim = dataFim.getFullYear();
-        let mesFim = String(dataFim.getMonth() + 1).padStart(2, '0');
-        let diaFim = String(dataFim.getDate()).padStart(2, '0');
-        let defaultEnd = anoFim + '-' + mesFim + '-' + diaFim;
-
-        let newRental = {
-            id: String(new Date().getTime()),
-            userName: userName,
-            cpf: cpf,
-            bookName: bookName,
-            bookCod: bookCod,
-            startDate: today,
-            endDate: defaultEnd,
-            status: 'Ativo'
-        };
-
-        rentals.push(newRental);
-        saveRentals(rentals);
-
-        if (modalCreate) modalCreate.close();
-
-        let busca = inputSearch ? inputSearch.value : '';
-        renderList(busca);
-    };
-}
-
-let modalReturn = document.getElementById('modal-return');
-let closeReturnBtn = document.getElementById('close-modal-return');
-let cancelReturnBtn = document.getElementById('cancel-return');
-let confirmReturnBtn = document.getElementById('confirm-return');
-let returnDateInput = document.getElementById('return-date');
-let returnUserNameEl = document.getElementById('return-user-name');
-let returnBookNameEl = document.getElementById('return-book-name');
-
-function handleReturnAction(id) {
-    let rentals = getRentals();
-    let rental = null;
-
-    for (let i = 0; i < rentals.length; i++) {
-        if (rentals[i].id == id) {
-            rental = rentals[i];
-            break;
-        }
-    }
-
-    if (!rental) return;
-
-    if (rental.status == 'Inativo') {
-        alert('Este livro já foi devolvido!');
-        return;
-    }
-
-    activeTargetId = id;
-
-    if (returnUserNameEl) returnUserNameEl.textContent = rental.userName;
-    if (returnBookNameEl) returnBookNameEl.textContent = rental.bookName;
-
-    let dataHoje = new Date();
-    let ano = dataHoje.getFullYear();
-    let mes = String(dataHoje.getMonth() + 1).padStart(2, '0');
-    let dia = String(dataHoje.getDate()).padStart(2, '0');
-    if (returnDateInput) {
-        returnDateInput.value = ano + '-' + mes + '-' + dia;
-    }
-
-    if (modalReturn) modalReturn.showModal();
-}
-
-if (closeReturnBtn && modalReturn) {
-    closeReturnBtn.onclick = function () {
-        modalReturn.close();
-    };
-}
-
-if (cancelReturnBtn && modalReturn) {
-    cancelReturnBtn.onclick = function () {
-        modalReturn.close();
-    };
-}
-
-setupBackdropClose(modalReturn);
-
-if (confirmReturnBtn) {
-    confirmReturnBtn.onclick = function () {
-        if (!activeTargetId) return;
-
-        let rentals = getRentals();
-        for (let i = 0; i < rentals.length; i++) {
-            if (rentals[i].id == activeTargetId) {
-                rentals[i].status = 'Inativo';
-                if (returnDateInput && returnDateInput.value) {
-                    rentals[i].endDate = returnDateInput.value;
-                }
-                break;
-            }
+        if (rental.status === "Inativo") {
+            status.classList.add("inactive-status")
         }
 
-        saveRentals(rentals);
-        activeTargetId = null;
-        if (modalReturn) modalReturn.close();
+        let actions = document.createElement("div")
+        actions.classList.add("rental-actions")
 
-        let busca = inputSearch ? inputSearch.value : '';
-        renderList(busca);
-    };
+        if (rental.status !== "Inativo") {
+
+            let btnRenew = document.createElement("button")
+            btnRenew.textContent = "Renovar"
+            btnRenew.classList.add("btn-renew")
+
+            btnRenew.addEventListener("click", function () {
+                openRenewModal(rental.id)
+            })
+
+            let btnReturn = document.createElement("button")
+            btnReturn.textContent = "Devolver"
+            btnReturn.classList.add("btn-return")
+
+            btnReturn.addEventListener("click", function () {
+                openReturnModal(rental.id)
+            })
+
+            actions.appendChild(btnRenew)
+            actions.appendChild(btnReturn)
+        }
+
+        rentalRow.appendChild(userName)
+        rentalRow.appendChild(bookName)
+        rentalRow.appendChild(startDate)
+        rentalRow.appendChild(dueDate)
+        rentalRow.appendChild(status)
+        rentalRow.appendChild(actions)
+
+        rentalsList.appendChild(rentalRow)
+    })
+
+    currentPageText.textContent = currentPage
+    totalPagesText.textContent = totalPages
 }
 
-let modalRenew = document.getElementById('modal-renew');
-let closeRenewBtn = document.getElementById('close-modal-renew');
-let cancelRenewBtn = document.getElementById('cancel-renew');
-let confirmRenewBtn = document.getElementById('confirm-renew');
-let renewDateInput = document.getElementById('renew-date');
-let renewUserNameEl = document.getElementById('renew-user-name');
-let renewBookNameEl = document.getElementById('renew-book-name');
+function openRenewModal(id) {
 
-function handleRenewAction(id) {
-    let rentals = getRentals();
-    let rental = null;
+    const rental = rentals.find(function (rental) {
+        return rental.id === id
+    })
 
-    for (let i = 0; i < rentals.length; i++) {
-        if (rentals[i].id == id) {
-            rental = rentals[i];
-            break;
-        }
+    if (!rental) {
+        return
     }
 
-    if (!rental) return;
+    selectedRentalId = rental.id
 
-    if (rental.status == 'Inativo') {
-        alert('Não é possível renovar um livro que já foi devolvido.');
-        return;
-    }
+    renewUserName.textContent = rental.userName
+    renewBookName.textContent = rental.bookName
 
-    activeTargetId = id;
+    let currentDueDate = new Date(rental.dueDate + "T00:00:00")
 
-    if (renewUserNameEl) renewUserNameEl.textContent = rental.userName;
-    if (renewBookNameEl) renewBookNameEl.textContent = rental.bookName;
+    currentDueDate.setDate(currentDueDate.getDate() + 14)
 
-    let baseDate = new Date();
-    if (rental.endDate) {
-        let p = rental.endDate.split('-');
-        baseDate = new Date(p[0], p[1] - 1, p[2]);
-    }
+    renewDate.value = formatDate(currentDueDate)
 
-    baseDate.setDate(baseDate.getDate() + 7);
-
-    let ano = baseDate.getFullYear();
-    let mes = String(baseDate.getMonth() + 1).padStart(2, '0');
-    let dia = String(baseDate.getDate()).padStart(2, '0');
-
-    if (renewDateInput) {
-        renewDateInput.value = ano + '-' + mes + '-' + dia;
-    }
-
-    if (modalRenew) modalRenew.showModal();
+    modalRenew.showModal()
 }
 
-if (closeRenewBtn && modalRenew) {
-    closeRenewBtn.onclick = function () {
-        modalRenew.close();
-    };
+function renewRental() {
+
+    const rental = rentals.find(function (rental) {
+        return rental.id === selectedRentalId
+    })
+
+    if (!rental) {
+        return
+    }
+
+    rental.dueDate = renewDate.value
+    rental.status = "Ativo"
+
+    saveRentals()
+
+    selectedRentalId = null
+
+    modalRenew.close()
+
+    showFilteredRentals()
 }
 
-if (cancelRenewBtn && modalRenew) {
-    cancelRenewBtn.onclick = function () {
-        modalRenew.close();
-    };
+function openReturnModal(id) {
+
+    const rental = rentals.find(function (rental) {
+        return rental.id === id
+    })
+
+    if (!rental) {
+        return
+    }
+
+    selectedRentalId = rental.id
+
+    returnUserName.textContent = rental.userName
+    returnBookName.textContent = rental.bookName
+
+    returnDate.value = formatDate(new Date())
+
+    modalReturn.showModal()
 }
 
-setupBackdropClose(modalRenew);
+function returnRental() {
 
-if (confirmRenewBtn) {
-    confirmRenewBtn.onclick = function () {
-        if (!activeTargetId) return;
+    const rental = rentals.find(function (rental) {
+        return rental.id === selectedRentalId
+    })
 
-        if (!renewDateInput || renewDateInput.value == '') {
-            alert('Por favor, informe a nova data de devolução.');
-            return;
-        }
+    if (!rental) {
+        return
+    }
 
-        let rentals = getRentals();
-        for (let i = 0; i < rentals.length; i++) {
-            if (rentals[i].id == activeTargetId) {
-                rentals[i].endDate = renewDateInput.value;
-                rentals[i].status = 'Ativo';
-                break;
-            }
-        }
+    const book = books.find(function (book) {
+        return book.id === rental.bookId
+    })
 
-        saveRentals(rentals);
-        activeTargetId = null;
-        if (modalRenew) modalRenew.close();
+    rental.returnDate = returnDate.value
+    rental.status = "Inativo"
 
-        let busca = inputSearch ? inputSearch.value : '';
-        renderList(busca);
-    };
+    if (book) {
+        book.quantity = book.quantity + 1
+    }
+
+    saveRentals()
+    saveBooks()
+
+    selectedRentalId = null
+
+    modalReturn.close()
+
+    showFilteredRentals()
 }
 
-function renderList(query) {
-    if (!containerList) return;
+function updateRentalStatus() {
 
-    let tabelas = containerList.querySelectorAll('.container-table');
-    for (let i = 0; i < tabelas.length; i++) {
-        tabelas[i].remove();
-    }
+    let today = formatDate(new Date())
 
-    let linhasHr = containerList.querySelectorAll('.line-item-hr');
-    for (let i = 0; i < linhasHr.length; i++) {
-        linhasHr[i].remove();
-    }
+    rentals.forEach(function (rental) {
 
-    let pagination = containerList.querySelector('.btn-next-page');
-    let rentals = getRentals();
-    let filter = '';
-    if (query) {
-        filter = query.trim().toLowerCase();
-    }
-
-    let selectedStatus = 'todos';
-    if (selectFilterStatus) {
-        selectedStatus = selectFilterStatus.value;
-    }
-
-    let selectedSort = 'recentes';
-    if (selectFilterSort) {
-        selectedSort = selectFilterSort.value;
-    }
-
-    let filtered = [];
-    for (let i = 0; i < rentals.length; i++) {
-        let item = rentals[i];
-        let nomeUser = (item.userName || '').toLowerCase();
-        let nomeLivro = (item.bookName || '').toLowerCase();
-        let statusTexto = (item.status || '').toLowerCase();
-
-        let matchSearch = nomeUser.indexOf(filter) != -1 || nomeLivro.indexOf(filter) != -1 || statusTexto.indexOf(filter) != -1;
-
-        let matchStatus = true;
-        if (selectedStatus == 'Ativo') {
-            matchStatus = item.status == 'Ativo';
-        } else if (selectedStatus == 'Inativo') {
-            matchStatus = item.status == 'Inativo';
-        } else if (selectedStatus == 'Atrasado') {
-            matchStatus = isAtrasado(item);
+        if (
+            rental.status !== "Inativo" &&
+            rental.dueDate < today
+        ) {
+            rental.status = "Atrasado"
         }
+    })
 
-        if (matchSearch && matchStatus) {
-            filtered.push(item);
-        }
-    }
-
-    for (let i = 0; i < filtered.length; i++) {
-        for (let j = i + 1; j < filtered.length; j++) {
-            let deveTrocar = false;
-
-            if (selectedSort == 'nome') {
-                let nomeA = (filtered[i].userName || '').toLowerCase();
-                let nomeB = (filtered[j].userName || '').toLowerCase();
-                if (nomeA > nomeB) {
-                    deveTrocar = true;
-                }
-            } else if (selectedSort == 'vencimento') {
-                let dataA = filtered[i].endDate || '';
-                let dataB = filtered[j].endDate || '';
-                if (dataA > dataB) {
-                    deveTrocar = true;
-                }
-            } else {
-                let idA = Number(filtered[i].id) || 0;
-                let idB = Number(filtered[j].id) || 0;
-                if (idA < idB) {
-                    deveTrocar = true;
-                }
-            }
-
-            if (deveTrocar) {
-                let temp = filtered[i];
-                filtered[i] = filtered[j];
-                filtered[j] = temp;
-            }
-        }
-    }
-
-    for (let i = 0; i < filtered.length; i++) {
-        let rental = filtered[i];
-        let isAtivo = rental.status == 'Ativo';
-        let atrasado = isAtrasado(rental);
-
-        let displayStatus = rental.status;
-        let statusColor = '#e74c3c';
-        if (isAtivo) {
-            statusColor = '#2ecc71';
-        }
-
-        if (atrasado) {
-            displayStatus = 'Atrasado';
-            statusColor = '#e67e22';
-        }
-
-        let row = document.createElement('div');
-        row.className = 'container-table';
-        row.innerHTML =
-            '<p class="name-p">' + rental.userName + '</p>' +
-            '<p class="book-p">' + rental.bookName + '</p>' +
-            '<p class="date-start-p">' + formatDateBR(rental.startDate) + '</p>' +
-            '<p class="date-end-p">' + formatDateBR(rental.endDate) + '</p>' +
-            '<p class="status-p" style="color: ' + statusColor + '; font-weight: bold;">' + displayStatus + '</p>' +
-            '<div class="container-btns">' +
-            '<button class="btn-return">Devolver</button>' +
-            '<button class="btn-renew">Renovar</button>' +
-            '</div>';
-
-        let btnReturn = row.querySelector('.btn-return');
-        btnReturn.onclick = function () {
-            handleReturnAction(rental.id);
-        };
-
-        let btnRenew = row.querySelector('.btn-renew');
-        btnRenew.onclick = function () {
-            handleRenewAction(rental.id);
-        };
-
-        let hr = document.createElement('hr');
-        hr.className = 'line-item-hr';
-
-        if (pagination) {
-            containerList.insertBefore(row, pagination);
-            containerList.insertBefore(hr, pagination);
-        } else {
-            containerList.appendChild(row);
-            containerList.appendChild(hr);
-        }
-    }
+    saveRentals()
 }
 
-if (inputSearch) {
-    inputSearch.oninput = function (e) {
-        renderList(e.target.value);
-    };
+function filterRentals() {
+
+    let search = inputSearch.value.toLowerCase()
+
+    let filteredRentals = rentals.filter(function (rental) {
+
+        let matchesSearch =
+            rental.userName.toLowerCase().includes(search) ||
+            rental.bookName.toLowerCase().includes(search)
+
+        let matchesStatus =
+            filterStatus.value === "todos" ||
+            rental.status === filterStatus.value
+
+        return matchesSearch && matchesStatus
+    })
+
+    if (filterSort.value === "nome") {
+
+        filteredRentals.sort(function (a, b) {
+            return a.userName.localeCompare(b.userName)
+        })
+    }
+
+    if (filterSort.value === "vencimento") {
+
+        filteredRentals.sort(function (a, b) {
+            return new Date(a.dueDate) - new Date(b.dueDate)
+        })
+    }
+
+    if (filterSort.value === "recentes") {
+
+        filteredRentals.sort(function (a, b) {
+            return b.id - a.id
+        })
+    }
+
+    return filteredRentals
 }
 
-setupDataLists();
-setupFilterUI();
-renderList('');
+function showFilteredRentals() {
+    const filteredRentals = filterRentals()
+    showRentals(filteredRentals)
+}
+
+function clearInputs() {
+    inputUserName.value = ""
+    inputUserCpf.value = ""
+    inputBookName.value = ""
+    inputBookCod.value = ""
+}
+
+function formatDate(date) {
+
+    let year = date.getFullYear()
+    let month = String(date.getMonth() + 1).padStart(2, "0")
+    let day = String(date.getDate()).padStart(2, "0")
+
+    return year + "-" + month + "-" + day
+}
+
+function saveRentals() {
+    localStorage.setItem("rentals", JSON.stringify(rentals))
+}
+
+function saveBooks() {
+    localStorage.setItem("books", JSON.stringify(books))
+}

@@ -1,422 +1,307 @@
-let STORAGE_KEY_BOOKS = '@biblioteca:livros';
-let STORAGE_KEY_PUBLISHERS = '@biblioteca:editoras';
+const books = JSON.parse(localStorage.getItem("books")) || []
+const publishers = JSON.parse(localStorage.getItem("publishers")) || []
 
-let containerList = document.querySelector('.container-list');
-let inputSearch = document.querySelector('.input-search');
+let booksList = document.querySelector("#books-list")
 
-let modalCreate = document.getElementById('modal-create');
-let openCreateBtn = document.getElementById('open-modal-create');
-let closeCreateBtn = document.getElementById('close-modal-create');
-let cancelCreateBtn = document.getElementById('cancel-create');
-let confirmCreateBtn = null;
+let btnOpenModal = document.querySelector("#open-modal-create")
+let btnCloseModal = document.querySelector("#close-modal-create")
+let btnSaveBook = document.querySelector("#btn-save-book")
+let btnCancel = document.querySelector("#cancel-create")
 
-if (modalCreate) {
-    confirmCreateBtn = modalCreate.querySelector('.btn-check');
-}
+let modalCreate = document.querySelector("#modal-create")
+let modalTitle = document.querySelector("#modal-book-title")
 
-let titleModalCreate = null;
-let inputBookName = null;
-let inputBookCod = null;
-let inputBookPublisher = null;
-let inputBookDate = null;
-let inputBookQuantity = null;
+let inputName = document.querySelector("#book-name")
+let inputCod = document.querySelector("#book-cod")
+let inputPublisher = document.querySelector("#book-publisher")
+let inputDate = document.querySelector("#book-date")
+let inputQuantity = document.querySelector("#book-quantity")
 
-if (modalCreate) {
-    titleModalCreate = modalCreate.querySelector('.title-rental-form');
-    inputBookName = modalCreate.querySelector('.book-name');
-    inputBookCod = modalCreate.querySelector('.book-cod');
-    inputBookPublisher = modalCreate.querySelector('.book-publisher');
-    inputBookDate = modalCreate.querySelector('.book-date');
-    inputBookQuantity = modalCreate.querySelector('.book-quantity');
-}
+let inputSearch = document.querySelector("#input-search")
+let btnSearch = document.querySelector("#btn-search")
 
-let modalDelete = document.getElementById('modal-delete');
-let closeDeleteBtn = document.getElementById('close-modal-delete');
-let cancelDeleteBtn = document.getElementById('cancel-delete');
-let confirmDeleteBtn = document.getElementById('confirm-delete');
-let deleteBookCod = document.getElementById('delete-book-cod');
-let deleteBookName = document.getElementById('delete-book-name');
+let btnPrev = document.querySelector("#btn-prev")
+let btnNext = document.querySelector("#btn-next")
+let currentPageText = document.querySelector("#current-page")
+let totalPagesText = document.querySelector("#total-pages")
 
-let editandoCod = null;
+let currentPage = 1
+let itemsPerPage = 5
+let editingBookId = null
 
-function fecharNoBackdrop(dialog) {
-    if (!dialog) return;
-    dialog.onclick = function (e) {
-        let rect = dialog.getBoundingClientRect();
-        let clicouDentro = true;
+showPublishers()
+showBooks(books)
 
-        if (e.clientY < rect.top || e.clientY > rect.top + rect.height || e.clientX < rect.left || e.clientX > rect.left + rect.width) {
-            clicouDentro = false;
-        }
+btnOpenModal.addEventListener("click", function () {
+    editingBookId = null
+    modalTitle.textContent = "Criar Livro"
+    clearInputs()
+    modalCreate.showModal()
+})
 
-        if (clicouDentro == false) {
-            dialog.close();
-        }
-    };
-}
+btnCloseModal.addEventListener("click", function () {
+    modalCreate.close()
+})
 
-fecharNoBackdrop(modalCreate);
-fecharNoBackdrop(modalDelete);
+btnCancel.addEventListener("click", function () {
+    clearInputs()
+})
 
-function getBooks() {
-    let data = localStorage.getItem(STORAGE_KEY_BOOKS);
-    if (data) {
-        return JSON.parse(data);
-    }
-    return [];
-}
+btnSaveBook.addEventListener("click", function () {
 
-function saveBooks(data) {
-    let textoJson = JSON.stringify(data);
-    localStorage.setItem(STORAGE_KEY_BOOKS, textoJson);
-}
-
-function getPublishers() {
-    let data = localStorage.getItem(STORAGE_KEY_PUBLISHERS);
-    if (data) {
-        return JSON.parse(data);
-    }
-    return [];
-}
-
-function popularEditoras(valorSelecionado) {
-    if (!inputBookPublisher) return;
-
-    let publishers = getPublishers();
-    let tag = inputBookPublisher.tagName.toLowerCase();
-
-    if (tag == 'select') {
-        inputBookPublisher.innerHTML = '<option value="" disabled selected>Selecione uma editora</option>';
-
-        for (let i = 0; i < publishers.length; i++) {
-            let p = publishers[i];
-            let nome = p.nome || p.name || p.razaoSocial || '';
-
-            if (nome != '') {
-                let option = document.createElement('option');
-                option.value = nome;
-                option.textContent = nome;
-
-                if (valorSelecionado && nome == valorSelecionado) {
-                    option.selected = true;
-                }
-
-                inputBookPublisher.appendChild(option);
-            }
-        }
-    } else {
-        let datalist = document.getElementById('datalist-publishers');
-        if (!datalist) {
-            datalist = document.createElement('datalist');
-            datalist.id = 'datalist-publishers';
-            document.body.appendChild(datalist);
-        }
-        inputBookPublisher.setAttribute('list', 'datalist-publishers');
-
-        let htmlOptions = '';
-        for (let i = 0; i < publishers.length; i++) {
-            let p = publishers[i];
-            let nome = p.nome || p.name || p.razaoSocial || '';
-            htmlOptions = htmlOptions + '<option value="' + nome + '">';
-        }
-
-        datalist.innerHTML = htmlOptions;
-        inputBookPublisher.value = valorSelecionado ? valorSelecionado : '';
-    }
-}
-
-function formatDateBR(dateStr) {
-    if (!dateStr) {
-        return '-';
-    }
-    let parts = dateStr.split('-');
-    if (parts.length != 3) {
-        return dateStr;
-    }
-    return parts[2] + '/' + parts[1] + '/' + parts[0];
-}
-
-if (openCreateBtn) {
-    openCreateBtn.onclick = function () {
-        editandoCod = null;
-        popularEditoras('');
-
-        if (titleModalCreate) {
-            titleModalCreate.textContent = 'Criar Livro';
-        }
-        if (inputBookName) {
-            inputBookName.value = '';
-        }
-        if (inputBookCod) {
-            inputBookCod.value = '';
-            inputBookCod.disabled = false;
-        }
-        if (inputBookPublisher) {
-            inputBookPublisher.value = '';
-        }
-        if (inputBookDate) {
-            inputBookDate.value = '';
-        }
-        if (inputBookQuantity) {
-            inputBookQuantity.value = '1';
-        }
-
-        modalCreate.showModal();
-    };
-}
-
-if (closeCreateBtn) {
-    closeCreateBtn.onclick = function () {
-        modalCreate.close();
-    };
-}
-
-if (cancelCreateBtn) {
-    cancelCreateBtn.onclick = function () {
-        modalCreate.close();
-    };
-}
-
-function abrirModalEditar(cod, nome, editora, data, quantidade) {
-    editandoCod = String(cod);
-    popularEditoras(editora);
-
-    if (titleModalCreate) {
-        titleModalCreate.textContent = 'Editar Livro';
-    }
-    if (inputBookName) {
-        inputBookName.value = nome || '';
-    }
-    if (inputBookCod) {
-        inputBookCod.value = cod || '';
-        inputBookCod.disabled = true;
-    }
-    if (inputBookPublisher) {
-        inputBookPublisher.value = editora || '';
-    }
-    if (inputBookDate) {
-        inputBookDate.value = data || '';
-    }
-    if (inputBookQuantity) {
-        if (quantidade != undefined && quantidade != null) {
-            inputBookQuantity.value = quantidade;
-        } else {
-            inputBookQuantity.value = 1;
-        }
+    if (
+        inputName.value === "" ||
+        inputCod.value === "" ||
+        inputPublisher.value === "" ||
+        inputDate.value === "" ||
+        inputQuantity.value === ""
+    ) {
+        alert("Preencha todos os campos!")
+        return
     }
 
-    modalCreate.showModal();
-}
-
-function abrirModalExcluir(cod, nome) {
-    if (deleteBookCod && deleteBookName) {
-        deleteBookCod.textContent = cod;
-        deleteBookName.textContent = nome;
-    }
-    modalDelete.showModal();
-}
-
-if (closeDeleteBtn) {
-    closeDeleteBtn.onclick = function () {
-        modalDelete.close();
-    };
-}
-
-if (cancelDeleteBtn) {
-    cancelDeleteBtn.onclick = function () {
-        modalDelete.close();
-    };
-}
-
-if (confirmCreateBtn) {
-    confirmCreateBtn.onclick = function (e) {
-        e.preventDefault();
-
-        let titulo = inputBookName ? inputBookName.value.trim() : '';
-        let cod = inputBookCod ? inputBookCod.value.trim() : '';
-        let editora = inputBookPublisher ? inputBookPublisher.value.trim() : '';
-        let lancamento = inputBookDate ? inputBookDate.value : '';
-        let quantidadeTexto = inputBookQuantity ? inputBookQuantity.value : '0';
-        let quantidade = parseInt(quantidadeTexto);
-
-        if (isNaN(quantidade) || quantidade < 0) {
-            quantidade = 0;
-        }
-
-        if (titulo == '' || cod == '' || editora == '') {
-            alert('Por favor, informe ao menos o Nome, Código e a Editora do livro.');
-            return;
-        }
-
-        let books = getBooks();
-
-        if (editandoCod != null) {
-            for (let i = 0; i < books.length; i++) {
-                let b = books[i];
-                let bCod = String(b.codigo || b.cod || b.id || '');
-                if (bCod == editandoCod) {
-                    b.titulo = titulo;
-                    b.editora = editora;
-                    b.lancamento = lancamento;
-                    b.quantidade = quantidade;
-                    break;
-                }
-            }
-        } else {
-            let existe = false;
-            for (let i = 0; i < books.length; i++) {
-                let b = books[i];
-                let bCod = String(b.codigo || b.cod || b.id || '');
-                if (bCod == cod) {
-                    existe = true;
-                    break;
-                }
-            }
-
-            if (existe) {
-                alert('Já existe um livro cadastrado com este código!');
-                return;
-            }
-
-            let novoLivro = {
-                id: String(new Date().getTime()),
-                codigo: cod,
-                titulo: titulo,
-                editora: editora,
-                lancamento: lancamento,
-                quantidade: quantidade
-            };
-
-            books.push(novoLivro);
-        }
-
-        saveBooks(books);
-        modalCreate.close();
-
-        let textoBusca = inputSearch ? inputSearch.value : '';
-        renderList(textoBusca);
-    };
-}
-
-if (confirmDeleteBtn) {
-    confirmDeleteBtn.onclick = function () {
-        let cod = deleteBookCod ? deleteBookCod.textContent : '';
-        if (cod == '') return;
-
-        let books = getBooks();
-        let novaLista = [];
-
-        for (let i = 0; i < books.length; i++) {
-            let b = books[i];
-            let bCod = String(b.codigo || b.cod || b.id || '');
-            if (bCod != cod) {
-                novaLista.push(b);
-            }
-        }
-
-        saveBooks(novaLista);
-        modalDelete.close();
-
-        let textoBusca = inputSearch ? inputSearch.value : '';
-        renderList(textoBusca);
-    };
-}
-
-function renderList(query) {
-    if (!containerList) return;
-
-    let tabelas = containerList.querySelectorAll('.container-table');
-    for (let i = 0; i < tabelas.length; i++) {
-        tabelas[i].remove();
+    if (Number(inputQuantity.value) < 1) {
+        alert("A quantidade deve ser maior que zero!")
+        return
     }
 
-    let linhasHr = containerList.querySelectorAll('hr');
-    for (let i = 0; i < linhasHr.length; i++) {
-        let hr = linhasHr[i];
-        let ehBusca = hr.classList.contains('line-search');
-        let ehCabecalho = hr.classList.contains('line-header-divider');
-        if (!ehBusca && !ehCabecalho) {
-            hr.remove();
-        }
+    if (editingBookId === null) {
+        createBook()
+    }
+    else {
+        editBook()
+    }
+})
+
+btnSearch.addEventListener("click", function () {
+    searchBooks()
+})
+
+inputSearch.addEventListener("input", function () {
+    searchBooks()
+})
+
+btnPrev.addEventListener("click", function () {
+
+    if (currentPage > 1) {
+        currentPage--
+        searchBooks()
+    }
+})
+
+btnNext.addEventListener("click", function () {
+
+    const filteredBooks = filterBooks()
+    const totalPages = Math.ceil(filteredBooks.length / itemsPerPage)
+
+    if (currentPage < totalPages) {
+        currentPage++
+        searchBooks()
+    }
+})
+
+function createBook() {
+
+    const bookExists = books.find(function (book) {
+        return book.cod === inputCod.value
+    })
+
+    if (bookExists) {
+        alert("Já existe um livro com esse código!")
+        return
     }
 
-    let pagination = containerList.querySelector('.btn-next-page');
-    let books = getBooks();
-    let filter = '';
-    if (query) {
-        filter = query.trim().toLowerCase();
+    const publisher = publishers.find(function (publisher) {
+        return publisher.id === Number(inputPublisher.value)
+    })
+
+    const book = {
+        id: Date.now(),
+        name: inputName.value,
+        cod: inputCod.value,
+        publisherId: publisher.id,
+        publisherName: publisher.name,
+        releaseDate: inputDate.value,
+        quantity: Number(inputQuantity.value)
     }
 
-    let filtered = [];
-    for (let i = 0; i < books.length; i++) {
-        let b = books[i];
-        let titulo = (b.titulo || b.title || b.livro || b.nome || '').toLowerCase();
-        let cod = String(b.codigo || b.cod || b.id || '').toLowerCase();
-        let editora = (b.editora || b.publisher || '').toLowerCase();
+    books.push(book)
 
-        let achouTitulo = titulo.indexOf(filter) != -1;
-        let achouCod = cod.indexOf(filter) != -1;
-        let achouEditora = editora.indexOf(filter) != -1;
+    saveBooks()
 
-        if (achouTitulo || achouCod || achouEditora) {
-            filtered.push(b);
-        }
-    }
+    clearInputs()
 
-    for (let i = 0; i < filtered.length; i++) {
-        let book = filtered[i];
-        let cod = book.codigo || book.cod || book.id || '-';
-        let titulo = book.titulo || book.title || book.livro || book.nome || '-';
-        let editora = book.editora || book.publisher || '-';
-        let lancamento = book.lancamento || book.dataLancamento || '';
-        let quantidade = 1;
+    modalCreate.close()
 
-        if (book.quantidade != undefined) {
-            quantidade = book.quantidade;
-        } else if (book.qtd != undefined) {
-            quantidade = book.qtd;
-        }
+    currentPage = 1
 
-        let row = document.createElement('div');
-        row.className = 'container-table';
-        row.innerHTML =
-            '<p class="cod-p">' + cod + '</p>' +
-            '<p class="book-p">' + titulo + '</p>' +
-            '<p class="publisher-p">' + editora + '</p>' +
-            '<p class="date-release-p">' + formatDateBR(lancamento) + '</p>' +
-            '<p class="quantity-p" style="font-weight: bold;">' + quantidade + '</p>' +
-            '<div class="container-btns">' +
-            '<button class="btn-edit">Editar</button>' +
-            '<button class="btn-delete">Excluir</button>' +
-            '</div>';
-
-        let btnEdit = row.querySelector('.btn-edit');
-        btnEdit.onclick = function () {
-            abrirModalEditar(cod, titulo, editora, lancamento, quantidade);
-        };
-
-        let btnDelete = row.querySelector('.btn-delete');
-        btnDelete.onclick = function () {
-            abrirModalExcluir(cod, titulo);
-        };
-
-        let hr = document.createElement('hr');
-        hr.className = 'book-separator-hr';
-
-        if (pagination) {
-            containerList.insertBefore(row, pagination);
-            containerList.insertBefore(hr, pagination);
-        } else {
-            containerList.appendChild(row);
-            containerList.appendChild(hr);
-        }
-    }
+    showBooks(books)
 }
 
-if (inputSearch) {
-    inputSearch.oninput = function (e) {
-        renderList(e.target.value);
-    };
+function showBooks(bookList) {
+
+    booksList.innerHTML = ""
+
+    let totalPages = Math.ceil(bookList.length / itemsPerPage)
+
+    if (totalPages === 0) {
+        totalPages = 1
+    }
+
+    if (currentPage > totalPages) {
+        currentPage = totalPages
+    }
+
+    let start = (currentPage - 1) * itemsPerPage
+    let end = start + itemsPerPage
+
+    const booksPage = bookList.slice(start, end)
+
+    booksPage.forEach(function (book) {
+
+        let bookRow = document.createElement("div")
+        bookRow.classList.add("book-row")
+
+        let cod = document.createElement("p")
+        cod.textContent = book.cod
+
+        let name = document.createElement("p")
+        name.textContent = book.name
+
+        let publisher = document.createElement("p")
+        publisher.textContent = book.publisherName
+
+        let releaseDate = document.createElement("p")
+        releaseDate.textContent = book.releaseDate
+
+        let quantity = document.createElement("p")
+        quantity.textContent = book.quantity
+
+        let btnEdit = document.createElement("button")
+        btnEdit.textContent = "Editar"
+        btnEdit.classList.add("btn-edit")
+
+        btnEdit.addEventListener("click", function () {
+            openEditBook(book.id)
+        })
+
+        bookRow.appendChild(cod)
+        bookRow.appendChild(name)
+        bookRow.appendChild(publisher)
+        bookRow.appendChild(releaseDate)
+        bookRow.appendChild(quantity)
+        bookRow.appendChild(btnEdit)
+
+        booksList.appendChild(bookRow)
+    })
+
+    currentPageText.textContent = currentPage
+    totalPagesText.textContent = totalPages
 }
 
-renderList('');
+function openEditBook(id) {
+
+    const book = books.find(function (book) {
+        return book.id === id
+    })
+
+    if (!book) {
+        return
+    }
+
+    editingBookId = book.id
+
+    inputName.value = book.name
+    inputCod.value = book.cod
+    inputPublisher.value = book.publisherId
+    inputDate.value = book.releaseDate
+    inputQuantity.value = book.quantity
+
+    modalTitle.textContent = "Editar Livro"
+
+    modalCreate.showModal()
+}
+
+function editBook() {
+
+    const book = books.find(function (book) {
+        return book.id === editingBookId
+    })
+
+    if (!book) {
+        return
+    }
+
+    const codExists = books.find(function (otherBook) {
+        return otherBook.cod === inputCod.value &&
+            otherBook.id !== editingBookId
+    })
+
+    if (codExists) {
+        alert("Já existe outro livro com esse código!")
+        return
+    }
+
+    const publisher = publishers.find(function (publisher) {
+        return publisher.id === Number(inputPublisher.value)
+    })
+
+    book.name = inputName.value
+    book.cod = inputCod.value
+    book.publisherId = publisher.id
+    book.publisherName = publisher.name
+    book.releaseDate = inputDate.value
+    book.quantity = Number(inputQuantity.value)
+
+    saveBooks()
+
+    editingBookId = null
+
+    clearInputs()
+
+    modalCreate.close()
+
+    searchBooks()
+}
+
+function showPublishers() {
+
+    publishers.forEach(function (publisher) {
+
+        let option = document.createElement("option")
+
+        option.value = publisher.id
+        option.textContent = publisher.name
+
+        inputPublisher.appendChild(option)
+    })
+}
+
+function searchBooks() {
+    currentPage = 1
+    const filteredBooks = filterBooks()
+    showBooks(filteredBooks)
+}
+
+function filterBooks() {
+
+    let search = inputSearch.value.toLowerCase()
+
+    return books.filter(function (book) {
+        return book.name.toLowerCase().includes(search) ||
+            book.cod.toLowerCase().includes(search) ||
+            book.publisherName.toLowerCase().includes(search)
+    })
+}
+
+function clearInputs() {
+    inputName.value = ""
+    inputCod.value = ""
+    inputPublisher.value = ""
+    inputDate.value = ""
+    inputQuantity.value = "1"
+}
+
+function saveBooks() {
+    localStorage.setItem("books", JSON.stringify(books))
+}

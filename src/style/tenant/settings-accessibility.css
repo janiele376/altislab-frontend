@@ -1,166 +1,296 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-#header{
+
+body {
+    background-color: var(--bg-page, #E9E4DE);
+    color: var(--text-main, #55463C);
+}
+
+#header {
+    width: 100%;
+    min-height: 7rem;
+    display: flex;
+    align-items: center;
+    padding: 0 2rem;
     background-color: var(--bg-card, #DBC2B0);
     color: var(--text-main, #55463C);
-    width: 100%;
 }
-#header .container-title{
+
+#header .container-title {
     display: flex;
-    gap: 1.25rem;
-    padding: 1.25rem;
     align-items: center;
+    gap: 1.25rem;
 }
-#header .title{
+
+#header .title {
     font-size: 1.875rem;
 }
-#header .img-book{
-    padding-bottom: 0.625rem;
+
+#header .img-book {
+    width: 2.8rem;
+    height: auto;
 }
-#body{
-    background-color: var(--bg-page, #E9E4DE);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+#body {
     width: 100%;
-    min-height: calc(100vh - 5rem);
-    padding: 2.5rem 1rem;
-    flex-direction: column;
+    min-height: calc(100vh - 7rem);
+    padding: 2rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-page, #E9E4DE);
 }
-.container-accessibility{
+
+.container-accessibility {
+    width: 30rem;
+    max-width: 100%;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: var(--bg-card, #DBC2B0);
     color: var(--text-main, #55463C);
+    border: 1px solid var(--border-color, transparent);
     border-radius: 1.875rem;
-    width: 25rem;
-    min-height: 20rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1.5rem;
-    margin-bottom: 10rem;
 }
-.container-accessibility .container-title-img-form{
+
+.container-title-img-form {
+    width: 100%;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1.5rem;
-    width: 100%;
-    position: relative;
 }
-.container-accessibility .container-title-img-form .img-form{
+
+.img-form {
     position: absolute;
-    left: 0.5rem;
+    left: 0;
+    display: flex;
+    align-items: center;
 }
-.container-accessibility .title-form{
+
+.img-form a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-form img {
+    width: 1.4rem;
+    height: 1.4rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.img-form img:hover {
+    opacity: 0.6;
+}
+
+.title-form {
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
-.container-accessibility .title-form img{
+
+.title-form img {
+    width: 1.5rem;
     height: 1.5rem;
 }
-.container-accessibility .container-btns{
-    display: flex;
-    margin-top: 1rem;
+
+.title-form h2 {
+    font-size: 1.5rem;
 }
-.container-accessibility .container-btns .btn-profile{
-    background-color: var(--btn-secondary-bg, #DBC2B0);
-    color: var(--btn-secondary-text, #55463C);
-    border: 0.125rem solid var(--border-color, #55463C);
-    border-top-left-radius: 5rem;
-    border-bottom-left-radius: 5rem;
-    width: 10rem;
+
+.container-btns {
+    width: 20rem;
+    max-width: 100%;
+    display: flex;
+    margin-top: 1.2rem;
+}
+
+.btn-profile,
+.btn-accessibility {
+    width: 50%;
     height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    text-decoration: none;
     cursor: pointer;
     transition: opacity 0.2s;
 }
-.container-accessibility .container-btns .btn-profile:hover{
-    opacity: 0.7;
+
+.btn-profile {
+    border: 0.125rem solid var(--border-color, #55463C);
+    border-top-left-radius: 5rem;
+    border-bottom-left-radius: 5rem;
+    background-color: var(--btn-secondary-bg, #DBC2B0);
+    color: var(--btn-secondary-text, #55463C);
 }
-.container-accessibility .container-btns .btn-accessibility{
-    background-color: var(--btn-primary-bg, #55463C);
-    color: var(--btn-primary-text, #FFFFFF);
+
+.btn-accessibility {
     border: 0.125rem solid var(--btn-primary-border, #55463C);
     border-top-right-radius: 5rem;
     border-bottom-right-radius: 5rem;
-    width: 10rem;
-    height: 2rem;
+    background-color: var(--btn-primary-bg, #55463C);
+    color: var(--btn-primary-text, #FFFFFF);
 }
-.container-accessibility .line{
-    width: 20rem;
+
+.btn-profile:hover,
+.btn-accessibility:hover {
+    opacity: 0.8;
+}
+
+.line {
+    width: 100%;
     height: 0.095rem;
+    margin: 1.2rem 0;
     border: none;
     background-color: var(--border-color, #55463C);
-    margin: 1.2rem 0;
 }
-.container-accessibility .container-btns-info{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 20rem;
-    gap: 1rem;
-}
-.container-accessibility .container-btns-info .info{
+
+.container-settings {
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
 }
-.container-accessibility .container-btns-info .info p{
+
+.setting-group {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.setting-group p,
+.setting-group label {
+    color: var(--text-main, #55463C);
     font-size: 0.95rem;
     font-weight: 500;
 }
-.container-accessibility .container-btns-info .btns{
-    flex-direction: column;
-    margin-top: 0.6rem;
-    align-items: flex-end;
-}
-.container-accessibility .btns .theme-toggle-group{
+
+.theme-buttons {
     display: flex;
 }
-.container-accessibility .btns .btn-light,
-.container-accessibility .btns .btn-dark{
+
+.btn-light,
+.btn-dark {
     width: 5rem;
     height: 2rem;
-    cursor: pointer;
-    font-size: 0.85rem;
     border: 1px solid var(--border-color, #55463C);
     background-color: var(--btn-secondary-bg, #DBC2B0);
     color: var(--btn-secondary-text, #55463C);
-    transition: all 0.2s ease;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
 }
-.container-accessibility .btns .btn-light{
+
+.btn-light {
     border-top-left-radius: 2rem;
     border-bottom-left-radius: 2rem;
 }
-.container-accessibility .btns .btn-dark{
+
+.btn-dark {
     border-top-right-radius: 2rem;
     border-bottom-right-radius: 2rem;
 }
-.container-accessibility .btns .btn-light.active,
-.container-accessibility .btns .btn-dark.active{
+
+.btn-light:hover,
+.btn-dark:hover {
+    opacity: 0.8;
+}
+
+.btn-light.active,
+.btn-dark.active {
     background-color: var(--btn-primary-bg, #55463C);
     color: var(--btn-primary-text, #FFFFFF);
     border-color: var(--btn-primary-border, #55463C);
     font-weight: bold;
 }
-.container-accessibility .btns .select-language{
-    width: 10.2rem;
+
+.select-language {
+    width: 10rem;
     height: 2rem;
-    background-color: var(--bg-card, #DBC2B0);
-    color: var(--text-main, #55463C);
+    padding: 0 0.6rem;
     border: 1px solid var(--border-color, #55463C);
     border-radius: 2rem;
-    padding: 0 0.5rem;
-    cursor: pointer;
-    font-size: 0.85rem;
     outline: none;
+    background-color: var(--bg-input, #FFFFFF);
+    color: var(--text-main, #55463C);
+    font-size: 0.85rem;
+    cursor: pointer;
     transition: opacity 0.2s;
-    margin-top: 1rem;
 }
-.container-accessibility .btns .select-language:hover{
+
+.select-language:hover {
     opacity: 0.8;
-    margin-top: 1rem;
+}
+
+@media (max-width: 600px) {
+    #header {
+        min-height: 5rem;
+        padding: 0 1rem;
+    }
+
+    #header .container-title {
+        gap: 0.6rem;
+    }
+
+    #header .title {
+        font-size: 1.1rem;
+    }
+
+    #header .img-book {
+        width: 2rem;
+    }
+
+    #body {
+        min-height: calc(100vh - 5rem);
+        padding: 1rem;
+    }
+
+    .container-accessibility {
+        width: 100%;
+        padding: 1.2rem;
+        border-radius: 1.5rem;
+    }
+
+    .title-form h2 {
+        font-size: 1.2rem;
+    }
+
+    .container-btns {
+        width: 100%;
+    }
+
+    .btn-profile,
+    .btn-accessibility {
+        font-size: 0.8rem;
+    }
+
+    .setting-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+    }
+
+    .theme-buttons {
+        width: 100%;
+    }
+
+    .btn-light,
+    .btn-dark {
+        width: 50%;
+    }
+
+    .select-language {
+        width: 100%;
+        height: 2.3rem;
+    }
 }

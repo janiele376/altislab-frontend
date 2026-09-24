@@ -1,105 +1,232 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title data-translation="doc_title_dashboard">Dashboard</title>
+
     <link rel="stylesheet" href="../../style/tenant/dashboard-tenant.css">
     <link rel="stylesheet" href="../../style/theme.css">
+
     <script src="../../js/tenant/dashboard-tenant.js" defer></script>
-    <script src="../../js/theme.js"></script>
-    <script src="../../js/language.js" defer></script>
-    <title data-i18n="doc_title_dashboard">Dashboard</title>
+    <script src="../../js/utils/theme.js" defer></script>
+    <script src="../../js/utils/language.js" defer></script>
 </head>
 
 <body>
+
     <header id="header">
+
         <div class="container-title">
-            <img class="img-book" alt="logo" src="../../imgs/book.svg">
-            <h2 class="title" data-i18n="header_title">Biblioteca Dashboard</h2>
+
+            <img class="img-book" src="../../imgs/book.svg" alt="Logo">
+
+            <h2 class="title" data-translation="header_title">
+                Biblioteca Dashboard
+            </h2>
+
             <div class="container-dashboard-header">
+
                 <div class="imgs">
-                    <img class="img-user" alt="usuário">
-                    <a href="../tenant/settings-profile.html"><img src="../../imgs/adjustments.svg" class="img-adjustments" alt="ajustes"></a>
-                    <a href="../index.html"><img src="../../imgs/logout.svg" class="img-logout" alt="sair"></a>
+
+                    <img class="img-user" src="../../imgs/user.svg" alt="Usuário">
+
+                    <a href="../tenant/settings-profile.html">
+                        <img src="../../imgs/adjustments.svg" class="img-adjustments" alt="Ajustes">
+                    </a>
+
+                    <a href="../index.html">
+                        <img src="../../imgs/logout.svg" class="img-logout" alt="Sair">
+                    </a>
+
                 </div>
 
                 <div class="text">
-                    <p id="tenant-logged-name">Usuário</p>
-                    <p data-i18n="nav_settings">Ajustes</p>
-                    <p data-i18n="nav_logout">Sair</p>
+
+                    <p id="tenant-logged-name">
+                        Usuário
+                    </p>
+
+                    <p data-translation="nav_settings">
+                        Ajustes
+                    </p>
+
+                    <p data-translation="nav_logout">
+                        Sair
+                    </p>
+
                 </div>
+
             </div>
+
         </div>
+
     </header>
 
-    <section id="body">
-        <article class="container-dashboard-content">
+    <main id="body">
+
+        <section class="container-dashboard-content">
+
             <div class="dashboard-grid">
+
                 <div class="dashboard-col">
-                    <div class="dashboard-box">
-                        <div class="box-header" data-i18n="box_latest_rentals">Últimos Livros Alugados</div>
+
+                    <section class="dashboard-box">
+
+                        <div class="box-header" data-translation="box_latest_rentals">
+                            Últimos Livros Alugados
+                        </div>
+
                         <div class="box-content">
+
                             <ol class="list-rented-books" id="tenant-latest-rentals">
                                 <li>Nenhum aluguel realizado</li>
                             </ol>
-                        </div>
-                    </div>
 
-                    <div class="dashboard-box">
-                        <div class="box-header" data-i18n="box_status_rentals">Status dos Aluguéis</div>
+                        </div>
+
+                    </section>
+
+                    <section class="dashboard-box">
+
+                        <div class="box-header" data-translation="box_status_rentals">
+                            Status dos Aluguéis
+                        </div>
+
                         <div class="box-content">
+
                             <div class="status-summary-bar">
-                                <span class="badge-header badge-green" data-i18n="badge_ontime">EM DIA</span>
-                                <span class="badge-header badge-yellow" data-i18n="badge_warning">PERTO DE VENCER</span>
-                                <span class="badge-header badge-red" data-i18n="badge_late">ATRASADO</span>
+
+                                <span class="badge-header badge-green" data-translation="badge_ontime">
+                                    EM DIA
+                                </span>
+
+                                <span class="badge-header badge-yellow" data-translation="badge_warning">
+                                    PERTO DE VENCER
+                                </span>
+
+                                <span class="badge-header badge-red" data-translation="badge_late">
+                                    ATRASADO
+                                </span>
+
                             </div>
 
                             <div class="status-table" id="tenant-status-table">
+
                                 <div class="status-row">
                                     <span>Nenhum aluguel ativo</span>
                                 </div>
+
                             </div>
+
                         </div>
-                    </div>
+
+                    </section>
+
                 </div>
 
                 <div class="dashboard-col">
-                    <div class="dashboard-box">
-                        <div class="box-header" data-i18n="box_qty_books_rent">Quantidade de Livros Para Alugar</div>
-                        <div class="box-content">
-                            <div class="list-quantities" id="available-books-list">
-                                <div class="item-qty">
-                                    <span>Nenhum livro disponível</span>
-                                    <span>qtd. 0</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="dashboard-box">
-                        <div class="box-header" data-i18n="box_most_rented">Livro Mais Alugado</div>
-                        <div class="box-content most-rented-content">
-                            <div class="book-info-text">
-                                <p><strong data-i18n="label_book_title">Título do Livro:</strong> <span
-                                        id="most-rented-title">-</span></p>
-                                <p><strong data-i18n="label_publisher">Editora:</strong> <span
-                                        id="most-rented-publisher">-</span></p>
-                                <p><strong data-i18n="label_release_date">Data de Lançamento:</strong> <span
-                                        id="most-rented-release">-</span></p>
-                                <p><strong data-i18n="label_quantity">Quantidade:</strong> <span
-                                        id="most-rented-quantity">0</span></p>
-                            </div>
-                            <div class="book-cover">
-                                <img src="../../imgs/book-cover-ex.jpg" alt="Capa do livro"
-                                    onerror="this.src='../../imgs/book.svg'">
-                            </div>
+                    <section class="dashboard-box">
+
+                        <div class="box-header" data-translation="box_qty_books_rent">
+                            Quantidade de Livros Para Alugar
                         </div>
-                    </div>
+
+                        <div class="box-content">
+
+                            <div class="list-quantities" id="available-books-list">
+
+                                <div class="item-qty">
+
+                                    <span>
+                                        Nenhum livro disponível
+                                    </span>
+
+                                    <span>
+                                        qtd. 0
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                    <section class="dashboard-box">
+
+                        <div class="box-header" data-translation="box_most_rented">
+                            Livro Mais Alugado
+                        </div>
+
+                        <div class="box-content most-rented-content">
+
+                            <div class="book-info-text">
+
+                                <p>
+                                    <strong data-translation="label_book_title">
+                                        Título do Livro:
+                                    </strong>
+
+                                    <span id="most-rented-title">
+                                        -
+                                    </span>
+                                </p>
+
+                                <p>
+                                    <strong data-translation="label_publisher">
+                                        Editora:
+                                    </strong>
+
+                                    <span id="most-rented-publisher">
+                                        -
+                                    </span>
+                                </p>
+
+                                <p>
+                                    <strong data-translation="label_release_date">
+                                        Data de Lançamento:
+                                    </strong>
+
+                                    <span id="most-rented-release">
+                                        -
+                                    </span>
+                                </p>
+
+                                <p>
+                                    <strong data-translation="label_quantity">
+                                        Quantidade:
+                                    </strong>
+
+                                    <span id="most-rented-quantity">
+                                        0
+                                    </span>
+                                </p>
+
+                            </div>
+
+                            <div class="book-cover">
+
+                                <img src="../../imgs/book-cover-ex.jpg" alt="Capa do livro">
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
                 </div>
+
             </div>
-        </article>
-    </section>
+
+        </section>
+
+    </main>
+
 </body>
 
 </html>

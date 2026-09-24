@@ -1,257 +1,243 @@
-let STORAGE_KEY_RENTALS = '@biblioteca:alugueis';
-let STORAGE_KEY_BOOKS = '@biblioteca:livros';
-let STORAGE_KEY_LOGGED = 'usuario_logado';
+const usuarios = JSON.parse(localStorage.getItem("usuarios")) || []
+const rentals = JSON.parse(localStorage.getItem("rentals")) || []
+const books = JSON.parse(localStorage.getItem("books")) || []
 
-function getData(key) {
-    let data = localStorage.getItem(key);
-    if (data) {
-        return JSON.parse(data);
-    }
-    return [];
+const userLoggedId = Number(localStorage.getItem("userLoggedId"))
+
+let tenantLoggedName = document.querySelector("#tenant-logged-name")
+let profilePhoto = document.querySelector(".img-user")
+
+let latestRentalsList = document.querySelector("#tenant-latest-rentals")
+let statusTable = document.querySelector("#tenant-status-table")
+let availableBooksList = document.querySelector("#available-books-list")
+
+let mostRentedTitle = document.querySelector("#most-rented-title")
+let mostRentedPublisher = document.querySelector("#most-rented-publisher")
+let mostRentedRelease = document.querySelector("#most-rented-release")
+let mostRentedQuantity = document.querySelector("#most-rented-quantity")
+
+const userLogged = usuarios.find(function (user) {
+    return user.id === userLoggedId
+})
+
+if (!userLogged) {
+    window.location.href = "../index.html"
+}
+else {
+    loadUser()
+    showLatestRentals()
+    showRentalStatus()
+    showAvailableBooks()
+    showMostRentedBook()
 }
 
-function getLoggedUser() {
-    let data = localStorage.getItem(STORAGE_KEY_LOGGED);
-    if (data) {
-        return JSON.parse(data);
+function loadUser() {
+
+    tenantLoggedName.textContent = userLogged.name
+
+    if (userLogged.photoProfile) {
+        profilePhoto.src = userLogged.photoProfile
     }
-    return null;
-}
-
-function formatDateBR(dateStr) {
-    if (!dateStr) {
-        return '-';
-    }
-    let parts = dateStr.split('-');
-    if (parts.length != 3) {
-        return dateStr;
-    }
-    return parts[2] + '/' + parts[1] + '/' + parts[0];
-}
-
-function initTenantDashboard() {
-    let loggedUser = getLoggedUser();
-    let rentals = getData(STORAGE_KEY_RENTALS);
-    let books = getData(STORAGE_KEY_BOOKS);
-
-    let userImgEl = document.querySelector('.container-dashboard-header .img-user');
-    if (userImgEl) {
-        if (loggedUser && loggedUser.foto && loggedUser.foto.indexOf('data:image') == 0) {
-            userImgEl.src = loggedUser.foto;
-        } else {
-            userImgEl.src = '../../imgs/user.svg';
-        }
-
-        userImgEl.onerror = function () {
-            userImgEl.src = '../../imgs/user.svg';
-        };
-    }
-
-    let tenantNameEl = document.getElementById('tenant-logged-name');
-    if (tenantNameEl && loggedUser) {
-        let nomeCompleto = loggedUser.nome || loggedUser.name || 'Usuário';
-        let partesNome = nomeCompleto.split(' ');
-        tenantNameEl.textContent = partesNome[0];
-    }
-
-    let userCpf = '';
-    if (loggedUser && loggedUser.cpf) {
-        userCpf = loggedUser.cpf.split('.').join('').split('-').join('').split(' ').join('');
-    }
-
-    let userName = '';
-    if (loggedUser) {
-        let nomeTemp = loggedUser.nome || loggedUser.name || '';
-        userName = nomeTemp.trim().toLowerCase();
-    }
-
-    let userRentals = [];
-    for (let i = 0; i < rentals.length; i++) {
-        let r = rentals[i];
-        let rCpf = '';
-        if (r.cpf) {
-            rCpf = r.cpf.split('.').join('').split('-').join('').split(' ').join('');
-        }
-
-        let rName = (r.userName || '').trim().toLowerCase();
-
-        let matchCpf = userCpf != '' && rCpf == userCpf;
-        let matchName = rName == userName;
-
-        if (matchCpf || matchName) {
-            userRentals.push(r);
-        }
-    }
-
-    let latestList = document.getElementById('tenant-latest-rentals');
-    if (latestList) {
-        latestList.innerHTML = '';
-
-        let recent = [];
-        for (let i = userRentals.length - 1; i >= 0; i--) {
-            recent.push(userRentals[i]);
-            if (recent.length == 5) {
-                break;
-            }
-        }
-
-        if (recent.length == 0) {
-            latestList.innerHTML = '<li>Nenhum aluguel realizado até o momento</li>';
-        } else {
-            for (let i = 0; i < recent.length; i++) {
-                let li = document.createElement('li');
-                let nomeLivro = recent[i].bookName || 'Livro não especificado';
-                li.textContent = (i + 1) + '. ' + nomeLivro;
-                latestList.appendChild(li);
-            }
-        }
-    }
-
-    let statusTable = document.getElementById('tenant-status-table');
-    if (statusTable) {
-        statusTable.innerHTML = '';
-
-        let activeRentals = [];
-        for (let i = 0; i < userRentals.length; i++) {
-            if (userRentals[i].status != 'Inativo') {
-                activeRentals.push(userRentals[i]);
-            }
-        }
-
-        if (activeRentals.length == 0) {
-            statusTable.innerHTML = '<div class="status-row"><span>Nenhum livro pendente de devolução</span></div>';
-        } else {
-            let today = new Date();
-            let hojeAno = today.getFullYear();
-            let hojeMes = String(today.getMonth() + 1).padStart(2, '0');
-            let hojeDia = String(today.getDate()).padStart(2, '0');
-            let hojeFormatado = hojeAno + '-' + hojeMes + '-' + hojeDia;
-
-            for (let i = 0; i < activeRentals.length; i++) {
-                let r = activeRentals[i];
-                let tagClass = 'tag-green';
-                let tagText = 'EM DIA';
-
-                if (r.endDate) {
-                    if (r.endDate < hojeFormatado) {
-                        tagClass = 'tag-red';
-                        tagText = 'ATRASADO';
-                    } else {
-                        let partesData = r.endDate.split('-');
-                        let dataFim = new Date(partesData[0], partesData[1] - 1, partesData[2]);
-                        let dataHoje = new Date(hojeAno, today.getMonth(), hojeDia);
-
-                        let diferencaMilisegundos = dataFim.getTime() - dataHoje.getTime();
-                        let diffDays = Math.ceil(diferencaMilisegundos / (1000 * 60 * 60 * 24));
-
-                        if (diffDays <= 3) {
-                            tagClass = 'tag-yellow';
-                            tagText = 'PERTO DE VENCER';
-                        }
-                    }
-                }
-
-                let row = document.createElement('div');
-                row.className = 'status-row';
-                row.innerHTML =
-                    '<span>' + r.bookName + ' | ' + formatDateBR(r.startDate) + ' | ' + formatDateBR(r.endDate) + '</span>' +
-                    '<span class="status-tag ' + tagClass + '">' + tagText + '</span>';
-
-                statusTable.appendChild(row);
-            }
-        }
-    }
-
-    let availableList = document.getElementById('available-books-list');
-    if (availableList) {
-        availableList.innerHTML = '';
-
-        let topBooks = [];
-        for (let i = 0; i < books.length; i++) {
-            topBooks.push(books[i]);
-            if (topBooks.length == 5) {
-                break;
-            }
-        }
-
-        if (topBooks.length == 0) {
-            availableList.innerHTML =
-                '<div class="item-qty">' +
-                '<span>Nenhum livro disponível no catálogo</span>' +
-                '<span>qtd. 0</span>' +
-                '</div>';
-        } else {
-            for (let i = 0; i < topBooks.length; i++) {
-                let b = topBooks[i];
-                let titulo = b.titulo || b.title || b.livro || b.nome || '-';
-                let qtd = 0;
-                if (b.quantidade != undefined) {
-                    qtd = b.quantidade;
-                } else if (b.qtd != undefined) {
-                    qtd = b.qtd;
-                }
-
-                let item = document.createElement('div');
-                item.className = 'item-qty';
-                item.innerHTML =
-                    '<span>' + (i + 1) + '. ' + titulo + '</span>' +
-                    '<span>qtd. ' + qtd + '</span>';
-
-                availableList.appendChild(item);
-            }
-        }
-    }
-
-    let bookCounts = {};
-    for (let i = 0; i < rentals.length; i++) {
-        let nome = (rentals[i].bookName || '').trim();
-        if (nome != '') {
-            if (bookCounts[nome]) {
-                bookCounts[nome] = bookCounts[nome] + 1;
-            } else {
-                bookCounts[nome] = 1;
-            }
-        }
-    }
-
-    let champName = '';
-    let champQty = 0;
-
-    for (let nome in bookCounts) {
-        if (bookCounts[nome] > champQty) {
-            champQty = bookCounts[nome];
-            champName = nome;
-        }
-    }
-
-    let titleEl = document.getElementById('most-rented-title');
-    let publisherEl = document.getElementById('most-rented-publisher');
-    let releaseEl = document.getElementById('most-rented-release');
-    let qtyEl = document.getElementById('most-rented-quantity');
-
-    if (champQty > 0) {
-        let foundBook = null;
-        for (let i = 0; i < books.length; i++) {
-            let b = books[i];
-            let tituloLivro = (b.titulo || b.title || b.livro || b.nome || '').trim().toLowerCase();
-            if (tituloLivro == champName.toLowerCase()) {
-                foundBook = b;
-                break;
-            }
-        }
-
-        if (titleEl) titleEl.textContent = champName;
-        if (publisherEl) publisherEl.textContent = foundBook ? (foundBook.editora || foundBook.publisher || '-') : '-';
-        if (releaseEl) releaseEl.textContent = foundBook ? formatDateBR(foundBook.lancamento || foundBook.dataLancamento) : '-';
-        if (qtyEl) qtyEl.textContent = champQty;
-    } else {
-        if (titleEl) titleEl.textContent = '-';
-        if (publisherEl) publisherEl.textContent = '-';
-        if (releaseEl) releaseEl.textContent = '-';
-        if (qtyEl) qtyEl.textContent = '0';
+    else {
+        profilePhoto.src = "../../imgs/user.svg"
     }
 }
 
-window.onload = function () {
-    initTenantDashboard();
-};
+function showLatestRentals() {
+
+    latestRentalsList.innerHTML = ""
+
+    let userRentals = rentals.filter(function (rental) {
+        return rental.userId === userLoggedId
+    })
+
+    if (userRentals.length === 0) {
+
+        let item = document.createElement("li")
+        item.textContent = "Nenhum aluguel realizado"
+
+        latestRentalsList.appendChild(item)
+
+        return
+    }
+
+    userRentals.sort(function (a, b) {
+        return b.id - a.id
+    })
+
+    let latestRentals = userRentals.slice(0, 5)
+
+    latestRentals.forEach(function (rental) {
+
+        let item = document.createElement("li")
+
+        item.textContent =
+            rental.bookName + " - " + rental.startDate
+
+        latestRentalsList.appendChild(item)
+    })
+}
+
+function showRentalStatus() {
+
+    statusTable.innerHTML = ""
+
+    let activeRentals = rentals.filter(function (rental) {
+        return rental.userId === userLoggedId &&
+            rental.status !== "Inativo"
+    })
+
+    if (activeRentals.length === 0) {
+
+        let row = document.createElement("div")
+        row.classList.add("status-row")
+
+        let text = document.createElement("span")
+        text.textContent = "Nenhum aluguel ativo"
+
+        row.appendChild(text)
+
+        statusTable.appendChild(row)
+
+        return
+    }
+
+    activeRentals.forEach(function (rental) {
+
+        let row = document.createElement("div")
+        row.classList.add("status-row")
+
+        let bookName = document.createElement("span")
+        bookName.textContent = rental.bookName
+
+        let dueDate = document.createElement("span")
+        dueDate.textContent = rental.dueDate
+
+        let status = document.createElement("span")
+
+        let daysRemaining = calculateDaysRemaining(rental.dueDate)
+
+        if (daysRemaining < 0) {
+            status.textContent = "ATRASADO"
+            status.classList.add("badge-red")
+        }
+        else if (daysRemaining <= 3) {
+            status.textContent = "PERTO DE VENCER"
+            status.classList.add("badge-yellow")
+        }
+        else {
+            status.textContent = "EM DIA"
+            status.classList.add("badge-green")
+        }
+
+        row.appendChild(bookName)
+        row.appendChild(dueDate)
+        row.appendChild(status)
+
+        statusTable.appendChild(row)
+    })
+}
+
+function showAvailableBooks() {
+
+    availableBooksList.innerHTML = ""
+
+    let availableBooks = books.filter(function (book) {
+        return book.quantity > 0
+    })
+
+    if (availableBooks.length === 0) {
+
+        let item = document.createElement("div")
+        item.classList.add("item-qty")
+
+        let name = document.createElement("span")
+        name.textContent = "Nenhum livro disponível"
+
+        let quantity = document.createElement("span")
+        quantity.textContent = "qtd. 0"
+
+        item.appendChild(name)
+        item.appendChild(quantity)
+
+        availableBooksList.appendChild(item)
+
+        return
+    }
+
+    availableBooks.forEach(function (book) {
+
+        let item = document.createElement("div")
+        item.classList.add("item-qty")
+
+        let name = document.createElement("span")
+        name.textContent = book.name
+
+        let quantity = document.createElement("span")
+        quantity.textContent = "qtd. " + book.quantity
+
+        item.appendChild(name)
+        item.appendChild(quantity)
+
+        availableBooksList.appendChild(item)
+    })
+}
+
+function showMostRentedBook() {
+
+    if (rentals.length === 0) {
+        return
+    }
+
+    let rentedBooks = []
+
+    rentals.forEach(function (rental) {
+
+        let bookExists = rentedBooks.find(function (book) {
+            return book.bookId === rental.bookId
+        })
+
+        if (bookExists) {
+            bookExists.quantity++
+        }
+        else {
+            rentedBooks.push({
+                bookId: rental.bookId,
+                quantity: 1
+            })
+        }
+    })
+
+    rentedBooks.sort(function (a, b) {
+        return b.quantity - a.quantity
+    })
+
+    let mostRented = rentedBooks[0]
+
+    let book = books.find(function (book) {
+        return book.id === mostRented.bookId
+    })
+
+    if (!book) {
+        return
+    }
+
+    mostRentedTitle.textContent = book.name
+    mostRentedPublisher.textContent = book.publisherName
+    mostRentedRelease.textContent = book.releaseDate
+    mostRentedQuantity.textContent = mostRented.quantity
+}
+
+function calculateDaysRemaining(dueDate) {
+
+    let today = new Date()
+    let rentalDueDate = new Date(dueDate + "T00:00:00")
+
+    let difference = rentalDueDate - today
+
+    let daysRemaining = Math.ceil(
+        difference / (1000 * 60 * 60 * 24)
+    )
+
+    return daysRemaining
+}
