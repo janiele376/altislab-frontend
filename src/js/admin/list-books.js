@@ -74,10 +74,12 @@ btnSaveBook.addEventListener("click", function () {
 })
 
 btnSearch.addEventListener("click", function () {
+    currentPage = 1
     searchBooks()
 })
 
 inputSearch.addEventListener("input", function () {
+    currentPage = 1
     searchBooks()
 })
 
@@ -114,6 +116,11 @@ function createBook() {
     const publisher = publishers.find(function (publisher) {
         return publisher.id === Number(inputPublisher.value)
     })
+
+    if (!publisher) {
+        alert("Editora não encontrada!")
+        return
+    }
 
     const book = {
         id: Date.now(),
@@ -160,10 +167,11 @@ function showBooks(bookList) {
     booksPage.forEach(function (book) {
 
         let bookRow = document.createElement("div")
-        bookRow.classList.add("book-row")
+        bookRow.classList.add("container-table")
 
         let cod = document.createElement("p")
         cod.textContent = book.cod
+        cod.classList.add("cod-p")
 
         let name = document.createElement("p")
         name.textContent = book.name
@@ -176,6 +184,10 @@ function showBooks(bookList) {
 
         let quantity = document.createElement("p")
         quantity.textContent = book.quantity
+        quantity.classList.add("quantity-p")
+
+        let actions = document.createElement("div")
+        actions.classList.add("container-btns")
 
         let btnEdit = document.createElement("button")
         btnEdit.textContent = "Editar"
@@ -185,12 +197,14 @@ function showBooks(bookList) {
             openEditBook(book.id)
         })
 
+        actions.appendChild(btnEdit)
+
         bookRow.appendChild(cod)
         bookRow.appendChild(name)
         bookRow.appendChild(publisher)
         bookRow.appendChild(releaseDate)
         bookRow.appendChild(quantity)
-        bookRow.appendChild(btnEdit)
+        bookRow.appendChild(actions)
 
         booksList.appendChild(bookRow)
     })
@@ -246,6 +260,11 @@ function editBook() {
         return publisher.id === Number(inputPublisher.value)
     })
 
+    if (!publisher) {
+        alert("Editora não encontrada!")
+        return
+    }
+
     book.name = inputName.value
     book.cod = inputCod.value
     book.publisherId = publisher.id
@@ -278,8 +297,9 @@ function showPublishers() {
 }
 
 function searchBooks() {
-    currentPage = 1
+
     const filteredBooks = filterBooks()
+
     showBooks(filteredBooks)
 }
 

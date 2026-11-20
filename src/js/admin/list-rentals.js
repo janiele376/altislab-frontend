@@ -257,7 +257,7 @@ function showRentals(rentalList) {
     rentalsPage.forEach(function (rental) {
 
         let rentalRow = document.createElement("div")
-        rentalRow.classList.add("rental-row")
+        rentalRow.classList.add("container-table")
 
         let userName = document.createElement("p")
         userName.textContent = rental.userName
@@ -273,22 +273,10 @@ function showRentals(rentalList) {
 
         let status = document.createElement("p")
         status.textContent = rental.status
-        status.classList.add("rental-status")
-
-        if (rental.status === "Ativo") {
-            status.classList.add("active-status")
-        }
-
-        if (rental.status === "Atrasado") {
-            status.classList.add("late-status")
-        }
-
-        if (rental.status === "Inativo") {
-            status.classList.add("inactive-status")
-        }
+        status.classList.add("status-p")
 
         let actions = document.createElement("div")
-        actions.classList.add("rental-actions")
+        actions.classList.add("container-btns")
 
         if (rental.status !== "Inativo") {
 
@@ -361,7 +349,15 @@ function renewRental() {
     }
 
     rental.dueDate = renewDate.value
-    rental.status = "Ativo"
+
+    let today = formatDate(new Date())
+
+    if (rental.dueDate < today) {
+        rental.status = "Atrasado"
+    }
+    else {
+        rental.status = "Ativo"
+    }
 
     saveRentals()
 
@@ -482,7 +478,9 @@ function filterRentals() {
 }
 
 function showFilteredRentals() {
+
     const filteredRentals = filterRentals()
+
     showRentals(filteredRentals)
 }
 

@@ -29,7 +29,7 @@ let closeModalBtn = document.querySelector("#closeModalBtn")
 
 let newPhoto = null
 
-const userLogged = usuarios.find(function(user) {
+const userLogged = usuarios.find(function (user) {
     return user.id === userLoggedId
 })
 
@@ -61,11 +61,11 @@ togglePassword(inputCurrentPassword, toggleCurrentPassword, "../../imgs/")
 togglePassword(inputNewPassword, toggleNewPassword, "../../imgs/")
 togglePassword(inputConfirmPassword, toggleConfirmPassword, "../../imgs/")
 
-btnChangePhoto.addEventListener("click", function() {
+btnChangePhoto.addEventListener("click", function () {
     inputPhoto.click()
 })
 
-inputPhoto.addEventListener("change", function() {
+inputPhoto.addEventListener("change", function () {
 
     const photo = inputPhoto.files[0]
 
@@ -77,13 +77,13 @@ inputPhoto.addEventListener("change", function() {
 
     reader.readAsDataURL(photo)
 
-    reader.onload = function() {
+    reader.onload = function () {
         newPhoto = reader.result
         profilePhoto.src = reader.result
     }
 })
 
-btnSave.addEventListener("click", function() {
+btnSave.addEventListener("click", function () {
 
     if (
         inputEmail.value === "" ||
@@ -104,9 +104,9 @@ btnSave.addEventListener("click", function() {
         return
     }
 
-    const emailExists = usuarios.find(function(user) {
+    const emailExists = usuarios.find(function (user) {
         return user.email === inputEmail.value &&
-               user.id !== userLoggedId
+            user.id !== userLoggedId
     })
 
     if (emailExists) {
@@ -160,10 +160,10 @@ function saveUsers() {
     localStorage.setItem("usuarios", JSON.stringify(usuarios))
 }
 
-openModalBtn.addEventListener("click", function() {
+openModalBtn.addEventListener("click", function () {
     supportModal.showModal()
 })
 
-closeModalBtn.addEventListener("click", function() {
+closeModalBtn.addEventListener("click", function () {
     supportModal.close()
 })

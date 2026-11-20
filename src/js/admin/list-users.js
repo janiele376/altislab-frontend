@@ -104,7 +104,7 @@ function showUsers(userList) {
     usersPage.forEach(function (user) {
 
         let userRow = document.createElement("div")
-        userRow.classList.add("user-row")
+        userRow.classList.add("container-table")
 
         let name = document.createElement("p")
         name.textContent = user.name
@@ -118,19 +118,24 @@ function showUsers(userList) {
         let address = document.createElement("p")
         address.textContent = user.local
 
+        let actions = document.createElement("div")
+        actions.classList.add("container-btns")
+
         let btnEdit = document.createElement("button")
         btnEdit.textContent = "Editar"
-        btnEdit.classList.add("btn-edit")
+        btnEdit.classList.add("btn-edit-user")
 
         btnEdit.addEventListener("click", function () {
             openEditUser(user.id)
         })
 
+        actions.appendChild(btnEdit)
+
         userRow.appendChild(name)
         userRow.appendChild(cpf)
         userRow.appendChild(birth)
         userRow.appendChild(address)
-        userRow.appendChild(btnEdit)
+        userRow.appendChild(actions)
 
         usersList.appendChild(userRow)
     })

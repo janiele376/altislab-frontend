@@ -151,7 +151,7 @@ function showPublishers(publisherList) {
     publishersPage.forEach(function (publisher) {
 
         let publisherRow = document.createElement("div")
-        publisherRow.classList.add("publisher-row")
+        publisherRow.classList.add("container-table")
 
         let id = document.createElement("p")
         id.textContent = publisher.id
@@ -160,7 +160,6 @@ function showPublishers(publisherList) {
         name.textContent = publisher.name
 
         let contact = document.createElement("div")
-        contact.classList.add("publisher-contact")
 
         let email = document.createElement("p")
         email.textContent = publisher.email
@@ -174,6 +173,9 @@ function showPublishers(publisherList) {
         let address = document.createElement("p")
         address.textContent = publisher.address
 
+        let actions = document.createElement("div")
+        actions.classList.add("container-btns")
+
         let btnEdit = document.createElement("button")
         btnEdit.textContent = "Editar"
         btnEdit.classList.add("btn-edit")
@@ -182,11 +184,13 @@ function showPublishers(publisherList) {
             openEditPublisher(publisher.id)
         })
 
+        actions.appendChild(btnEdit)
+
         publisherRow.appendChild(id)
         publisherRow.appendChild(name)
         publisherRow.appendChild(contact)
         publisherRow.appendChild(address)
-        publisherRow.appendChild(btnEdit)
+        publisherRow.appendChild(actions)
 
         publishersList.appendChild(publisherRow)
     })
@@ -258,7 +262,9 @@ function editPublisher() {
 }
 
 function searchPublishers() {
+
     const filteredPublishers = filterPublishers()
+
     showPublishers(filteredPublishers)
 }
 

@@ -1,5 +1,5 @@
 function togglePassword(input, button, path) {
-    button.addEventListener("click", function() {
+    button.addEventListener("click", function () {
 
         if (input.type === "password") {
             input.type = "text"

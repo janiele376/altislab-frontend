@@ -10,7 +10,7 @@ togglePassword(inputPassword, togglePasswordBtn, "../imgs/")
 
 btnLogin.addEventListener("click", authentication)
 
-btnRegister.addEventListener("click", function() {
+btnRegister.addEventListener("click", function () {
     window.location.href = "./register.html"
 })
 
@@ -32,9 +32,9 @@ function authentication() {
         return
     }
 
-    const userExists = usuarios.find(function(user) {
+    const userExists = usuarios.find(function (user) {
         return inputEmail.value === user.email &&
-               inputPassword.value === user.password
+            inputPassword.value === user.password
     })
 
     if (userExists) {

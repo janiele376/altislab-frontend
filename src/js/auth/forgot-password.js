@@ -14,7 +14,7 @@ let toggleConfirmarNovaSenha = document.querySelector("#toggle-new-password")
 togglePassword(inputNovaSenha, toggleNovaSenha, "../imgs/")
 togglePassword(inputConfirmarNovaSenha, toggleConfirmarNovaSenha, "../imgs/")
 
-btnSend.addEventListener("click", function() {
+btnSend.addEventListener("click", function () {
 
     if (
         inputEmail.value === "" ||
@@ -54,7 +54,7 @@ btnSend.addEventListener("click", function() {
     window.location.href = "../pages/index.html"
 })
 
-btnCancel.addEventListener("click", function() {
+btnCancel.addEventListener("click", function () {
     inputEmail.value = ""
     inputCpf.value = ""
     inputNovaSenha.value = ""
@@ -63,7 +63,7 @@ btnCancel.addEventListener("click", function() {
 
 function findUser(users, email, cpf) {
 
-    return users.find(function(user) {
+    return users.find(function (user) {
         return user.email === email && user.cpf === cpf
     })
 }
